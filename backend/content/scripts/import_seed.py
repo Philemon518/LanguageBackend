@@ -46,6 +46,21 @@ async def import_seed(seed_path: Path, version: str | None = None) -> None:
             )
             existing_version = existing.scalar_one_or_none()
             if existing_version:
+                units_present = await session.execute(
+                    select(Unit.id)
+                    .where(Unit.curriculum_version_id == existing_version.id)
+                    .limit(1)
+                )
+                if units_present.scalar_one_or_none() is None:
+                    logger.warning(
+                        "Version %s exists without units; removing incomplete import",
+                        version,
+                    )
+                    await session.delete(existing_version)
+                    await session.flush()
+                    existing_version = None
+
+            if existing_version:
                 if (existing_version.metadata_json or {}).get("seed_hash") == seed_hash:
                     logger.info("Version %s already up to date", version)
                     return
@@ -97,6 +112,7 @@ async def import_seed(seed_path: Path, version: str | None = None) -> None:
                         prerequisites=unit_data.get("prerequisites", []),
                     )
                 )
+            await session.flush()
 
             for lex in doc.get("lexemes", []):
                 session.add(
@@ -126,6 +142,7 @@ async def import_seed(seed_path: Path, version: str | None = None) -> None:
                         status="published",
                     )
                 )
+            await session.flush()
 
             for lesson_data in doc["lessons"]:
                 session.add(
