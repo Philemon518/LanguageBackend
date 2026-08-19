@@ -37,10 +37,10 @@ class Settings(BaseSettings):
     @field_validator("database_url", mode="before")
     @classmethod
     def normalize_database_url(cls, value: str) -> str:
-        """Convert Railway's synchronous Postgres URL to SQLAlchemy asyncpg."""
+        """Convert Railway Postgres URLs to SQLAlchemy asyncpg."""
         if value.startswith("postgres://"):
             return value.replace("postgres://", "postgresql+asyncpg://", 1)
-        if value.startswith("postgresql://"):
+        if value.startswith("postgresql://") and "+asyncpg" not in value:
             return value.replace("postgresql://", "postgresql+asyncpg://", 1)
         return value
 

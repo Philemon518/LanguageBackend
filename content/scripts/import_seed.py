@@ -5,6 +5,7 @@ import hashlib
 import json
 import logging
 import sys
+from contextlib import suppress
 from pathlib import Path
 
 from sqlalchemy import select, text
@@ -160,10 +161,11 @@ async def import_seed(seed_path: Path, version: str | None = None) -> None:
             )
         finally:
             if db.engine.dialect.name == "postgresql":
-                await session.execute(
-                    text("SELECT pg_advisory_unlock(:lock_id)"),
-                    {"lock_id": SEED_LOCK_ID},
-                )
+                with suppress(Exception):
+                    await session.execute(
+                        text("SELECT pg_advisory_unlock(:lock_id)"),
+                        {"lock_id": SEED_LOCK_ID},
+                    )
 
 
 def main() -> None:
