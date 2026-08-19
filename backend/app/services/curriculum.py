@@ -1,10 +1,51 @@
 """Curriculum loading and lesson rendering."""
 
+import json
+from functools import lru_cache
+from pathlib import Path
+
 from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from ..core.config import get_settings
 from ..models.orm import CurriculumVersion, Lesson, LessonProgress, MediaAsset, Unit
 from ..models.schemas import CurriculumManifest, LessonDocument, LessonSummary, UnitSummary
+from .qwen import audio_content_hash
+
+
+@lru_cache
+def _manifest_audio_urls() -> dict[str, str]:
+    settings = get_settings()
+    manifest_path = Path(settings.local_audio_dir) / "manifest.json"
+    if not manifest_path.exists():
+        return {}
+
+    manifest = json.loads(manifest_path.read_text())
+    urls: dict[str, str] = {}
+    for text, entry in manifest.get("assets", {}).items():
+        path = entry.get("path")
+        if not path:
+            continue
+        if not (Path(settings.local_audio_dir) / path).exists():
+            continue
+        urls[text] = entry.get("url") or f"/media/{path}"
+    return urls
+
+
+def _audio_url_for_text(text: str, asset: MediaAsset | None) -> str | None:
+    if asset:
+        return asset.public_url or f"/media/{asset.storage_path}"
+
+    manifest_url = _manifest_audio_urls().get(text)
+    if manifest_url:
+        return manifest_url
+
+    settings = get_settings()
+    content_hash = audio_content_hash(text, settings.qwen_tts_voice, settings.qwen_realtime_model)
+    path = f"beginner/{content_hash}.wav"
+    if (Path(settings.local_audio_dir) / path).exists():
+        return f"/media/{path}"
+    return None
 
 
 async def get_manifest(db: AsyncSession, level: str = "beginner") -> CurriculumManifest:
@@ -165,23 +206,24 @@ async def get_lesson(db: AsyncSession, lesson_id: str) -> LessonDocument | None:
         audio = step.get("audio")
         if audio and audio.get("text"):
             asset = media_by_text.get(audio["text"])
-            if asset:
+            url = _audio_url_for_text(audio["text"], asset)
+            if url:
                 step["audio"] = {
                     **audio,
-                    "asset_id": str(asset.id),
-                    "url": asset.public_url or f"/media/{asset.storage_path}",
+                    "asset_id": str(asset.id) if asset else None,
+                    "url": url,
                 }
         for option in step.get("options", []):
             option_audio = option.get("audio")
             if not option_audio or not option_audio.get("text"):
                 continue
             option_asset = media_by_text.get(option_audio["text"])
-            if option_asset:
+            option_url = _audio_url_for_text(option_audio["text"], option_asset)
+            if option_url:
                 option["audio"] = {
                     **option_audio,
-                    "asset_id": str(option_asset.id),
-                    "url": option_asset.public_url
-                    or f"/media/{option_asset.storage_path}",
+                    "asset_id": str(option_asset.id) if option_asset else None,
+                    "url": option_url,
                 }
     return LessonDocument(
         id=lesson.id,

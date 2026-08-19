@@ -22,6 +22,7 @@ from .core.migrations import migrate_user_credentials
 from .models.orm import CurriculumVersion
 from .models.schemas import HealthResponse
 from .services.bootstrap import bootstrap_if_empty
+from .services.media_bootstrap import bootstrap_media_assets
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 logger = logging.getLogger("canto")
@@ -42,6 +43,8 @@ async def lifespan(app: FastAPI):
 
     await bootstrap_if_empty()
     logger.info("Curriculum bootstrap finished")
+    await bootstrap_media_assets()
+    logger.info("Media bootstrap finished")
 
     yield
 
