@@ -1,0 +1,28 @@
+# Python
+backend/.venv/
+backend/__pycache__/
+backend/.pytest_cache/
+backend/.env
+*.pyc
+
+# Flutter
+mobile/
+mobile/.dart_tool/
+mobile/build/
+mobile/.flutter-plugins-dependencies
+mobile/.env
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# OS
+.DS_Store
+
+# Supabase
+supabase/.temp/
+
+# Local runtime data
+backend/canto.db
+backend/local_data/user/

@@ -1,0 +1,371 @@
+{
+  "version": "1.0.0",
+  "level": "beginner",
+  "units": [
+    {
+      "id": "unit-sound",
+      "title": "Sound System",
+      "phase": "sound",
+      "sort_order": 1,
+      "prerequisites": []
+    },
+    {
+      "id": "unit-components",
+      "title": "Character Components",
+      "phase": "components",
+      "sort_order": 2,
+      "prerequisites": ["unit-sound"]
+    },
+    {
+      "id": "unit-vocab",
+      "title": "Contextual Vocabulary",
+      "phase": "vocabulary",
+      "sort_order": 3,
+      "prerequisites": ["unit-components"]
+    },
+    {
+      "id": "unit-sentences",
+      "title": "Basic Sentences",
+      "phase": "sentences",
+      "sort_order": 4,
+      "prerequisites": ["unit-vocab"]
+    },
+    {
+      "id": "unit-integrated",
+      "title": "Listening & Writing",
+      "phase": "integrated",
+      "sort_order": 5,
+      "prerequisites": ["unit-sentences"]
+    }
+  ],
+  "lexemes": [
+    {"id": "lex-water", "traditional": "水", "jyutping": "seoi2", "tone": 2, "english": "water", "tags": ["nature", "sound-intro"]},
+    {"id": "lex-up", "traditional": "上", "jyutping": "soeng2", "tone": 2, "english": "up / above", "tags": ["direction", "sound-intro"]},
+    {"id": "lex-eat", "traditional": "食", "jyutping": "sik6", "tone": 6, "english": "to eat", "tags": ["verb", "component-root"]},
+    {"id": "lex-rice", "traditional": "飯", "jyutping": "faan6", "tone": 6, "english": "rice / meal", "tags": ["food"]},
+    {"id": "lex-apple", "traditional": "蘋果", "jyutping": "ping4 gwo2", "tone": 2, "english": "apple", "tags": ["food", "vocab"]},
+    {"id": "lex-i", "traditional": "我", "jyutping": "ngo5", "tone": 5, "english": "I / me", "tags": ["pronoun"]},
+    {"id": "lex-not", "traditional": "唔", "jyutping": "m4", "tone": 4, "english": "not (negation)", "tags": ["grammar"]},
+    {"id": "lex-like", "traditional": "鍾意", "jyutping": "zung1 ji3", "tone": 3, "english": "to like", "tags": ["verb"]},
+    {"id": "lex-hello", "traditional": "你好", "jyutping": "nei5 hou2", "tone": 2, "english": "hello", "tags": ["greeting"]},
+    {"id": "lex-thanks", "traditional": "唔該", "jyutping": "m4 goi1", "tone": 1, "english": "please / thank you", "tags": ["greeting"]}
+  ],
+  "characters": [
+    {
+      "id": "char-eat",
+      "glyph": "食",
+      "meaning": "to eat; food",
+      "jyutping": "sik6",
+      "tone": 6,
+      "radical": "食",
+      "components": [{"glyph": "人", "role": "semantic"}, {"glyph": "良", "role": "phonetic"}],
+      "related_words": ["食物", "飲食", "食飯", "早餐", "午餐"]
+    },
+    {
+      "id": "char-water",
+      "glyph": "水",
+      "meaning": "water",
+      "jyutping": "seoi2",
+      "tone": 2,
+      "radical": "水",
+      "components": [],
+      "related_words": ["海水", "開水", "水樽"]
+    }
+  ],
+  "lessons": [
+    {
+      "id": "sound-01-water",
+      "unit_id": "unit-sound",
+      "title": "Water — seoi2 — 水",
+      "lesson_type": "sound",
+      "sort_order": 1,
+      "objectives": ["obj-hear-tone-2", "obj-jyutping-seoi2", "obj-char-water"],
+      "content": {
+        "vocabulary": [{"lexeme_id": "lex-water", "english": "water"}],
+        "steps": [
+          {
+            "id": "s1-hear",
+            "type": "select_meaning",
+            "skill": "listening",
+            "prompt": "Listen. What does this word mean?",
+            "audio": {"text": "水", "url": null},
+            "options": [
+              {"id": "a", "label": "water"},
+              {"id": "b", "label": "fire"},
+              {"id": "c", "label": "mountain"}
+            ],
+            "correct_option_id": "a",
+            "reveal_jyutping": "seoi2",
+            "reveal_character": "水",
+            "metadata": {"objective_id": "obj-hear-tone-2"}
+          },
+          {
+            "id": "s2-tone",
+            "type": "select_tone",
+            "skill": "listening",
+            "prompt": "Which tone do you hear?",
+            "audio": {"text": "seoi2"},
+            "options": [
+              {"id": "t1", "label": "Tone 1 (flat high)"},
+              {"id": "t2", "label": "Tone 2 (rising)"},
+              {"id": "t3", "label": "Tone 3 (mid level)"}
+            ],
+            "correct_option_id": "t2",
+            "reveal_jyutping": "seoi2",
+            "metadata": {"objective_id": "obj-hear-tone-2"}
+          },
+          {
+            "id": "s3-jyutping",
+            "type": "select_jyutping",
+            "skill": "listening",
+            "prompt": "Match the sound to Jyutping",
+            "audio": {"text": "水"},
+            "options": [
+              {"id": "j1", "label": "seoi2", "jyutping": "seoi2"},
+              {"id": "j2", "label": "seoi1", "jyutping": "seoi1"},
+              {"id": "j3", "label": "soeng2", "jyutping": "soeng2"}
+            ],
+            "correct_option_id": "j1",
+            "reveal_character": "水",
+            "metadata": {"objective_id": "obj-jyutping-seoi2"}
+          },
+          {
+            "id": "s4-speak",
+            "type": "speak",
+            "skill": "speaking",
+            "prompt": "Say: seoi2 (水 — water)",
+            "reveal_jyutping": "seoi2",
+            "reveal_character": "水",
+            "metadata": {"expected": "seoi2", "objective_id": "obj-char-water"}
+          },
+          {
+            "id": "s5-character",
+            "type": "select_character",
+            "skill": "reading",
+            "prompt": "Which character matches seoi2?",
+            "options": [
+              {"id": "c1", "label": "水"},
+              {"id": "c2", "label": "火"},
+              {"id": "c3", "label": "山"}
+            ],
+            "correct_option_id": "c1",
+            "reveal_english": "water",
+            "metadata": {"objective_id": "obj-char-water"}
+          }
+        ]
+      }
+    },
+    {
+      "id": "sound-02-up",
+      "unit_id": "unit-sound",
+      "title": "Up — soeng2 — 上",
+      "lesson_type": "sound",
+      "sort_order": 2,
+      "objectives": ["obj-tone-contrast"],
+      "content": {
+        "steps": [
+          {
+            "id": "s1-hear",
+            "type": "select_meaning",
+            "skill": "listening",
+            "prompt": "Listen. What does this mean?",
+            "audio": {"text": "上"},
+            "options": [{"id": "a", "label": "up / above"}, {"id": "b", "label": "down"}, {"id": "c", "label": "left"}],
+            "correct_option_id": "a",
+            "reveal_jyutping": "soeng2",
+            "reveal_character": "上",
+            "metadata": {"objective_id": "obj-tone-contrast"}
+          },
+          {
+            "id": "s2-speak",
+            "type": "speak",
+            "skill": "speaking",
+            "prompt": "Say: soeng2",
+            "reveal_jyutping": "soeng2",
+            "metadata": {"expected": "soeng2", "objective_id": "obj-tone-contrast"}
+          }
+        ]
+      }
+    },
+    {
+      "id": "comp-01-eat",
+      "unit_id": "unit-components",
+      "title": "Character: 食 (to eat)",
+      "lesson_type": "component",
+      "sort_order": 1,
+      "objectives": ["obj-char-eat", "obj-component-tree"],
+      "content": {
+        "vocabulary": [{"lexeme_id": "lex-eat"}],
+        "grammar_points": [],
+        "steps": [
+          {
+            "id": "c1-intro",
+            "type": "select_meaning",
+            "skill": "reading",
+            "prompt": "食 — what is the core meaning?",
+            "options": [{"id": "a", "label": "to eat"}, {"id": "b", "label": "to drink"}, {"id": "c", "label": "to sleep"}],
+            "correct_option_id": "a",
+            "reveal_jyutping": "sik6",
+            "metadata": {"objective_id": "obj-char-eat", "character_id": "char-eat"}
+          },
+          {
+            "id": "c2-tree",
+            "type": "match",
+            "skill": "reading",
+            "prompt": "Which word contains 食?",
+            "options": [{"id": "a", "label": "食飯"}, {"id": "b", "label": "飲水"}, {"id": "c", "label": "你好"}],
+            "correct_option_id": "a",
+            "metadata": {"objective_id": "obj-component-tree"}
+          }
+        ]
+      }
+    },
+    {
+      "id": "vocab-01-apple",
+      "unit_id": "unit-vocab",
+      "title": "蘋果 — in context",
+      "lesson_type": "vocabulary",
+      "sort_order": 1,
+      "objectives": ["obj-vocab-apple"],
+      "content": {
+        "vocabulary": [{"lexeme_id": "lex-apple"}],
+        "steps": [
+          {
+            "id": "v1-hear",
+            "type": "select_meaning",
+            "skill": "listening",
+            "prompt": "Listen: 蘋果",
+            "audio": {"text": "蘋果"},
+            "options": [{"id": "a", "label": "apple"}, {"id": "b", "label": "orange"}, {"id": "c", "label": "banana"}],
+            "correct_option_id": "a",
+            "reveal_jyutping": "ping4 gwo2",
+            "metadata": {"objective_id": "obj-vocab-apple"}
+          },
+          {
+            "id": "v2-context1",
+            "type": "select_meaning",
+            "skill": "listening",
+            "prompt": "我食蘋果。",
+            "audio": {"text": "我食蘋果。"},
+            "options": [{"id": "a", "label": "I eat an apple."}, {"id": "b", "label": "I don't eat apples."}, {"id": "c", "label": "I buy apples."}],
+            "correct_option_id": "a",
+            "metadata": {"objective_id": "obj-vocab-apple", "context_level": 1}
+          },
+          {
+            "id": "v3-context2",
+            "type": "select_meaning",
+            "skill": "listening",
+            "prompt": "我唔鍾意食蘋果。",
+            "audio": {"text": "我唔鍾意食蘋果。"},
+            "options": [{"id": "a", "label": "I don't like eating apples."}, {"id": "b", "label": "I like eating apples."}, {"id": "c", "label": "I often eat apples."}],
+            "correct_option_id": "a",
+            "metadata": {"objective_id": "obj-vocab-apple", "context_level": 2}
+          },
+          {
+            "id": "v4-cloze",
+            "type": "cloze",
+            "skill": "reading",
+            "prompt": "我___蘋果。 (I eat an apple.)",
+            "metadata": {"expected": "食", "objective_id": "obj-vocab-apple"}
+          }
+        ]
+      }
+    },
+    {
+      "id": "sent-01-present",
+      "unit_id": "unit-sentences",
+      "title": "我食飯 — basic present",
+      "lesson_type": "grammar",
+      "sort_order": 1,
+      "objectives": ["obj-aspect-present"],
+      "content": {
+        "grammar_points": [{"id": "gp-present", "title": "Simple present / ongoing", "pattern": "S + V + O", "example": "我食飯。"}],
+        "steps": [
+          {
+            "id": "g1-hear",
+            "type": "select_meaning",
+            "skill": "listening",
+            "prompt": "我食飯。",
+            "audio": {"text": "我食飯。"},
+            "options": [{"id": "a", "label": "I eat / I'm eating (a meal)."}, {"id": "b", "label": "I ate already."}, {"id": "c", "label": "I will eat."}],
+            "correct_option_id": "a",
+            "metadata": {"objective_id": "obj-aspect-present"}
+          },
+          {
+            "id": "g2-order",
+            "type": "order_words",
+            "skill": "writing",
+            "prompt": "Build: I eat rice.",
+            "options": [{"id": "w1", "label": "我"}, {"id": "w2", "label": "食"}, {"id": "w3", "label": "飯"}],
+            "metadata": {"expected_order": ["w1", "w2", "w3"], "objective_id": "obj-aspect-present"}
+          },
+          {
+            "id": "g3-write",
+            "type": "write_sentence",
+            "skill": "writing",
+            "prompt": "Write a sentence: I eat an apple.",
+            "metadata": {
+              "expected_patterns": ["我食蘋果"],
+              "target_vocab": ["我", "食", "蘋果"],
+              "objective_id": "obj-aspect-present"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "int-01-story",
+      "unit_id": "unit-integrated",
+      "title": "Morning routine story",
+      "lesson_type": "integrated",
+      "sort_order": 1,
+      "objectives": ["obj-story-comprehension", "obj-dictation"],
+      "content": {
+        "steps": [
+          {
+            "id": "i1-listen",
+            "type": "select_meaning",
+            "skill": "listening",
+            "prompt": "Story excerpt: 我朝早食蘋果。",
+            "audio": {"text": "我朝早食蘋果。我唔鍾意食蘋果。但係今日好肚餓。"},
+            "options": [{"id": "a", "label": "Morning apple; doesn't usually like them but hungry today."}, {"id": "b", "label": "Evening dinner story."}, {"id": "c", "label": "Shopping for fruit."}],
+            "correct_option_id": "a",
+            "metadata": {"objective_id": "obj-story-comprehension", "story_id": "story-morning-01"}
+          },
+          {
+            "id": "i2-dictation",
+            "type": "dictation",
+            "skill": "writing",
+            "prompt": "Type what you hear (Jyutping): 我食蘋果",
+            "audio": {"text": "我食蘋果。"},
+            "metadata": {"expected": "ngo5 sik6 ping4 gwo2", "objective_id": "obj-dictation"}
+          },
+          {
+            "id": "i3-write",
+            "type": "write_sentence",
+            "skill": "writing",
+            "prompt": "Write 2 sentences about what you eat in the morning.",
+            "metadata": {
+              "expected_patterns": ["我", "食"],
+              "target_vocab": ["我", "食", "蘋果", "飯"],
+              "objective_id": "obj-dictation"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "stories": [
+    {
+      "id": "story-morning-01",
+      "title": "Morning routine",
+      "level": "beginner",
+      "text": "我朝早食蘋果。我唔鍾意食蘋果。但係今日好肚餓。",
+      "sentences": [
+        {"traditional": "我朝早食蘋果。", "jyutping": "ngo5 ziu1 zou2 sik6 ping4 gwo2.", "english": "I eat an apple in the morning."},
+        {"traditional": "我唔鍾意食蘋果。", "jyutping": "ngo5 m4 zung1 ji3 sik6 ping4 gwo2.", "english": "I don't like eating apples."},
+        {"traditional": "但係今日好肚餓。", "jyutping": "daan6 hai6 gam1 jat6 hou2 tou5 ngo6.", "english": "But today I'm very hungry."}
+      ]
+    }
+  ]
+}
