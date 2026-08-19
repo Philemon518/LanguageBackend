@@ -33,8 +33,7 @@ V2_EXERCISE_TYPES = {
     "select_tone": 12,
     "match": 28,
     "cloze": 40,
-    "order_words": 40,
-    "dictation": 40,
+    "order_words": 80,
     "word_intro": 1,
 }
 

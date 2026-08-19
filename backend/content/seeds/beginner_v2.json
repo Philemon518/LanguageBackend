@@ -1041,15 +1041,24 @@
             "options": [
               {
                 "id": "character-correct",
-                "label": "水"
+                "label": "水",
+                "audio": {
+                  "text": "水"
+                }
               },
               {
                 "id": "character-distractor-1",
-                "label": "山"
+                "label": "山",
+                "audio": {
+                  "text": "山"
+                }
               },
               {
                 "id": "character-distractor-2",
-                "label": "火"
+                "label": "火",
+                "audio": {
+                  "text": "火"
+                }
               }
             ],
             "correct_option_id": "character-correct",
@@ -1092,10 +1101,36 @@
             "id": "v2-sound-01-ex-06",
             "type": "cloze",
             "skill": "writing",
-            "prompt": "Complete in Traditional Chinese: 杯＿＿喺度。",
+            "prompt": "Complete the sentence: 杯＿＿喺度。",
+            "options": [
+              {
+                "id": "cloze-correct",
+                "label": "水",
+                "audio": {
+                  "text": "水"
+                }
+              },
+              {
+                "id": "cloze-distractor-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "cloze-distractor-2",
+                "label": "好",
+                "audio": {
+                  "text": "好"
+                }
+              }
+            ],
+            "correct_option_id": "cloze-correct",
             "reveal_jyutping": "bui1 seoi2 hai2 dou6",
+            "reveal_english": "The glass of water is here.",
             "metadata": {
               "expected": "水",
+              "allow_manual_input": true,
               "objective_id": "v2-sound-01-objective"
             }
           },
@@ -1107,11 +1142,17 @@
             "options": [
               {
                 "id": "word-1",
-                "label": "杯水"
+                "label": "杯水",
+                "audio": {
+                  "text": "杯水"
+                }
               },
               {
                 "id": "word-2",
-                "label": "喺度"
+                "label": "喺度",
+                "audio": {
+                  "text": "喺度"
+                }
               }
             ],
             "metadata": {
@@ -1124,16 +1165,36 @@
           },
           {
             "id": "v2-sound-01-ex-08",
-            "type": "dictation",
+            "type": "order_words",
             "skill": "writing",
-            "prompt": "Type the Jyutping for the sentence you hear.",
+            "prompt": "Listen and build the sentence.",
             "audio": {
               "text": "杯水喺度。"
             },
+            "options": [
+              {
+                "id": "audio-word-1",
+                "label": "杯水",
+                "audio": {
+                  "text": "杯水"
+                }
+              },
+              {
+                "id": "audio-word-2",
+                "label": "喺度",
+                "audio": {
+                  "text": "喺度"
+                }
+              }
+            ],
             "reveal_jyutping": "bui1 seoi2 hai2 dou6",
             "reveal_character": "杯水喺度。",
+            "reveal_english": "The glass of water is here.",
             "metadata": {
-              "expected": "bui1 seoi2 hai2 dou6",
+              "expected_order": [
+                "audio-word-1",
+                "audio-word-2"
+              ],
               "objective_id": "v2-sound-01-objective"
             }
           }
@@ -1269,15 +1330,24 @@
             "options": [
               {
                 "id": "character-correct",
-                "label": "飲"
+                "label": "飲",
+                "audio": {
+                  "text": "飲"
+                }
               },
               {
                 "id": "character-distractor-1",
-                "label": "山"
+                "label": "山",
+                "audio": {
+                  "text": "山"
+                }
               },
               {
                 "id": "character-distractor-2",
-                "label": "火"
+                "label": "火",
+                "audio": {
+                  "text": "火"
+                }
               }
             ],
             "correct_option_id": "character-correct",
@@ -1320,10 +1390,36 @@
             "id": "v2-sound-02-ex-06",
             "type": "cloze",
             "skill": "writing",
-            "prompt": "Complete in Traditional Chinese: 我＿＿水。",
+            "prompt": "Complete the sentence: 我＿＿水。",
+            "options": [
+              {
+                "id": "cloze-correct",
+                "label": "飲",
+                "audio": {
+                  "text": "飲"
+                }
+              },
+              {
+                "id": "cloze-distractor-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "cloze-distractor-2",
+                "label": "水",
+                "audio": {
+                  "text": "水"
+                }
+              }
+            ],
+            "correct_option_id": "cloze-correct",
             "reveal_jyutping": "ngo5 jam2 seoi2",
+            "reveal_english": "I drink water.",
             "metadata": {
               "expected": "飲",
+              "allow_manual_input": true,
               "objective_id": "v2-sound-02-objective"
             }
           },
@@ -1335,15 +1431,24 @@
             "options": [
               {
                 "id": "word-1",
-                "label": "我"
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
               },
               {
                 "id": "word-2",
-                "label": "飲"
+                "label": "飲",
+                "audio": {
+                  "text": "飲"
+                }
               },
               {
                 "id": "word-3",
-                "label": "水"
+                "label": "水",
+                "audio": {
+                  "text": "水"
+                }
               }
             ],
             "metadata": {
@@ -1357,16 +1462,44 @@
           },
           {
             "id": "v2-sound-02-ex-08",
-            "type": "dictation",
+            "type": "order_words",
             "skill": "writing",
-            "prompt": "Type the Jyutping for the sentence you hear.",
+            "prompt": "Listen and build the sentence.",
             "audio": {
               "text": "我飲水。"
             },
+            "options": [
+              {
+                "id": "audio-word-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "audio-word-2",
+                "label": "飲",
+                "audio": {
+                  "text": "飲"
+                }
+              },
+              {
+                "id": "audio-word-3",
+                "label": "水",
+                "audio": {
+                  "text": "水"
+                }
+              }
+            ],
             "reveal_jyutping": "ngo5 jam2 seoi2",
             "reveal_character": "我飲水。",
+            "reveal_english": "I drink water.",
             "metadata": {
-              "expected": "ngo5 jam2 seoi2",
+              "expected_order": [
+                "audio-word-1",
+                "audio-word-2",
+                "audio-word-3"
+              ],
               "objective_id": "v2-sound-02-objective"
             }
           }
@@ -1502,15 +1635,24 @@
             "options": [
               {
                 "id": "character-correct",
-                "label": "試"
+                "label": "試",
+                "audio": {
+                  "text": "試"
+                }
               },
               {
                 "id": "character-distractor-1",
-                "label": "山"
+                "label": "山",
+                "audio": {
+                  "text": "山"
+                }
               },
               {
                 "id": "character-distractor-2",
-                "label": "火"
+                "label": "火",
+                "audio": {
+                  "text": "火"
+                }
               }
             ],
             "correct_option_id": "character-correct",
@@ -1553,10 +1695,36 @@
             "id": "v2-sound-03-ex-06",
             "type": "cloze",
             "skill": "writing",
-            "prompt": "Complete in Traditional Chinese: 我＿＿吓。",
+            "prompt": "Complete the sentence: 我＿＿吓。",
+            "options": [
+              {
+                "id": "cloze-correct",
+                "label": "試",
+                "audio": {
+                  "text": "試"
+                }
+              },
+              {
+                "id": "cloze-distractor-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "cloze-distractor-2",
+                "label": "水",
+                "audio": {
+                  "text": "水"
+                }
+              }
+            ],
+            "correct_option_id": "cloze-correct",
             "reveal_jyutping": "ngo5 si3 haa5",
+            "reveal_english": "Let me try.",
             "metadata": {
               "expected": "試",
+              "allow_manual_input": true,
               "objective_id": "v2-sound-03-objective"
             }
           },
@@ -1568,11 +1736,17 @@
             "options": [
               {
                 "id": "word-1",
-                "label": "我"
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
               },
               {
                 "id": "word-2",
-                "label": "試吓"
+                "label": "試吓",
+                "audio": {
+                  "text": "試吓"
+                }
               }
             ],
             "metadata": {
@@ -1585,16 +1759,36 @@
           },
           {
             "id": "v2-sound-03-ex-08",
-            "type": "dictation",
+            "type": "order_words",
             "skill": "writing",
-            "prompt": "Type the Jyutping for the sentence you hear.",
+            "prompt": "Listen and build the sentence.",
             "audio": {
               "text": "我試吓。"
             },
+            "options": [
+              {
+                "id": "audio-word-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "audio-word-2",
+                "label": "試吓",
+                "audio": {
+                  "text": "試吓"
+                }
+              }
+            ],
             "reveal_jyutping": "ngo5 si3 haa5",
             "reveal_character": "我試吓。",
+            "reveal_english": "Let me try.",
             "metadata": {
-              "expected": "ngo5 si3 haa5",
+              "expected_order": [
+                "audio-word-1",
+                "audio-word-2"
+              ],
               "objective_id": "v2-sound-03-objective"
             }
           }
@@ -1730,15 +1924,24 @@
             "options": [
               {
                 "id": "character-correct",
-                "label": "茶"
+                "label": "茶",
+                "audio": {
+                  "text": "茶"
+                }
               },
               {
                 "id": "character-distractor-1",
-                "label": "山"
+                "label": "山",
+                "audio": {
+                  "text": "山"
+                }
               },
               {
                 "id": "character-distractor-2",
-                "label": "火"
+                "label": "火",
+                "audio": {
+                  "text": "火"
+                }
               }
             ],
             "correct_option_id": "character-correct",
@@ -1781,10 +1984,36 @@
             "id": "v2-sound-04-ex-06",
             "type": "cloze",
             "skill": "writing",
-            "prompt": "Complete in Traditional Chinese: 我飲＿＿。",
+            "prompt": "Complete the sentence: 我飲＿＿。",
+            "options": [
+              {
+                "id": "cloze-correct",
+                "label": "茶",
+                "audio": {
+                  "text": "茶"
+                }
+              },
+              {
+                "id": "cloze-distractor-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "cloze-distractor-2",
+                "label": "水",
+                "audio": {
+                  "text": "水"
+                }
+              }
+            ],
+            "correct_option_id": "cloze-correct",
             "reveal_jyutping": "ngo5 jam2 caa4",
+            "reveal_english": "I drink tea.",
             "metadata": {
               "expected": "茶",
+              "allow_manual_input": true,
               "objective_id": "v2-sound-04-objective"
             }
           },
@@ -1796,15 +2025,24 @@
             "options": [
               {
                 "id": "word-1",
-                "label": "我"
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
               },
               {
                 "id": "word-2",
-                "label": "飲"
+                "label": "飲",
+                "audio": {
+                  "text": "飲"
+                }
               },
               {
                 "id": "word-3",
-                "label": "茶"
+                "label": "茶",
+                "audio": {
+                  "text": "茶"
+                }
               }
             ],
             "metadata": {
@@ -1818,16 +2056,44 @@
           },
           {
             "id": "v2-sound-04-ex-08",
-            "type": "dictation",
+            "type": "order_words",
             "skill": "writing",
-            "prompt": "Type the Jyutping for the sentence you hear.",
+            "prompt": "Listen and build the sentence.",
             "audio": {
               "text": "我飲茶。"
             },
+            "options": [
+              {
+                "id": "audio-word-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "audio-word-2",
+                "label": "飲",
+                "audio": {
+                  "text": "飲"
+                }
+              },
+              {
+                "id": "audio-word-3",
+                "label": "茶",
+                "audio": {
+                  "text": "茶"
+                }
+              }
+            ],
             "reveal_jyutping": "ngo5 jam2 caa4",
             "reveal_character": "我飲茶。",
+            "reveal_english": "I drink tea.",
             "metadata": {
-              "expected": "ngo5 jam2 caa4",
+              "expected_order": [
+                "audio-word-1",
+                "audio-word-2",
+                "audio-word-3"
+              ],
               "objective_id": "v2-sound-04-objective"
             }
           }
@@ -1964,15 +2230,24 @@
             "options": [
               {
                 "id": "character-correct",
-                "label": "我"
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
               },
               {
                 "id": "character-distractor-1",
-                "label": "山"
+                "label": "山",
+                "audio": {
+                  "text": "山"
+                }
               },
               {
                 "id": "character-distractor-2",
-                "label": "火"
+                "label": "火",
+                "audio": {
+                  "text": "火"
+                }
               }
             ],
             "correct_option_id": "character-correct",
@@ -2015,10 +2290,36 @@
             "id": "v2-sound-05-ex-06",
             "type": "cloze",
             "skill": "writing",
-            "prompt": "Complete in Traditional Chinese: ＿＿係學生。",
+            "prompt": "Complete the sentence: ＿＿係學生。",
+            "options": [
+              {
+                "id": "cloze-correct",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "cloze-distractor-1",
+                "label": "水",
+                "audio": {
+                  "text": "水"
+                }
+              },
+              {
+                "id": "cloze-distractor-2",
+                "label": "好",
+                "audio": {
+                  "text": "好"
+                }
+              }
+            ],
+            "correct_option_id": "cloze-correct",
             "reveal_jyutping": "ngo5 hai6 hok6 saang1",
+            "reveal_english": "I am a student.",
             "metadata": {
               "expected": "我",
+              "allow_manual_input": true,
               "objective_id": "v2-sound-05-objective"
             }
           },
@@ -2030,15 +2331,24 @@
             "options": [
               {
                 "id": "word-1",
-                "label": "我"
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
               },
               {
                 "id": "word-2",
-                "label": "係"
+                "label": "係",
+                "audio": {
+                  "text": "係"
+                }
               },
               {
                 "id": "word-3",
-                "label": "學生"
+                "label": "學生",
+                "audio": {
+                  "text": "學生"
+                }
               }
             ],
             "metadata": {
@@ -2052,16 +2362,44 @@
           },
           {
             "id": "v2-sound-05-ex-08",
-            "type": "dictation",
+            "type": "order_words",
             "skill": "writing",
-            "prompt": "Type the Jyutping for the sentence you hear.",
+            "prompt": "Listen and build the sentence.",
             "audio": {
               "text": "我係學生。"
             },
+            "options": [
+              {
+                "id": "audio-word-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "audio-word-2",
+                "label": "係",
+                "audio": {
+                  "text": "係"
+                }
+              },
+              {
+                "id": "audio-word-3",
+                "label": "學生",
+                "audio": {
+                  "text": "學生"
+                }
+              }
+            ],
             "reveal_jyutping": "ngo5 hai6 hok6 saang1",
             "reveal_character": "我係學生。",
+            "reveal_english": "I am a student.",
             "metadata": {
-              "expected": "ngo5 hai6 hok6 saang1",
+              "expected_order": [
+                "audio-word-1",
+                "audio-word-2",
+                "audio-word-3"
+              ],
               "objective_id": "v2-sound-05-objective"
             }
           }
@@ -2197,15 +2535,24 @@
             "options": [
               {
                 "id": "character-correct",
-                "label": "食"
+                "label": "食",
+                "audio": {
+                  "text": "食"
+                }
               },
               {
                 "id": "character-distractor-1",
-                "label": "山"
+                "label": "山",
+                "audio": {
+                  "text": "山"
+                }
               },
               {
                 "id": "character-distractor-2",
-                "label": "火"
+                "label": "火",
+                "audio": {
+                  "text": "火"
+                }
               }
             ],
             "correct_option_id": "character-correct",
@@ -2248,10 +2595,36 @@
             "id": "v2-sound-06-ex-06",
             "type": "cloze",
             "skill": "writing",
-            "prompt": "Complete in Traditional Chinese: 我＿＿飯。",
+            "prompt": "Complete the sentence: 我＿＿飯。",
+            "options": [
+              {
+                "id": "cloze-correct",
+                "label": "食",
+                "audio": {
+                  "text": "食"
+                }
+              },
+              {
+                "id": "cloze-distractor-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "cloze-distractor-2",
+                "label": "水",
+                "audio": {
+                  "text": "水"
+                }
+              }
+            ],
+            "correct_option_id": "cloze-correct",
             "reveal_jyutping": "ngo5 sik6 faan6",
+            "reveal_english": "I eat a meal.",
             "metadata": {
               "expected": "食",
+              "allow_manual_input": true,
               "objective_id": "v2-sound-06-objective"
             }
           },
@@ -2263,15 +2636,24 @@
             "options": [
               {
                 "id": "word-1",
-                "label": "我"
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
               },
               {
                 "id": "word-2",
-                "label": "食"
+                "label": "食",
+                "audio": {
+                  "text": "食"
+                }
               },
               {
                 "id": "word-3",
-                "label": "飯"
+                "label": "飯",
+                "audio": {
+                  "text": "飯"
+                }
               }
             ],
             "metadata": {
@@ -2285,16 +2667,44 @@
           },
           {
             "id": "v2-sound-06-ex-08",
-            "type": "dictation",
+            "type": "order_words",
             "skill": "writing",
-            "prompt": "Type the Jyutping for the sentence you hear.",
+            "prompt": "Listen and build the sentence.",
             "audio": {
               "text": "我食飯。"
             },
+            "options": [
+              {
+                "id": "audio-word-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "audio-word-2",
+                "label": "食",
+                "audio": {
+                  "text": "食"
+                }
+              },
+              {
+                "id": "audio-word-3",
+                "label": "飯",
+                "audio": {
+                  "text": "飯"
+                }
+              }
+            ],
             "reveal_jyutping": "ngo5 sik6 faan6",
             "reveal_character": "我食飯。",
+            "reveal_english": "I eat a meal.",
             "metadata": {
-              "expected": "ngo5 sik6 faan6",
+              "expected_order": [
+                "audio-word-1",
+                "audio-word-2",
+                "audio-word-3"
+              ],
               "objective_id": "v2-sound-06-objective"
             }
           }
@@ -2430,15 +2840,24 @@
             "options": [
               {
                 "id": "character-correct",
-                "label": "書"
+                "label": "書",
+                "audio": {
+                  "text": "書"
+                }
               },
               {
                 "id": "character-distractor-1",
-                "label": "山"
+                "label": "山",
+                "audio": {
+                  "text": "山"
+                }
               },
               {
                 "id": "character-distractor-2",
-                "label": "火"
+                "label": "火",
+                "audio": {
+                  "text": "火"
+                }
               }
             ],
             "correct_option_id": "character-correct",
@@ -2481,10 +2900,36 @@
             "id": "v2-sound-07-ex-06",
             "type": "cloze",
             "skill": "writing",
-            "prompt": "Complete in Traditional Chinese: 我睇＿＿。",
+            "prompt": "Complete the sentence: 我睇＿＿。",
+            "options": [
+              {
+                "id": "cloze-correct",
+                "label": "書",
+                "audio": {
+                  "text": "書"
+                }
+              },
+              {
+                "id": "cloze-distractor-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "cloze-distractor-2",
+                "label": "水",
+                "audio": {
+                  "text": "水"
+                }
+              }
+            ],
+            "correct_option_id": "cloze-correct",
             "reveal_jyutping": "ngo5 tai2 syu1",
+            "reveal_english": "I read a book.",
             "metadata": {
               "expected": "書",
+              "allow_manual_input": true,
               "objective_id": "v2-sound-07-objective"
             }
           },
@@ -2496,15 +2941,24 @@
             "options": [
               {
                 "id": "word-1",
-                "label": "我"
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
               },
               {
                 "id": "word-2",
-                "label": "睇"
+                "label": "睇",
+                "audio": {
+                  "text": "睇"
+                }
               },
               {
                 "id": "word-3",
-                "label": "書"
+                "label": "書",
+                "audio": {
+                  "text": "書"
+                }
               }
             ],
             "metadata": {
@@ -2518,16 +2972,44 @@
           },
           {
             "id": "v2-sound-07-ex-08",
-            "type": "dictation",
+            "type": "order_words",
             "skill": "writing",
-            "prompt": "Type the Jyutping for the sentence you hear.",
+            "prompt": "Listen and build the sentence.",
             "audio": {
               "text": "我睇書。"
             },
+            "options": [
+              {
+                "id": "audio-word-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "audio-word-2",
+                "label": "睇",
+                "audio": {
+                  "text": "睇"
+                }
+              },
+              {
+                "id": "audio-word-3",
+                "label": "書",
+                "audio": {
+                  "text": "書"
+                }
+              }
+            ],
             "reveal_jyutping": "ngo5 tai2 syu1",
             "reveal_character": "我睇書。",
+            "reveal_english": "I read a book.",
             "metadata": {
-              "expected": "ngo5 tai2 syu1",
+              "expected_order": [
+                "audio-word-1",
+                "audio-word-2",
+                "audio-word-3"
+              ],
               "objective_id": "v2-sound-07-objective"
             }
           }
@@ -2664,15 +3146,24 @@
             "options": [
               {
                 "id": "character-correct",
-                "label": "衫"
+                "label": "衫",
+                "audio": {
+                  "text": "衫"
+                }
               },
               {
                 "id": "character-distractor-1",
-                "label": "山"
+                "label": "山",
+                "audio": {
+                  "text": "山"
+                }
               },
               {
                 "id": "character-distractor-2",
-                "label": "火"
+                "label": "火",
+                "audio": {
+                  "text": "火"
+                }
               }
             ],
             "correct_option_id": "character-correct",
@@ -2715,10 +3206,36 @@
             "id": "v2-sound-08-ex-06",
             "type": "cloze",
             "skill": "writing",
-            "prompt": "Complete in Traditional Chinese: 件＿＿好靚。",
+            "prompt": "Complete the sentence: 件＿＿好靚。",
+            "options": [
+              {
+                "id": "cloze-correct",
+                "label": "衫",
+                "audio": {
+                  "text": "衫"
+                }
+              },
+              {
+                "id": "cloze-distractor-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "cloze-distractor-2",
+                "label": "水",
+                "audio": {
+                  "text": "水"
+                }
+              }
+            ],
+            "correct_option_id": "cloze-correct",
             "reveal_jyutping": "gin6 saam1 hou2 leng3",
+            "reveal_english": "The shirt is beautiful.",
             "metadata": {
               "expected": "衫",
+              "allow_manual_input": true,
               "objective_id": "v2-sound-08-objective"
             }
           },
@@ -2730,11 +3247,17 @@
             "options": [
               {
                 "id": "word-1",
-                "label": "件衫"
+                "label": "件衫",
+                "audio": {
+                  "text": "件衫"
+                }
               },
               {
                 "id": "word-2",
-                "label": "好靚"
+                "label": "好靚",
+                "audio": {
+                  "text": "好靚"
+                }
               }
             ],
             "metadata": {
@@ -2747,16 +3270,36 @@
           },
           {
             "id": "v2-sound-08-ex-08",
-            "type": "dictation",
+            "type": "order_words",
             "skill": "writing",
-            "prompt": "Type the Jyutping for the sentence you hear.",
+            "prompt": "Listen and build the sentence.",
             "audio": {
               "text": "件衫好靚。"
             },
+            "options": [
+              {
+                "id": "audio-word-1",
+                "label": "件衫",
+                "audio": {
+                  "text": "件衫"
+                }
+              },
+              {
+                "id": "audio-word-2",
+                "label": "好靚",
+                "audio": {
+                  "text": "好靚"
+                }
+              }
+            ],
             "reveal_jyutping": "gin6 saam1 hou2 leng3",
             "reveal_character": "件衫好靚。",
+            "reveal_english": "The shirt is beautiful.",
             "metadata": {
-              "expected": "gin6 saam1 hou2 leng3",
+              "expected_order": [
+                "audio-word-1",
+                "audio-word-2"
+              ],
               "objective_id": "v2-sound-08-objective"
             }
           }
@@ -2893,15 +3436,24 @@
             "options": [
               {
                 "id": "character-correct",
-                "label": "去"
+                "label": "去",
+                "audio": {
+                  "text": "去"
+                }
               },
               {
                 "id": "character-distractor-1",
-                "label": "山"
+                "label": "山",
+                "audio": {
+                  "text": "山"
+                }
               },
               {
                 "id": "character-distractor-2",
-                "label": "火"
+                "label": "火",
+                "audio": {
+                  "text": "火"
+                }
               }
             ],
             "correct_option_id": "character-correct",
@@ -2944,10 +3496,36 @@
             "id": "v2-sound-09-ex-06",
             "type": "cloze",
             "skill": "writing",
-            "prompt": "Complete in Traditional Chinese: 我＿＿學校。",
+            "prompt": "Complete the sentence: 我＿＿學校。",
+            "options": [
+              {
+                "id": "cloze-correct",
+                "label": "去",
+                "audio": {
+                  "text": "去"
+                }
+              },
+              {
+                "id": "cloze-distractor-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "cloze-distractor-2",
+                "label": "水",
+                "audio": {
+                  "text": "水"
+                }
+              }
+            ],
+            "correct_option_id": "cloze-correct",
             "reveal_jyutping": "ngo5 heoi3 hok6 haau6",
+            "reveal_english": "I go to school.",
             "metadata": {
               "expected": "去",
+              "allow_manual_input": true,
               "objective_id": "v2-sound-09-objective"
             }
           },
@@ -2959,15 +3537,24 @@
             "options": [
               {
                 "id": "word-1",
-                "label": "我"
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
               },
               {
                 "id": "word-2",
-                "label": "去"
+                "label": "去",
+                "audio": {
+                  "text": "去"
+                }
               },
               {
                 "id": "word-3",
-                "label": "學校"
+                "label": "學校",
+                "audio": {
+                  "text": "學校"
+                }
               }
             ],
             "metadata": {
@@ -2981,16 +3568,44 @@
           },
           {
             "id": "v2-sound-09-ex-08",
-            "type": "dictation",
+            "type": "order_words",
             "skill": "writing",
-            "prompt": "Type the Jyutping for the sentence you hear.",
+            "prompt": "Listen and build the sentence.",
             "audio": {
               "text": "我去學校。"
             },
+            "options": [
+              {
+                "id": "audio-word-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "audio-word-2",
+                "label": "去",
+                "audio": {
+                  "text": "去"
+                }
+              },
+              {
+                "id": "audio-word-3",
+                "label": "學校",
+                "audio": {
+                  "text": "學校"
+                }
+              }
+            ],
             "reveal_jyutping": "ngo5 heoi3 hok6 haau6",
             "reveal_character": "我去學校。",
+            "reveal_english": "I go to school.",
             "metadata": {
-              "expected": "ngo5 heoi3 hok6 haau6",
+              "expected_order": [
+                "audio-word-1",
+                "audio-word-2",
+                "audio-word-3"
+              ],
               "objective_id": "v2-sound-09-objective"
             }
           }
@@ -3128,15 +3743,24 @@
             "options": [
               {
                 "id": "character-correct",
-                "label": "人"
+                "label": "人",
+                "audio": {
+                  "text": "人"
+                }
               },
               {
                 "id": "character-distractor-1",
-                "label": "山"
+                "label": "山",
+                "audio": {
+                  "text": "山"
+                }
               },
               {
                 "id": "character-distractor-2",
-                "label": "火"
+                "label": "火",
+                "audio": {
+                  "text": "火"
+                }
               }
             ],
             "correct_option_id": "character-correct",
@@ -3179,10 +3803,36 @@
             "id": "v2-sound-10-ex-06",
             "type": "cloze",
             "skill": "writing",
-            "prompt": "Complete in Traditional Chinese: 佢係香港＿＿。",
+            "prompt": "Complete the sentence: 佢係香港＿＿。",
+            "options": [
+              {
+                "id": "cloze-correct",
+                "label": "人",
+                "audio": {
+                  "text": "人"
+                }
+              },
+              {
+                "id": "cloze-distractor-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "cloze-distractor-2",
+                "label": "水",
+                "audio": {
+                  "text": "水"
+                }
+              }
+            ],
+            "correct_option_id": "cloze-correct",
             "reveal_jyutping": "keoi5 hai6 hoeng1 gong2 jan4",
+            "reveal_english": "They are a Hongkonger.",
             "metadata": {
               "expected": "人",
+              "allow_manual_input": true,
               "objective_id": "v2-sound-10-objective"
             }
           },
@@ -3194,15 +3844,24 @@
             "options": [
               {
                 "id": "word-1",
-                "label": "佢"
+                "label": "佢",
+                "audio": {
+                  "text": "佢"
+                }
               },
               {
                 "id": "word-2",
-                "label": "係"
+                "label": "係",
+                "audio": {
+                  "text": "係"
+                }
               },
               {
                 "id": "word-3",
-                "label": "香港人"
+                "label": "香港人",
+                "audio": {
+                  "text": "香港人"
+                }
               }
             ],
             "metadata": {
@@ -3216,16 +3875,44 @@
           },
           {
             "id": "v2-sound-10-ex-08",
-            "type": "dictation",
+            "type": "order_words",
             "skill": "writing",
-            "prompt": "Type the Jyutping for the sentence you hear.",
+            "prompt": "Listen and build the sentence.",
             "audio": {
               "text": "佢係香港人。"
             },
+            "options": [
+              {
+                "id": "audio-word-1",
+                "label": "佢",
+                "audio": {
+                  "text": "佢"
+                }
+              },
+              {
+                "id": "audio-word-2",
+                "label": "係",
+                "audio": {
+                  "text": "係"
+                }
+              },
+              {
+                "id": "audio-word-3",
+                "label": "香港人",
+                "audio": {
+                  "text": "香港人"
+                }
+              }
+            ],
             "reveal_jyutping": "keoi5 hai6 hoeng1 gong2 jan4",
             "reveal_character": "佢係香港人。",
+            "reveal_english": "They are a Hongkonger.",
             "metadata": {
-              "expected": "keoi5 hai6 hoeng1 gong2 jan4",
+              "expected_order": [
+                "audio-word-1",
+                "audio-word-2",
+                "audio-word-3"
+              ],
               "objective_id": "v2-sound-10-objective"
             }
           }
@@ -3362,15 +4049,24 @@
             "options": [
               {
                 "id": "character-correct",
-                "label": "有"
+                "label": "有",
+                "audio": {
+                  "text": "有"
+                }
               },
               {
                 "id": "character-distractor-1",
-                "label": "山"
+                "label": "山",
+                "audio": {
+                  "text": "山"
+                }
               },
               {
                 "id": "character-distractor-2",
-                "label": "火"
+                "label": "火",
+                "audio": {
+                  "text": "火"
+                }
               }
             ],
             "correct_option_id": "character-correct",
@@ -3413,10 +4109,36 @@
             "id": "v2-sound-11-ex-06",
             "type": "cloze",
             "skill": "writing",
-            "prompt": "Complete in Traditional Chinese: 我＿＿時間。",
+            "prompt": "Complete the sentence: 我＿＿時間。",
+            "options": [
+              {
+                "id": "cloze-correct",
+                "label": "有",
+                "audio": {
+                  "text": "有"
+                }
+              },
+              {
+                "id": "cloze-distractor-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "cloze-distractor-2",
+                "label": "水",
+                "audio": {
+                  "text": "水"
+                }
+              }
+            ],
+            "correct_option_id": "cloze-correct",
             "reveal_jyutping": "ngo5 jau5 si4 gaan3",
+            "reveal_english": "I have time.",
             "metadata": {
               "expected": "有",
+              "allow_manual_input": true,
               "objective_id": "v2-sound-11-objective"
             }
           },
@@ -3428,15 +4150,24 @@
             "options": [
               {
                 "id": "word-1",
-                "label": "我"
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
               },
               {
                 "id": "word-2",
-                "label": "有"
+                "label": "有",
+                "audio": {
+                  "text": "有"
+                }
               },
               {
                 "id": "word-3",
-                "label": "時間"
+                "label": "時間",
+                "audio": {
+                  "text": "時間"
+                }
               }
             ],
             "metadata": {
@@ -3450,16 +4181,44 @@
           },
           {
             "id": "v2-sound-11-ex-08",
-            "type": "dictation",
+            "type": "order_words",
             "skill": "writing",
-            "prompt": "Type the Jyutping for the sentence you hear.",
+            "prompt": "Listen and build the sentence.",
             "audio": {
               "text": "我有時間。"
             },
+            "options": [
+              {
+                "id": "audio-word-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "audio-word-2",
+                "label": "有",
+                "audio": {
+                  "text": "有"
+                }
+              },
+              {
+                "id": "audio-word-3",
+                "label": "時間",
+                "audio": {
+                  "text": "時間"
+                }
+              }
+            ],
             "reveal_jyutping": "ngo5 jau5 si4 gaan3",
             "reveal_character": "我有時間。",
+            "reveal_english": "I have time.",
             "metadata": {
-              "expected": "ngo5 jau5 si4 gaan3",
+              "expected_order": [
+                "audio-word-1",
+                "audio-word-2",
+                "audio-word-3"
+              ],
               "objective_id": "v2-sound-11-objective"
             }
           }
@@ -3596,15 +4355,24 @@
             "options": [
               {
                 "id": "character-correct",
-                "label": "飯"
+                "label": "飯",
+                "audio": {
+                  "text": "飯"
+                }
               },
               {
                 "id": "character-distractor-1",
-                "label": "山"
+                "label": "山",
+                "audio": {
+                  "text": "山"
+                }
               },
               {
                 "id": "character-distractor-2",
-                "label": "火"
+                "label": "火",
+                "audio": {
+                  "text": "火"
+                }
               }
             ],
             "correct_option_id": "character-correct",
@@ -3647,10 +4415,36 @@
             "id": "v2-sound-12-ex-06",
             "type": "cloze",
             "skill": "writing",
-            "prompt": "Complete in Traditional Chinese: 我食咗＿＿。",
+            "prompt": "Complete the sentence: 我食咗＿＿。",
+            "options": [
+              {
+                "id": "cloze-correct",
+                "label": "飯",
+                "audio": {
+                  "text": "飯"
+                }
+              },
+              {
+                "id": "cloze-distractor-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "cloze-distractor-2",
+                "label": "水",
+                "audio": {
+                  "text": "水"
+                }
+              }
+            ],
+            "correct_option_id": "cloze-correct",
             "reveal_jyutping": "ngo5 sik6 zo2 faan6",
+            "reveal_english": "I have eaten.",
             "metadata": {
               "expected": "飯",
+              "allow_manual_input": true,
               "objective_id": "v2-sound-12-objective"
             }
           },
@@ -3662,15 +4456,24 @@
             "options": [
               {
                 "id": "word-1",
-                "label": "我"
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
               },
               {
                 "id": "word-2",
-                "label": "食咗"
+                "label": "食咗",
+                "audio": {
+                  "text": "食咗"
+                }
               },
               {
                 "id": "word-3",
-                "label": "飯"
+                "label": "飯",
+                "audio": {
+                  "text": "飯"
+                }
               }
             ],
             "metadata": {
@@ -3684,16 +4487,44 @@
           },
           {
             "id": "v2-sound-12-ex-08",
-            "type": "dictation",
+            "type": "order_words",
             "skill": "writing",
-            "prompt": "Type the Jyutping for the sentence you hear.",
+            "prompt": "Listen and build the sentence.",
             "audio": {
               "text": "我食咗飯。"
             },
+            "options": [
+              {
+                "id": "audio-word-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "audio-word-2",
+                "label": "食咗",
+                "audio": {
+                  "text": "食咗"
+                }
+              },
+              {
+                "id": "audio-word-3",
+                "label": "飯",
+                "audio": {
+                  "text": "飯"
+                }
+              }
+            ],
             "reveal_jyutping": "ngo5 sik6 zo2 faan6",
             "reveal_character": "我食咗飯。",
+            "reveal_english": "I have eaten.",
             "metadata": {
-              "expected": "ngo5 sik6 zo2 faan6",
+              "expected_order": [
+                "audio-word-1",
+                "audio-word-2",
+                "audio-word-3"
+              ],
               "objective_id": "v2-sound-12-objective"
             }
           }
@@ -3830,15 +4661,24 @@
             "options": [
               {
                 "id": "character-correct",
-                "label": "休"
+                "label": "休",
+                "audio": {
+                  "text": "休"
+                }
               },
               {
                 "id": "character-distractor-1",
-                "label": "山"
+                "label": "山",
+                "audio": {
+                  "text": "山"
+                }
               },
               {
                 "id": "character-distractor-2",
-                "label": "火"
+                "label": "火",
+                "audio": {
+                  "text": "火"
+                }
               }
             ],
             "correct_option_id": "character-correct",
@@ -3876,10 +4716,36 @@
             "id": "v2-component-01-ex-06",
             "type": "cloze",
             "skill": "writing",
-            "prompt": "Complete in Traditional Chinese: 我想＿＿息。",
+            "prompt": "Complete the sentence: 我想＿＿息。",
+            "options": [
+              {
+                "id": "cloze-correct",
+                "label": "休",
+                "audio": {
+                  "text": "休"
+                }
+              },
+              {
+                "id": "cloze-distractor-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "cloze-distractor-2",
+                "label": "水",
+                "audio": {
+                  "text": "水"
+                }
+              }
+            ],
+            "correct_option_id": "cloze-correct",
             "reveal_jyutping": "ngo5 soeng2 jau1 sik1",
+            "reveal_english": "I want to rest.",
             "metadata": {
               "expected": "休",
+              "allow_manual_input": true,
               "objective_id": "v2-component-01-objective"
             }
           },
@@ -3891,15 +4757,24 @@
             "options": [
               {
                 "id": "word-1",
-                "label": "我"
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
               },
               {
                 "id": "word-2",
-                "label": "想"
+                "label": "想",
+                "audio": {
+                  "text": "想"
+                }
               },
               {
                 "id": "word-3",
-                "label": "休息"
+                "label": "休息",
+                "audio": {
+                  "text": "休息"
+                }
               }
             ],
             "metadata": {
@@ -3913,16 +4788,44 @@
           },
           {
             "id": "v2-component-01-ex-08",
-            "type": "dictation",
+            "type": "order_words",
             "skill": "writing",
-            "prompt": "Type the Jyutping for the sentence you hear.",
+            "prompt": "Listen and build the sentence.",
             "audio": {
               "text": "我想休息。"
             },
+            "options": [
+              {
+                "id": "audio-word-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "audio-word-2",
+                "label": "想",
+                "audio": {
+                  "text": "想"
+                }
+              },
+              {
+                "id": "audio-word-3",
+                "label": "休息",
+                "audio": {
+                  "text": "休息"
+                }
+              }
+            ],
             "reveal_jyutping": "ngo5 soeng2 jau1 sik1",
             "reveal_character": "我想休息。",
+            "reveal_english": "I want to rest.",
             "metadata": {
-              "expected": "ngo5 soeng2 jau1 sik1",
+              "expected_order": [
+                "audio-word-1",
+                "audio-word-2",
+                "audio-word-3"
+              ],
               "objective_id": "v2-component-01-objective"
             }
           }
@@ -4059,15 +4962,24 @@
             "options": [
               {
                 "id": "character-correct",
-                "label": "好"
+                "label": "好",
+                "audio": {
+                  "text": "好"
+                }
               },
               {
                 "id": "character-distractor-1",
-                "label": "山"
+                "label": "山",
+                "audio": {
+                  "text": "山"
+                }
               },
               {
                 "id": "character-distractor-2",
-                "label": "火"
+                "label": "火",
+                "audio": {
+                  "text": "火"
+                }
               }
             ],
             "correct_option_id": "character-correct",
@@ -4105,10 +5017,36 @@
             "id": "v2-component-02-ex-06",
             "type": "cloze",
             "skill": "writing",
-            "prompt": "Complete in Traditional Chinese: 今日＿＿熱。",
+            "prompt": "Complete the sentence: 今日＿＿熱。",
+            "options": [
+              {
+                "id": "cloze-correct",
+                "label": "好",
+                "audio": {
+                  "text": "好"
+                }
+              },
+              {
+                "id": "cloze-distractor-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "cloze-distractor-2",
+                "label": "水",
+                "audio": {
+                  "text": "水"
+                }
+              }
+            ],
+            "correct_option_id": "cloze-correct",
             "reveal_jyutping": "gam1 jat6 hou2 jit6",
+            "reveal_english": "It is hot today.",
             "metadata": {
               "expected": "好",
+              "allow_manual_input": true,
               "objective_id": "v2-component-02-objective"
             }
           },
@@ -4120,11 +5058,17 @@
             "options": [
               {
                 "id": "word-1",
-                "label": "今日"
+                "label": "今日",
+                "audio": {
+                  "text": "今日"
+                }
               },
               {
                 "id": "word-2",
-                "label": "好熱"
+                "label": "好熱",
+                "audio": {
+                  "text": "好熱"
+                }
               }
             ],
             "metadata": {
@@ -4137,16 +5081,36 @@
           },
           {
             "id": "v2-component-02-ex-08",
-            "type": "dictation",
+            "type": "order_words",
             "skill": "writing",
-            "prompt": "Type the Jyutping for the sentence you hear.",
+            "prompt": "Listen and build the sentence.",
             "audio": {
               "text": "今日好熱。"
             },
+            "options": [
+              {
+                "id": "audio-word-1",
+                "label": "今日",
+                "audio": {
+                  "text": "今日"
+                }
+              },
+              {
+                "id": "audio-word-2",
+                "label": "好熱",
+                "audio": {
+                  "text": "好熱"
+                }
+              }
+            ],
             "reveal_jyutping": "gam1 jat6 hou2 jit6",
             "reveal_character": "今日好熱。",
+            "reveal_english": "It is hot today.",
             "metadata": {
-              "expected": "gam1 jat6 hou2 jit6",
+              "expected_order": [
+                "audio-word-1",
+                "audio-word-2"
+              ],
               "objective_id": "v2-component-02-objective"
             }
           }
@@ -4282,15 +5246,24 @@
             "options": [
               {
                 "id": "character-correct",
-                "label": "明"
+                "label": "明",
+                "audio": {
+                  "text": "明"
+                }
               },
               {
                 "id": "character-distractor-1",
-                "label": "山"
+                "label": "山",
+                "audio": {
+                  "text": "山"
+                }
               },
               {
                 "id": "character-distractor-2",
-                "label": "火"
+                "label": "火",
+                "audio": {
+                  "text": "火"
+                }
               }
             ],
             "correct_option_id": "character-correct",
@@ -4328,10 +5301,36 @@
             "id": "v2-component-03-ex-06",
             "type": "cloze",
             "skill": "writing",
-            "prompt": "Complete in Traditional Chinese: 我＿＿白。",
+            "prompt": "Complete the sentence: 我＿＿白。",
+            "options": [
+              {
+                "id": "cloze-correct",
+                "label": "明",
+                "audio": {
+                  "text": "明"
+                }
+              },
+              {
+                "id": "cloze-distractor-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "cloze-distractor-2",
+                "label": "水",
+                "audio": {
+                  "text": "水"
+                }
+              }
+            ],
+            "correct_option_id": "cloze-correct",
             "reveal_jyutping": "ngo5 ming4 baak6",
+            "reveal_english": "I understand.",
             "metadata": {
               "expected": "明",
+              "allow_manual_input": true,
               "objective_id": "v2-component-03-objective"
             }
           },
@@ -4343,11 +5342,17 @@
             "options": [
               {
                 "id": "word-1",
-                "label": "我"
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
               },
               {
                 "id": "word-2",
-                "label": "明白"
+                "label": "明白",
+                "audio": {
+                  "text": "明白"
+                }
               }
             ],
             "metadata": {
@@ -4360,16 +5365,36 @@
           },
           {
             "id": "v2-component-03-ex-08",
-            "type": "dictation",
+            "type": "order_words",
             "skill": "writing",
-            "prompt": "Type the Jyutping for the sentence you hear.",
+            "prompt": "Listen and build the sentence.",
             "audio": {
               "text": "我明白。"
             },
+            "options": [
+              {
+                "id": "audio-word-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "audio-word-2",
+                "label": "明白",
+                "audio": {
+                  "text": "明白"
+                }
+              }
+            ],
             "reveal_jyutping": "ngo5 ming4 baak6",
             "reveal_character": "我明白。",
+            "reveal_english": "I understand.",
             "metadata": {
-              "expected": "ngo5 ming4 baak6",
+              "expected_order": [
+                "audio-word-1",
+                "audio-word-2"
+              ],
               "objective_id": "v2-component-03-objective"
             }
           }
@@ -4506,15 +5531,24 @@
             "options": [
               {
                 "id": "character-correct",
-                "label": "問"
+                "label": "問",
+                "audio": {
+                  "text": "問"
+                }
               },
               {
                 "id": "character-distractor-1",
-                "label": "山"
+                "label": "山",
+                "audio": {
+                  "text": "山"
+                }
               },
               {
                 "id": "character-distractor-2",
-                "label": "火"
+                "label": "火",
+                "audio": {
+                  "text": "火"
+                }
               }
             ],
             "correct_option_id": "character-correct",
@@ -4552,10 +5586,36 @@
             "id": "v2-component-04-ex-06",
             "type": "cloze",
             "skill": "writing",
-            "prompt": "Complete in Traditional Chinese: 我想＿＿你。",
+            "prompt": "Complete the sentence: 我想＿＿你。",
+            "options": [
+              {
+                "id": "cloze-correct",
+                "label": "問",
+                "audio": {
+                  "text": "問"
+                }
+              },
+              {
+                "id": "cloze-distractor-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "cloze-distractor-2",
+                "label": "水",
+                "audio": {
+                  "text": "水"
+                }
+              }
+            ],
+            "correct_option_id": "cloze-correct",
             "reveal_jyutping": "ngo5 soeng2 man6 nei5",
+            "reveal_english": "I want to ask you.",
             "metadata": {
               "expected": "問",
+              "allow_manual_input": true,
               "objective_id": "v2-component-04-objective"
             }
           },
@@ -4567,15 +5627,24 @@
             "options": [
               {
                 "id": "word-1",
-                "label": "我"
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
               },
               {
                 "id": "word-2",
-                "label": "想問"
+                "label": "想問",
+                "audio": {
+                  "text": "想問"
+                }
               },
               {
                 "id": "word-3",
-                "label": "你"
+                "label": "你",
+                "audio": {
+                  "text": "你"
+                }
               }
             ],
             "metadata": {
@@ -4589,16 +5658,44 @@
           },
           {
             "id": "v2-component-04-ex-08",
-            "type": "dictation",
+            "type": "order_words",
             "skill": "writing",
-            "prompt": "Type the Jyutping for the sentence you hear.",
+            "prompt": "Listen and build the sentence.",
             "audio": {
               "text": "我想問你。"
             },
+            "options": [
+              {
+                "id": "audio-word-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "audio-word-2",
+                "label": "想問",
+                "audio": {
+                  "text": "想問"
+                }
+              },
+              {
+                "id": "audio-word-3",
+                "label": "你",
+                "audio": {
+                  "text": "你"
+                }
+              }
+            ],
             "reveal_jyutping": "ngo5 soeng2 man6 nei5",
             "reveal_character": "我想問你。",
+            "reveal_english": "I want to ask you.",
             "metadata": {
-              "expected": "ngo5 soeng2 man6 nei5",
+              "expected_order": [
+                "audio-word-1",
+                "audio-word-2",
+                "audio-word-3"
+              ],
               "objective_id": "v2-component-04-objective"
             }
           }
@@ -4735,15 +5832,24 @@
             "options": [
               {
                 "id": "character-correct",
-                "label": "語"
+                "label": "語",
+                "audio": {
+                  "text": "語"
+                }
               },
               {
                 "id": "character-distractor-1",
-                "label": "山"
+                "label": "山",
+                "audio": {
+                  "text": "山"
+                }
               },
               {
                 "id": "character-distractor-2",
-                "label": "火"
+                "label": "火",
+                "audio": {
+                  "text": "火"
+                }
               }
             ],
             "correct_option_id": "character-correct",
@@ -4781,10 +5887,36 @@
             "id": "v2-component-05-ex-06",
             "type": "cloze",
             "skill": "writing",
-            "prompt": "Complete in Traditional Chinese: 我學粵＿＿。",
+            "prompt": "Complete the sentence: 我學粵＿＿。",
+            "options": [
+              {
+                "id": "cloze-correct",
+                "label": "語",
+                "audio": {
+                  "text": "語"
+                }
+              },
+              {
+                "id": "cloze-distractor-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "cloze-distractor-2",
+                "label": "水",
+                "audio": {
+                  "text": "水"
+                }
+              }
+            ],
+            "correct_option_id": "cloze-correct",
             "reveal_jyutping": "ngo5 hok6 jyut6 jyu5",
+            "reveal_english": "I study Cantonese.",
             "metadata": {
               "expected": "語",
+              "allow_manual_input": true,
               "objective_id": "v2-component-05-objective"
             }
           },
@@ -4796,15 +5928,24 @@
             "options": [
               {
                 "id": "word-1",
-                "label": "我"
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
               },
               {
                 "id": "word-2",
-                "label": "學"
+                "label": "學",
+                "audio": {
+                  "text": "學"
+                }
               },
               {
                 "id": "word-3",
-                "label": "粵語"
+                "label": "粵語",
+                "audio": {
+                  "text": "粵語"
+                }
               }
             ],
             "metadata": {
@@ -4818,16 +5959,44 @@
           },
           {
             "id": "v2-component-05-ex-08",
-            "type": "dictation",
+            "type": "order_words",
             "skill": "writing",
-            "prompt": "Type the Jyutping for the sentence you hear.",
+            "prompt": "Listen and build the sentence.",
             "audio": {
               "text": "我學粵語。"
             },
+            "options": [
+              {
+                "id": "audio-word-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "audio-word-2",
+                "label": "學",
+                "audio": {
+                  "text": "學"
+                }
+              },
+              {
+                "id": "audio-word-3",
+                "label": "粵語",
+                "audio": {
+                  "text": "粵語"
+                }
+              }
+            ],
             "reveal_jyutping": "ngo5 hok6 jyut6 jyu5",
             "reveal_character": "我學粵語。",
+            "reveal_english": "I study Cantonese.",
             "metadata": {
-              "expected": "ngo5 hok6 jyut6 jyu5",
+              "expected_order": [
+                "audio-word-1",
+                "audio-word-2",
+                "audio-word-3"
+              ],
               "objective_id": "v2-component-05-objective"
             }
           }
@@ -4963,15 +6132,24 @@
             "options": [
               {
                 "id": "character-correct",
-                "label": "飯"
+                "label": "飯",
+                "audio": {
+                  "text": "飯"
+                }
               },
               {
                 "id": "character-distractor-1",
-                "label": "山"
+                "label": "山",
+                "audio": {
+                  "text": "山"
+                }
               },
               {
                 "id": "character-distractor-2",
-                "label": "火"
+                "label": "火",
+                "audio": {
+                  "text": "火"
+                }
               }
             ],
             "correct_option_id": "character-correct",
@@ -5009,10 +6187,36 @@
             "id": "v2-component-06-ex-06",
             "type": "cloze",
             "skill": "writing",
-            "prompt": "Complete in Traditional Chinese: 我食＿＿。",
+            "prompt": "Complete the sentence: 我食＿＿。",
+            "options": [
+              {
+                "id": "cloze-correct",
+                "label": "飯",
+                "audio": {
+                  "text": "飯"
+                }
+              },
+              {
+                "id": "cloze-distractor-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "cloze-distractor-2",
+                "label": "水",
+                "audio": {
+                  "text": "水"
+                }
+              }
+            ],
+            "correct_option_id": "cloze-correct",
             "reveal_jyutping": "ngo5 sik6 faan6",
+            "reveal_english": "I eat a meal.",
             "metadata": {
               "expected": "飯",
+              "allow_manual_input": true,
               "objective_id": "v2-component-06-objective"
             }
           },
@@ -5024,15 +6228,24 @@
             "options": [
               {
                 "id": "word-1",
-                "label": "我"
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
               },
               {
                 "id": "word-2",
-                "label": "食"
+                "label": "食",
+                "audio": {
+                  "text": "食"
+                }
               },
               {
                 "id": "word-3",
-                "label": "飯"
+                "label": "飯",
+                "audio": {
+                  "text": "飯"
+                }
               }
             ],
             "metadata": {
@@ -5046,16 +6259,44 @@
           },
           {
             "id": "v2-component-06-ex-08",
-            "type": "dictation",
+            "type": "order_words",
             "skill": "writing",
-            "prompt": "Type the Jyutping for the sentence you hear.",
+            "prompt": "Listen and build the sentence.",
             "audio": {
               "text": "我食飯。"
             },
+            "options": [
+              {
+                "id": "audio-word-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "audio-word-2",
+                "label": "食",
+                "audio": {
+                  "text": "食"
+                }
+              },
+              {
+                "id": "audio-word-3",
+                "label": "飯",
+                "audio": {
+                  "text": "飯"
+                }
+              }
+            ],
             "reveal_jyutping": "ngo5 sik6 faan6",
             "reveal_character": "我食飯。",
+            "reveal_english": "I eat a meal.",
             "metadata": {
-              "expected": "ngo5 sik6 faan6",
+              "expected_order": [
+                "audio-word-1",
+                "audio-word-2",
+                "audio-word-3"
+              ],
               "objective_id": "v2-component-06-objective"
             }
           }
@@ -5192,15 +6433,24 @@
             "options": [
               {
                 "id": "character-correct",
-                "label": "時"
+                "label": "時",
+                "audio": {
+                  "text": "時"
+                }
               },
               {
                 "id": "character-distractor-1",
-                "label": "山"
+                "label": "山",
+                "audio": {
+                  "text": "山"
+                }
               },
               {
                 "id": "character-distractor-2",
-                "label": "火"
+                "label": "火",
+                "audio": {
+                  "text": "火"
+                }
               }
             ],
             "correct_option_id": "character-correct",
@@ -5238,10 +6488,36 @@
             "id": "v2-component-07-ex-06",
             "type": "cloze",
             "skill": "writing",
-            "prompt": "Complete in Traditional Chinese: 我冇＿＿間。",
+            "prompt": "Complete the sentence: 我冇＿＿間。",
+            "options": [
+              {
+                "id": "cloze-correct",
+                "label": "時",
+                "audio": {
+                  "text": "時"
+                }
+              },
+              {
+                "id": "cloze-distractor-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "cloze-distractor-2",
+                "label": "水",
+                "audio": {
+                  "text": "水"
+                }
+              }
+            ],
+            "correct_option_id": "cloze-correct",
             "reveal_jyutping": "ngo5 mou5 si4 gaan3",
+            "reveal_english": "I do not have time.",
             "metadata": {
               "expected": "時",
+              "allow_manual_input": true,
               "objective_id": "v2-component-07-objective"
             }
           },
@@ -5253,15 +6529,24 @@
             "options": [
               {
                 "id": "word-1",
-                "label": "我"
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
               },
               {
                 "id": "word-2",
-                "label": "冇"
+                "label": "冇",
+                "audio": {
+                  "text": "冇"
+                }
               },
               {
                 "id": "word-3",
-                "label": "時間"
+                "label": "時間",
+                "audio": {
+                  "text": "時間"
+                }
               }
             ],
             "metadata": {
@@ -5275,16 +6560,44 @@
           },
           {
             "id": "v2-component-07-ex-08",
-            "type": "dictation",
+            "type": "order_words",
             "skill": "writing",
-            "prompt": "Type the Jyutping for the sentence you hear.",
+            "prompt": "Listen and build the sentence.",
             "audio": {
               "text": "我冇時間。"
             },
+            "options": [
+              {
+                "id": "audio-word-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "audio-word-2",
+                "label": "冇",
+                "audio": {
+                  "text": "冇"
+                }
+              },
+              {
+                "id": "audio-word-3",
+                "label": "時間",
+                "audio": {
+                  "text": "時間"
+                }
+              }
+            ],
             "reveal_jyutping": "ngo5 mou5 si4 gaan3",
             "reveal_character": "我冇時間。",
+            "reveal_english": "I do not have time.",
             "metadata": {
-              "expected": "ngo5 mou5 si4 gaan3",
+              "expected_order": [
+                "audio-word-1",
+                "audio-word-2",
+                "audio-word-3"
+              ],
               "objective_id": "v2-component-07-objective"
             }
           }
@@ -5421,15 +6734,24 @@
             "options": [
               {
                 "id": "character-correct",
-                "label": "想"
+                "label": "想",
+                "audio": {
+                  "text": "想"
+                }
               },
               {
                 "id": "character-distractor-1",
-                "label": "山"
+                "label": "山",
+                "audio": {
+                  "text": "山"
+                }
               },
               {
                 "id": "character-distractor-2",
-                "label": "火"
+                "label": "火",
+                "audio": {
+                  "text": "火"
+                }
               }
             ],
             "correct_option_id": "character-correct",
@@ -5467,10 +6789,36 @@
             "id": "v2-component-08-ex-06",
             "type": "cloze",
             "skill": "writing",
-            "prompt": "Complete in Traditional Chinese: 我＿＿飲茶。",
+            "prompt": "Complete the sentence: 我＿＿飲茶。",
+            "options": [
+              {
+                "id": "cloze-correct",
+                "label": "想",
+                "audio": {
+                  "text": "想"
+                }
+              },
+              {
+                "id": "cloze-distractor-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "cloze-distractor-2",
+                "label": "水",
+                "audio": {
+                  "text": "水"
+                }
+              }
+            ],
+            "correct_option_id": "cloze-correct",
             "reveal_jyutping": "ngo5 soeng2 jam2 caa4",
+            "reveal_english": "I want to drink tea.",
             "metadata": {
               "expected": "想",
+              "allow_manual_input": true,
               "objective_id": "v2-component-08-objective"
             }
           },
@@ -5482,15 +6830,24 @@
             "options": [
               {
                 "id": "word-1",
-                "label": "我"
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
               },
               {
                 "id": "word-2",
-                "label": "想"
+                "label": "想",
+                "audio": {
+                  "text": "想"
+                }
               },
               {
                 "id": "word-3",
-                "label": "飲茶"
+                "label": "飲茶",
+                "audio": {
+                  "text": "飲茶"
+                }
               }
             ],
             "metadata": {
@@ -5504,16 +6861,44 @@
           },
           {
             "id": "v2-component-08-ex-08",
-            "type": "dictation",
+            "type": "order_words",
             "skill": "writing",
-            "prompt": "Type the Jyutping for the sentence you hear.",
+            "prompt": "Listen and build the sentence.",
             "audio": {
               "text": "我想飲茶。"
             },
+            "options": [
+              {
+                "id": "audio-word-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "audio-word-2",
+                "label": "想",
+                "audio": {
+                  "text": "想"
+                }
+              },
+              {
+                "id": "audio-word-3",
+                "label": "飲茶",
+                "audio": {
+                  "text": "飲茶"
+                }
+              }
+            ],
             "reveal_jyutping": "ngo5 soeng2 jam2 caa4",
             "reveal_character": "我想飲茶。",
+            "reveal_english": "I want to drink tea.",
             "metadata": {
-              "expected": "ngo5 soeng2 jam2 caa4",
+              "expected_order": [
+                "audio-word-1",
+                "audio-word-2",
+                "audio-word-3"
+              ],
               "objective_id": "v2-component-08-objective"
             }
           }
@@ -5654,15 +7039,24 @@
             "options": [
               {
                 "id": "character-correct",
-                "label": "你好"
+                "label": "你好",
+                "audio": {
+                  "text": "你好"
+                }
               },
               {
                 "id": "character-distractor-1",
-                "label": "山"
+                "label": "山",
+                "audio": {
+                  "text": "山"
+                }
               },
               {
                 "id": "character-distractor-2",
-                "label": "火"
+                "label": "火",
+                "audio": {
+                  "text": "火"
+                }
               }
             ],
             "correct_option_id": "character-correct",
@@ -5700,10 +7094,36 @@
             "id": "v2-vocabulary-01-ex-06",
             "type": "cloze",
             "skill": "writing",
-            "prompt": "Complete in Traditional Chinese: ＿＿，我叫阿明。",
+            "prompt": "Complete the sentence: ＿＿，我叫阿明。",
+            "options": [
+              {
+                "id": "cloze-correct",
+                "label": "你好",
+                "audio": {
+                  "text": "你好"
+                }
+              },
+              {
+                "id": "cloze-distractor-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "cloze-distractor-2",
+                "label": "水",
+                "audio": {
+                  "text": "水"
+                }
+              }
+            ],
+            "correct_option_id": "cloze-correct",
             "reveal_jyutping": "nei5 hou2 ngo5 giu3 aa3 ming4",
+            "reveal_english": "Hello, my name is Ah Ming.",
             "metadata": {
               "expected": "你好",
+              "allow_manual_input": true,
               "objective_id": "v2-vocabulary-01-objective"
             }
           },
@@ -5715,15 +7135,24 @@
             "options": [
               {
                 "id": "word-1",
-                "label": "你好"
+                "label": "你好",
+                "audio": {
+                  "text": "你好"
+                }
               },
               {
                 "id": "word-2",
-                "label": "我叫"
+                "label": "我叫",
+                "audio": {
+                  "text": "我叫"
+                }
               },
               {
                 "id": "word-3",
-                "label": "阿明"
+                "label": "阿明",
+                "audio": {
+                  "text": "阿明"
+                }
               }
             ],
             "metadata": {
@@ -5737,16 +7166,44 @@
           },
           {
             "id": "v2-vocabulary-01-ex-08",
-            "type": "dictation",
+            "type": "order_words",
             "skill": "writing",
-            "prompt": "Type the Jyutping for the sentence you hear.",
+            "prompt": "Listen and build the sentence.",
             "audio": {
               "text": "你好，我叫阿明。"
             },
+            "options": [
+              {
+                "id": "audio-word-1",
+                "label": "你好",
+                "audio": {
+                  "text": "你好"
+                }
+              },
+              {
+                "id": "audio-word-2",
+                "label": "我叫",
+                "audio": {
+                  "text": "我叫"
+                }
+              },
+              {
+                "id": "audio-word-3",
+                "label": "阿明",
+                "audio": {
+                  "text": "阿明"
+                }
+              }
+            ],
             "reveal_jyutping": "nei5 hou2 ngo5 giu3 aa3 ming4",
             "reveal_character": "你好，我叫阿明。",
+            "reveal_english": "Hello, my name is Ah Ming.",
             "metadata": {
-              "expected": "nei5 hou2 ngo5 giu3 aa3 ming4",
+              "expected_order": [
+                "audio-word-1",
+                "audio-word-2",
+                "audio-word-3"
+              ],
               "objective_id": "v2-vocabulary-01-objective"
             }
           }
@@ -5888,15 +7345,24 @@
             "options": [
               {
                 "id": "character-correct",
-                "label": "唔該"
+                "label": "唔該",
+                "audio": {
+                  "text": "唔該"
+                }
               },
               {
                 "id": "character-distractor-1",
-                "label": "山"
+                "label": "山",
+                "audio": {
+                  "text": "山"
+                }
               },
               {
                 "id": "character-distractor-2",
-                "label": "火"
+                "label": "火",
+                "audio": {
+                  "text": "火"
+                }
               }
             ],
             "correct_option_id": "character-correct",
@@ -5934,10 +7400,36 @@
             "id": "v2-vocabulary-02-ex-06",
             "type": "cloze",
             "skill": "writing",
-            "prompt": "Complete in Traditional Chinese: ＿＿，我想要杯水。",
+            "prompt": "Complete the sentence: ＿＿，我想要杯水。",
+            "options": [
+              {
+                "id": "cloze-correct",
+                "label": "唔該",
+                "audio": {
+                  "text": "唔該"
+                }
+              },
+              {
+                "id": "cloze-distractor-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "cloze-distractor-2",
+                "label": "水",
+                "audio": {
+                  "text": "水"
+                }
+              }
+            ],
+            "correct_option_id": "cloze-correct",
             "reveal_jyutping": "m4 goi1 ngo5 soeng2 jiu3 bui1 seoi2",
+            "reveal_english": "Please, I would like a glass of water.",
             "metadata": {
               "expected": "唔該",
+              "allow_manual_input": true,
               "objective_id": "v2-vocabulary-02-objective"
             }
           },
@@ -5949,15 +7441,24 @@
             "options": [
               {
                 "id": "word-1",
-                "label": "唔該"
+                "label": "唔該",
+                "audio": {
+                  "text": "唔該"
+                }
               },
               {
                 "id": "word-2",
-                "label": "我想要"
+                "label": "我想要",
+                "audio": {
+                  "text": "我想要"
+                }
               },
               {
                 "id": "word-3",
-                "label": "杯水"
+                "label": "杯水",
+                "audio": {
+                  "text": "杯水"
+                }
               }
             ],
             "metadata": {
@@ -5971,16 +7472,44 @@
           },
           {
             "id": "v2-vocabulary-02-ex-08",
-            "type": "dictation",
+            "type": "order_words",
             "skill": "writing",
-            "prompt": "Type the Jyutping for the sentence you hear.",
+            "prompt": "Listen and build the sentence.",
             "audio": {
               "text": "唔該，我想要杯水。"
             },
+            "options": [
+              {
+                "id": "audio-word-1",
+                "label": "唔該",
+                "audio": {
+                  "text": "唔該"
+                }
+              },
+              {
+                "id": "audio-word-2",
+                "label": "我想要",
+                "audio": {
+                  "text": "我想要"
+                }
+              },
+              {
+                "id": "audio-word-3",
+                "label": "杯水",
+                "audio": {
+                  "text": "杯水"
+                }
+              }
+            ],
             "reveal_jyutping": "m4 goi1 ngo5 soeng2 jiu3 bui1 seoi2",
             "reveal_character": "唔該，我想要杯水。",
+            "reveal_english": "Please, I would like a glass of water.",
             "metadata": {
-              "expected": "m4 goi1 ngo5 soeng2 jiu3 bui1 seoi2",
+              "expected_order": [
+                "audio-word-1",
+                "audio-word-2",
+                "audio-word-3"
+              ],
               "objective_id": "v2-vocabulary-02-objective"
             }
           }
@@ -6120,15 +7649,24 @@
             "options": [
               {
                 "id": "character-correct",
-                "label": "多謝"
+                "label": "多謝",
+                "audio": {
+                  "text": "多謝"
+                }
               },
               {
                 "id": "character-distractor-1",
-                "label": "山"
+                "label": "山",
+                "audio": {
+                  "text": "山"
+                }
               },
               {
                 "id": "character-distractor-2",
-                "label": "火"
+                "label": "火",
+                "audio": {
+                  "text": "火"
+                }
               }
             ],
             "correct_option_id": "character-correct",
@@ -6166,10 +7704,36 @@
             "id": "v2-vocabulary-03-ex-06",
             "type": "cloze",
             "skill": "writing",
-            "prompt": "Complete in Traditional Chinese: ＿＿你幫我。",
+            "prompt": "Complete the sentence: ＿＿你幫我。",
+            "options": [
+              {
+                "id": "cloze-correct",
+                "label": "多謝",
+                "audio": {
+                  "text": "多謝"
+                }
+              },
+              {
+                "id": "cloze-distractor-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "cloze-distractor-2",
+                "label": "水",
+                "audio": {
+                  "text": "水"
+                }
+              }
+            ],
+            "correct_option_id": "cloze-correct",
             "reveal_jyutping": "do1 ze6 nei5 bong1 ngo5",
+            "reveal_english": "Thank you for helping me.",
             "metadata": {
               "expected": "多謝",
+              "allow_manual_input": true,
               "objective_id": "v2-vocabulary-03-objective"
             }
           },
@@ -6181,11 +7745,17 @@
             "options": [
               {
                 "id": "word-1",
-                "label": "多謝"
+                "label": "多謝",
+                "audio": {
+                  "text": "多謝"
+                }
               },
               {
                 "id": "word-2",
-                "label": "你幫我"
+                "label": "你幫我",
+                "audio": {
+                  "text": "你幫我"
+                }
               }
             ],
             "metadata": {
@@ -6198,16 +7768,36 @@
           },
           {
             "id": "v2-vocabulary-03-ex-08",
-            "type": "dictation",
+            "type": "order_words",
             "skill": "writing",
-            "prompt": "Type the Jyutping for the sentence you hear.",
+            "prompt": "Listen and build the sentence.",
             "audio": {
               "text": "多謝你幫我。"
             },
+            "options": [
+              {
+                "id": "audio-word-1",
+                "label": "多謝",
+                "audio": {
+                  "text": "多謝"
+                }
+              },
+              {
+                "id": "audio-word-2",
+                "label": "你幫我",
+                "audio": {
+                  "text": "你幫我"
+                }
+              }
+            ],
             "reveal_jyutping": "do1 ze6 nei5 bong1 ngo5",
             "reveal_character": "多謝你幫我。",
+            "reveal_english": "Thank you for helping me.",
             "metadata": {
-              "expected": "do1 ze6 nei5 bong1 ngo5",
+              "expected_order": [
+                "audio-word-1",
+                "audio-word-2"
+              ],
               "objective_id": "v2-vocabulary-03-objective"
             }
           }
@@ -6346,15 +7936,24 @@
             "options": [
               {
                 "id": "character-correct",
-                "label": "早晨"
+                "label": "早晨",
+                "audio": {
+                  "text": "早晨"
+                }
               },
               {
                 "id": "character-distractor-1",
-                "label": "山"
+                "label": "山",
+                "audio": {
+                  "text": "山"
+                }
               },
               {
                 "id": "character-distractor-2",
-                "label": "火"
+                "label": "火",
+                "audio": {
+                  "text": "火"
+                }
               }
             ],
             "correct_option_id": "character-correct",
@@ -6392,10 +7991,36 @@
             "id": "v2-vocabulary-04-ex-06",
             "type": "cloze",
             "skill": "writing",
-            "prompt": "Complete in Traditional Chinese: 老師，＿＿。",
+            "prompt": "Complete the sentence: 老師，＿＿。",
+            "options": [
+              {
+                "id": "cloze-correct",
+                "label": "早晨",
+                "audio": {
+                  "text": "早晨"
+                }
+              },
+              {
+                "id": "cloze-distractor-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "cloze-distractor-2",
+                "label": "水",
+                "audio": {
+                  "text": "水"
+                }
+              }
+            ],
+            "correct_option_id": "cloze-correct",
             "reveal_jyutping": "lou5 si1 zou2 san4",
+            "reveal_english": "Good morning, teacher.",
             "metadata": {
               "expected": "早晨",
+              "allow_manual_input": true,
               "objective_id": "v2-vocabulary-04-objective"
             }
           },
@@ -6407,11 +8032,17 @@
             "options": [
               {
                 "id": "word-1",
-                "label": "老師"
+                "label": "老師",
+                "audio": {
+                  "text": "老師"
+                }
               },
               {
                 "id": "word-2",
-                "label": "早晨"
+                "label": "早晨",
+                "audio": {
+                  "text": "早晨"
+                }
               }
             ],
             "metadata": {
@@ -6424,16 +8055,36 @@
           },
           {
             "id": "v2-vocabulary-04-ex-08",
-            "type": "dictation",
+            "type": "order_words",
             "skill": "writing",
-            "prompt": "Type the Jyutping for the sentence you hear.",
+            "prompt": "Listen and build the sentence.",
             "audio": {
               "text": "老師，早晨。"
             },
+            "options": [
+              {
+                "id": "audio-word-1",
+                "label": "老師",
+                "audio": {
+                  "text": "老師"
+                }
+              },
+              {
+                "id": "audio-word-2",
+                "label": "早晨",
+                "audio": {
+                  "text": "早晨"
+                }
+              }
+            ],
             "reveal_jyutping": "lou5 si1 zou2 san4",
             "reveal_character": "老師，早晨。",
+            "reveal_english": "Good morning, teacher.",
             "metadata": {
-              "expected": "lou5 si1 zou2 san4",
+              "expected_order": [
+                "audio-word-1",
+                "audio-word-2"
+              ],
               "objective_id": "v2-vocabulary-04-objective"
             }
           }
@@ -6572,15 +8223,24 @@
             "options": [
               {
                 "id": "character-correct",
-                "label": "再見"
+                "label": "再見",
+                "audio": {
+                  "text": "再見"
+                }
               },
               {
                 "id": "character-distractor-1",
-                "label": "山"
+                "label": "山",
+                "audio": {
+                  "text": "山"
+                }
               },
               {
                 "id": "character-distractor-2",
-                "label": "火"
+                "label": "火",
+                "audio": {
+                  "text": "火"
+                }
               }
             ],
             "correct_option_id": "character-correct",
@@ -6618,10 +8278,36 @@
             "id": "v2-vocabulary-05-ex-06",
             "type": "cloze",
             "skill": "writing",
-            "prompt": "Complete in Traditional Chinese: 聽日＿＿。",
+            "prompt": "Complete the sentence: 聽日＿＿。",
+            "options": [
+              {
+                "id": "cloze-correct",
+                "label": "再見",
+                "audio": {
+                  "text": "再見"
+                }
+              },
+              {
+                "id": "cloze-distractor-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "cloze-distractor-2",
+                "label": "水",
+                "audio": {
+                  "text": "水"
+                }
+              }
+            ],
+            "correct_option_id": "cloze-correct",
             "reveal_jyutping": "ting1 jat6 zoi3 gin3",
+            "reveal_english": "See you tomorrow.",
             "metadata": {
               "expected": "再見",
+              "allow_manual_input": true,
               "objective_id": "v2-vocabulary-05-objective"
             }
           },
@@ -6633,11 +8319,17 @@
             "options": [
               {
                 "id": "word-1",
-                "label": "聽日"
+                "label": "聽日",
+                "audio": {
+                  "text": "聽日"
+                }
               },
               {
                 "id": "word-2",
-                "label": "再見"
+                "label": "再見",
+                "audio": {
+                  "text": "再見"
+                }
               }
             ],
             "metadata": {
@@ -6650,16 +8342,36 @@
           },
           {
             "id": "v2-vocabulary-05-ex-08",
-            "type": "dictation",
+            "type": "order_words",
             "skill": "writing",
-            "prompt": "Type the Jyutping for the sentence you hear.",
+            "prompt": "Listen and build the sentence.",
             "audio": {
               "text": "聽日再見。"
             },
+            "options": [
+              {
+                "id": "audio-word-1",
+                "label": "聽日",
+                "audio": {
+                  "text": "聽日"
+                }
+              },
+              {
+                "id": "audio-word-2",
+                "label": "再見",
+                "audio": {
+                  "text": "再見"
+                }
+              }
+            ],
             "reveal_jyutping": "ting1 jat6 zoi3 gin3",
             "reveal_character": "聽日再見。",
+            "reveal_english": "See you tomorrow.",
             "metadata": {
-              "expected": "ting1 jat6 zoi3 gin3",
+              "expected_order": [
+                "audio-word-1",
+                "audio-word-2"
+              ],
               "objective_id": "v2-vocabulary-05-objective"
             }
           }
@@ -6800,15 +8512,24 @@
             "options": [
               {
                 "id": "character-correct",
-                "label": "屋企"
+                "label": "屋企",
+                "audio": {
+                  "text": "屋企"
+                }
               },
               {
                 "id": "character-distractor-1",
-                "label": "山"
+                "label": "山",
+                "audio": {
+                  "text": "山"
+                }
               },
               {
                 "id": "character-distractor-2",
-                "label": "火"
+                "label": "火",
+                "audio": {
+                  "text": "火"
+                }
               }
             ],
             "correct_option_id": "character-correct",
@@ -6846,10 +8567,36 @@
             "id": "v2-vocabulary-06-ex-06",
             "type": "cloze",
             "skill": "writing",
-            "prompt": "Complete in Traditional Chinese: 我而家返＿＿。",
+            "prompt": "Complete the sentence: 我而家返＿＿。",
+            "options": [
+              {
+                "id": "cloze-correct",
+                "label": "屋企",
+                "audio": {
+                  "text": "屋企"
+                }
+              },
+              {
+                "id": "cloze-distractor-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "cloze-distractor-2",
+                "label": "水",
+                "audio": {
+                  "text": "水"
+                }
+              }
+            ],
+            "correct_option_id": "cloze-correct",
             "reveal_jyutping": "ngo5 ji4 gaa1 faan1 uk1 kei2",
+            "reveal_english": "I am going home now.",
             "metadata": {
               "expected": "屋企",
+              "allow_manual_input": true,
               "objective_id": "v2-vocabulary-06-objective"
             }
           },
@@ -6861,15 +8608,24 @@
             "options": [
               {
                 "id": "word-1",
-                "label": "我"
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
               },
               {
                 "id": "word-2",
-                "label": "而家"
+                "label": "而家",
+                "audio": {
+                  "text": "而家"
+                }
               },
               {
                 "id": "word-3",
-                "label": "返屋企"
+                "label": "返屋企",
+                "audio": {
+                  "text": "返屋企"
+                }
               }
             ],
             "metadata": {
@@ -6883,16 +8639,44 @@
           },
           {
             "id": "v2-vocabulary-06-ex-08",
-            "type": "dictation",
+            "type": "order_words",
             "skill": "writing",
-            "prompt": "Type the Jyutping for the sentence you hear.",
+            "prompt": "Listen and build the sentence.",
             "audio": {
               "text": "我而家返屋企。"
             },
+            "options": [
+              {
+                "id": "audio-word-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "audio-word-2",
+                "label": "而家",
+                "audio": {
+                  "text": "而家"
+                }
+              },
+              {
+                "id": "audio-word-3",
+                "label": "返屋企",
+                "audio": {
+                  "text": "返屋企"
+                }
+              }
+            ],
             "reveal_jyutping": "ngo5 ji4 gaa1 faan1 uk1 kei2",
             "reveal_character": "我而家返屋企。",
+            "reveal_english": "I am going home now.",
             "metadata": {
-              "expected": "ngo5 ji4 gaa1 faan1 uk1 kei2",
+              "expected_order": [
+                "audio-word-1",
+                "audio-word-2",
+                "audio-word-3"
+              ],
               "objective_id": "v2-vocabulary-06-objective"
             }
           }
@@ -7034,15 +8818,24 @@
             "options": [
               {
                 "id": "character-correct",
-                "label": "學校"
+                "label": "學校",
+                "audio": {
+                  "text": "學校"
+                }
               },
               {
                 "id": "character-distractor-1",
-                "label": "山"
+                "label": "山",
+                "audio": {
+                  "text": "山"
+                }
               },
               {
                 "id": "character-distractor-2",
-                "label": "火"
+                "label": "火",
+                "audio": {
+                  "text": "火"
+                }
               }
             ],
             "correct_option_id": "character-correct",
@@ -7080,10 +8873,36 @@
             "id": "v2-vocabulary-07-ex-06",
             "type": "cloze",
             "skill": "writing",
-            "prompt": "Complete in Traditional Chinese: 我搭巴士去＿＿。",
+            "prompt": "Complete the sentence: 我搭巴士去＿＿。",
+            "options": [
+              {
+                "id": "cloze-correct",
+                "label": "學校",
+                "audio": {
+                  "text": "學校"
+                }
+              },
+              {
+                "id": "cloze-distractor-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "cloze-distractor-2",
+                "label": "水",
+                "audio": {
+                  "text": "水"
+                }
+              }
+            ],
+            "correct_option_id": "cloze-correct",
             "reveal_jyutping": "ngo5 daap3 baa1 si2 heoi3 hok6 haau6",
+            "reveal_english": "I take the bus to school.",
             "metadata": {
               "expected": "學校",
+              "allow_manual_input": true,
               "objective_id": "v2-vocabulary-07-objective"
             }
           },
@@ -7095,15 +8914,24 @@
             "options": [
               {
                 "id": "word-1",
-                "label": "我"
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
               },
               {
                 "id": "word-2",
-                "label": "搭巴士"
+                "label": "搭巴士",
+                "audio": {
+                  "text": "搭巴士"
+                }
               },
               {
                 "id": "word-3",
-                "label": "去學校"
+                "label": "去學校",
+                "audio": {
+                  "text": "去學校"
+                }
               }
             ],
             "metadata": {
@@ -7117,16 +8945,44 @@
           },
           {
             "id": "v2-vocabulary-07-ex-08",
-            "type": "dictation",
+            "type": "order_words",
             "skill": "writing",
-            "prompt": "Type the Jyutping for the sentence you hear.",
+            "prompt": "Listen and build the sentence.",
             "audio": {
               "text": "我搭巴士去學校。"
             },
+            "options": [
+              {
+                "id": "audio-word-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "audio-word-2",
+                "label": "搭巴士",
+                "audio": {
+                  "text": "搭巴士"
+                }
+              },
+              {
+                "id": "audio-word-3",
+                "label": "去學校",
+                "audio": {
+                  "text": "去學校"
+                }
+              }
+            ],
             "reveal_jyutping": "ngo5 daap3 baa1 si2 heoi3 hok6 haau6",
             "reveal_character": "我搭巴士去學校。",
+            "reveal_english": "I take the bus to school.",
             "metadata": {
-              "expected": "ngo5 daap3 baa1 si2 heoi3 hok6 haau6",
+              "expected_order": [
+                "audio-word-1",
+                "audio-word-2",
+                "audio-word-3"
+              ],
               "objective_id": "v2-vocabulary-07-objective"
             }
           }
@@ -7268,15 +9124,24 @@
             "options": [
               {
                 "id": "character-correct",
-                "label": "巴士"
+                "label": "巴士",
+                "audio": {
+                  "text": "巴士"
+                }
               },
               {
                 "id": "character-distractor-1",
-                "label": "山"
+                "label": "山",
+                "audio": {
+                  "text": "山"
+                }
               },
               {
                 "id": "character-distractor-2",
-                "label": "火"
+                "label": "火",
+                "audio": {
+                  "text": "火"
+                }
               }
             ],
             "correct_option_id": "character-correct",
@@ -7314,10 +9179,36 @@
             "id": "v2-vocabulary-08-ex-06",
             "type": "cloze",
             "skill": "writing",
-            "prompt": "Complete in Traditional Chinese: 呢架＿＿去中環。",
+            "prompt": "Complete the sentence: 呢架＿＿去中環。",
+            "options": [
+              {
+                "id": "cloze-correct",
+                "label": "巴士",
+                "audio": {
+                  "text": "巴士"
+                }
+              },
+              {
+                "id": "cloze-distractor-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "cloze-distractor-2",
+                "label": "水",
+                "audio": {
+                  "text": "水"
+                }
+              }
+            ],
+            "correct_option_id": "cloze-correct",
             "reveal_jyutping": "ni1 gaa3 baa1 si2 heoi3 zung1 waan4",
+            "reveal_english": "This bus goes to Central.",
             "metadata": {
               "expected": "巴士",
+              "allow_manual_input": true,
               "objective_id": "v2-vocabulary-08-objective"
             }
           },
@@ -7329,15 +9220,24 @@
             "options": [
               {
                 "id": "word-1",
-                "label": "呢架巴士"
+                "label": "呢架巴士",
+                "audio": {
+                  "text": "呢架巴士"
+                }
               },
               {
                 "id": "word-2",
-                "label": "去"
+                "label": "去",
+                "audio": {
+                  "text": "去"
+                }
               },
               {
                 "id": "word-3",
-                "label": "中環"
+                "label": "中環",
+                "audio": {
+                  "text": "中環"
+                }
               }
             ],
             "metadata": {
@@ -7351,16 +9251,44 @@
           },
           {
             "id": "v2-vocabulary-08-ex-08",
-            "type": "dictation",
+            "type": "order_words",
             "skill": "writing",
-            "prompt": "Type the Jyutping for the sentence you hear.",
+            "prompt": "Listen and build the sentence.",
             "audio": {
               "text": "呢架巴士去中環。"
             },
+            "options": [
+              {
+                "id": "audio-word-1",
+                "label": "呢架巴士",
+                "audio": {
+                  "text": "呢架巴士"
+                }
+              },
+              {
+                "id": "audio-word-2",
+                "label": "去",
+                "audio": {
+                  "text": "去"
+                }
+              },
+              {
+                "id": "audio-word-3",
+                "label": "中環",
+                "audio": {
+                  "text": "中環"
+                }
+              }
+            ],
             "reveal_jyutping": "ni1 gaa3 baa1 si2 heoi3 zung1 waan4",
             "reveal_character": "呢架巴士去中環。",
+            "reveal_english": "This bus goes to Central.",
             "metadata": {
-              "expected": "ni1 gaa3 baa1 si2 heoi3 zung1 waan4",
+              "expected_order": [
+                "audio-word-1",
+                "audio-word-2",
+                "audio-word-3"
+              ],
               "objective_id": "v2-vocabulary-08-objective"
             }
           }
@@ -7505,15 +9433,24 @@
             "options": [
               {
                 "id": "character-correct",
-                "label": "茶餐廳"
+                "label": "茶餐廳",
+                "audio": {
+                  "text": "茶餐廳"
+                }
               },
               {
                 "id": "character-distractor-1",
-                "label": "山"
+                "label": "山",
+                "audio": {
+                  "text": "山"
+                }
               },
               {
                 "id": "character-distractor-2",
-                "label": "火"
+                "label": "火",
+                "audio": {
+                  "text": "火"
+                }
               }
             ],
             "correct_option_id": "character-correct",
@@ -7551,10 +9488,36 @@
             "id": "v2-vocabulary-09-ex-06",
             "type": "cloze",
             "skill": "writing",
-            "prompt": "Complete in Traditional Chinese: 我哋去＿＿食飯。",
+            "prompt": "Complete the sentence: 我哋去＿＿食飯。",
+            "options": [
+              {
+                "id": "cloze-correct",
+                "label": "茶餐廳",
+                "audio": {
+                  "text": "茶餐廳"
+                }
+              },
+              {
+                "id": "cloze-distractor-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "cloze-distractor-2",
+                "label": "水",
+                "audio": {
+                  "text": "水"
+                }
+              }
+            ],
+            "correct_option_id": "cloze-correct",
             "reveal_jyutping": "ngo5 dei6 heoi3 caa4 caan1 teng1 sik6 faan6",
+            "reveal_english": "We go to a cha chaan teng for a meal.",
             "metadata": {
               "expected": "茶餐廳",
+              "allow_manual_input": true,
               "objective_id": "v2-vocabulary-09-objective"
             }
           },
@@ -7566,15 +9529,24 @@
             "options": [
               {
                 "id": "word-1",
-                "label": "我哋"
+                "label": "我哋",
+                "audio": {
+                  "text": "我哋"
+                }
               },
               {
                 "id": "word-2",
-                "label": "去茶餐廳"
+                "label": "去茶餐廳",
+                "audio": {
+                  "text": "去茶餐廳"
+                }
               },
               {
                 "id": "word-3",
-                "label": "食飯"
+                "label": "食飯",
+                "audio": {
+                  "text": "食飯"
+                }
               }
             ],
             "metadata": {
@@ -7588,16 +9560,44 @@
           },
           {
             "id": "v2-vocabulary-09-ex-08",
-            "type": "dictation",
+            "type": "order_words",
             "skill": "writing",
-            "prompt": "Type the Jyutping for the sentence you hear.",
+            "prompt": "Listen and build the sentence.",
             "audio": {
               "text": "我哋去茶餐廳食飯。"
             },
+            "options": [
+              {
+                "id": "audio-word-1",
+                "label": "我哋",
+                "audio": {
+                  "text": "我哋"
+                }
+              },
+              {
+                "id": "audio-word-2",
+                "label": "去茶餐廳",
+                "audio": {
+                  "text": "去茶餐廳"
+                }
+              },
+              {
+                "id": "audio-word-3",
+                "label": "食飯",
+                "audio": {
+                  "text": "食飯"
+                }
+              }
+            ],
             "reveal_jyutping": "ngo5 dei6 heoi3 caa4 caan1 teng1 sik6 faan6",
             "reveal_character": "我哋去茶餐廳食飯。",
+            "reveal_english": "We go to a cha chaan teng for a meal.",
             "metadata": {
-              "expected": "ngo5 dei6 heoi3 caa4 caan1 teng1 sik6 faan6",
+              "expected_order": [
+                "audio-word-1",
+                "audio-word-2",
+                "audio-word-3"
+              ],
               "objective_id": "v2-vocabulary-09-objective"
             }
           }
@@ -7736,15 +9736,24 @@
             "options": [
               {
                 "id": "character-correct",
-                "label": "飯"
+                "label": "飯",
+                "audio": {
+                  "text": "飯"
+                }
               },
               {
                 "id": "character-distractor-1",
-                "label": "山"
+                "label": "山",
+                "audio": {
+                  "text": "山"
+                }
               },
               {
                 "id": "character-distractor-2",
-                "label": "火"
+                "label": "火",
+                "audio": {
+                  "text": "火"
+                }
               }
             ],
             "correct_option_id": "character-correct",
@@ -7782,10 +9791,36 @@
             "id": "v2-vocabulary-10-ex-06",
             "type": "cloze",
             "skill": "writing",
-            "prompt": "Complete in Traditional Chinese: 我想要一碗＿＿。",
+            "prompt": "Complete the sentence: 我想要一碗＿＿。",
+            "options": [
+              {
+                "id": "cloze-correct",
+                "label": "飯",
+                "audio": {
+                  "text": "飯"
+                }
+              },
+              {
+                "id": "cloze-distractor-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "cloze-distractor-2",
+                "label": "水",
+                "audio": {
+                  "text": "水"
+                }
+              }
+            ],
+            "correct_option_id": "cloze-correct",
             "reveal_jyutping": "ngo5 soeng2 jiu3 jat1 wun2 faan6",
+            "reveal_english": "I would like a bowl of rice.",
             "metadata": {
               "expected": "飯",
+              "allow_manual_input": true,
               "objective_id": "v2-vocabulary-10-objective"
             }
           },
@@ -7797,15 +9832,24 @@
             "options": [
               {
                 "id": "word-1",
-                "label": "我"
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
               },
               {
                 "id": "word-2",
-                "label": "想要"
+                "label": "想要",
+                "audio": {
+                  "text": "想要"
+                }
               },
               {
                 "id": "word-3",
-                "label": "一碗飯"
+                "label": "一碗飯",
+                "audio": {
+                  "text": "一碗飯"
+                }
               }
             ],
             "metadata": {
@@ -7819,16 +9863,44 @@
           },
           {
             "id": "v2-vocabulary-10-ex-08",
-            "type": "dictation",
+            "type": "order_words",
             "skill": "writing",
-            "prompt": "Type the Jyutping for the sentence you hear.",
+            "prompt": "Listen and build the sentence.",
             "audio": {
               "text": "我想要一碗飯。"
             },
+            "options": [
+              {
+                "id": "audio-word-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "audio-word-2",
+                "label": "想要",
+                "audio": {
+                  "text": "想要"
+                }
+              },
+              {
+                "id": "audio-word-3",
+                "label": "一碗飯",
+                "audio": {
+                  "text": "一碗飯"
+                }
+              }
+            ],
             "reveal_jyutping": "ngo5 soeng2 jiu3 jat1 wun2 faan6",
             "reveal_character": "我想要一碗飯。",
+            "reveal_english": "I would like a bowl of rice.",
             "metadata": {
-              "expected": "ngo5 soeng2 jiu3 jat1 wun2 faan6",
+              "expected_order": [
+                "audio-word-1",
+                "audio-word-2",
+                "audio-word-3"
+              ],
               "objective_id": "v2-vocabulary-10-objective"
             }
           }
@@ -7967,15 +10039,24 @@
             "options": [
               {
                 "id": "character-correct",
-                "label": "水"
+                "label": "水",
+                "audio": {
+                  "text": "水"
+                }
               },
               {
                 "id": "character-distractor-1",
-                "label": "山"
+                "label": "山",
+                "audio": {
+                  "text": "山"
+                }
               },
               {
                 "id": "character-distractor-2",
-                "label": "火"
+                "label": "火",
+                "audio": {
+                  "text": "火"
+                }
               }
             ],
             "correct_option_id": "character-correct",
@@ -8013,10 +10094,36 @@
             "id": "v2-vocabulary-11-ex-06",
             "type": "cloze",
             "skill": "writing",
-            "prompt": "Complete in Traditional Chinese: 唔該畀杯＿＿我。",
+            "prompt": "Complete the sentence: 唔該畀杯＿＿我。",
+            "options": [
+              {
+                "id": "cloze-correct",
+                "label": "水",
+                "audio": {
+                  "text": "水"
+                }
+              },
+              {
+                "id": "cloze-distractor-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "cloze-distractor-2",
+                "label": "好",
+                "audio": {
+                  "text": "好"
+                }
+              }
+            ],
+            "correct_option_id": "cloze-correct",
             "reveal_jyutping": "m4 goi1 bei2 bui1 seoi2 ngo5",
+            "reveal_english": "Please give me a glass of water.",
             "metadata": {
               "expected": "水",
+              "allow_manual_input": true,
               "objective_id": "v2-vocabulary-11-objective"
             }
           },
@@ -8028,15 +10135,24 @@
             "options": [
               {
                 "id": "word-1",
-                "label": "唔該"
+                "label": "唔該",
+                "audio": {
+                  "text": "唔該"
+                }
               },
               {
                 "id": "word-2",
-                "label": "畀杯水"
+                "label": "畀杯水",
+                "audio": {
+                  "text": "畀杯水"
+                }
               },
               {
                 "id": "word-3",
-                "label": "我"
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
               }
             ],
             "metadata": {
@@ -8050,16 +10166,44 @@
           },
           {
             "id": "v2-vocabulary-11-ex-08",
-            "type": "dictation",
+            "type": "order_words",
             "skill": "writing",
-            "prompt": "Type the Jyutping for the sentence you hear.",
+            "prompt": "Listen and build the sentence.",
             "audio": {
               "text": "唔該畀杯水我。"
             },
+            "options": [
+              {
+                "id": "audio-word-1",
+                "label": "唔該",
+                "audio": {
+                  "text": "唔該"
+                }
+              },
+              {
+                "id": "audio-word-2",
+                "label": "畀杯水",
+                "audio": {
+                  "text": "畀杯水"
+                }
+              },
+              {
+                "id": "audio-word-3",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              }
+            ],
             "reveal_jyutping": "m4 goi1 bei2 bui1 seoi2 ngo5",
             "reveal_character": "唔該畀杯水我。",
+            "reveal_english": "Please give me a glass of water.",
             "metadata": {
-              "expected": "m4 goi1 bei2 bui1 seoi2 ngo5",
+              "expected_order": [
+                "audio-word-1",
+                "audio-word-2",
+                "audio-word-3"
+              ],
               "objective_id": "v2-vocabulary-11-objective"
             }
           }
@@ -8201,15 +10345,24 @@
             "options": [
               {
                 "id": "character-correct",
-                "label": "廁所"
+                "label": "廁所",
+                "audio": {
+                  "text": "廁所"
+                }
               },
               {
                 "id": "character-distractor-1",
-                "label": "山"
+                "label": "山",
+                "audio": {
+                  "text": "山"
+                }
               },
               {
                 "id": "character-distractor-2",
-                "label": "火"
+                "label": "火",
+                "audio": {
+                  "text": "火"
+                }
               }
             ],
             "correct_option_id": "character-correct",
@@ -8247,10 +10400,36 @@
             "id": "v2-vocabulary-12-ex-06",
             "type": "cloze",
             "skill": "writing",
-            "prompt": "Complete in Traditional Chinese: 請問＿＿喺邊度？",
+            "prompt": "Complete the sentence: 請問＿＿喺邊度？",
+            "options": [
+              {
+                "id": "cloze-correct",
+                "label": "廁所",
+                "audio": {
+                  "text": "廁所"
+                }
+              },
+              {
+                "id": "cloze-distractor-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "cloze-distractor-2",
+                "label": "水",
+                "audio": {
+                  "text": "水"
+                }
+              }
+            ],
+            "correct_option_id": "cloze-correct",
             "reveal_jyutping": "cing2 man6 ci3 so2 hai2 bin1 dou6",
+            "reveal_english": "Excuse me, where is the restroom?",
             "metadata": {
               "expected": "廁所",
+              "allow_manual_input": true,
               "objective_id": "v2-vocabulary-12-objective"
             }
           },
@@ -8262,15 +10441,24 @@
             "options": [
               {
                 "id": "word-1",
-                "label": "請問"
+                "label": "請問",
+                "audio": {
+                  "text": "請問"
+                }
               },
               {
                 "id": "word-2",
-                "label": "廁所"
+                "label": "廁所",
+                "audio": {
+                  "text": "廁所"
+                }
               },
               {
                 "id": "word-3",
-                "label": "喺邊度"
+                "label": "喺邊度",
+                "audio": {
+                  "text": "喺邊度"
+                }
               }
             ],
             "metadata": {
@@ -8284,16 +10472,44 @@
           },
           {
             "id": "v2-vocabulary-12-ex-08",
-            "type": "dictation",
+            "type": "order_words",
             "skill": "writing",
-            "prompt": "Type the Jyutping for the sentence you hear.",
+            "prompt": "Listen and build the sentence.",
             "audio": {
               "text": "請問廁所喺邊度？"
             },
+            "options": [
+              {
+                "id": "audio-word-1",
+                "label": "請問",
+                "audio": {
+                  "text": "請問"
+                }
+              },
+              {
+                "id": "audio-word-2",
+                "label": "廁所",
+                "audio": {
+                  "text": "廁所"
+                }
+              },
+              {
+                "id": "audio-word-3",
+                "label": "喺邊度",
+                "audio": {
+                  "text": "喺邊度"
+                }
+              }
+            ],
             "reveal_jyutping": "cing2 man6 ci3 so2 hai2 bin1 dou6",
             "reveal_character": "請問廁所喺邊度？",
+            "reveal_english": "Excuse me, where is the restroom?",
             "metadata": {
-              "expected": "cing2 man6 ci3 so2 hai2 bin1 dou6",
+              "expected_order": [
+                "audio-word-1",
+                "audio-word-2",
+                "audio-word-3"
+              ],
               "objective_id": "v2-vocabulary-12-objective"
             }
           }
@@ -8436,15 +10652,24 @@
             "options": [
               {
                 "id": "character-correct",
-                "label": "我係學生"
+                "label": "我係學生",
+                "audio": {
+                  "text": "我係學生"
+                }
               },
               {
                 "id": "character-distractor-1",
-                "label": "山"
+                "label": "山",
+                "audio": {
+                  "text": "山"
+                }
               },
               {
                 "id": "character-distractor-2",
-                "label": "火"
+                "label": "火",
+                "audio": {
+                  "text": "火"
+                }
               }
             ],
             "correct_option_id": "character-correct",
@@ -8482,10 +10707,36 @@
             "id": "v2-grammar-01-ex-06",
             "type": "cloze",
             "skill": "writing",
-            "prompt": "Complete in Traditional Chinese: 我＿＿學生。",
+            "prompt": "Complete the sentence: 我＿＿學生。",
+            "options": [
+              {
+                "id": "cloze-correct",
+                "label": "係",
+                "audio": {
+                  "text": "係"
+                }
+              },
+              {
+                "id": "cloze-distractor-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "cloze-distractor-2",
+                "label": "水",
+                "audio": {
+                  "text": "水"
+                }
+              }
+            ],
+            "correct_option_id": "cloze-correct",
             "reveal_jyutping": "ngo5 hai6 hok6 saang1",
+            "reveal_english": "I am a student.",
             "metadata": {
               "expected": "係",
+              "allow_manual_input": true,
               "objective_id": "v2-grammar-01-objective"
             }
           },
@@ -8497,15 +10748,24 @@
             "options": [
               {
                 "id": "word-1",
-                "label": "我"
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
               },
               {
                 "id": "word-2",
-                "label": "係"
+                "label": "係",
+                "audio": {
+                  "text": "係"
+                }
               },
               {
                 "id": "word-3",
-                "label": "學生"
+                "label": "學生",
+                "audio": {
+                  "text": "學生"
+                }
               }
             ],
             "metadata": {
@@ -8519,16 +10779,44 @@
           },
           {
             "id": "v2-grammar-01-ex-08",
-            "type": "dictation",
+            "type": "order_words",
             "skill": "writing",
-            "prompt": "Type the Jyutping for the sentence you hear.",
+            "prompt": "Listen and build the sentence.",
             "audio": {
               "text": "我係學生。"
             },
+            "options": [
+              {
+                "id": "audio-word-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "audio-word-2",
+                "label": "係",
+                "audio": {
+                  "text": "係"
+                }
+              },
+              {
+                "id": "audio-word-3",
+                "label": "學生",
+                "audio": {
+                  "text": "學生"
+                }
+              }
+            ],
             "reveal_jyutping": "ngo5 hai6 hok6 saang1",
             "reveal_character": "我係學生。",
+            "reveal_english": "I am a student.",
             "metadata": {
-              "expected": "ngo5 hai6 hok6 saang1",
+              "expected_order": [
+                "audio-word-1",
+                "audio-word-2",
+                "audio-word-3"
+              ],
               "objective_id": "v2-grammar-01-objective"
             }
           }
@@ -8674,15 +10962,24 @@
             "options": [
               {
                 "id": "character-correct",
-                "label": "我唔係老師"
+                "label": "我唔係老師",
+                "audio": {
+                  "text": "我唔係老師"
+                }
               },
               {
                 "id": "character-distractor-1",
-                "label": "山"
+                "label": "山",
+                "audio": {
+                  "text": "山"
+                }
               },
               {
                 "id": "character-distractor-2",
-                "label": "火"
+                "label": "火",
+                "audio": {
+                  "text": "火"
+                }
               }
             ],
             "correct_option_id": "character-correct",
@@ -8720,10 +11017,36 @@
             "id": "v2-grammar-02-ex-06",
             "type": "cloze",
             "skill": "writing",
-            "prompt": "Complete in Traditional Chinese: 我＿＿係老師。",
+            "prompt": "Complete the sentence: 我＿＿係老師。",
+            "options": [
+              {
+                "id": "cloze-correct",
+                "label": "唔",
+                "audio": {
+                  "text": "唔"
+                }
+              },
+              {
+                "id": "cloze-distractor-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "cloze-distractor-2",
+                "label": "水",
+                "audio": {
+                  "text": "水"
+                }
+              }
+            ],
+            "correct_option_id": "cloze-correct",
             "reveal_jyutping": "ngo5 m4 hai6 lou5 si1",
+            "reveal_english": "I am not a teacher.",
             "metadata": {
               "expected": "唔",
+              "allow_manual_input": true,
               "objective_id": "v2-grammar-02-objective"
             }
           },
@@ -8735,15 +11058,24 @@
             "options": [
               {
                 "id": "word-1",
-                "label": "我"
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
               },
               {
                 "id": "word-2",
-                "label": "唔係"
+                "label": "唔係",
+                "audio": {
+                  "text": "唔係"
+                }
               },
               {
                 "id": "word-3",
-                "label": "老師"
+                "label": "老師",
+                "audio": {
+                  "text": "老師"
+                }
               }
             ],
             "metadata": {
@@ -8757,16 +11089,44 @@
           },
           {
             "id": "v2-grammar-02-ex-08",
-            "type": "dictation",
+            "type": "order_words",
             "skill": "writing",
-            "prompt": "Type the Jyutping for the sentence you hear.",
+            "prompt": "Listen and build the sentence.",
             "audio": {
               "text": "我唔係老師。"
             },
+            "options": [
+              {
+                "id": "audio-word-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "audio-word-2",
+                "label": "唔係",
+                "audio": {
+                  "text": "唔係"
+                }
+              },
+              {
+                "id": "audio-word-3",
+                "label": "老師",
+                "audio": {
+                  "text": "老師"
+                }
+              }
+            ],
             "reveal_jyutping": "ngo5 m4 hai6 lou5 si1",
             "reveal_character": "我唔係老師。",
+            "reveal_english": "I am not a teacher.",
             "metadata": {
-              "expected": "ngo5 m4 hai6 lou5 si1",
+              "expected_order": [
+                "audio-word-1",
+                "audio-word-2",
+                "audio-word-3"
+              ],
               "objective_id": "v2-grammar-02-objective"
             }
           }
@@ -8912,15 +11272,24 @@
             "options": [
               {
                 "id": "character-correct",
-                "label": "我有一本書"
+                "label": "我有一本書",
+                "audio": {
+                  "text": "我有一本書"
+                }
               },
               {
                 "id": "character-distractor-1",
-                "label": "山"
+                "label": "山",
+                "audio": {
+                  "text": "山"
+                }
               },
               {
                 "id": "character-distractor-2",
-                "label": "火"
+                "label": "火",
+                "audio": {
+                  "text": "火"
+                }
               }
             ],
             "correct_option_id": "character-correct",
@@ -8958,10 +11327,36 @@
             "id": "v2-grammar-03-ex-06",
             "type": "cloze",
             "skill": "writing",
-            "prompt": "Complete in Traditional Chinese: 我＿＿一本書。",
+            "prompt": "Complete the sentence: 我＿＿一本書。",
+            "options": [
+              {
+                "id": "cloze-correct",
+                "label": "有",
+                "audio": {
+                  "text": "有"
+                }
+              },
+              {
+                "id": "cloze-distractor-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "cloze-distractor-2",
+                "label": "水",
+                "audio": {
+                  "text": "水"
+                }
+              }
+            ],
+            "correct_option_id": "cloze-correct",
             "reveal_jyutping": "ngo5 jau5 jat1 bun2 syu1",
+            "reveal_english": "I have a book.",
             "metadata": {
               "expected": "有",
+              "allow_manual_input": true,
               "objective_id": "v2-grammar-03-objective"
             }
           },
@@ -8973,15 +11368,24 @@
             "options": [
               {
                 "id": "word-1",
-                "label": "我"
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
               },
               {
                 "id": "word-2",
-                "label": "有"
+                "label": "有",
+                "audio": {
+                  "text": "有"
+                }
               },
               {
                 "id": "word-3",
-                "label": "一本書"
+                "label": "一本書",
+                "audio": {
+                  "text": "一本書"
+                }
               }
             ],
             "metadata": {
@@ -8995,16 +11399,44 @@
           },
           {
             "id": "v2-grammar-03-ex-08",
-            "type": "dictation",
+            "type": "order_words",
             "skill": "writing",
-            "prompt": "Type the Jyutping for the sentence you hear.",
+            "prompt": "Listen and build the sentence.",
             "audio": {
               "text": "我有一本書。"
             },
+            "options": [
+              {
+                "id": "audio-word-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "audio-word-2",
+                "label": "有",
+                "audio": {
+                  "text": "有"
+                }
+              },
+              {
+                "id": "audio-word-3",
+                "label": "一本書",
+                "audio": {
+                  "text": "一本書"
+                }
+              }
+            ],
             "reveal_jyutping": "ngo5 jau5 jat1 bun2 syu1",
             "reveal_character": "我有一本書。",
+            "reveal_english": "I have a book.",
             "metadata": {
-              "expected": "ngo5 jau5 jat1 bun2 syu1",
+              "expected_order": [
+                "audio-word-1",
+                "audio-word-2",
+                "audio-word-3"
+              ],
               "objective_id": "v2-grammar-03-objective"
             }
           }
@@ -9147,15 +11579,24 @@
             "options": [
               {
                 "id": "character-correct",
-                "label": "我冇時間"
+                "label": "我冇時間",
+                "audio": {
+                  "text": "我冇時間"
+                }
               },
               {
                 "id": "character-distractor-1",
-                "label": "山"
+                "label": "山",
+                "audio": {
+                  "text": "山"
+                }
               },
               {
                 "id": "character-distractor-2",
-                "label": "火"
+                "label": "火",
+                "audio": {
+                  "text": "火"
+                }
               }
             ],
             "correct_option_id": "character-correct",
@@ -9193,10 +11634,36 @@
             "id": "v2-grammar-04-ex-06",
             "type": "cloze",
             "skill": "writing",
-            "prompt": "Complete in Traditional Chinese: 我＿＿時間。",
+            "prompt": "Complete the sentence: 我＿＿時間。",
+            "options": [
+              {
+                "id": "cloze-correct",
+                "label": "冇",
+                "audio": {
+                  "text": "冇"
+                }
+              },
+              {
+                "id": "cloze-distractor-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "cloze-distractor-2",
+                "label": "水",
+                "audio": {
+                  "text": "水"
+                }
+              }
+            ],
+            "correct_option_id": "cloze-correct",
             "reveal_jyutping": "ngo5 mou5 si4 gaan3",
+            "reveal_english": "I do not have time.",
             "metadata": {
               "expected": "冇",
+              "allow_manual_input": true,
               "objective_id": "v2-grammar-04-objective"
             }
           },
@@ -9208,15 +11675,24 @@
             "options": [
               {
                 "id": "word-1",
-                "label": "我"
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
               },
               {
                 "id": "word-2",
-                "label": "冇"
+                "label": "冇",
+                "audio": {
+                  "text": "冇"
+                }
               },
               {
                 "id": "word-3",
-                "label": "時間"
+                "label": "時間",
+                "audio": {
+                  "text": "時間"
+                }
               }
             ],
             "metadata": {
@@ -9230,16 +11706,44 @@
           },
           {
             "id": "v2-grammar-04-ex-08",
-            "type": "dictation",
+            "type": "order_words",
             "skill": "writing",
-            "prompt": "Type the Jyutping for the sentence you hear.",
+            "prompt": "Listen and build the sentence.",
             "audio": {
               "text": "我冇時間。"
             },
+            "options": [
+              {
+                "id": "audio-word-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "audio-word-2",
+                "label": "冇",
+                "audio": {
+                  "text": "冇"
+                }
+              },
+              {
+                "id": "audio-word-3",
+                "label": "時間",
+                "audio": {
+                  "text": "時間"
+                }
+              }
+            ],
             "reveal_jyutping": "ngo5 mou5 si4 gaan3",
             "reveal_character": "我冇時間。",
+            "reveal_english": "I do not have time.",
             "metadata": {
-              "expected": "ngo5 mou5 si4 gaan3",
+              "expected_order": [
+                "audio-word-1",
+                "audio-word-2",
+                "audio-word-3"
+              ],
               "objective_id": "v2-grammar-04-objective"
             }
           }
@@ -9385,15 +11889,24 @@
             "options": [
               {
                 "id": "character-correct",
-                "label": "你去邊度呀"
+                "label": "你去邊度呀",
+                "audio": {
+                  "text": "你去邊度呀"
+                }
               },
               {
                 "id": "character-distractor-1",
-                "label": "山"
+                "label": "山",
+                "audio": {
+                  "text": "山"
+                }
               },
               {
                 "id": "character-distractor-2",
-                "label": "火"
+                "label": "火",
+                "audio": {
+                  "text": "火"
+                }
               }
             ],
             "correct_option_id": "character-correct",
@@ -9431,10 +11944,36 @@
             "id": "v2-grammar-05-ex-06",
             "type": "cloze",
             "skill": "writing",
-            "prompt": "Complete in Traditional Chinese: 你去＿＿呀？",
+            "prompt": "Complete the sentence: 你去＿＿呀？",
+            "options": [
+              {
+                "id": "cloze-correct",
+                "label": "邊度",
+                "audio": {
+                  "text": "邊度"
+                }
+              },
+              {
+                "id": "cloze-distractor-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "cloze-distractor-2",
+                "label": "水",
+                "audio": {
+                  "text": "水"
+                }
+              }
+            ],
+            "correct_option_id": "cloze-correct",
             "reveal_jyutping": "nei5 heoi3 bin1 dou6 aa3",
+            "reveal_english": "Where are you going?",
             "metadata": {
               "expected": "邊度",
+              "allow_manual_input": true,
               "objective_id": "v2-grammar-05-objective"
             }
           },
@@ -9446,15 +11985,24 @@
             "options": [
               {
                 "id": "word-1",
-                "label": "你"
+                "label": "你",
+                "audio": {
+                  "text": "你"
+                }
               },
               {
                 "id": "word-2",
-                "label": "去"
+                "label": "去",
+                "audio": {
+                  "text": "去"
+                }
               },
               {
                 "id": "word-3",
-                "label": "邊度呀"
+                "label": "邊度呀",
+                "audio": {
+                  "text": "邊度呀"
+                }
               }
             ],
             "metadata": {
@@ -9468,16 +12016,44 @@
           },
           {
             "id": "v2-grammar-05-ex-08",
-            "type": "dictation",
+            "type": "order_words",
             "skill": "writing",
-            "prompt": "Type the Jyutping for the sentence you hear.",
+            "prompt": "Listen and build the sentence.",
             "audio": {
               "text": "你去邊度呀？"
             },
+            "options": [
+              {
+                "id": "audio-word-1",
+                "label": "你",
+                "audio": {
+                  "text": "你"
+                }
+              },
+              {
+                "id": "audio-word-2",
+                "label": "去",
+                "audio": {
+                  "text": "去"
+                }
+              },
+              {
+                "id": "audio-word-3",
+                "label": "邊度呀",
+                "audio": {
+                  "text": "邊度呀"
+                }
+              }
+            ],
             "reveal_jyutping": "nei5 heoi3 bin1 dou6 aa3",
             "reveal_character": "你去邊度呀？",
+            "reveal_english": "Where are you going?",
             "metadata": {
-              "expected": "nei5 heoi3 bin1 dou6 aa3",
+              "expected_order": [
+                "audio-word-1",
+                "audio-word-2",
+                "audio-word-3"
+              ],
               "objective_id": "v2-grammar-05-objective"
             }
           }
@@ -9620,15 +12196,24 @@
             "options": [
               {
                 "id": "character-correct",
-                "label": "我想飲茶"
+                "label": "我想飲茶",
+                "audio": {
+                  "text": "我想飲茶"
+                }
               },
               {
                 "id": "character-distractor-1",
-                "label": "山"
+                "label": "山",
+                "audio": {
+                  "text": "山"
+                }
               },
               {
                 "id": "character-distractor-2",
-                "label": "火"
+                "label": "火",
+                "audio": {
+                  "text": "火"
+                }
               }
             ],
             "correct_option_id": "character-correct",
@@ -9666,10 +12251,36 @@
             "id": "v2-grammar-06-ex-06",
             "type": "cloze",
             "skill": "writing",
-            "prompt": "Complete in Traditional Chinese: 我＿＿飲茶。",
+            "prompt": "Complete the sentence: 我＿＿飲茶。",
+            "options": [
+              {
+                "id": "cloze-correct",
+                "label": "想",
+                "audio": {
+                  "text": "想"
+                }
+              },
+              {
+                "id": "cloze-distractor-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "cloze-distractor-2",
+                "label": "水",
+                "audio": {
+                  "text": "水"
+                }
+              }
+            ],
+            "correct_option_id": "cloze-correct",
             "reveal_jyutping": "ngo5 soeng2 jam2 caa4",
+            "reveal_english": "I want to drink tea.",
             "metadata": {
               "expected": "想",
+              "allow_manual_input": true,
               "objective_id": "v2-grammar-06-objective"
             }
           },
@@ -9681,15 +12292,24 @@
             "options": [
               {
                 "id": "word-1",
-                "label": "我"
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
               },
               {
                 "id": "word-2",
-                "label": "想"
+                "label": "想",
+                "audio": {
+                  "text": "想"
+                }
               },
               {
                 "id": "word-3",
-                "label": "飲茶"
+                "label": "飲茶",
+                "audio": {
+                  "text": "飲茶"
+                }
               }
             ],
             "metadata": {
@@ -9703,16 +12323,44 @@
           },
           {
             "id": "v2-grammar-06-ex-08",
-            "type": "dictation",
+            "type": "order_words",
             "skill": "writing",
-            "prompt": "Type the Jyutping for the sentence you hear.",
+            "prompt": "Listen and build the sentence.",
             "audio": {
               "text": "我想飲茶。"
             },
+            "options": [
+              {
+                "id": "audio-word-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "audio-word-2",
+                "label": "想",
+                "audio": {
+                  "text": "想"
+                }
+              },
+              {
+                "id": "audio-word-3",
+                "label": "飲茶",
+                "audio": {
+                  "text": "飲茶"
+                }
+              }
+            ],
             "reveal_jyutping": "ngo5 soeng2 jam2 caa4",
             "reveal_character": "我想飲茶。",
+            "reveal_english": "I want to drink tea.",
             "metadata": {
-              "expected": "ngo5 soeng2 jam2 caa4",
+              "expected_order": [
+                "audio-word-1",
+                "audio-word-2",
+                "audio-word-3"
+              ],
               "objective_id": "v2-grammar-06-objective"
             }
           }
@@ -9861,15 +12509,24 @@
             "options": [
               {
                 "id": "character-correct",
-                "label": "唔該畀杯水我"
+                "label": "唔該畀杯水我",
+                "audio": {
+                  "text": "唔該畀杯水我"
+                }
               },
               {
                 "id": "character-distractor-1",
-                "label": "山"
+                "label": "山",
+                "audio": {
+                  "text": "山"
+                }
               },
               {
                 "id": "character-distractor-2",
-                "label": "火"
+                "label": "火",
+                "audio": {
+                  "text": "火"
+                }
               }
             ],
             "correct_option_id": "character-correct",
@@ -9907,10 +12564,36 @@
             "id": "v2-grammar-07-ex-06",
             "type": "cloze",
             "skill": "writing",
-            "prompt": "Complete in Traditional Chinese: 唔該＿＿杯水我。",
+            "prompt": "Complete the sentence: 唔該＿＿杯水我。",
+            "options": [
+              {
+                "id": "cloze-correct",
+                "label": "畀",
+                "audio": {
+                  "text": "畀"
+                }
+              },
+              {
+                "id": "cloze-distractor-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "cloze-distractor-2",
+                "label": "水",
+                "audio": {
+                  "text": "水"
+                }
+              }
+            ],
+            "correct_option_id": "cloze-correct",
             "reveal_jyutping": "m4 goi1 bei2 bui1 seoi2 ngo5",
+            "reveal_english": "Please give me a glass of water.",
             "metadata": {
               "expected": "畀",
+              "allow_manual_input": true,
               "objective_id": "v2-grammar-07-objective"
             }
           },
@@ -9922,15 +12605,24 @@
             "options": [
               {
                 "id": "word-1",
-                "label": "唔該"
+                "label": "唔該",
+                "audio": {
+                  "text": "唔該"
+                }
               },
               {
                 "id": "word-2",
-                "label": "畀杯水"
+                "label": "畀杯水",
+                "audio": {
+                  "text": "畀杯水"
+                }
               },
               {
                 "id": "word-3",
-                "label": "我"
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
               }
             ],
             "metadata": {
@@ -9944,16 +12636,44 @@
           },
           {
             "id": "v2-grammar-07-ex-08",
-            "type": "dictation",
+            "type": "order_words",
             "skill": "writing",
-            "prompt": "Type the Jyutping for the sentence you hear.",
+            "prompt": "Listen and build the sentence.",
             "audio": {
               "text": "唔該畀杯水我。"
             },
+            "options": [
+              {
+                "id": "audio-word-1",
+                "label": "唔該",
+                "audio": {
+                  "text": "唔該"
+                }
+              },
+              {
+                "id": "audio-word-2",
+                "label": "畀杯水",
+                "audio": {
+                  "text": "畀杯水"
+                }
+              },
+              {
+                "id": "audio-word-3",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              }
+            ],
             "reveal_jyutping": "m4 goi1 bei2 bui1 seoi2 ngo5",
             "reveal_character": "唔該畀杯水我。",
+            "reveal_english": "Please give me a glass of water.",
             "metadata": {
-              "expected": "m4 goi1 bei2 bui1 seoi2 ngo5",
+              "expected_order": [
+                "audio-word-1",
+                "audio-word-2",
+                "audio-word-3"
+              ],
               "objective_id": "v2-grammar-07-objective"
             }
           }
@@ -10096,15 +12816,24 @@
             "options": [
               {
                 "id": "character-correct",
-                "label": "我食咗飯"
+                "label": "我食咗飯",
+                "audio": {
+                  "text": "我食咗飯"
+                }
               },
               {
                 "id": "character-distractor-1",
-                "label": "山"
+                "label": "山",
+                "audio": {
+                  "text": "山"
+                }
               },
               {
                 "id": "character-distractor-2",
-                "label": "火"
+                "label": "火",
+                "audio": {
+                  "text": "火"
+                }
               }
             ],
             "correct_option_id": "character-correct",
@@ -10142,10 +12871,36 @@
             "id": "v2-grammar-08-ex-06",
             "type": "cloze",
             "skill": "writing",
-            "prompt": "Complete in Traditional Chinese: 我食＿＿飯。",
+            "prompt": "Complete the sentence: 我食＿＿飯。",
+            "options": [
+              {
+                "id": "cloze-correct",
+                "label": "咗",
+                "audio": {
+                  "text": "咗"
+                }
+              },
+              {
+                "id": "cloze-distractor-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "cloze-distractor-2",
+                "label": "水",
+                "audio": {
+                  "text": "水"
+                }
+              }
+            ],
+            "correct_option_id": "cloze-correct",
             "reveal_jyutping": "ngo5 sik6 zo2 faan6",
+            "reveal_english": "I have eaten.",
             "metadata": {
               "expected": "咗",
+              "allow_manual_input": true,
               "objective_id": "v2-grammar-08-objective"
             }
           },
@@ -10157,15 +12912,24 @@
             "options": [
               {
                 "id": "word-1",
-                "label": "我"
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
               },
               {
                 "id": "word-2",
-                "label": "食咗"
+                "label": "食咗",
+                "audio": {
+                  "text": "食咗"
+                }
               },
               {
                 "id": "word-3",
-                "label": "飯"
+                "label": "飯",
+                "audio": {
+                  "text": "飯"
+                }
               }
             ],
             "metadata": {
@@ -10179,16 +12943,44 @@
           },
           {
             "id": "v2-grammar-08-ex-08",
-            "type": "dictation",
+            "type": "order_words",
             "skill": "writing",
-            "prompt": "Type the Jyutping for the sentence you hear.",
+            "prompt": "Listen and build the sentence.",
             "audio": {
               "text": "我食咗飯。"
             },
+            "options": [
+              {
+                "id": "audio-word-1",
+                "label": "我",
+                "audio": {
+                  "text": "我"
+                }
+              },
+              {
+                "id": "audio-word-2",
+                "label": "食咗",
+                "audio": {
+                  "text": "食咗"
+                }
+              },
+              {
+                "id": "audio-word-3",
+                "label": "飯",
+                "audio": {
+                  "text": "飯"
+                }
+              }
+            ],
             "reveal_jyutping": "ngo5 sik6 zo2 faan6",
             "reveal_character": "我食咗飯。",
+            "reveal_english": "I have eaten.",
             "metadata": {
-              "expected": "ngo5 sik6 zo2 faan6",
+              "expected_order": [
+                "audio-word-1",
+                "audio-word-2",
+                "audio-word-3"
+              ],
               "objective_id": "v2-grammar-08-objective"
             }
           }

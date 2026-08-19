@@ -65,10 +65,21 @@ def test_v2_exact_curriculum_counts():
         "select_tone": 12,
         "match": 28,
         "cloze": 40,
-        "order_words": 40,
-        "dictation": 40,
+        "order_words": 80,
         "word_intro": 1,
     }
+
+
+def test_v2_beginner_writing_uses_choices_and_sentence_building():
+    doc = generate_document()
+    steps = [step for lesson in doc["lessons"] for step in lesson["content"]["steps"]]
+
+    assert not any(step["type"] == "dictation" for step in steps)
+    for step in (step for step in steps if step["type"] == "cloze"):
+        assert step["reveal_english"]
+        assert step["correct_option_id"] == "cloze-correct"
+        assert step["metadata"]["allow_manual_input"] is True
+        assert len(step["options"]) >= 3
 
 
 def test_v2_validation_rejects_count_and_duplicate_id_errors():

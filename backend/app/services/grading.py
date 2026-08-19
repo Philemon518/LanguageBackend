@@ -24,6 +24,11 @@ def grade_exercise(step: ExerciseStep, response: dict) -> tuple[bool, float, str
         return correct, 1.0 if correct else 0.3, None if correct else "Check word order."
 
     if ex_type == "cloze":
+        selected = response.get("selected_option_id")
+        if selected is not None:
+            correct = selected == step.correct_option_id
+            return correct, 1.0 if correct else 0.0, None if correct else step.hint
+
         answer = (response.get("answer") or "").strip()
         expected = (step.metadata.get("expected") or "").strip()
         correct = answer == expected

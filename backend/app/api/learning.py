@@ -8,7 +8,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from ..core.auth import AuthUser, get_current_user
 from ..core.database import get_db
-from ..models.orm import LessonProgress, UserProfile
+from ..models.orm import ExerciseAttempt, LessonProgress, UserProfile
 from ..models.schemas import (
     AttemptRequest,
     AttemptResponse,
@@ -68,6 +68,7 @@ async def submit_attempt(
         feedback,
         body.idempotency_key,
     )
+    await db.flush()
 
     # Update lesson progress
     prog_result = await db.execute(
@@ -77,20 +78,36 @@ async def submit_attempt(
         )
     )
     prog = prog_result.scalar_one_or_none()
-    step_index = next((i for i, s in enumerate(lesson.steps) if s.id == body.exercise_id), 0)
+    correct_result = await db.execute(
+        select(ExerciseAttempt.exercise_id)
+        .where(
+            ExerciseAttempt.user_id == user.id,
+            ExerciseAttempt.lesson_id == body.lesson_id,
+            ExerciseAttempt.correct.is_(True),
+        )
+        .distinct()
+    )
+    correct_exercise_ids = set(correct_result.scalars().all())
+    first_incomplete = next(
+        (
+            index
+            for index, lesson_step in enumerate(lesson.steps)
+            if lesson_step.id not in correct_exercise_ids
+        ),
+        len(lesson.steps),
+    )
     if prog is None:
         prog = LessonProgress(
             user_id=user.id,
             lesson_id=body.lesson_id,
-            current_step=step_index + 1,
+            current_step=first_incomplete,
             state_json={"last_exercise": body.exercise_id},
         )
         db.add(prog)
     else:
-        prog.current_step = max(prog.current_step, step_index + 1)
+        prog.current_step = first_incomplete
         prog.state_json = {**prog.state_json, "last_exercise": body.exercise_id}
-    if prog.current_step >= len(lesson.steps):
-        prog.completed = True
+    prog.completed = first_incomplete >= len(lesson.steps)
 
     profile_result = await db.execute(select(UserProfile).where(UserProfile.id == user.id))
     profile = profile_result.scalar_one()

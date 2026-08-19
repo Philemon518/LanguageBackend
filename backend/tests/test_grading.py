@@ -47,6 +47,23 @@ def test_order_words():
     assert correct and score == 1.0
 
 
+def test_cloze_accepts_word_choice_or_optional_manual_typing():
+    step = ExerciseStep(
+        id="c1",
+        type="cloze",
+        skill="writing",
+        prompt="Complete",
+        correct_option_id="answer",
+        metadata={"expected": "水", "allow_manual_input": True},
+    )
+
+    selected, _, _ = grade_exercise(step, {"selected_option_id": "answer"})
+    typed, _, _ = grade_exercise(step, {"answer": "水"})
+
+    assert selected
+    assert typed
+
+
 def test_writing_feedback():
     ok, score, _msg = grade_writing("我食蘋果。", ["我食蘋果"], ["我", "食", "蘋果"])
     assert ok and score >= 0.5

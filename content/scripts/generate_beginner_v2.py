@@ -110,6 +110,19 @@ def make_steps(lesson_id: str, spec: LessonSpec, lesson_type: str) -> list[dict]
     prefix = f"{lesson_id}-ex"
     cloze_answer = spec.cloze_answer or spec.traditional
     cloze_text = spec.sentence.replace(cloze_answer, "＿＿", 1)
+    cloze_distractors = [
+        value
+        for value in ("我", "水", "好", "去", "食")
+        if value != cloze_answer
+    ][:2]
+    sentence_word_options = [
+        {
+            "id": f"word-{index}",
+            "label": token,
+            "audio": {"text": token},
+        }
+        for index, token in enumerate(spec.tokens, start=1)
+    ]
     steps = [
         {
             "id": f"{prefix}-01",
@@ -172,9 +185,21 @@ def make_steps(lesson_id: str, spec: LessonSpec, lesson_type: str) -> list[dict]
             "skill": "reading",
             "prompt": f"Choose the Traditional Chinese for {spec.jyutping}.",
             "options": [
-                {"id": "character-correct", "label": spec.traditional},
-                {"id": "character-distractor-1", "label": "山"},
-                {"id": "character-distractor-2", "label": "火"},
+                {
+                    "id": "character-correct",
+                    "label": spec.traditional,
+                    "audio": {"text": spec.traditional},
+                },
+                {
+                    "id": "character-distractor-1",
+                    "label": "山",
+                    "audio": {"text": "山"},
+                },
+                {
+                    "id": "character-distractor-2",
+                    "label": "火",
+                    "audio": {"text": "火"},
+                },
             ],
             "correct_option_id": "character-correct",
             "reveal_jyutping": spec.jyutping,
@@ -221,19 +246,39 @@ def make_steps(lesson_id: str, spec: LessonSpec, lesson_type: str) -> list[dict]
                 "id": f"{prefix}-06",
                 "type": "cloze",
                 "skill": "writing",
-                "prompt": f"Complete in Traditional Chinese: {cloze_text}",
+                "prompt": f"Complete the sentence: {cloze_text}",
+                "options": [
+                    {
+                        "id": "cloze-correct",
+                        "label": cloze_answer,
+                        "audio": {"text": cloze_answer},
+                    },
+                    *[
+                        {
+                            "id": f"cloze-distractor-{index}",
+                            "label": distractor,
+                            "audio": {"text": distractor},
+                        }
+                        for index, distractor in enumerate(
+                            cloze_distractors, start=1
+                        )
+                    ],
+                ],
+                "correct_option_id": "cloze-correct",
                 "reveal_jyutping": spec.sentence_jyutping,
-                "metadata": {"expected": cloze_answer, "objective_id": objective},
+                "reveal_english": spec.sentence_english,
+                "metadata": {
+                    "expected": cloze_answer,
+                    "allow_manual_input": True,
+                    "objective_id": objective,
+                },
             },
             {
                 "id": f"{prefix}-07",
                 "type": "order_words",
                 "skill": "writing",
                 "prompt": f"Build: {spec.sentence_english}",
-                "options": [
-                    {"id": f"word-{index}", "label": token}
-                    for index, token in enumerate(spec.tokens, start=1)
-                ],
+                "options": sentence_word_options,
                 "metadata": {
                     "expected_order": [
                         f"word-{index}" for index in range(1, len(spec.tokens) + 1)
@@ -243,13 +288,28 @@ def make_steps(lesson_id: str, spec: LessonSpec, lesson_type: str) -> list[dict]
             },
             {
                 "id": f"{prefix}-08",
-                "type": "dictation",
+                "type": "order_words",
                 "skill": "writing",
-                "prompt": "Type the Jyutping for the sentence you hear.",
+                "prompt": "Listen and build the sentence.",
                 "audio": {"text": spec.sentence},
+                "options": [
+                    {
+                        "id": f"audio-word-{index}",
+                        "label": token,
+                        "audio": {"text": token},
+                    }
+                    for index, token in enumerate(spec.tokens, start=1)
+                ],
                 "reveal_jyutping": spec.sentence_jyutping,
                 "reveal_character": spec.sentence,
-                "metadata": {"expected": spec.sentence_jyutping, "objective_id": objective},
+                "reveal_english": spec.sentence_english,
+                "metadata": {
+                    "expected_order": [
+                        f"audio-word-{index}"
+                        for index in range(1, len(spec.tokens) + 1)
+                    ],
+                    "objective_id": objective,
+                },
             },
         ]
     )
