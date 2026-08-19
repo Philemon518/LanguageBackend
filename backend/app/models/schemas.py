@@ -132,6 +132,30 @@ class SkillSummaryResponse(BaseModel):
     skills: list[SkillProgress]
 
 
+class LibraryWord(BaseModel):
+    lexeme_id: str
+    traditional: str
+    jyutping: str
+    tone: int
+    english: str
+    word_type: str | None = None
+    components: str | None = None
+    phase: str
+    lesson_id: str
+    lesson_title: str
+    lesson_type: str
+    encountered_at: str | None = None
+    audio_url: str | None = None
+    context_traditional: str | None = None
+    context_jyutping: str | None = None
+    context_english: str | None = None
+
+
+class LibraryResponse(BaseModel):
+    words: list[LibraryWord]
+    total: int
+
+
 class PracticeNextResponse(BaseModel):
     lesson_id: str
     exercise_id: str

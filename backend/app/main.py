@@ -14,6 +14,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from .api.auth import router as auth_router
 from .api.curriculum import router as curriculum_router
 from .api.learning import router as learning_router
+from .api.library import router as library_router
 from .api.speech import router as speech_router
 from .core.config import get_settings
 from .core.database import Base, engine, get_db
@@ -54,6 +55,7 @@ app.add_middleware(
 app.include_router(auth_router)
 app.include_router(curriculum_router)
 app.include_router(learning_router)
+app.include_router(library_router)
 app.include_router(speech_router)
 app.mount(
     "/media",

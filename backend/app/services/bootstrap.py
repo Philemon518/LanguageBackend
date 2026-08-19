@@ -1,6 +1,9 @@
 """Bootstrap curriculum seed on empty database."""
 
+import logging
 from pathlib import Path
+
+logger = logging.getLogger("canto.bootstrap")
 
 
 async def bootstrap_if_empty() -> None:
@@ -14,6 +17,7 @@ async def bootstrap_if_empty() -> None:
         source.parents[3] / "content" / "seeds" / "beginner_v2.json",
     )
     if not seed_path.exists():
+        logger.warning("Curriculum seed not found at %s", seed_path)
         return
 
     # Inline import avoids making content generation part of the app package.
@@ -24,4 +28,8 @@ async def bootstrap_if_empty() -> None:
         sys.path.insert(0, str(root))
     from content.scripts.import_seed import import_seed
 
-    await import_seed(seed_path)
+    try:
+        await import_seed(seed_path)
+    except Exception:
+        logger.exception("Curriculum bootstrap failed")
+        raise
