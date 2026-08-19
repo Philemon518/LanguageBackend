@@ -5,7 +5,7 @@ from typing import Annotated
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from ..core.auth import AuthUser, get_current_user, get_optional_user
+from ..core.auth import AuthUser, get_optional_user
 from ..core.database import get_db
 from ..models.schemas import CurriculumManifest, LessonDocument, LessonSummary
 from ..services.curriculum import get_lesson, get_manifest, list_lessons, list_road

@@ -1,13 +1,12 @@
 """Mastery tracking and spaced review."""
 
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 from uuid import UUID
 
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from ..models.orm import CurriculumVersion, ExerciseAttempt, Lesson, ObjectiveMastery, Unit
-
 
 SKILL_WEIGHTS = {
     "listening": 1.0,
@@ -58,14 +57,14 @@ async def update_mastery(
         db.add(row)
     else:
         row.mastery = max(0.0, min(1.0, row.mastery + delta))
-    row.review_due_at = datetime.now(timezone.utc) + timedelta(
+    row.review_due_at = datetime.now(UTC) + timedelta(
         days=review_interval_days(row.mastery)
     )
     return {skill: row.mastery}
 
 
 async def get_review_queue(db: AsyncSession, user_id: UUID) -> list[str]:
-    now = datetime.now(timezone.utc)
+    now = datetime.now(UTC)
     result = await db.execute(
         select(ObjectiveMastery).where(
             ObjectiveMastery.user_id == user_id,

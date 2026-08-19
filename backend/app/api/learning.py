@@ -1,7 +1,6 @@
 """Attempts and progress endpoints."""
 
 from typing import Annotated
-from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy import select
@@ -165,7 +164,7 @@ async def writing_feedback(
     vocab: list[str],
     user: Annotated[AuthUser, Depends(get_current_user)],
 ):
-    acceptable, score, feedback = grade_writing(text, patterns, vocab)
+    acceptable, _score, feedback = grade_writing(text, patterns, vocab)
     matched_vocab = [v for v in vocab if v in text]
     matched_patterns = [p for p in patterns if p.replace(" ", "") in text.replace(" ", "")]
     return WritingFeedback(

@@ -5,9 +5,9 @@ import base64
 import hashlib
 import json
 import logging
-from typing import Any, Callable
+from collections.abc import Callable
+from typing import Any
 
-import httpx
 import websockets
 
 from ..core.config import get_settings
@@ -118,7 +118,7 @@ class QwenRealtimeGateway:
         await ws.send(json.dumps({"type": "response.create"}))
         try:
             await asyncio.wait_for(done.wait(), timeout=30)
-        except asyncio.TimeoutError:
+        except TimeoutError:
             logger.error("TTS generation timed out for: %s", text[:50])
         finally:
             await ws.close()
