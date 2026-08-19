@@ -8,16 +8,13 @@ logger = logging.getLogger("canto.bootstrap")
 
 async def bootstrap_if_empty() -> None:
     source = Path(__file__).resolve()
-    seed_path = next(
-        (
-            root / "content" / "seeds" / "beginner_v2.json"
-            for root in (source.parents[2], source.parents[3])
-            if (root / "content" / "seeds" / "beginner_v2.json").exists()
-        ),
-        source.parents[3] / "content" / "seeds" / "beginner_v2.json",
-    )
+    candidates = [
+        source.parents[2] / "content" / "seeds" / "beginner_v2.json",  # /app in Docker
+        source.parents[3] / "content" / "seeds" / "beginner_v2.json",  # monorepo checkout
+    ]
+    seed_path = next((path for path in candidates if path.exists()), candidates[0])
     if not seed_path.exists():
-        logger.warning("Curriculum seed not found at %s", seed_path)
+        logger.error("Curriculum seed not found. Checked: %s", ", ".join(str(p) for p in candidates))
         return
 
     # Inline import avoids making content generation part of the app package.
