@@ -1,8 +1,7 @@
 """FastAPI application entrypoint."""
 
-import asyncio
 import logging
-from contextlib import asynccontextmanager, suppress
+from contextlib import asynccontextmanager
 from pathlib import Path
 from typing import Annotated
 
@@ -29,14 +28,6 @@ logger = logging.getLogger("canto")
 settings = get_settings()
 
 
-async def _bootstrap_background() -> None:
-    try:
-        await bootstrap_if_empty()
-        logger.info("Background curriculum bootstrap finished")
-    except Exception:
-        logger.exception("Background curriculum bootstrap failed")
-
-
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     Path(settings.local_data_dir).mkdir(parents=True, exist_ok=True)
@@ -49,11 +40,10 @@ async def lifespan(app: FastAPI):
         await migrate_user_credentials(conn)
     logger.info("Database tables and credential columns ensured")
 
-    bootstrap_task = asyncio.create_task(_bootstrap_background())
+    await bootstrap_if_empty()
+    logger.info("Curriculum bootstrap finished")
+
     yield
-    bootstrap_task.cancel()
-    with suppress(asyncio.CancelledError):
-        await bootstrap_task
 
 
 app = FastAPI(title="Canto API", version="0.1.0", lifespan=lifespan)
