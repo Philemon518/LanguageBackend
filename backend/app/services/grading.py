@@ -3,6 +3,15 @@
 from ..models.schemas import ExerciseStep, WritingFeedback
 
 
+def _looks_like_english(text: str) -> bool:
+    stripped = text.strip()
+    if not stripped:
+        return False
+    cjk = sum(1 for ch in stripped if "\u4e00" <= ch <= "\u9fff")
+    ascii_letters = sum(1 for ch in stripped if ch.isascii() and ch.isalpha())
+    return ascii_letters > 0 and cjk == 0
+
+
 def grade_exercise(step: ExerciseStep, response: dict) -> tuple[bool, float, str | None]:
     ex_type = step.type
     if ex_type in (
@@ -51,6 +60,8 @@ def grade_exercise(step: ExerciseStep, response: dict) -> tuple[bool, float, str
         ).strip()
         if not transcript:
             return False, 0.0, "No speech detected. Try again."
+        if _looks_like_english(transcript):
+            return False, 0.0, "We heard English. Try again in Cantonese."
         if expected_text and (
             expected_text in transcript or transcript in expected_text
         ):

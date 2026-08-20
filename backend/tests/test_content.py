@@ -55,7 +55,7 @@ def test_v2_exact_curriculum_counts():
     assert Counter(step["skill"] for step in steps) == {
         "listening": 92,
         "speaking": 40,
-        "reading": 69,
+        "reading": 108,
         "writing": 120,
     }
     assert Counter(step["type"] for step in steps) == {
@@ -67,8 +67,17 @@ def test_v2_exact_curriculum_counts():
         "match": 28,
         "cloze": 40,
         "order_words": 80,
-        "word_intro": 1,
+        "word_intro": 40,
     }
+
+
+def test_v2_every_lesson_begins_with_word_intro():
+    doc = generate_document()
+    for lesson in doc["lessons"]:
+        steps = lesson["content"]["steps"]
+        assert len(steps) == 9
+        assert steps[0]["type"] == "word_intro"
+        assert steps[0]["id"].endswith("-ex-00")
 
 
 def test_v2_beginner_writing_uses_choices_and_sentence_building():

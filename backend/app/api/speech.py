@@ -30,7 +30,7 @@ from ..models.schemas import (
     SpeechDrillCreate,
     SpeechDrillSession,
 )
-from ..services.qwen import QwenRealtimeGateway, transcribe_cantonese
+from ..services.qwen import QwenRealtimeGateway, pcm16_to_wav, transcribe_cantonese_asr
 
 logger = logging.getLogger("canto.speech")
 router = APIRouter(prefix="/speech", tags=["speech"])
@@ -113,7 +113,8 @@ async def assess_drill(
     audio_bytes = await audio.read()
     if not audio_bytes:
         raise HTTPException(400, "No audio received")
-    transcript = await transcribe_cantonese(audio_bytes)
+    wav_bytes = pcm16_to_wav(audio_bytes)
+    transcript = await transcribe_cantonese_asr(wav_bytes, expected_text=expected_text)
     return {
         "transcript": transcript or "",
         "expected_text": expected_text,

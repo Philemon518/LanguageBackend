@@ -69,6 +69,20 @@ def test_writing_feedback():
     assert ok and score >= 0.5
 
 
+def test_speaking_rejects_english_transcript():
+    step = ExerciseStep(
+        id="speak-1",
+        type="speak",
+        skill="speaking",
+        prompt="Say water",
+        metadata={"expected": "seoi2", "expected_text": "水"},
+    )
+    correct, score, feedback = grade_exercise(step, {"transcript": "water"})
+    assert not correct
+    assert score == 0.0
+    assert feedback == "We heard English. Try again in Cantonese."
+
+
 def test_speaking_accepts_matching_cantonese_transcript():
     step = ExerciseStep(
         id="speak-1",

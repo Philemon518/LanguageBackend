@@ -24,7 +24,7 @@ SUPPORTED_TYPES = CHOICE_TYPES | {
 }
 SIMPLIFIED_ONLY = set("这们个为么说从东丝乐习买车过边师学语时间见饭饮书")
 V2_LESSON_TYPES = {"sound": 12, "component": 8, "vocabulary": 12, "grammar": 8}
-V2_SKILLS = {"listening": 92, "speaking": 40, "reading": 69, "writing": 120}
+V2_SKILLS = {"listening": 92, "speaking": 40, "reading": 108, "writing": 120}
 V2_EXERCISE_TYPES = {
     "select_meaning": 40,
     "select_jyutping": 40,
@@ -34,7 +34,7 @@ V2_EXERCISE_TYPES = {
     "match": 28,
     "cloze": 40,
     "order_words": 80,
-    "word_intro": 1,
+    "word_intro": 40,
 }
 
 

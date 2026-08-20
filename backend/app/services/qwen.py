@@ -3,11 +3,13 @@
 import asyncio
 import base64
 import hashlib
+import io
 import json
 import logging
 import tempfile
 import threading
 import uuid
+import wave
 from collections.abc import Callable
 from typing import Any
 
@@ -23,6 +25,17 @@ AUDIO_GENERATION_VERSION = "hk-cantonese-strict-v3"
 def audio_content_hash(text: str, voice: str, model: str) -> str:
     payload = f"{text}|{voice}|{model}|pcm16|{AUDIO_GENERATION_VERSION}"
     return hashlib.sha256(payload.encode()).hexdigest()
+
+
+def pcm16_to_wav(pcm_bytes: bytes, sample_rate: int = 16000) -> bytes:
+    """Wrap raw PCM16 mono audio in a WAV container for Cantonese ASR."""
+    buf = io.BytesIO()
+    with wave.open(buf, "wb") as wf:
+        wf.setnchannels(1)
+        wf.setsampwidth(2)
+        wf.setframerate(sample_rate)
+        wf.writeframes(pcm_bytes)
+    return buf.getvalue()
 
 
 class QwenRealtimeGateway:
@@ -68,6 +81,10 @@ class QwenRealtimeGateway:
                 "output_audio_format": "pcm16",
                 "instructions": instructions,
                 "turn_detection": {"type": "semantic_vad"},
+                "input_audio_transcription": {
+                    "model": "qwen3-asr-flash",
+                    "language": "yue",
+                },
             },
         }
         await ws.send(json.dumps(session_update))

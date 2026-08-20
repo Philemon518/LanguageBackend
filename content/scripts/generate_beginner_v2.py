@@ -91,6 +91,15 @@ UNITS = (
     ("v2-unit-grammar", "Building Useful Sentences", "grammar", 8),
 )
 
+TONE_LABELS = {
+    1: "Tone 1 · high level",
+    2: "Tone 2 · rising",
+    3: "Tone 3 · mid level",
+    4: "Tone 4 · low falling",
+    5: "Tone 5 · low rising",
+    6: "Tone 6 · low level",
+}
+
 
 def tones(jyutping: str) -> list[int]:
     return [int(syllable[-1]) for syllable in jyutping.split()]
@@ -102,7 +111,84 @@ def changed_final_tone(jyutping: str, tone: int) -> str:
     return " ".join(syllables)
 
 
-def make_steps(lesson_id: str, spec: LessonSpec, lesson_type: str) -> list[dict]:
+def pronunciation_without_tones(jyutping: str) -> str:
+    return " ".join(syllable[:-1] for syllable in jyutping.split())
+
+
+def format_components(component_data: tuple[tuple[str, str], ...]) -> str:
+    return " · ".join(f"{glyph} ({role})" for glyph, role in component_data)
+
+
+def intro_prompt(lesson_type: str, sort_order: int) -> str:
+    if lesson_type == "sound":
+        return (
+            "Meet your first Cantonese word"
+            if sort_order == 1
+            else "Meet this Cantonese word"
+        )
+    prompts = {
+        "component": "Meet this character and its parts",
+        "vocabulary": "Meet this phrase",
+        "grammar": "Meet this sentence pattern",
+    }
+    return prompts[lesson_type]
+
+
+def build_intro_step(
+    prefix: str,
+    objective: str,
+    spec: LessonSpec,
+    lesson_type: str,
+    *,
+    sort_order: int = 1,
+    component_data: tuple[tuple[str, str], ...] | None = None,
+) -> dict:
+    tone = tones(spec.jyutping)[-1]
+    metadata: dict[str, str] = {
+        "objective_id": objective,
+        "character": spec.traditional,
+        "pronunciation": pronunciation_without_tones(spec.jyutping),
+        "jyutping": spec.jyutping,
+        "tone_label": TONE_LABELS.get(tone, f"Tone {tone}"),
+        "meaning": spec.english,
+        "representation_pair": "word-overview",
+    }
+    if lesson_type == "sound":
+        metadata["word_type"] = "word"
+    elif lesson_type == "component":
+        metadata["word_type"] = "character"
+        if component_data:
+            metadata["components_label"] = format_components(component_data)
+    elif lesson_type == "vocabulary":
+        metadata["word_type"] = "phrase"
+    elif lesson_type == "grammar":
+        metadata["word_type"] = "pattern"
+        if spec.cloze_answer:
+            metadata["focus_token"] = spec.cloze_answer
+
+    return {
+        "id": f"{prefix}-00",
+        "type": "word_intro",
+        "skill": "reading",
+        "prompt": intro_prompt(lesson_type, sort_order),
+        "audio": {"text": spec.traditional},
+        "options": [{"id": "intro-ready", "label": "I know this word now"}],
+        "correct_option_id": "intro-ready",
+        "reveal_jyutping": spec.jyutping,
+        "reveal_character": spec.traditional,
+        "reveal_english": spec.english,
+        "metadata": metadata,
+    }
+
+
+def make_steps(
+    lesson_id: str,
+    spec: LessonSpec,
+    lesson_type: str,
+    *,
+    sort_order: int = 1,
+    component_data: tuple[tuple[str, str], ...] | None = None,
+) -> list[dict]:
     tone = tones(spec.jyutping)[-1]
     other_tones = [candidate for candidate in range(1, 7) if candidate != tone][:2]
     choice_tones = [tone, *other_tones]
@@ -313,38 +399,17 @@ def make_steps(lesson_id: str, spec: LessonSpec, lesson_type: str) -> list[dict]
             },
         ]
     )
-    if lesson_id == "v2-sound-01":
-        pronunciation = " ".join(
-            syllable[:-1] for syllable in spec.jyutping.split()
-        )
-        steps.insert(
-            0,
-            {
-                "id": f"{prefix}-00",
-                "type": "word_intro",
-                "skill": "reading",
-                "prompt": "Meet your first Cantonese word",
-                "audio": {"text": spec.traditional},
-                "options": [
-                    {"id": "intro-ready", "label": "I know this word now"}
-                ],
-                "correct_option_id": "intro-ready",
-                "reveal_jyutping": spec.jyutping,
-                "reveal_character": spec.traditional,
-                "reveal_english": spec.english,
-                "metadata": {
-                    "objective_id": objective,
-                    "character": spec.traditional,
-                    "pronunciation": pronunciation,
-                    "jyutping": spec.jyutping,
-                    "tone_label": "Tone 2 · rising",
-                    "meaning": spec.english,
-                    "word_type": "noun",
-                    "components_label": "水 radical · pictograph",
-                    "representation_pair": "word-overview",
-                },
-            },
-        )
+    steps.insert(
+        0,
+        build_intro_step(
+            prefix,
+            objective,
+            spec,
+            lesson_type,
+            sort_order=sort_order,
+            component_data=component_data,
+        ),
+    )
     return steps
 
 
@@ -380,6 +445,9 @@ def generate_document() -> dict:
             lesson_id = f"v2-{lesson_type}-{sort_order:02d}"
             lexeme_id = f"{lesson_id}-target"
             objective = f"{lesson_id}-objective"
+            component_data = (
+                COMPONENTS[sort_order - 1] if lesson_type == "component" else None
+            )
             lessons.append(
                 {
                     "id": lesson_id,
@@ -405,7 +473,13 @@ def generate_document() -> dict:
                             "progression": global_order,
                         },
                         "vocabulary": [{"lexeme_id": lexeme_id}],
-                        "steps": make_steps(lesson_id, spec, lesson_type),
+                        "steps": make_steps(
+                            lesson_id,
+                            spec,
+                            lesson_type,
+                            sort_order=sort_order,
+                            component_data=component_data,
+                        ),
                     },
                 }
             )

@@ -113,4 +113,4 @@ async def test_library_returns_encountered_words(library_client):
     assert word["traditional"] == "水"
     assert word["english"] == "water"
     assert word["lesson_id"] == "v2-sound-01"
-    assert word["word_type"] == "noun"
+    assert word["word_type"] == "word"

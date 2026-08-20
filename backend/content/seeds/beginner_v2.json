@@ -946,9 +946,8 @@
               "jyutping": "seoi2",
               "tone_label": "Tone 2 · rising",
               "meaning": "water",
-              "word_type": "noun",
-              "components_label": "水 radical · pictograph",
-              "representation_pair": "word-overview"
+              "representation_pair": "word-overview",
+              "word_type": "word"
             }
           },
           {
@@ -1240,6 +1239,35 @@
           }
         ],
         "steps": [
+          {
+            "id": "v2-sound-02-ex-00",
+            "type": "word_intro",
+            "skill": "reading",
+            "prompt": "Meet this Cantonese word",
+            "audio": {
+              "text": "飲"
+            },
+            "options": [
+              {
+                "id": "intro-ready",
+                "label": "I know this word now"
+              }
+            ],
+            "correct_option_id": "intro-ready",
+            "reveal_jyutping": "jam2",
+            "reveal_character": "飲",
+            "reveal_english": "drink",
+            "metadata": {
+              "objective_id": "v2-sound-02-objective",
+              "character": "飲",
+              "pronunciation": "jam",
+              "jyutping": "jam2",
+              "tone_label": "Tone 2 · rising",
+              "meaning": "drink",
+              "representation_pair": "word-overview",
+              "word_type": "word"
+            }
+          },
           {
             "id": "v2-sound-02-ex-01",
             "type": "select_meaning",
@@ -1546,6 +1574,35 @@
         ],
         "steps": [
           {
+            "id": "v2-sound-03-ex-00",
+            "type": "word_intro",
+            "skill": "reading",
+            "prompt": "Meet this Cantonese word",
+            "audio": {
+              "text": "試"
+            },
+            "options": [
+              {
+                "id": "intro-ready",
+                "label": "I know this word now"
+              }
+            ],
+            "correct_option_id": "intro-ready",
+            "reveal_jyutping": "si3",
+            "reveal_character": "試",
+            "reveal_english": "try",
+            "metadata": {
+              "objective_id": "v2-sound-03-objective",
+              "character": "試",
+              "pronunciation": "si",
+              "jyutping": "si3",
+              "tone_label": "Tone 3 · mid level",
+              "meaning": "try",
+              "representation_pair": "word-overview",
+              "word_type": "word"
+            }
+          },
+          {
             "id": "v2-sound-03-ex-01",
             "type": "select_meaning",
             "skill": "listening",
@@ -1834,6 +1891,35 @@
           }
         ],
         "steps": [
+          {
+            "id": "v2-sound-04-ex-00",
+            "type": "word_intro",
+            "skill": "reading",
+            "prompt": "Meet this Cantonese word",
+            "audio": {
+              "text": "茶"
+            },
+            "options": [
+              {
+                "id": "intro-ready",
+                "label": "I know this word now"
+              }
+            ],
+            "correct_option_id": "intro-ready",
+            "reveal_jyutping": "caa4",
+            "reveal_character": "茶",
+            "reveal_english": "tea",
+            "metadata": {
+              "objective_id": "v2-sound-04-objective",
+              "character": "茶",
+              "pronunciation": "caa",
+              "jyutping": "caa4",
+              "tone_label": "Tone 4 · low falling",
+              "meaning": "tea",
+              "representation_pair": "word-overview",
+              "word_type": "word"
+            }
+          },
           {
             "id": "v2-sound-04-ex-01",
             "type": "select_meaning",
@@ -2141,6 +2227,35 @@
         ],
         "steps": [
           {
+            "id": "v2-sound-05-ex-00",
+            "type": "word_intro",
+            "skill": "reading",
+            "prompt": "Meet this Cantonese word",
+            "audio": {
+              "text": "我"
+            },
+            "options": [
+              {
+                "id": "intro-ready",
+                "label": "I know this word now"
+              }
+            ],
+            "correct_option_id": "intro-ready",
+            "reveal_jyutping": "ngo5",
+            "reveal_character": "我",
+            "reveal_english": "I; me",
+            "metadata": {
+              "objective_id": "v2-sound-05-objective",
+              "character": "我",
+              "pronunciation": "ngo",
+              "jyutping": "ngo5",
+              "tone_label": "Tone 5 · low rising",
+              "meaning": "I; me",
+              "representation_pair": "word-overview",
+              "word_type": "word"
+            }
+          },
+          {
             "id": "v2-sound-05-ex-01",
             "type": "select_meaning",
             "skill": "listening",
@@ -2446,6 +2561,35 @@
         ],
         "steps": [
           {
+            "id": "v2-sound-06-ex-00",
+            "type": "word_intro",
+            "skill": "reading",
+            "prompt": "Meet this Cantonese word",
+            "audio": {
+              "text": "食"
+            },
+            "options": [
+              {
+                "id": "intro-ready",
+                "label": "I know this word now"
+              }
+            ],
+            "correct_option_id": "intro-ready",
+            "reveal_jyutping": "sik6",
+            "reveal_character": "食",
+            "reveal_english": "eat",
+            "metadata": {
+              "objective_id": "v2-sound-06-objective",
+              "character": "食",
+              "pronunciation": "sik",
+              "jyutping": "sik6",
+              "tone_label": "Tone 6 · low level",
+              "meaning": "eat",
+              "representation_pair": "word-overview",
+              "word_type": "word"
+            }
+          },
+          {
             "id": "v2-sound-06-ex-01",
             "type": "select_meaning",
             "skill": "listening",
@@ -2750,6 +2894,35 @@
           }
         ],
         "steps": [
+          {
+            "id": "v2-sound-07-ex-00",
+            "type": "word_intro",
+            "skill": "reading",
+            "prompt": "Meet this Cantonese word",
+            "audio": {
+              "text": "書"
+            },
+            "options": [
+              {
+                "id": "intro-ready",
+                "label": "I know this word now"
+              }
+            ],
+            "correct_option_id": "intro-ready",
+            "reveal_jyutping": "syu1",
+            "reveal_character": "書",
+            "reveal_english": "book",
+            "metadata": {
+              "objective_id": "v2-sound-07-objective",
+              "character": "書",
+              "pronunciation": "syu",
+              "jyutping": "syu1",
+              "tone_label": "Tone 1 · high level",
+              "meaning": "book",
+              "representation_pair": "word-overview",
+              "word_type": "word"
+            }
+          },
           {
             "id": "v2-sound-07-ex-01",
             "type": "select_meaning",
@@ -3057,6 +3230,35 @@
         ],
         "steps": [
           {
+            "id": "v2-sound-08-ex-00",
+            "type": "word_intro",
+            "skill": "reading",
+            "prompt": "Meet this Cantonese word",
+            "audio": {
+              "text": "衫"
+            },
+            "options": [
+              {
+                "id": "intro-ready",
+                "label": "I know this word now"
+              }
+            ],
+            "correct_option_id": "intro-ready",
+            "reveal_jyutping": "saam1",
+            "reveal_character": "衫",
+            "reveal_english": "shirt",
+            "metadata": {
+              "objective_id": "v2-sound-08-objective",
+              "character": "衫",
+              "pronunciation": "saam",
+              "jyutping": "saam1",
+              "tone_label": "Tone 1 · high level",
+              "meaning": "shirt",
+              "representation_pair": "word-overview",
+              "word_type": "word"
+            }
+          },
+          {
             "id": "v2-sound-08-ex-01",
             "type": "select_meaning",
             "skill": "listening",
@@ -3346,6 +3548,35 @@
           }
         ],
         "steps": [
+          {
+            "id": "v2-sound-09-ex-00",
+            "type": "word_intro",
+            "skill": "reading",
+            "prompt": "Meet this Cantonese word",
+            "audio": {
+              "text": "去"
+            },
+            "options": [
+              {
+                "id": "intro-ready",
+                "label": "I know this word now"
+              }
+            ],
+            "correct_option_id": "intro-ready",
+            "reveal_jyutping": "heoi3",
+            "reveal_character": "去",
+            "reveal_english": "go",
+            "metadata": {
+              "objective_id": "v2-sound-09-objective",
+              "character": "去",
+              "pronunciation": "heoi",
+              "jyutping": "heoi3",
+              "tone_label": "Tone 3 · mid level",
+              "meaning": "go",
+              "representation_pair": "word-overview",
+              "word_type": "word"
+            }
+          },
           {
             "id": "v2-sound-09-ex-01",
             "type": "select_meaning",
@@ -3654,6 +3885,35 @@
         ],
         "steps": [
           {
+            "id": "v2-sound-10-ex-00",
+            "type": "word_intro",
+            "skill": "reading",
+            "prompt": "Meet this Cantonese word",
+            "audio": {
+              "text": "人"
+            },
+            "options": [
+              {
+                "id": "intro-ready",
+                "label": "I know this word now"
+              }
+            ],
+            "correct_option_id": "intro-ready",
+            "reveal_jyutping": "jan4",
+            "reveal_character": "人",
+            "reveal_english": "person",
+            "metadata": {
+              "objective_id": "v2-sound-10-objective",
+              "character": "人",
+              "pronunciation": "jan",
+              "jyutping": "jan4",
+              "tone_label": "Tone 4 · low falling",
+              "meaning": "person",
+              "representation_pair": "word-overview",
+              "word_type": "word"
+            }
+          },
+          {
             "id": "v2-sound-10-ex-01",
             "type": "select_meaning",
             "skill": "listening",
@@ -3959,6 +4219,35 @@
           }
         ],
         "steps": [
+          {
+            "id": "v2-sound-11-ex-00",
+            "type": "word_intro",
+            "skill": "reading",
+            "prompt": "Meet this Cantonese word",
+            "audio": {
+              "text": "有"
+            },
+            "options": [
+              {
+                "id": "intro-ready",
+                "label": "I know this word now"
+              }
+            ],
+            "correct_option_id": "intro-ready",
+            "reveal_jyutping": "jau5",
+            "reveal_character": "有",
+            "reveal_english": "have",
+            "metadata": {
+              "objective_id": "v2-sound-11-objective",
+              "character": "有",
+              "pronunciation": "jau",
+              "jyutping": "jau5",
+              "tone_label": "Tone 5 · low rising",
+              "meaning": "have",
+              "representation_pair": "word-overview",
+              "word_type": "word"
+            }
+          },
           {
             "id": "v2-sound-11-ex-01",
             "type": "select_meaning",
@@ -4266,6 +4555,35 @@
         ],
         "steps": [
           {
+            "id": "v2-sound-12-ex-00",
+            "type": "word_intro",
+            "skill": "reading",
+            "prompt": "Meet this Cantonese word",
+            "audio": {
+              "text": "飯"
+            },
+            "options": [
+              {
+                "id": "intro-ready",
+                "label": "I know this word now"
+              }
+            ],
+            "correct_option_id": "intro-ready",
+            "reveal_jyutping": "faan6",
+            "reveal_character": "飯",
+            "reveal_english": "rice; meal",
+            "metadata": {
+              "objective_id": "v2-sound-12-objective",
+              "character": "飯",
+              "pronunciation": "faan",
+              "jyutping": "faan6",
+              "tone_label": "Tone 6 · low level",
+              "meaning": "rice; meal",
+              "representation_pair": "word-overview",
+              "word_type": "word"
+            }
+          },
+          {
             "id": "v2-sound-12-ex-01",
             "type": "select_meaning",
             "skill": "listening",
@@ -4572,6 +4890,36 @@
         ],
         "steps": [
           {
+            "id": "v2-component-01-ex-00",
+            "type": "word_intro",
+            "skill": "reading",
+            "prompt": "Meet this character and its parts",
+            "audio": {
+              "text": "休"
+            },
+            "options": [
+              {
+                "id": "intro-ready",
+                "label": "I know this word now"
+              }
+            ],
+            "correct_option_id": "intro-ready",
+            "reveal_jyutping": "jau1",
+            "reveal_character": "休",
+            "reveal_english": "rest",
+            "metadata": {
+              "objective_id": "v2-component-01-objective",
+              "character": "休",
+              "pronunciation": "jau",
+              "jyutping": "jau1",
+              "tone_label": "Tone 1 · high level",
+              "meaning": "rest",
+              "representation_pair": "word-overview",
+              "word_type": "character",
+              "components_label": "亻 (semantic) · 木 (semantic)"
+            }
+          },
+          {
             "id": "v2-component-01-ex-01",
             "type": "select_meaning",
             "skill": "listening",
@@ -4873,6 +5221,36 @@
         ],
         "steps": [
           {
+            "id": "v2-component-02-ex-00",
+            "type": "word_intro",
+            "skill": "reading",
+            "prompt": "Meet this character and its parts",
+            "audio": {
+              "text": "好"
+            },
+            "options": [
+              {
+                "id": "intro-ready",
+                "label": "I know this word now"
+              }
+            ],
+            "correct_option_id": "intro-ready",
+            "reveal_jyutping": "hou2",
+            "reveal_character": "好",
+            "reveal_english": "good",
+            "metadata": {
+              "objective_id": "v2-component-02-objective",
+              "character": "好",
+              "pronunciation": "hou",
+              "jyutping": "hou2",
+              "tone_label": "Tone 2 · rising",
+              "meaning": "good",
+              "representation_pair": "word-overview",
+              "word_type": "character",
+              "components_label": "女 (semantic) · 子 (semantic)"
+            }
+          },
+          {
             "id": "v2-component-02-ex-01",
             "type": "select_meaning",
             "skill": "listening",
@@ -5156,6 +5534,36 @@
           }
         ],
         "steps": [
+          {
+            "id": "v2-component-03-ex-00",
+            "type": "word_intro",
+            "skill": "reading",
+            "prompt": "Meet this character and its parts",
+            "audio": {
+              "text": "明"
+            },
+            "options": [
+              {
+                "id": "intro-ready",
+                "label": "I know this word now"
+              }
+            ],
+            "correct_option_id": "intro-ready",
+            "reveal_jyutping": "ming4",
+            "reveal_character": "明",
+            "reveal_english": "understand; bright",
+            "metadata": {
+              "objective_id": "v2-component-03-objective",
+              "character": "明",
+              "pronunciation": "ming",
+              "jyutping": "ming4",
+              "tone_label": "Tone 4 · low falling",
+              "meaning": "understand; bright",
+              "representation_pair": "word-overview",
+              "word_type": "character",
+              "components_label": "日 (semantic) · 月 (semantic)"
+            }
+          },
           {
             "id": "v2-component-03-ex-01",
             "type": "select_meaning",
@@ -5441,6 +5849,36 @@
           }
         ],
         "steps": [
+          {
+            "id": "v2-component-04-ex-00",
+            "type": "word_intro",
+            "skill": "reading",
+            "prompt": "Meet this character and its parts",
+            "audio": {
+              "text": "問"
+            },
+            "options": [
+              {
+                "id": "intro-ready",
+                "label": "I know this word now"
+              }
+            ],
+            "correct_option_id": "intro-ready",
+            "reveal_jyutping": "man6",
+            "reveal_character": "問",
+            "reveal_english": "ask",
+            "metadata": {
+              "objective_id": "v2-component-04-objective",
+              "character": "問",
+              "pronunciation": "man",
+              "jyutping": "man6",
+              "tone_label": "Tone 6 · low level",
+              "meaning": "ask",
+              "representation_pair": "word-overview",
+              "word_type": "character",
+              "components_label": "門 (semantic) · 口 (semantic)"
+            }
+          },
           {
             "id": "v2-component-04-ex-01",
             "type": "select_meaning",
@@ -5743,6 +6181,36 @@
         ],
         "steps": [
           {
+            "id": "v2-component-05-ex-00",
+            "type": "word_intro",
+            "skill": "reading",
+            "prompt": "Meet this character and its parts",
+            "audio": {
+              "text": "語"
+            },
+            "options": [
+              {
+                "id": "intro-ready",
+                "label": "I know this word now"
+              }
+            ],
+            "correct_option_id": "intro-ready",
+            "reveal_jyutping": "jyu5",
+            "reveal_character": "語",
+            "reveal_english": "language",
+            "metadata": {
+              "objective_id": "v2-component-05-objective",
+              "character": "語",
+              "pronunciation": "jyu",
+              "jyutping": "jyu5",
+              "tone_label": "Tone 5 · low rising",
+              "meaning": "language",
+              "representation_pair": "word-overview",
+              "word_type": "character",
+              "components_label": "言 (semantic) · 吾 (phonetic)"
+            }
+          },
+          {
             "id": "v2-component-05-ex-01",
             "type": "select_meaning",
             "skill": "listening",
@@ -6042,6 +6510,36 @@
           }
         ],
         "steps": [
+          {
+            "id": "v2-component-06-ex-00",
+            "type": "word_intro",
+            "skill": "reading",
+            "prompt": "Meet this character and its parts",
+            "audio": {
+              "text": "飯"
+            },
+            "options": [
+              {
+                "id": "intro-ready",
+                "label": "I know this word now"
+              }
+            ],
+            "correct_option_id": "intro-ready",
+            "reveal_jyutping": "faan6",
+            "reveal_character": "飯",
+            "reveal_english": "rice; meal",
+            "metadata": {
+              "objective_id": "v2-component-06-objective",
+              "character": "飯",
+              "pronunciation": "faan",
+              "jyutping": "faan6",
+              "tone_label": "Tone 6 · low level",
+              "meaning": "rice; meal",
+              "representation_pair": "word-overview",
+              "word_type": "character",
+              "components_label": "飠 (semantic) · 反 (phonetic)"
+            }
+          },
           {
             "id": "v2-component-06-ex-01",
             "type": "select_meaning",
@@ -6344,6 +6842,36 @@
         ],
         "steps": [
           {
+            "id": "v2-component-07-ex-00",
+            "type": "word_intro",
+            "skill": "reading",
+            "prompt": "Meet this character and its parts",
+            "audio": {
+              "text": "時"
+            },
+            "options": [
+              {
+                "id": "intro-ready",
+                "label": "I know this word now"
+              }
+            ],
+            "correct_option_id": "intro-ready",
+            "reveal_jyutping": "si4",
+            "reveal_character": "時",
+            "reveal_english": "time",
+            "metadata": {
+              "objective_id": "v2-component-07-objective",
+              "character": "時",
+              "pronunciation": "si",
+              "jyutping": "si4",
+              "tone_label": "Tone 4 · low falling",
+              "meaning": "time",
+              "representation_pair": "word-overview",
+              "word_type": "character",
+              "components_label": "日 (semantic) · 寺 (phonetic)"
+            }
+          },
+          {
             "id": "v2-component-07-ex-01",
             "type": "select_meaning",
             "skill": "listening",
@@ -6644,6 +7172,36 @@
           }
         ],
         "steps": [
+          {
+            "id": "v2-component-08-ex-00",
+            "type": "word_intro",
+            "skill": "reading",
+            "prompt": "Meet this character and its parts",
+            "audio": {
+              "text": "想"
+            },
+            "options": [
+              {
+                "id": "intro-ready",
+                "label": "I know this word now"
+              }
+            ],
+            "correct_option_id": "intro-ready",
+            "reveal_jyutping": "soeng2",
+            "reveal_character": "想",
+            "reveal_english": "want; think",
+            "metadata": {
+              "objective_id": "v2-component-08-objective",
+              "character": "想",
+              "pronunciation": "soeng",
+              "jyutping": "soeng2",
+              "tone_label": "Tone 2 · rising",
+              "meaning": "want; think",
+              "representation_pair": "word-overview",
+              "word_type": "character",
+              "components_label": "相 (phonetic) · 心 (semantic)"
+            }
+          },
           {
             "id": "v2-component-08-ex-01",
             "type": "select_meaning",
@@ -6948,6 +7506,35 @@
           }
         ],
         "steps": [
+          {
+            "id": "v2-vocabulary-01-ex-00",
+            "type": "word_intro",
+            "skill": "reading",
+            "prompt": "Meet this phrase",
+            "audio": {
+              "text": "你好"
+            },
+            "options": [
+              {
+                "id": "intro-ready",
+                "label": "I know this word now"
+              }
+            ],
+            "correct_option_id": "intro-ready",
+            "reveal_jyutping": "nei5 hou2",
+            "reveal_character": "你好",
+            "reveal_english": "hello",
+            "metadata": {
+              "objective_id": "v2-vocabulary-01-objective",
+              "character": "你好",
+              "pronunciation": "nei hou",
+              "jyutping": "nei5 hou2",
+              "tone_label": "Tone 2 · rising",
+              "meaning": "hello",
+              "representation_pair": "word-overview",
+              "word_type": "phrase"
+            }
+          },
           {
             "id": "v2-vocabulary-01-ex-01",
             "type": "select_meaning",
@@ -7255,6 +7842,35 @@
         ],
         "steps": [
           {
+            "id": "v2-vocabulary-02-ex-00",
+            "type": "word_intro",
+            "skill": "reading",
+            "prompt": "Meet this phrase",
+            "audio": {
+              "text": "唔該"
+            },
+            "options": [
+              {
+                "id": "intro-ready",
+                "label": "I know this word now"
+              }
+            ],
+            "correct_option_id": "intro-ready",
+            "reveal_jyutping": "m4 goi1",
+            "reveal_character": "唔該",
+            "reveal_english": "please; thanks for a service",
+            "metadata": {
+              "objective_id": "v2-vocabulary-02-objective",
+              "character": "唔該",
+              "pronunciation": "m goi",
+              "jyutping": "m4 goi1",
+              "tone_label": "Tone 1 · high level",
+              "meaning": "please; thanks for a service",
+              "representation_pair": "word-overview",
+              "word_type": "phrase"
+            }
+          },
+          {
             "id": "v2-vocabulary-02-ex-01",
             "type": "select_meaning",
             "skill": "listening",
@@ -7559,6 +8175,35 @@
         ],
         "steps": [
           {
+            "id": "v2-vocabulary-03-ex-00",
+            "type": "word_intro",
+            "skill": "reading",
+            "prompt": "Meet this phrase",
+            "audio": {
+              "text": "多謝"
+            },
+            "options": [
+              {
+                "id": "intro-ready",
+                "label": "I know this word now"
+              }
+            ],
+            "correct_option_id": "intro-ready",
+            "reveal_jyutping": "do1 ze6",
+            "reveal_character": "多謝",
+            "reveal_english": "thank you for a gift or favor",
+            "metadata": {
+              "objective_id": "v2-vocabulary-03-objective",
+              "character": "多謝",
+              "pronunciation": "do ze",
+              "jyutping": "do1 ze6",
+              "tone_label": "Tone 6 · low level",
+              "meaning": "thank you for a gift or favor",
+              "representation_pair": "word-overview",
+              "word_type": "phrase"
+            }
+          },
+          {
             "id": "v2-vocabulary-03-ex-01",
             "type": "select_meaning",
             "skill": "listening",
@@ -7846,6 +8491,35 @@
         ],
         "steps": [
           {
+            "id": "v2-vocabulary-04-ex-00",
+            "type": "word_intro",
+            "skill": "reading",
+            "prompt": "Meet this phrase",
+            "audio": {
+              "text": "早晨"
+            },
+            "options": [
+              {
+                "id": "intro-ready",
+                "label": "I know this word now"
+              }
+            ],
+            "correct_option_id": "intro-ready",
+            "reveal_jyutping": "zou2 san4",
+            "reveal_character": "早晨",
+            "reveal_english": "good morning",
+            "metadata": {
+              "objective_id": "v2-vocabulary-04-objective",
+              "character": "早晨",
+              "pronunciation": "zou san",
+              "jyutping": "zou2 san4",
+              "tone_label": "Tone 4 · low falling",
+              "meaning": "good morning",
+              "representation_pair": "word-overview",
+              "word_type": "phrase"
+            }
+          },
+          {
             "id": "v2-vocabulary-04-ex-01",
             "type": "select_meaning",
             "skill": "listening",
@@ -8132,6 +8806,35 @@
           }
         ],
         "steps": [
+          {
+            "id": "v2-vocabulary-05-ex-00",
+            "type": "word_intro",
+            "skill": "reading",
+            "prompt": "Meet this phrase",
+            "audio": {
+              "text": "再見"
+            },
+            "options": [
+              {
+                "id": "intro-ready",
+                "label": "I know this word now"
+              }
+            ],
+            "correct_option_id": "intro-ready",
+            "reveal_jyutping": "zoi3 gin3",
+            "reveal_character": "再見",
+            "reveal_english": "goodbye",
+            "metadata": {
+              "objective_id": "v2-vocabulary-05-objective",
+              "character": "再見",
+              "pronunciation": "zoi gin",
+              "jyutping": "zoi3 gin3",
+              "tone_label": "Tone 3 · mid level",
+              "meaning": "goodbye",
+              "representation_pair": "word-overview",
+              "word_type": "phrase"
+            }
+          },
           {
             "id": "v2-vocabulary-05-ex-01",
             "type": "select_meaning",
@@ -8421,6 +9124,35 @@
           }
         ],
         "steps": [
+          {
+            "id": "v2-vocabulary-06-ex-00",
+            "type": "word_intro",
+            "skill": "reading",
+            "prompt": "Meet this phrase",
+            "audio": {
+              "text": "屋企"
+            },
+            "options": [
+              {
+                "id": "intro-ready",
+                "label": "I know this word now"
+              }
+            ],
+            "correct_option_id": "intro-ready",
+            "reveal_jyutping": "uk1 kei2",
+            "reveal_character": "屋企",
+            "reveal_english": "home",
+            "metadata": {
+              "objective_id": "v2-vocabulary-06-objective",
+              "character": "屋企",
+              "pronunciation": "uk kei",
+              "jyutping": "uk1 kei2",
+              "tone_label": "Tone 2 · rising",
+              "meaning": "home",
+              "representation_pair": "word-overview",
+              "word_type": "phrase"
+            }
+          },
           {
             "id": "v2-vocabulary-06-ex-01",
             "type": "select_meaning",
@@ -8728,6 +9460,35 @@
         ],
         "steps": [
           {
+            "id": "v2-vocabulary-07-ex-00",
+            "type": "word_intro",
+            "skill": "reading",
+            "prompt": "Meet this phrase",
+            "audio": {
+              "text": "學校"
+            },
+            "options": [
+              {
+                "id": "intro-ready",
+                "label": "I know this word now"
+              }
+            ],
+            "correct_option_id": "intro-ready",
+            "reveal_jyutping": "hok6 haau6",
+            "reveal_character": "學校",
+            "reveal_english": "school",
+            "metadata": {
+              "objective_id": "v2-vocabulary-07-objective",
+              "character": "學校",
+              "pronunciation": "hok haau",
+              "jyutping": "hok6 haau6",
+              "tone_label": "Tone 6 · low level",
+              "meaning": "school",
+              "representation_pair": "word-overview",
+              "word_type": "phrase"
+            }
+          },
+          {
             "id": "v2-vocabulary-07-ex-01",
             "type": "select_meaning",
             "skill": "listening",
@@ -9033,6 +9794,35 @@
           }
         ],
         "steps": [
+          {
+            "id": "v2-vocabulary-08-ex-00",
+            "type": "word_intro",
+            "skill": "reading",
+            "prompt": "Meet this phrase",
+            "audio": {
+              "text": "巴士"
+            },
+            "options": [
+              {
+                "id": "intro-ready",
+                "label": "I know this word now"
+              }
+            ],
+            "correct_option_id": "intro-ready",
+            "reveal_jyutping": "baa1 si2",
+            "reveal_character": "巴士",
+            "reveal_english": "bus",
+            "metadata": {
+              "objective_id": "v2-vocabulary-08-objective",
+              "character": "巴士",
+              "pronunciation": "baa si",
+              "jyutping": "baa1 si2",
+              "tone_label": "Tone 2 · rising",
+              "meaning": "bus",
+              "representation_pair": "word-overview",
+              "word_type": "phrase"
+            }
+          },
           {
             "id": "v2-vocabulary-08-ex-01",
             "type": "select_meaning",
@@ -9342,6 +10132,35 @@
         ],
         "steps": [
           {
+            "id": "v2-vocabulary-09-ex-00",
+            "type": "word_intro",
+            "skill": "reading",
+            "prompt": "Meet this phrase",
+            "audio": {
+              "text": "茶餐廳"
+            },
+            "options": [
+              {
+                "id": "intro-ready",
+                "label": "I know this word now"
+              }
+            ],
+            "correct_option_id": "intro-ready",
+            "reveal_jyutping": "caa4 caan1 teng1",
+            "reveal_character": "茶餐廳",
+            "reveal_english": "Hong Kong-style café",
+            "metadata": {
+              "objective_id": "v2-vocabulary-09-objective",
+              "character": "茶餐廳",
+              "pronunciation": "caa caan teng",
+              "jyutping": "caa4 caan1 teng1",
+              "tone_label": "Tone 1 · high level",
+              "meaning": "Hong Kong-style café",
+              "representation_pair": "word-overview",
+              "word_type": "phrase"
+            }
+          },
+          {
             "id": "v2-vocabulary-09-ex-01",
             "type": "select_meaning",
             "skill": "listening",
@@ -9647,6 +10466,35 @@
         ],
         "steps": [
           {
+            "id": "v2-vocabulary-10-ex-00",
+            "type": "word_intro",
+            "skill": "reading",
+            "prompt": "Meet this phrase",
+            "audio": {
+              "text": "飯"
+            },
+            "options": [
+              {
+                "id": "intro-ready",
+                "label": "I know this word now"
+              }
+            ],
+            "correct_option_id": "intro-ready",
+            "reveal_jyutping": "faan6",
+            "reveal_character": "飯",
+            "reveal_english": "rice; meal",
+            "metadata": {
+              "objective_id": "v2-vocabulary-10-objective",
+              "character": "飯",
+              "pronunciation": "faan",
+              "jyutping": "faan6",
+              "tone_label": "Tone 6 · low level",
+              "meaning": "rice; meal",
+              "representation_pair": "word-overview",
+              "word_type": "phrase"
+            }
+          },
+          {
             "id": "v2-vocabulary-10-ex-01",
             "type": "select_meaning",
             "skill": "listening",
@@ -9949,6 +10797,35 @@
           }
         ],
         "steps": [
+          {
+            "id": "v2-vocabulary-11-ex-00",
+            "type": "word_intro",
+            "skill": "reading",
+            "prompt": "Meet this phrase",
+            "audio": {
+              "text": "水"
+            },
+            "options": [
+              {
+                "id": "intro-ready",
+                "label": "I know this word now"
+              }
+            ],
+            "correct_option_id": "intro-ready",
+            "reveal_jyutping": "seoi2",
+            "reveal_character": "水",
+            "reveal_english": "water",
+            "metadata": {
+              "objective_id": "v2-vocabulary-11-objective",
+              "character": "水",
+              "pronunciation": "seoi",
+              "jyutping": "seoi2",
+              "tone_label": "Tone 2 · rising",
+              "meaning": "water",
+              "representation_pair": "word-overview",
+              "word_type": "phrase"
+            }
+          },
           {
             "id": "v2-vocabulary-11-ex-01",
             "type": "select_meaning",
@@ -10255,6 +11132,35 @@
         ],
         "steps": [
           {
+            "id": "v2-vocabulary-12-ex-00",
+            "type": "word_intro",
+            "skill": "reading",
+            "prompt": "Meet this phrase",
+            "audio": {
+              "text": "廁所"
+            },
+            "options": [
+              {
+                "id": "intro-ready",
+                "label": "I know this word now"
+              }
+            ],
+            "correct_option_id": "intro-ready",
+            "reveal_jyutping": "ci3 so2",
+            "reveal_character": "廁所",
+            "reveal_english": "toilet; restroom",
+            "metadata": {
+              "objective_id": "v2-vocabulary-12-objective",
+              "character": "廁所",
+              "pronunciation": "ci so",
+              "jyutping": "ci3 so2",
+              "tone_label": "Tone 2 · rising",
+              "meaning": "toilet; restroom",
+              "representation_pair": "word-overview",
+              "word_type": "phrase"
+            }
+          },
+          {
             "id": "v2-vocabulary-12-ex-01",
             "type": "select_meaning",
             "skill": "listening",
@@ -10559,6 +11465,36 @@
           }
         ],
         "steps": [
+          {
+            "id": "v2-grammar-01-ex-00",
+            "type": "word_intro",
+            "skill": "reading",
+            "prompt": "Meet this sentence pattern",
+            "audio": {
+              "text": "我係學生"
+            },
+            "options": [
+              {
+                "id": "intro-ready",
+                "label": "I know this word now"
+              }
+            ],
+            "correct_option_id": "intro-ready",
+            "reveal_jyutping": "ngo5 hai6 hok6 saang1",
+            "reveal_character": "我係學生",
+            "reveal_english": "I am a student",
+            "metadata": {
+              "objective_id": "v2-grammar-01-objective",
+              "character": "我係學生",
+              "pronunciation": "ngo hai hok saang",
+              "jyutping": "ngo5 hai6 hok6 saang1",
+              "tone_label": "Tone 1 · high level",
+              "meaning": "I am a student",
+              "representation_pair": "word-overview",
+              "word_type": "pattern",
+              "focus_token": "係"
+            }
+          },
           {
             "id": "v2-grammar-01-ex-01",
             "type": "select_meaning",
@@ -10868,6 +11804,36 @@
           }
         ],
         "steps": [
+          {
+            "id": "v2-grammar-02-ex-00",
+            "type": "word_intro",
+            "skill": "reading",
+            "prompt": "Meet this sentence pattern",
+            "audio": {
+              "text": "我唔係老師"
+            },
+            "options": [
+              {
+                "id": "intro-ready",
+                "label": "I know this word now"
+              }
+            ],
+            "correct_option_id": "intro-ready",
+            "reveal_jyutping": "ngo5 m4 hai6 lou5 si1",
+            "reveal_character": "我唔係老師",
+            "reveal_english": "I am not a teacher",
+            "metadata": {
+              "objective_id": "v2-grammar-02-objective",
+              "character": "我唔係老師",
+              "pronunciation": "ngo m hai lou si",
+              "jyutping": "ngo5 m4 hai6 lou5 si1",
+              "tone_label": "Tone 1 · high level",
+              "meaning": "I am not a teacher",
+              "representation_pair": "word-overview",
+              "word_type": "pattern",
+              "focus_token": "唔"
+            }
+          },
           {
             "id": "v2-grammar-02-ex-01",
             "type": "select_meaning",
@@ -11179,6 +12145,36 @@
         ],
         "steps": [
           {
+            "id": "v2-grammar-03-ex-00",
+            "type": "word_intro",
+            "skill": "reading",
+            "prompt": "Meet this sentence pattern",
+            "audio": {
+              "text": "我有一本書"
+            },
+            "options": [
+              {
+                "id": "intro-ready",
+                "label": "I know this word now"
+              }
+            ],
+            "correct_option_id": "intro-ready",
+            "reveal_jyutping": "ngo5 jau5 jat1 bun2 syu1",
+            "reveal_character": "我有一本書",
+            "reveal_english": "I have a book",
+            "metadata": {
+              "objective_id": "v2-grammar-03-objective",
+              "character": "我有一本書",
+              "pronunciation": "ngo jau jat bun syu",
+              "jyutping": "ngo5 jau5 jat1 bun2 syu1",
+              "tone_label": "Tone 1 · high level",
+              "meaning": "I have a book",
+              "representation_pair": "word-overview",
+              "word_type": "pattern",
+              "focus_token": "有"
+            }
+          },
+          {
             "id": "v2-grammar-03-ex-01",
             "type": "select_meaning",
             "skill": "listening",
@@ -11486,6 +12482,36 @@
           }
         ],
         "steps": [
+          {
+            "id": "v2-grammar-04-ex-00",
+            "type": "word_intro",
+            "skill": "reading",
+            "prompt": "Meet this sentence pattern",
+            "audio": {
+              "text": "我冇時間"
+            },
+            "options": [
+              {
+                "id": "intro-ready",
+                "label": "I know this word now"
+              }
+            ],
+            "correct_option_id": "intro-ready",
+            "reveal_jyutping": "ngo5 mou5 si4 gaan3",
+            "reveal_character": "我冇時間",
+            "reveal_english": "I do not have time",
+            "metadata": {
+              "objective_id": "v2-grammar-04-objective",
+              "character": "我冇時間",
+              "pronunciation": "ngo mou si gaan",
+              "jyutping": "ngo5 mou5 si4 gaan3",
+              "tone_label": "Tone 3 · mid level",
+              "meaning": "I do not have time",
+              "representation_pair": "word-overview",
+              "word_type": "pattern",
+              "focus_token": "冇"
+            }
+          },
           {
             "id": "v2-grammar-04-ex-01",
             "type": "select_meaning",
@@ -11796,6 +12822,36 @@
         ],
         "steps": [
           {
+            "id": "v2-grammar-05-ex-00",
+            "type": "word_intro",
+            "skill": "reading",
+            "prompt": "Meet this sentence pattern",
+            "audio": {
+              "text": "你去邊度呀"
+            },
+            "options": [
+              {
+                "id": "intro-ready",
+                "label": "I know this word now"
+              }
+            ],
+            "correct_option_id": "intro-ready",
+            "reveal_jyutping": "nei5 heoi3 bin1 dou6 aa3",
+            "reveal_character": "你去邊度呀",
+            "reveal_english": "Where are you going?",
+            "metadata": {
+              "objective_id": "v2-grammar-05-objective",
+              "character": "你去邊度呀",
+              "pronunciation": "nei heoi bin dou aa",
+              "jyutping": "nei5 heoi3 bin1 dou6 aa3",
+              "tone_label": "Tone 3 · mid level",
+              "meaning": "Where are you going?",
+              "representation_pair": "word-overview",
+              "word_type": "pattern",
+              "focus_token": "邊度"
+            }
+          },
+          {
             "id": "v2-grammar-05-ex-01",
             "type": "select_meaning",
             "skill": "listening",
@@ -12103,6 +13159,36 @@
           }
         ],
         "steps": [
+          {
+            "id": "v2-grammar-06-ex-00",
+            "type": "word_intro",
+            "skill": "reading",
+            "prompt": "Meet this sentence pattern",
+            "audio": {
+              "text": "我想飲茶"
+            },
+            "options": [
+              {
+                "id": "intro-ready",
+                "label": "I know this word now"
+              }
+            ],
+            "correct_option_id": "intro-ready",
+            "reveal_jyutping": "ngo5 soeng2 jam2 caa4",
+            "reveal_character": "我想飲茶",
+            "reveal_english": "I want to drink tea",
+            "metadata": {
+              "objective_id": "v2-grammar-06-objective",
+              "character": "我想飲茶",
+              "pronunciation": "ngo soeng jam caa",
+              "jyutping": "ngo5 soeng2 jam2 caa4",
+              "tone_label": "Tone 4 · low falling",
+              "meaning": "I want to drink tea",
+              "representation_pair": "word-overview",
+              "word_type": "pattern",
+              "focus_token": "想"
+            }
+          },
           {
             "id": "v2-grammar-06-ex-01",
             "type": "select_meaning",
@@ -12415,6 +13501,36 @@
         ],
         "steps": [
           {
+            "id": "v2-grammar-07-ex-00",
+            "type": "word_intro",
+            "skill": "reading",
+            "prompt": "Meet this sentence pattern",
+            "audio": {
+              "text": "唔該畀杯水我"
+            },
+            "options": [
+              {
+                "id": "intro-ready",
+                "label": "I know this word now"
+              }
+            ],
+            "correct_option_id": "intro-ready",
+            "reveal_jyutping": "m4 goi1 bei2 bui1 seoi2 ngo5",
+            "reveal_character": "唔該畀杯水我",
+            "reveal_english": "Please give me a glass of water",
+            "metadata": {
+              "objective_id": "v2-grammar-07-objective",
+              "character": "唔該畀杯水我",
+              "pronunciation": "m goi bei bui seoi ngo",
+              "jyutping": "m4 goi1 bei2 bui1 seoi2 ngo5",
+              "tone_label": "Tone 5 · low rising",
+              "meaning": "Please give me a glass of water",
+              "representation_pair": "word-overview",
+              "word_type": "pattern",
+              "focus_token": "畀"
+            }
+          },
+          {
             "id": "v2-grammar-07-ex-01",
             "type": "select_meaning",
             "skill": "listening",
@@ -12723,6 +13839,36 @@
           }
         ],
         "steps": [
+          {
+            "id": "v2-grammar-08-ex-00",
+            "type": "word_intro",
+            "skill": "reading",
+            "prompt": "Meet this sentence pattern",
+            "audio": {
+              "text": "我食咗飯"
+            },
+            "options": [
+              {
+                "id": "intro-ready",
+                "label": "I know this word now"
+              }
+            ],
+            "correct_option_id": "intro-ready",
+            "reveal_jyutping": "ngo5 sik6 zo2 faan6",
+            "reveal_character": "我食咗飯",
+            "reveal_english": "I have eaten",
+            "metadata": {
+              "objective_id": "v2-grammar-08-objective",
+              "character": "我食咗飯",
+              "pronunciation": "ngo sik zo faan",
+              "jyutping": "ngo5 sik6 zo2 faan6",
+              "tone_label": "Tone 6 · low level",
+              "meaning": "I have eaten",
+              "representation_pair": "word-overview",
+              "word_type": "pattern",
+              "focus_token": "咗"
+            }
+          },
           {
             "id": "v2-grammar-08-ex-01",
             "type": "select_meaning",
