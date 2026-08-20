@@ -42,7 +42,10 @@ requires App Store and Play Store builds.
 cd backend
 source .venv/bin/activate
 python ../content/scripts/import_seed.py
-python ../content/scripts/generate_audio.py --voice Kiki
+python ../content/scripts/generate_audio.py \
+  --model qwen3-tts-flash-realtime \
+  --voice Kiki \
+  --replace-all
 ```
 
 Audio generation is content-addressed and resumable. Re-running the command

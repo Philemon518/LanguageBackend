@@ -33,15 +33,17 @@ def _manifest_audio_urls() -> dict[str, str]:
 
 
 def _audio_url_for_text(text: str, asset: MediaAsset | None) -> str | None:
-    if asset:
-        return asset.public_url or f"/media/{asset.storage_path}"
-
     manifest_url = _manifest_audio_urls().get(text)
     if manifest_url:
         return manifest_url
 
+    if asset:
+        return asset.public_url or f"/media/{asset.storage_path}"
+
     settings = get_settings()
-    content_hash = audio_content_hash(text, settings.qwen_tts_voice, settings.qwen_realtime_model)
+    content_hash = audio_content_hash(
+        text, settings.qwen_tts_voice, settings.qwen_tts_model
+    )
     path = f"beginner/{content_hash}.wav"
     if (Path(settings.local_audio_dir) / path).exists():
         return f"/media/{path}"
@@ -106,6 +108,10 @@ async def list_lessons(
             id=l.id,
             unit_id=l.unit_id,
             title=l.title,
+            target_traditional=(l.content_json or {}).get("target", {}).get(
+                "traditional"
+            ),
+            target_english=(l.content_json or {}).get("target", {}).get("english"),
             lesson_type=l.lesson_type,
             sort_order=l.sort_order,
             question_count=len((l.content_json or {}).get("steps", [])),
@@ -156,11 +162,14 @@ async def list_road(db: AsyncSession, user_id=None) -> list[LessonSummary]:
         for lesson in lessons:
             progress = progress_map.get(lesson.id)
             completed = bool(progress and progress.completed)
+            target = (lesson.content_json or {}).get("target", {})
             road.append(
                 LessonSummary(
                     id=lesson.id,
                     unit_id=lesson.unit_id,
                     title=lesson.title,
+                    target_traditional=target.get("traditional"),
+                    target_english=target.get("english"),
                     lesson_type=lesson.lesson_type,
                     sort_order=lesson.sort_order,
                     global_order=global_order,
@@ -197,8 +206,13 @@ async def get_lesson(db: AsyncSession, lesson_id: str) -> LessonDocument | None:
     )
     media_by_text: dict[str, MediaAsset] = {}
     if audio_texts:
+        settings = get_settings()
         media_result = await db.execute(
-            select(MediaAsset).where(MediaAsset.text.in_(audio_texts))
+            select(MediaAsset).where(
+                MediaAsset.text.in_(audio_texts),
+                MediaAsset.voice == settings.qwen_tts_voice,
+                MediaAsset.model == settings.qwen_tts_model,
+            )
         )
         for asset in media_result.scalars().all():
             media_by_text.setdefault(asset.text, asset)

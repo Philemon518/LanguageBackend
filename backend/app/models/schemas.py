@@ -46,6 +46,8 @@ class LessonSummary(BaseModel):
     id: str
     unit_id: str
     title: str
+    target_traditional: str | None = None
+    target_english: str | None = None
     lesson_type: str
     sort_order: int
     global_order: int = 0

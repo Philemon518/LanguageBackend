@@ -4,7 +4,7 @@ import json
 import logging
 from pathlib import Path
 
-from sqlalchemy import select
+from sqlalchemy import delete, select
 
 from ..core.config import get_settings
 from ..core.database import SessionLocal
@@ -22,7 +22,7 @@ async def bootstrap_media_assets() -> None:
 
     manifest = json.loads(manifest_path.read_text())
     voice = manifest.get("voice", settings.qwen_tts_voice)
-    model = manifest.get("model", settings.qwen_realtime_model)
+    model = manifest.get("model", settings.qwen_tts_model)
     assets = manifest.get("assets", {})
     if not assets:
         logger.warning("Audio manifest contains no assets")
@@ -30,6 +30,12 @@ async def bootstrap_media_assets() -> None:
 
     inserted = 0
     async with SessionLocal() as session:
+        stale = await session.execute(
+            delete(MediaAsset).where(
+                (MediaAsset.voice != voice) | (MediaAsset.model != model)
+            )
+        )
+        removed = stale.rowcount or 0
         for text, entry in assets.items():
             content_hash = entry.get("content_hash")
             path = entry.get("path")
@@ -37,9 +43,18 @@ async def bootstrap_media_assets() -> None:
                 continue
 
             existing = await session.execute(
-                select(MediaAsset.id).where(MediaAsset.content_hash == content_hash)
+                select(MediaAsset).where(MediaAsset.content_hash == content_hash)
             )
-            if existing.scalar_one_or_none() is not None:
+            existing_asset = existing.scalar_one_or_none()
+            if existing_asset is not None:
+                existing_asset.text = text
+                existing_asset.voice = voice
+                existing_asset.model = model
+                existing_asset.storage_path = path
+                existing_asset.public_url = entry.get("url") or f"/media/{path}"
+                existing_asset.duration_ms = round(
+                    float(entry.get("duration_seconds", 0)) * 1000
+                )
                 continue
 
             file_path = Path(settings.local_audio_dir) / path
@@ -60,8 +75,9 @@ async def bootstrap_media_assets() -> None:
             )
             inserted += 1
 
-        if inserted:
-            await session.commit()
-            logger.info("Registered %s bundled audio assets", inserted)
-        else:
-            logger.info("Bundled audio assets already registered")
+        await session.commit()
+        logger.info(
+            "Synchronized bundled audio assets: %s inserted, %s stale removed",
+            inserted,
+            removed,
+        )

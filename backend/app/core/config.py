@@ -27,6 +27,7 @@ class Settings(BaseSettings):
 
     dashscope_api_key: str = ""
     qwen_realtime_model: str = "qwen3.5-omni-plus-realtime"
+    qwen_tts_model: str = "qwen3-tts-flash-realtime"
     qwen_tts_voice: str = "Kiki"
     qwen_realtime_url: str = "wss://dashscope-intl.aliyuncs.com/api-ws/v1/realtime"
 

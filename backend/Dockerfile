@@ -10,6 +10,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY app ./app
 COPY content ./content
+COPY local_data ./local_data
 
 EXPOSE 8000
 

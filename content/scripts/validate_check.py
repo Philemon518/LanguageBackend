@@ -7,7 +7,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 
-from content.scripts.validate import validate_seed_document  # noqa: E402
+from content.scripts.validate import validate_seed_document
 
 
 def main() -> None:

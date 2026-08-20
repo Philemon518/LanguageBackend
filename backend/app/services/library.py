@@ -6,6 +6,7 @@ from uuid import UUID
 from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from ..core.config import get_settings
 from ..models.orm import (
     CurriculumVersion,
     ExerciseAttempt,
@@ -15,6 +16,7 @@ from ..models.orm import (
     MediaAsset,
     Unit,
 )
+from .curriculum import _audio_url_for_text
 
 
 async def get_user_library(db: AsyncSession, user_id: UUID) -> list[dict]:
@@ -123,8 +125,13 @@ async def get_user_library(db: AsyncSession, user_id: UUID) -> list[dict]:
     audio_texts = {row.traditional for row in lexeme_by_id.values()}
     media_by_text: dict[str, str] = {}
     if audio_texts:
+        settings = get_settings()
         media_result = await db.execute(
-            select(MediaAsset).where(MediaAsset.text.in_(audio_texts))
+            select(MediaAsset).where(
+                MediaAsset.text.in_(audio_texts),
+                MediaAsset.voice == settings.qwen_tts_voice,
+                MediaAsset.model == settings.qwen_tts_model,
+            )
         )
         for asset in media_result.scalars().all():
             media_by_text.setdefault(
@@ -154,7 +161,8 @@ async def get_user_library(db: AsyncSession, user_id: UUID) -> list[dict]:
                 "lesson_title": meta["lesson_title"],
                 "lesson_type": meta["lesson_type"],
                 "encountered_at": encountered_at.isoformat() if encountered_at else None,
-                "audio_url": media_by_text.get(lexeme.traditional),
+                "audio_url": _audio_url_for_text(lexeme.traditional, None)
+                or media_by_text.get(lexeme.traditional),
                 "context_traditional": target.get("traditional"),
                 "context_jyutping": target.get("jyutping"),
                 "context_english": target.get("english"),

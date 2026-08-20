@@ -14,13 +14,12 @@ from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_asyn
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 
-from content.scripts.import_seed import import_seed
-
 import app.core.database as database_module
 from app.api.auth import router as auth_router
 from app.api.library import router as library_router
 from app.core.database import Base, get_db
 from app.models.orm import ExerciseAttempt, LessonProgress
+from content.scripts.import_seed import import_seed
 
 ROOT = Path(__file__).resolve().parents[2]
 SEED_PATH = ROOT / "content" / "seeds" / "beginner_v2.json"
