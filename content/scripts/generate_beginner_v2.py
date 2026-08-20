@@ -333,6 +333,7 @@ def make_steps(
                 "type": "cloze",
                 "skill": "writing",
                 "prompt": f"Complete the sentence: {cloze_text}",
+                "audio": {"text": spec.sentence},
                 "options": [
                     {
                         "id": "cloze-correct",

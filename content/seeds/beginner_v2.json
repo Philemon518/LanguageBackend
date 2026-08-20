@@ -1101,6 +1101,9 @@
             "type": "cloze",
             "skill": "writing",
             "prompt": "Complete the sentence: 杯＿＿喺度。",
+            "audio": {
+              "text": "杯水喺度。"
+            },
             "options": [
               {
                 "id": "cloze-correct",
@@ -1419,6 +1422,9 @@
             "type": "cloze",
             "skill": "writing",
             "prompt": "Complete the sentence: 我＿＿水。",
+            "audio": {
+              "text": "我飲水。"
+            },
             "options": [
               {
                 "id": "cloze-correct",
@@ -1753,6 +1759,9 @@
             "type": "cloze",
             "skill": "writing",
             "prompt": "Complete the sentence: 我＿＿吓。",
+            "audio": {
+              "text": "我試吓。"
+            },
             "options": [
               {
                 "id": "cloze-correct",
@@ -2071,6 +2080,9 @@
             "type": "cloze",
             "skill": "writing",
             "prompt": "Complete the sentence: 我飲＿＿。",
+            "audio": {
+              "text": "我飲茶。"
+            },
             "options": [
               {
                 "id": "cloze-correct",
@@ -2406,6 +2418,9 @@
             "type": "cloze",
             "skill": "writing",
             "prompt": "Complete the sentence: ＿＿係學生。",
+            "audio": {
+              "text": "我係學生。"
+            },
             "options": [
               {
                 "id": "cloze-correct",
@@ -2740,6 +2755,9 @@
             "type": "cloze",
             "skill": "writing",
             "prompt": "Complete the sentence: 我＿＿飯。",
+            "audio": {
+              "text": "我食飯。"
+            },
             "options": [
               {
                 "id": "cloze-correct",
@@ -3074,6 +3092,9 @@
             "type": "cloze",
             "skill": "writing",
             "prompt": "Complete the sentence: 我睇＿＿。",
+            "audio": {
+              "text": "我睇書。"
+            },
             "options": [
               {
                 "id": "cloze-correct",
@@ -3409,6 +3430,9 @@
             "type": "cloze",
             "skill": "writing",
             "prompt": "Complete the sentence: 件＿＿好靚。",
+            "audio": {
+              "text": "件衫好靚。"
+            },
             "options": [
               {
                 "id": "cloze-correct",
@@ -3728,6 +3752,9 @@
             "type": "cloze",
             "skill": "writing",
             "prompt": "Complete the sentence: 我＿＿學校。",
+            "audio": {
+              "text": "我去學校。"
+            },
             "options": [
               {
                 "id": "cloze-correct",
@@ -4064,6 +4091,9 @@
             "type": "cloze",
             "skill": "writing",
             "prompt": "Complete the sentence: 佢係香港＿＿。",
+            "audio": {
+              "text": "佢係香港人。"
+            },
             "options": [
               {
                 "id": "cloze-correct",
@@ -4399,6 +4429,9 @@
             "type": "cloze",
             "skill": "writing",
             "prompt": "Complete the sentence: 我＿＿時間。",
+            "audio": {
+              "text": "我有時間。"
+            },
             "options": [
               {
                 "id": "cloze-correct",
@@ -4734,6 +4767,9 @@
             "type": "cloze",
             "skill": "writing",
             "prompt": "Complete the sentence: 我食咗＿＿。",
+            "audio": {
+              "text": "我食咗飯。"
+            },
             "options": [
               {
                 "id": "cloze-correct",
@@ -5065,6 +5101,9 @@
             "type": "cloze",
             "skill": "writing",
             "prompt": "Complete the sentence: 我想＿＿息。",
+            "audio": {
+              "text": "我想休息。"
+            },
             "options": [
               {
                 "id": "cloze-correct",
@@ -5396,6 +5435,9 @@
             "type": "cloze",
             "skill": "writing",
             "prompt": "Complete the sentence: 今日＿＿熱。",
+            "audio": {
+              "text": "今日好熱。"
+            },
             "options": [
               {
                 "id": "cloze-correct",
@@ -5710,6 +5752,9 @@
             "type": "cloze",
             "skill": "writing",
             "prompt": "Complete the sentence: 我＿＿白。",
+            "audio": {
+              "text": "我明白。"
+            },
             "options": [
               {
                 "id": "cloze-correct",
@@ -6025,6 +6070,9 @@
             "type": "cloze",
             "skill": "writing",
             "prompt": "Complete the sentence: 我想＿＿你。",
+            "audio": {
+              "text": "我想問你。"
+            },
             "options": [
               {
                 "id": "cloze-correct",
@@ -6356,6 +6404,9 @@
             "type": "cloze",
             "skill": "writing",
             "prompt": "Complete the sentence: 我學粵＿＿。",
+            "audio": {
+              "text": "我學粵語。"
+            },
             "options": [
               {
                 "id": "cloze-correct",
@@ -6686,6 +6737,9 @@
             "type": "cloze",
             "skill": "writing",
             "prompt": "Complete the sentence: 我食＿＿。",
+            "audio": {
+              "text": "我食飯。"
+            },
             "options": [
               {
                 "id": "cloze-correct",
@@ -7017,6 +7071,9 @@
             "type": "cloze",
             "skill": "writing",
             "prompt": "Complete the sentence: 我冇＿＿間。",
+            "audio": {
+              "text": "我冇時間。"
+            },
             "options": [
               {
                 "id": "cloze-correct",
@@ -7348,6 +7405,9 @@
             "type": "cloze",
             "skill": "writing",
             "prompt": "Complete the sentence: 我＿＿飲茶。",
+            "audio": {
+              "text": "我想飲茶。"
+            },
             "options": [
               {
                 "id": "cloze-correct",
@@ -7682,6 +7742,9 @@
             "type": "cloze",
             "skill": "writing",
             "prompt": "Complete the sentence: ＿＿，我叫阿明。",
+            "audio": {
+              "text": "你好，我叫阿明。"
+            },
             "options": [
               {
                 "id": "cloze-correct",
@@ -8017,6 +8080,9 @@
             "type": "cloze",
             "skill": "writing",
             "prompt": "Complete the sentence: ＿＿，我想要杯水。",
+            "audio": {
+              "text": "唔該，我想要杯水。"
+            },
             "options": [
               {
                 "id": "cloze-correct",
@@ -8350,6 +8416,9 @@
             "type": "cloze",
             "skill": "writing",
             "prompt": "Complete the sentence: ＿＿你幫我。",
+            "audio": {
+              "text": "多謝你幫我。"
+            },
             "options": [
               {
                 "id": "cloze-correct",
@@ -8666,6 +8735,9 @@
             "type": "cloze",
             "skill": "writing",
             "prompt": "Complete the sentence: 老師，＿＿。",
+            "audio": {
+              "text": "老師，早晨。"
+            },
             "options": [
               {
                 "id": "cloze-correct",
@@ -8982,6 +9054,9 @@
             "type": "cloze",
             "skill": "writing",
             "prompt": "Complete the sentence: 聽日＿＿。",
+            "audio": {
+              "text": "聽日再見。"
+            },
             "options": [
               {
                 "id": "cloze-correct",
@@ -9300,6 +9375,9 @@
             "type": "cloze",
             "skill": "writing",
             "prompt": "Complete the sentence: 我而家返＿＿。",
+            "audio": {
+              "text": "我而家返屋企。"
+            },
             "options": [
               {
                 "id": "cloze-correct",
@@ -9635,6 +9713,9 @@
             "type": "cloze",
             "skill": "writing",
             "prompt": "Complete the sentence: 我搭巴士去＿＿。",
+            "audio": {
+              "text": "我搭巴士去學校。"
+            },
             "options": [
               {
                 "id": "cloze-correct",
@@ -9970,6 +10051,9 @@
             "type": "cloze",
             "skill": "writing",
             "prompt": "Complete the sentence: 呢架＿＿去中環。",
+            "audio": {
+              "text": "呢架巴士去中環。"
+            },
             "options": [
               {
                 "id": "cloze-correct",
@@ -10308,6 +10392,9 @@
             "type": "cloze",
             "skill": "writing",
             "prompt": "Complete the sentence: 我哋去＿＿食飯。",
+            "audio": {
+              "text": "我哋去茶餐廳食飯。"
+            },
             "options": [
               {
                 "id": "cloze-correct",
@@ -10640,6 +10727,9 @@
             "type": "cloze",
             "skill": "writing",
             "prompt": "Complete the sentence: 我想要一碗＿＿。",
+            "audio": {
+              "text": "我想要一碗飯。"
+            },
             "options": [
               {
                 "id": "cloze-correct",
@@ -10972,6 +11062,9 @@
             "type": "cloze",
             "skill": "writing",
             "prompt": "Complete the sentence: 唔該畀杯＿＿我。",
+            "audio": {
+              "text": "唔該畀杯水我。"
+            },
             "options": [
               {
                 "id": "cloze-correct",
@@ -11307,6 +11400,9 @@
             "type": "cloze",
             "skill": "writing",
             "prompt": "Complete the sentence: 請問＿＿喺邊度？",
+            "audio": {
+              "text": "請問廁所喺邊度？"
+            },
             "options": [
               {
                 "id": "cloze-correct",
@@ -11644,6 +11740,9 @@
             "type": "cloze",
             "skill": "writing",
             "prompt": "Complete the sentence: 我＿＿學生。",
+            "audio": {
+              "text": "我係學生。"
+            },
             "options": [
               {
                 "id": "cloze-correct",
@@ -11984,6 +12083,9 @@
             "type": "cloze",
             "skill": "writing",
             "prompt": "Complete the sentence: 我＿＿係老師。",
+            "audio": {
+              "text": "我唔係老師。"
+            },
             "options": [
               {
                 "id": "cloze-correct",
@@ -12324,6 +12426,9 @@
             "type": "cloze",
             "skill": "writing",
             "prompt": "Complete the sentence: 我＿＿一本書。",
+            "audio": {
+              "text": "我有一本書。"
+            },
             "options": [
               {
                 "id": "cloze-correct",
@@ -12661,6 +12766,9 @@
             "type": "cloze",
             "skill": "writing",
             "prompt": "Complete the sentence: 我＿＿時間。",
+            "audio": {
+              "text": "我冇時間。"
+            },
             "options": [
               {
                 "id": "cloze-correct",
@@ -13001,6 +13109,9 @@
             "type": "cloze",
             "skill": "writing",
             "prompt": "Complete the sentence: 你去＿＿呀？",
+            "audio": {
+              "text": "你去邊度呀？"
+            },
             "options": [
               {
                 "id": "cloze-correct",
@@ -13338,6 +13449,9 @@
             "type": "cloze",
             "skill": "writing",
             "prompt": "Complete the sentence: 我＿＿飲茶。",
+            "audio": {
+              "text": "我想飲茶。"
+            },
             "options": [
               {
                 "id": "cloze-correct",
@@ -13681,6 +13795,9 @@
             "type": "cloze",
             "skill": "writing",
             "prompt": "Complete the sentence: 唔該＿＿杯水我。",
+            "audio": {
+              "text": "唔該畀杯水我。"
+            },
             "options": [
               {
                 "id": "cloze-correct",
@@ -14018,6 +14135,9 @@
             "type": "cloze",
             "skill": "writing",
             "prompt": "Complete the sentence: 我食＿＿飯。",
+            "audio": {
+              "text": "我食咗飯。"
+            },
             "options": [
               {
                 "id": "cloze-correct",
