@@ -35,6 +35,67 @@ async def _db_lesson_ids(session, unit_ids: list[str]) -> set[str]:
     return set(result.all())
 
 
+def _apply_character_fields(row: Character, char: dict) -> None:
+    row.glyph = char["glyph"]
+    row.meaning = char["meaning"]
+    row.jyutping = char["jyutping"]
+    row.tone = char["tone"]
+    row.radical = char.get("radical")
+    row.components = char.get("components", [])
+    row.related_words = char.get("related_words", [])
+
+
+async def _upsert_character(session, char: dict) -> None:
+    row = await session.get(Character, char["id"])
+    if row:
+        _apply_character_fields(row, char)
+        return
+
+    existing = await session.scalar(select(Character).where(Character.glyph == char["glyph"]))
+    if existing:
+        _apply_character_fields(existing, char)
+        return
+
+    session.add(
+        Character(
+            id=char["id"],
+            glyph=char["glyph"],
+            meaning=char["meaning"],
+            jyutping=char["jyutping"],
+            tone=char["tone"],
+            radical=char.get("radical"),
+            components=char.get("components", []),
+            related_words=char.get("related_words", []),
+            status="published",
+        )
+    )
+
+
+async def _upsert_lexeme(session, lex: dict) -> None:
+    row = await session.get(Lexeme, lex["id"])
+    if row:
+        row.traditional = lex["traditional"]
+        row.jyutping = lex["jyutping"]
+        row.tone = lex["tone"]
+        row.english = lex["english"]
+        row.tags = lex.get("tags", [])
+        row.difficulty = lex.get("difficulty", 1)
+        return
+
+    session.add(
+        Lexeme(
+            id=lex["id"],
+            traditional=lex["traditional"],
+            jyutping=lex["jyutping"],
+            tone=lex["tone"],
+            english=lex["english"],
+            tags=lex.get("tags", []),
+            difficulty=lex.get("difficulty", 1),
+            status="published",
+        )
+    )
+
+
 async def import_seed(seed_path: Path, version: str | None = None) -> None:
     doc = json.loads(seed_path.read_text())
     version = version or doc["version"]
@@ -98,52 +159,10 @@ async def import_seed(seed_path: Path, version: str | None = None) -> None:
                         row.prerequisites = unit_data.get("prerequisites", [])
 
                 for lex in doc.get("lexemes", []):
-                    row = await session.get(Lexeme, lex["id"])
-                    if row:
-                        row.traditional = lex["traditional"]
-                        row.jyutping = lex["jyutping"]
-                        row.tone = lex["tone"]
-                        row.english = lex["english"]
-                        row.tags = lex.get("tags", [])
-                        row.difficulty = lex.get("difficulty", 1)
-                    else:
-                        session.add(
-                            Lexeme(
-                                id=lex["id"],
-                                traditional=lex["traditional"],
-                                jyutping=lex["jyutping"],
-                                tone=lex["tone"],
-                                english=lex["english"],
-                                tags=lex.get("tags", []),
-                                difficulty=lex.get("difficulty", 1),
-                                status="published",
-                            )
-                        )
+                    await _upsert_lexeme(session, lex)
 
                 for char in doc.get("characters", []):
-                    row = await session.get(Character, char["id"])
-                    if row:
-                        row.glyph = char["glyph"]
-                        row.meaning = char["meaning"]
-                        row.jyutping = char["jyutping"]
-                        row.tone = char["tone"]
-                        row.radical = char.get("radical")
-                        row.components = char.get("components", [])
-                        row.related_words = char.get("related_words", [])
-                    else:
-                        session.add(
-                            Character(
-                                id=char["id"],
-                                glyph=char["glyph"],
-                                meaning=char["meaning"],
-                                jyutping=char["jyutping"],
-                                tone=char["tone"],
-                                radical=char.get("radical"),
-                                components=char.get("components", []),
-                                related_words=char.get("related_words", []),
-                                status="published",
-                            )
-                        )
+                    await _upsert_character(session, char)
 
                 stale_lessons = await session.execute(
                     select(Lesson).where(Lesson.unit_id.in_(unit_ids))
@@ -179,7 +198,11 @@ async def import_seed(seed_path: Path, version: str | None = None) -> None:
                     **(existing_version.metadata_json or {}),
                     "seed_hash": seed_hash,
                 }
-                await session.commit()
+                try:
+                    await session.commit()
+                except IntegrityError:
+                    await session.rollback()
+                    raise
                 logger.info(
                     "Updated version %s from changed seed content (%s lessons)",
                     version,

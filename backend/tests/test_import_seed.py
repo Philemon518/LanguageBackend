@@ -14,7 +14,7 @@ sys.path.insert(0, str(ROOT))
 
 import app.core.database as database_module
 from app.core.database import Base
-from app.models.orm import CurriculumVersion, Lesson
+from app.models.orm import Character, CurriculumVersion, Lesson
 from content.scripts.generate_beginner_v2 import generate_document
 from content.scripts.import_seed import import_seed
 
@@ -126,3 +126,52 @@ async def test_import_seed_reconciles_when_hash_matches_but_lessons_differ(
         lesson_ids = set((await session.scalars(select(Lesson.id))).all())
         assert len(lesson_ids) == 10
         assert "v2-sound-04" not in lesson_ids
+
+
+@pytest.mark.asyncio
+async def test_import_seed_upserts_characters_by_glyph(import_db, tmp_path):
+    seed_path = tmp_path / "beginner_v2.json"
+    doc = generate_document()
+    seed_path.write_text(json.dumps(doc, ensure_ascii=False), encoding="utf-8")
+
+    async with import_db() as session:
+        from uuid import uuid4
+
+        from app.models.orm import Unit
+
+        cv = CurriculumVersion(
+            id=uuid4(), version="2.0.0", level="beginner", metadata_json={}
+        )
+        session.add(cv)
+        await session.flush()
+        session.add(
+            Unit(
+                id="v2-unit-sound",
+                curriculum_version_id=cv.id,
+                title="Sound",
+                phase="sound",
+                sort_order=1,
+            )
+        )
+        session.add(
+            Character(
+                id="legacy-character-xiu",
+                glyph="休",
+                meaning="old rest",
+                jyutping="jau1",
+                tone=1,
+                status="published",
+            )
+        )
+        await session.commit()
+
+    await import_seed(seed_path)
+
+    async with import_db() as session:
+        by_glyph = await session.scalar(select(Character).where(Character.glyph == "休"))
+        assert by_glyph is not None
+        assert by_glyph.meaning == "rest"
+        assert (
+            await session.scalar(select(func.count()).select_from(Character).where(Character.glyph == "休"))
+            == 1
+        )
