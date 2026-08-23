@@ -50,6 +50,17 @@ def _audio_url_for_text(text: str, asset: MediaAsset | None) -> str | None:
     return None
 
 
+def _cantonese_lesson_title(content: dict, stored_title: str) -> str:
+    target = content.get("target") or {}
+    words = target.get("words") or []
+    if words:
+        return " · ".join(word["traditional"] for word in words)
+    traditional = target.get("traditional")
+    if traditional:
+        return traditional
+    return stored_title
+
+
 def _lesson_summary_fields(content: dict, lesson, unit_phase: str) -> dict:
     target = content.get("target") or {}
     words = target.get("words") or []
@@ -120,7 +131,7 @@ async def list_lessons(
         LessonSummary(
             id=l.id,
             unit_id=l.unit_id,
-            title=l.title,
+            title=_cantonese_lesson_title(l.content_json or {}, l.title),
             lesson_type=l.lesson_type,
             sort_order=l.sort_order,
             completed=progress_map[l.id].completed if l.id in progress_map else False,
@@ -175,7 +186,7 @@ async def list_road(db: AsyncSession, user_id=None) -> list[LessonSummary]:
                 LessonSummary(
                     id=lesson.id,
                     unit_id=lesson.unit_id,
-                    title=lesson.title,
+                    title=_cantonese_lesson_title(content, lesson.title),
                     lesson_type=lesson.lesson_type,
                     sort_order=lesson.sort_order,
                     global_order=global_order,
@@ -247,7 +258,7 @@ async def get_lesson(db: AsyncSession, lesson_id: str) -> LessonDocument | None:
     return LessonDocument(
         id=lesson.id,
         unit_id=lesson.unit_id,
-        title=lesson.title,
+        title=_cantonese_lesson_title(content, lesson.title),
         lesson_type=lesson.lesson_type,
         objectives=lesson.objectives or [],
         steps=steps,
