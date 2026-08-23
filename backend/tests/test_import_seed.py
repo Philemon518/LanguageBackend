@@ -81,3 +81,48 @@ async def test_import_seed_removes_stale_lessons_on_update(import_db, tmp_path):
         )
         assert version is not None
         assert version.metadata_json.get("seed_hash") != "outdated-hash"
+
+
+@pytest.mark.asyncio
+async def test_import_seed_reconciles_when_hash_matches_but_lessons_differ(
+    import_db, tmp_path
+):
+    seed_path = tmp_path / "beginner_v2.json"
+    doc = generate_document()
+    seed_path.write_text(json.dumps(doc, ensure_ascii=False), encoding="utf-8")
+
+    await import_seed(seed_path)
+
+    async with import_db() as session:
+        version = await session.scalar(
+            select(CurriculumVersion).where(CurriculumVersion.version == "2.0.0")
+        )
+        current_hash = version.metadata_json["seed_hash"]
+        session.add(
+            Lesson(
+                id="v2-sound-04",
+                unit_id="v2-unit-sound",
+                title="水 · seoi2 · water",
+                lesson_type="sound",
+                sort_order=4,
+                objectives=[],
+                content_json={
+                    "target": {
+                        "traditional": "水",
+                        "jyutping": "seoi2",
+                        "english": "water",
+                    },
+                    "steps": [],
+                },
+                status="published",
+            )
+        )
+        version.metadata_json = {"seed_hash": current_hash}
+        await session.commit()
+
+    await import_seed(seed_path)
+
+    async with import_db() as session:
+        lesson_ids = set((await session.scalars(select(Lesson.id))).all())
+        assert len(lesson_ids) == 10
+        assert "v2-sound-04" not in lesson_ids

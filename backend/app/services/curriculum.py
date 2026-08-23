@@ -61,6 +61,11 @@ def _cantonese_lesson_title(content: dict, stored_title: str) -> str:
     return stored_title
 
 
+def _is_bundled_lesson(content: dict) -> bool:
+    words = (content.get("target") or {}).get("words") or []
+    return len(words) >= 2
+
+
 def _lesson_summary_fields(content: dict, lesson, unit_phase: str) -> dict:
     target = content.get("target") or {}
     words = target.get("words") or []
@@ -140,6 +145,7 @@ async def list_lessons(
             **_lesson_summary_fields(l.content_json or {}, l, unit.phase if unit else "sound"),
         )
         for l in lessons
+        if _is_bundled_lesson(l.content_json or {})
     ]
 
 
@@ -179,9 +185,11 @@ async def list_road(db: AsyncSession, user_id=None) -> list[LessonSummary]:
             progress_map = {p.lesson_id: p for p in prog.scalars().all()}
 
         for lesson in lessons:
+            content = lesson.content_json or {}
+            if not _is_bundled_lesson(content):
+                continue
             progress = progress_map.get(lesson.id)
             completed = bool(progress and progress.completed)
-            content = lesson.content_json or {}
             road.append(
                 LessonSummary(
                     id=lesson.id,
@@ -208,6 +216,8 @@ async def get_lesson(db: AsyncSession, lesson_id: str) -> LessonDocument | None:
     if not lesson:
         return None
     content = lesson.content_json or {}
+    if not _is_bundled_lesson(content):
+        return None
     steps = [dict(step) for step in content.get("steps", [])]
     audio_texts = {
         (step.get("audio") or {}).get("text")

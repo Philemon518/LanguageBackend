@@ -24,6 +24,17 @@ logger = logging.getLogger("canto.import_seed")
 SEED_LOCK_ID = 8_192_001
 
 
+def _seed_lesson_ids(doc: dict) -> set[str]:
+    return {lesson["id"] for lesson in doc.get("lessons", [])}
+
+
+async def _db_lesson_ids(session, unit_ids: list[str]) -> set[str]:
+    if not unit_ids:
+        return set()
+    result = await session.scalars(select(Lesson.id).where(Lesson.unit_id.in_(unit_ids)))
+    return set(result.all())
+
+
 async def import_seed(seed_path: Path, version: str | None = None) -> None:
     doc = json.loads(seed_path.read_text())
     version = version or doc["version"]
@@ -61,12 +72,22 @@ async def import_seed(seed_path: Path, version: str | None = None) -> None:
                     existing_version = None
 
             if existing_version:
-                if (existing_version.metadata_json or {}).get("seed_hash") == seed_hash:
+                unit_ids = [unit["id"] for unit in doc.get("units", [])]
+                seed_lesson_ids = _seed_lesson_ids(doc)
+                db_lesson_ids = await _db_lesson_ids(session, unit_ids)
+                hash_matches = (
+                    (existing_version.metadata_json or {}).get("seed_hash") == seed_hash
+                )
+                if hash_matches and db_lesson_ids == seed_lesson_ids:
                     logger.info("Version %s already up to date", version)
                     return
-
-                unit_ids = [unit["id"] for unit in doc.get("units", [])]
-                seed_lesson_ids = {lesson["id"] for lesson in doc.get("lessons", [])}
+                if hash_matches:
+                    logger.warning(
+                        "Version %s hash matches but %s lessons in db vs %s in seed; reconciling",
+                        version,
+                        len(db_lesson_ids),
+                        len(seed_lesson_ids),
+                    )
 
                 for unit_data in doc.get("units", []):
                     row = await session.get(Unit, unit_data["id"])
