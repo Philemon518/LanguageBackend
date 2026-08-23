@@ -23,19 +23,23 @@ SUPPORTED_TYPES = CHOICE_TYPES | {
     "write_sentence",
 }
 SIMPLIFIED_ONLY = set("这们个为么说从东丝乐习买车过边师学语时间见饭饮书")
-V2_LESSON_TYPES = {"sound": 12, "component": 8, "vocabulary": 12, "grammar": 8}
-V2_SKILLS = {"listening": 92, "speaking": 40, "reading": 108, "writing": 120}
-V2_EXERCISE_TYPES = {
-    "select_meaning": 40,
-    "select_jyutping": 40,
-    "speak": 40,
-    "select_character": 40,
-    "select_tone": 12,
-    "match": 28,
-    "cloze": 40,
-    "order_words": 80,
-    "word_intro": 40,
-}
+
+
+def _load_v2_expectations() -> dict:
+    try:
+        from generate_beginner_v2 import curriculum_expectations
+    except ImportError:
+        from content.scripts.generate_beginner_v2 import curriculum_expectations
+    return curriculum_expectations()
+
+
+V2_EXPECTATIONS = _load_v2_expectations()
+V2_LESSON_TYPES = V2_EXPECTATIONS["lesson_types"]
+V2_SKILLS = V2_EXPECTATIONS["skills"]
+V2_EXERCISE_TYPES = V2_EXPECTATIONS["exercise_types"]
+V2_LESSON_COUNT = V2_EXPECTATIONS["lesson_count"]
+V2_UNIT_LESSON_COUNTS = V2_EXPECTATIONS["unit_lesson_counts"]
+V2_PROGRESSION = V2_EXPECTATIONS["progression"]
 
 
 def validate_jyutping(jyutping: str) -> list[str]:
@@ -126,6 +130,13 @@ def _validate_step(step: dict, lesson_id: str) -> list[str]:
             errors.append(f"{label} expected_order must exactly cover options")
     if exercise_type == "cloze" and not metadata.get("expected"):
         errors.append(f"{label} missing expected cloze answer")
+    if exercise_type == "cloze":
+        lesson_words = metadata.get("lesson_words") or []
+        option_labels = [option.get("label") for option in options]
+        if lesson_words and any(
+            label not in lesson_words for label in option_labels if label
+        ):
+            errors.append(f"{label} cloze options must come from lesson vocabulary")
     if exercise_type in {"dictation", "speak"}:
         expected = metadata.get("expected") or step.get("reveal_jyutping")
         if not expected:
@@ -154,8 +165,19 @@ def validate_lesson(lesson: dict, *, require_v2: bool = False) -> list[str]:
     steps = lesson.get("content", {}).get("steps", [])
     if not steps:
         errors.append(f"Lesson {lesson.get('id')} has no steps")
-    if require_v2 and not 8 <= len(steps) <= 10:
-        errors.append(f"Lesson {lesson.get('id')} must have 8-10 exercises")
+    if require_v2 and not 20 <= len(steps) <= 35:
+        errors.append(f"Lesson {lesson.get('id')} must have 20-35 exercises")
+    if require_v2:
+        intro_count = 0
+        for step in steps:
+            if step.get("type") == "word_intro":
+                intro_count += 1
+                continue
+            break
+        if intro_count < 3 or intro_count > 4:
+            errors.append(
+                f"Lesson {lesson.get('id')} must begin with 3-4 word_intro steps, found {intro_count}"
+            )
     seen_ids: set[str] = set()
     for step in steps:
         sid = step.get("id")
@@ -229,8 +251,10 @@ def _validate_v2(doc: dict) -> list[str]:
     errors: list[str] = []
     lessons = doc.get("lessons", [])
     units = doc.get("units", [])
-    if len(lessons) != 40:
-        errors.append(f"Beginner v2 must contain exactly 40 lessons, found {len(lessons)}")
+    if len(lessons) != V2_LESSON_COUNT:
+        errors.append(
+            f"Beginner v2 must contain exactly {V2_LESSON_COUNT} lessons, found {len(lessons)}"
+        )
     lesson_types = Counter(lesson.get("lesson_type") for lesson in lessons)
     if dict(lesson_types) != V2_LESSON_TYPES:
         errors.append(f"Beginner v2 lesson distribution must be {V2_LESSON_TYPES}, found {dict(lesson_types)}")
@@ -259,9 +283,11 @@ def _validate_v2(doc: dict) -> list[str]:
     progressions = [
         lesson.get("content", {}).get("context", {}).get("progression") for lesson in lessons
     ]
-    if progressions != list(range(1, 41)):
-        errors.append("Beginner v2 context progression must be exactly 1 through 40")
-    expected_unit_counts = [12, 8, 12, 8]
+    if progressions != V2_PROGRESSION:
+        errors.append(
+            f"Beginner v2 context progression must be exactly 1 through {V2_LESSON_COUNT}"
+        )
+    expected_unit_counts = V2_UNIT_LESSON_COUNTS
     actual_unit_counts = [
         sum(lesson.get("unit_id") == unit.get("id") for lesson in lessons) for unit in units
     ]

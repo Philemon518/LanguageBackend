@@ -85,7 +85,7 @@ async def test_library_returns_encountered_words(library_client):
             ExerciseAttempt(
                 user_id=user_id,
                 lesson_id="v2-sound-01",
-                exercise_id="v2-sound-01-00",
+                exercise_id="v2-sound-01-ex-01",
                 skill="reading",
                 response_json={"selected_option_id": "intro-ready"},
                 correct=True,
@@ -108,8 +108,8 @@ async def test_library_returns_encountered_words(library_client):
     )
     assert response.status_code == 200
     payload = response.json()
-    assert payload["total"] == 1
-    word = payload["words"][0]
+    assert payload["total"] == 4
+    word = next(item for item in payload["words"] if item["traditional"] == "水")
     assert word["traditional"] == "水"
     assert word["english"] == "water"
     assert word["lesson_id"] == "v2-sound-01"

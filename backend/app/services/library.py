@@ -82,28 +82,27 @@ async def get_user_library(db: AsyncSession, user_id: UUID) -> list[dict]:
     lessons = lessons_result.scalars().all()
 
     lexeme_ids: set[str] = set()
-    lesson_lexeme: dict[str, str] = {}
+    lesson_lexemes: dict[str, list[str]] = {}
     lesson_meta: dict[str, dict] = {}
     for lesson in lessons:
         content = lesson.content_json or {}
         target = content.get("target") or {}
         vocabulary = content.get("vocabulary") or []
-        lexeme_id = None
-        if vocabulary:
-            lexeme_id = vocabulary[0].get("lexeme_id")
-        if lexeme_id:
-            lexeme_ids.add(lexeme_id)
-            lesson_lexeme[lesson.id] = lexeme_id
+        intro_meta_by_objective = {
+            (step.get("metadata") or {}).get("objective_id"): step.get("metadata") or {}
+            for step in content.get("steps", [])
+            if step.get("type") == "word_intro"
+        }
 
-        word_type = None
-        components = None
-        for step in content.get("steps", []):
-            if step.get("type") != "word_intro":
+        lesson_lexeme_list: list[str] = []
+        for vocabulary_entry in vocabulary:
+            lexeme_id = vocabulary_entry.get("lexeme_id")
+            if not lexeme_id:
                 continue
-            metadata = step.get("metadata") or {}
-            word_type = metadata.get("word_type")
-            components = metadata.get("components_label")
-            break
+            lexeme_ids.add(lexeme_id)
+            lesson_lexeme_list.append(lexeme_id)
+        if lesson_lexeme_list:
+            lesson_lexemes[lesson.id] = lesson_lexeme_list
 
         lesson_meta[lesson.id] = {
             "lesson_title": lesson.title,
@@ -111,9 +110,8 @@ async def get_user_library(db: AsyncSession, user_id: UUID) -> list[dict]:
             "phase": unit_phase.get(lesson.unit_id, "sound"),
             "encountered_at": attempt_map.get(lesson.id),
             "global_order": lesson_order.get(lesson.id, 0),
-            "word_type": word_type,
-            "components": components,
             "target": target,
+            "intro_meta_by_objective": intro_meta_by_objective,
         }
 
     if not lexeme_ids:
@@ -140,35 +138,38 @@ async def get_user_library(db: AsyncSession, user_id: UUID) -> list[dict]:
             )
 
     entries: list[dict] = []
-    for lesson_id, lexeme_id in lesson_lexeme.items():
-        lexeme = lexeme_by_id.get(lexeme_id)
-        if lexeme is None:
-            continue
+    for lesson_id, lesson_lexeme_list in lesson_lexemes.items():
         meta = lesson_meta[lesson_id]
         target = meta["target"]
         encountered_at: datetime | None = meta["encountered_at"]
-        entries.append(
-            {
-                "lexeme_id": lexeme.id,
-                "traditional": lexeme.traditional,
-                "jyutping": lexeme.jyutping,
-                "tone": lexeme.tone,
-                "english": lexeme.english,
-                "word_type": meta["word_type"],
-                "components": meta["components"],
-                "phase": meta["phase"],
-                "lesson_id": lesson_id,
-                "lesson_title": meta["lesson_title"],
-                "lesson_type": meta["lesson_type"],
-                "encountered_at": encountered_at.isoformat() if encountered_at else None,
-                "audio_url": _audio_url_for_text(lexeme.traditional, None)
-                or media_by_text.get(lexeme.traditional),
-                "context_traditional": target.get("traditional"),
-                "context_jyutping": target.get("jyutping"),
-                "context_english": target.get("english"),
-                "_global_order": meta["global_order"],
-            }
-        )
+        for lexeme_id in lesson_lexeme_list:
+            lexeme = lexeme_by_id.get(lexeme_id)
+            if lexeme is None:
+                continue
+            objective_id = lexeme_id.replace("-word-", "-obj-")
+            intro_meta = meta["intro_meta_by_objective"].get(objective_id, {})
+            entries.append(
+                {
+                    "lexeme_id": lexeme.id,
+                    "traditional": lexeme.traditional,
+                    "jyutping": lexeme.jyutping,
+                    "tone": lexeme.tone,
+                    "english": lexeme.english,
+                    "word_type": intro_meta.get("word_type"),
+                    "components": intro_meta.get("components_label"),
+                    "phase": meta["phase"],
+                    "lesson_id": lesson_id,
+                    "lesson_title": meta["lesson_title"],
+                    "lesson_type": meta["lesson_type"],
+                    "encountered_at": encountered_at.isoformat() if encountered_at else None,
+                    "audio_url": _audio_url_for_text(lexeme.traditional, None)
+                    or media_by_text.get(lexeme.traditional),
+                    "context_traditional": target.get("traditional"),
+                    "context_jyutping": target.get("jyutping"),
+                    "context_english": target.get("english"),
+                    "_global_order": meta["global_order"],
+                }
+            )
 
     entries.sort(
         key=lambda item: (
