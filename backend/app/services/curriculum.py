@@ -50,6 +50,19 @@ def _audio_url_for_text(text: str, asset: MediaAsset | None) -> str | None:
     return None
 
 
+def _lesson_summary_fields(content: dict, lesson, unit_phase: str) -> dict:
+    target = content.get("target") or {}
+    words = target.get("words") or []
+    return {
+        "target_traditional": target.get("traditional"),
+        "target_english": target.get("english"),
+        "theme": target.get("theme"),
+        "word_count": len(words) if words else 1,
+        "question_count": len(content.get("steps", [])),
+        "phase": unit_phase,
+    }
+
+
 async def get_manifest(db: AsyncSession, level: str = "beginner") -> CurriculumManifest:
     version_result = await db.execute(
         select(CurriculumVersion)
@@ -108,17 +121,12 @@ async def list_lessons(
             id=l.id,
             unit_id=l.unit_id,
             title=l.title,
-            target_traditional=(l.content_json or {}).get("target", {}).get(
-                "traditional"
-            ),
-            target_english=(l.content_json or {}).get("target", {}).get("english"),
             lesson_type=l.lesson_type,
             sort_order=l.sort_order,
-            question_count=len((l.content_json or {}).get("steps", [])),
-            phase=unit.phase if unit else "sound",
             completed=progress_map[l.id].completed if l.id in progress_map else False,
             current_step=progress_map[l.id].current_step if l.id in progress_map else 0,
             locked=False,
+            **_lesson_summary_fields(l.content_json or {}, l, unit.phase if unit else "sound"),
         )
         for l in lessons
     ]
@@ -162,22 +170,19 @@ async def list_road(db: AsyncSession, user_id=None) -> list[LessonSummary]:
         for lesson in lessons:
             progress = progress_map.get(lesson.id)
             completed = bool(progress and progress.completed)
-            target = (lesson.content_json or {}).get("target", {})
+            content = lesson.content_json or {}
             road.append(
                 LessonSummary(
                     id=lesson.id,
                     unit_id=lesson.unit_id,
                     title=lesson.title,
-                    target_traditional=target.get("traditional"),
-                    target_english=target.get("english"),
                     lesson_type=lesson.lesson_type,
                     sort_order=lesson.sort_order,
                     global_order=global_order,
-                    question_count=len((lesson.content_json or {}).get("steps", [])),
-                    phase=unit.phase,
                     completed=completed,
                     current_step=progress.current_step if progress else 0,
                     locked=not previous_completed,
+                    **_lesson_summary_fields(content, lesson, unit.phase),
                 )
             )
             global_order += 1

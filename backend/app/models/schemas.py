@@ -48,6 +48,8 @@ class LessonSummary(BaseModel):
     title: str
     target_traditional: str | None = None
     target_english: str | None = None
+    theme: str | None = None
+    word_count: int = 0
     lesson_type: str
     sort_order: int
     global_order: int = 0

@@ -65,6 +65,17 @@ async def import_seed(seed_path: Path, version: str | None = None) -> None:
                     logger.info("Version %s already up to date", version)
                     return
 
+                unit_ids = [unit["id"] for unit in doc.get("units", [])]
+                seed_lesson_ids = {lesson["id"] for lesson in doc.get("lessons", [])}
+
+                for unit_data in doc.get("units", []):
+                    row = await session.get(Unit, unit_data["id"])
+                    if row:
+                        row.title = unit_data["title"]
+                        row.phase = unit_data["phase"]
+                        row.sort_order = unit_data["sort_order"]
+                        row.prerequisites = unit_data.get("prerequisites", [])
+
                 for lex in doc.get("lexemes", []):
                     row = await session.get(Lexeme, lex["id"])
                     if row:
@@ -74,22 +85,85 @@ async def import_seed(seed_path: Path, version: str | None = None) -> None:
                         row.english = lex["english"]
                         row.tags = lex.get("tags", [])
                         row.difficulty = lex.get("difficulty", 1)
+                    else:
+                        session.add(
+                            Lexeme(
+                                id=lex["id"],
+                                traditional=lex["traditional"],
+                                jyutping=lex["jyutping"],
+                                tone=lex["tone"],
+                                english=lex["english"],
+                                tags=lex.get("tags", []),
+                                difficulty=lex.get("difficulty", 1),
+                                status="published",
+                            )
+                        )
 
-                for lesson_data in doc["lessons"]:
+                for char in doc.get("characters", []):
+                    row = await session.get(Character, char["id"])
+                    if row:
+                        row.glyph = char["glyph"]
+                        row.meaning = char["meaning"]
+                        row.jyutping = char["jyutping"]
+                        row.tone = char["tone"]
+                        row.radical = char.get("radical")
+                        row.components = char.get("components", [])
+                        row.related_words = char.get("related_words", [])
+                    else:
+                        session.add(
+                            Character(
+                                id=char["id"],
+                                glyph=char["glyph"],
+                                meaning=char["meaning"],
+                                jyutping=char["jyutping"],
+                                tone=char["tone"],
+                                radical=char.get("radical"),
+                                components=char.get("components", []),
+                                related_words=char.get("related_words", []),
+                                status="published",
+                            )
+                        )
+
+                stale_lessons = await session.execute(
+                    select(Lesson).where(Lesson.unit_id.in_(unit_ids))
+                )
+                for lesson in stale_lessons.scalars():
+                    if lesson.id not in seed_lesson_ids:
+                        await session.delete(lesson)
+
+                for lesson_data in doc.get("lessons", []):
                     row = await session.get(Lesson, lesson_data["id"])
                     if row:
+                        row.unit_id = lesson_data["unit_id"]
                         row.title = lesson_data["title"]
                         row.lesson_type = lesson_data["lesson_type"]
                         row.sort_order = lesson_data["sort_order"]
                         row.objectives = lesson_data.get("objectives", [])
                         row.content_json = lesson_data["content"]
+                    else:
+                        session.add(
+                            Lesson(
+                                id=lesson_data["id"],
+                                unit_id=lesson_data["unit_id"],
+                                title=lesson_data["title"],
+                                lesson_type=lesson_data["lesson_type"],
+                                sort_order=lesson_data["sort_order"],
+                                objectives=lesson_data.get("objectives", []),
+                                content_json=lesson_data["content"],
+                                status="published",
+                            )
+                        )
 
                 existing_version.metadata_json = {
                     **(existing_version.metadata_json or {}),
                     "seed_hash": seed_hash,
                 }
                 await session.commit()
-                logger.info("Updated version %s from changed seed content", version)
+                logger.info(
+                    "Updated version %s from changed seed content (%s lessons)",
+                    version,
+                    len(doc.get("lessons", [])),
+                )
                 return
 
             cv = CurriculumVersion(
