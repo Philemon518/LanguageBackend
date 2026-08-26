@@ -9,8 +9,8 @@ logger = logging.getLogger("canto.bootstrap")
 async def bootstrap_if_empty() -> None:
     source = Path(__file__).resolve()
     candidates = [
-        source.parents[2] / "content" / "seeds" / "beginner_v2.json",  # /app in Docker
-        source.parents[3] / "content" / "seeds" / "beginner_v2.json",  # monorepo checkout
+        source.parents[2] / "content" / "seeds" / "beginner_v3.json",  # /app in Docker
+        source.parents[3] / "content" / "seeds" / "beginner_v3.json",  # monorepo checkout
     ]
     seed_path = next((path for path in candidates if path.exists()), candidates[0])
     if not seed_path.exists():
