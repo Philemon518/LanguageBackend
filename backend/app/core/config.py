@@ -15,9 +15,7 @@ class Settings(BaseSettings):
     api_port: int = 8000
     cors_origins: str = "*"
 
-    database_url: str = (
-        f"sqlite+aiosqlite:///{Path(__file__).resolve().parents[2] / 'canto.db'}"
-    )
+    database_url: str = f"sqlite+aiosqlite:///{Path(__file__).resolve().parents[2] / 'canto.db'}"
     jwt_secret: str = ""
     jwt_algorithm: str = "HS256"
     jwt_expiration_minutes: int = 60
@@ -30,6 +28,11 @@ class Settings(BaseSettings):
     qwen_tts_model: str = "qwen3-tts-flash-realtime"
     qwen_tts_voice: str = "Kiki"
     qwen_realtime_url: str = "wss://dashscope-intl.aliyuncs.com/api-ws/v1/realtime"
+
+    cantonese_ai_api_key: str = ""
+    cantonese_ai_tts_url: str = "https://cantonese.ai/api/tts"
+    cantonese_ai_tts_model: str = "v6"
+    cantonese_ai_voice_id: str = "50a9a698-1f99-437c-a07d-9cad435c5f8a"
 
     max_conversation_minutes: int = 15
     max_speech_requests_per_hour: int = 60

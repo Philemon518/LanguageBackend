@@ -14,6 +14,7 @@ def main() -> None:
     seed_paths = [
         ROOT / "content" / "seeds" / "beginner_v1.json",
         ROOT / "content" / "seeds" / "beginner_v2.json",
+        ROOT / "content" / "seeds" / "beginner_v3.json",
     ]
     all_errors = []
     for seed in seed_paths:

@@ -17,8 +17,8 @@ from ..models.schemas import (
     SkillSummaryResponse,
     WritingFeedback,
 )
-from ..services.curriculum import get_lesson
-from ..services.grading import grade_exercise, grade_writing
+from ..services.curriculum import get_lesson, list_road
+from ..services.grading import grade_exercise, grade_writing, is_intro_step
 from ..services.mastery import (
     compute_mastery_delta,
     count_completed_lessons,
@@ -47,14 +47,19 @@ async def submit_attempt(
         raise HTTPException(404, "Exercise not found")
 
     skill = step.skill
-    already_completed = await has_correct_completion(
-        db, user.id, body.lesson_id, body.exercise_id
+    intro_step = is_intro_step(step)
+    already_completed = (
+        False
+        if intro_step
+        else await has_correct_completion(db, user.id, body.lesson_id, body.exercise_id)
     )
     correct, score, feedback = grade_exercise(step, body.response)
-    skill_point_awarded = correct and not already_completed
-    delta_val = compute_mastery_delta(skill, score, correct)
-    objective_id = step.metadata.get("objective_id", body.exercise_id)
-    mastery_delta = await update_mastery(db, user.id, objective_id, skill, delta_val)
+    skill_point_awarded = correct and not already_completed and not intro_step
+    mastery_delta: dict[str, float] = {}
+    if not intro_step:
+        delta_val = compute_mastery_delta(skill, score, correct)
+        objective_id = step.metadata.get("objective_id", body.exercise_id)
+        mastery_delta = await update_mastery(db, user.id, objective_id, skill, delta_val)
 
     attempt = await record_attempt(
         db,
@@ -111,7 +116,7 @@ async def submit_attempt(
 
     profile_result = await db.execute(select(UserProfile).where(UserProfile.id == user.id))
     profile = profile_result.scalar_one()
-    if correct:
+    if correct and not intro_step:
         profile.total_xp += int(score * 10)
 
     await db.commit()
@@ -167,9 +172,20 @@ async def next_practice(
             exercise_id=review[0],
             reason="spaced_review",
         )
+    road = await list_road(db, user.id)
+    next_lesson = next(
+        (lesson for lesson in road if not lesson.completed and not lesson.locked),
+        None,
+    )
+    if next_lesson is None:
+        raise HTTPException(404, "No curriculum practice available")
+    lesson = await get_lesson(db, next_lesson.id)
+    if lesson is None or not lesson.steps:
+        raise HTTPException(404, "No curriculum practice available")
+    step_index = min(next_lesson.current_step, len(lesson.steps) - 1)
     return PracticeNextResponse(
-        lesson_id="sound-01-water",
-        exercise_id="s1-hear",
+        lesson_id=next_lesson.id,
+        exercise_id=lesson.steps[step_index].id,
         reason="continue_curriculum",
     )
 

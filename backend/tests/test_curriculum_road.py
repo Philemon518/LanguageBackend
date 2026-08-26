@@ -5,7 +5,6 @@ from pathlib import Path
 
 import pytest
 import pytest_asyncio
-from sqlalchemy import select
 from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -13,11 +12,10 @@ sys.path.insert(0, str(ROOT))
 
 import app.core.database as database_module
 from app.core.database import Base
-from app.models.orm import CurriculumVersion, Lesson, Unit
 from app.services.curriculum import list_road
 from content.scripts.import_seed import import_seed
 
-SEED_PATH = ROOT / "content" / "seeds" / "beginner_v2.json"
+SEED_PATH = ROOT / "content" / "seeds" / "beginner_v3.json"
 
 
 @pytest_asyncio.fixture
@@ -42,33 +40,22 @@ async def road_db():
 
 
 @pytest.mark.asyncio
-async def test_list_road_excludes_legacy_single_word_lessons(road_db):
+async def test_list_road_returns_v3_foundations_in_curriculum_order(road_db):
     async with road_db() as session:
-        version = (
-            await session.execute(select(CurriculumVersion).limit(1))
-        ).scalar_one()
-        session.add(
-            Lesson(
-                id="v2-sound-04",
-                unit_id="v2-unit-sound",
-                title="水 · seoi2 · water",
-                lesson_type="sound",
-                sort_order=4,
-                objectives=[],
-                content_json={
-                    "target": {
-                        "traditional": "水",
-                        "jyutping": "seoi2",
-                        "english": "water",
-                    },
-                    "steps": [],
-                },
-                status="published",
-            )
-        )
-        await session.commit()
-
         road = await list_road(session)
-        assert len(road) == 10
-        assert all(lesson.id != "v2-sound-04" for lesson in road)
-        assert all(lesson.word_count >= 2 for lesson in road)
+        assert len(road) == 12
+        assert [lesson.id for lesson in road[:2]] == ["v3-orientation", "v3-tones"]
+        assert [lesson.id for lesson in road[2:]] == [
+            *(f"v3-number-{number:02d}" for number in range(1, 9)),
+            "v3-number-review",
+            "v3-number-challenge",
+        ]
+        assert [lesson.global_order for lesson in road] == list(range(12))
+        assert [lesson.lesson_type for lesson in road] == [
+            "orientation",
+            "tone",
+            *(["number"] * 8),
+            "number_review",
+            "number_challenge",
+        ]
+        assert [lesson.word_count for lesson in road[2:10]] == list(range(3, 11))

@@ -3,10 +3,11 @@
 from datetime import UTC, datetime, timedelta
 from uuid import UUID
 
-from sqlalchemy import select
+from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from ..models.orm import CurriculumVersion, ExerciseAttempt, Lesson, ObjectiveMastery, Unit
+from ..models.orm import ExerciseAttempt, Lesson, ObjectiveMastery, Unit
+from .curriculum import get_latest_curriculum_version
 
 SKILL_WEIGHTS = {
     "listening": 1.0,
@@ -14,6 +15,34 @@ SKILL_WEIGHTS = {
     "reading": 0.7,
     "writing": 0.6,
 }
+
+
+async def _latest_curriculum_scope(
+    db: AsyncSession,
+) -> tuple[set[str], set[str], set[tuple[str, str]]]:
+    version = await get_latest_curriculum_version(db)
+    if version is None:
+        return set(), set(), set()
+    result = await db.execute(
+        select(Lesson)
+        .join(Unit, Lesson.unit_id == Unit.id)
+        .where(Unit.curriculum_version_id == version.id)
+    )
+    lesson_ids: set[str] = set()
+    objective_ids: set[str] = set()
+    graded_exercises: set[tuple[str, str]] = set()
+    for lesson in result.scalars().all():
+        lesson_ids.add(lesson.id)
+        for step in (lesson.content_json or {}).get("steps", []):
+            exercise_id = step.get("id")
+            objective_id = (step.get("metadata") or {}).get("objective_id") or exercise_id
+            step_type = step.get("type", "")
+            is_intro = step_type in {"lesson_intro", "word_intro"} or step_type.endswith("_intro")
+            if objective_id and not is_intro:
+                objective_ids.add(objective_id)
+            if exercise_id and not is_intro:
+                graded_exercises.add((lesson.id, exercise_id))
+    return lesson_ids, objective_ids, graded_exercises
 
 
 def compute_mastery_delta(skill: str, score: float, correct: bool) -> float:
@@ -57,26 +86,34 @@ async def update_mastery(
         db.add(row)
     else:
         row.mastery = max(0.0, min(1.0, row.mastery + delta))
-    row.review_due_at = datetime.now(UTC) + timedelta(
-        days=review_interval_days(row.mastery)
-    )
+    row.review_due_at = datetime.now(UTC) + timedelta(days=review_interval_days(row.mastery))
     return {skill: row.mastery}
 
 
 async def get_review_queue(db: AsyncSession, user_id: UUID) -> list[str]:
     now = datetime.now(UTC)
+    _lesson_ids, objective_ids, _graded_exercises = await _latest_curriculum_scope(db)
+    if not objective_ids:
+        return []
     result = await db.execute(
         select(ObjectiveMastery).where(
             ObjectiveMastery.user_id == user_id,
             ObjectiveMastery.review_due_at <= now,
+            ObjectiveMastery.objective_id.in_(objective_ids),
         )
     )
     return [m.objective_id for m in result.scalars().all()]
 
 
 async def get_user_mastery(db: AsyncSession, user_id: UUID) -> list[dict]:
+    _lesson_ids, objective_ids, _graded_exercises = await _latest_curriculum_scope(db)
+    if not objective_ids:
+        return []
     result = await db.execute(
-        select(ObjectiveMastery).where(ObjectiveMastery.user_id == user_id)
+        select(ObjectiveMastery).where(
+            ObjectiveMastery.user_id == user_id,
+            ObjectiveMastery.objective_id.in_(objective_ids),
+        )
     )
     return [
         {
@@ -92,24 +129,56 @@ async def get_user_mastery(db: AsyncSession, user_id: UUID) -> list[dict]:
 async def count_completed_lessons(db: AsyncSession, user_id: UUID) -> int:
     from ..models.orm import LessonProgress
 
+    version = await get_latest_curriculum_version(db)
+    if version is None:
+        return 0
     result = await db.execute(
-        select(LessonProgress).where(
-            LessonProgress.user_id == user_id, LessonProgress.completed.is_(True)
+        select(func.count())
+        .select_from(LessonProgress)
+        .join(Lesson, LessonProgress.lesson_id == Lesson.id)
+        .join(Unit, Lesson.unit_id == Unit.id)
+        .where(
+            LessonProgress.user_id == user_id,
+            LessonProgress.completed.is_(True),
+            Unit.curriculum_version_id == version.id,
         )
     )
-    return len(result.scalars().all())
+    return result.scalar_one()
+
+
+async def get_total_xp(db: AsyncSession, user_id: UUID) -> int:
+    """Return XP earned from attempts in the newest beginner curriculum."""
+    lesson_ids, _objective_ids, graded_exercises = await _latest_curriculum_scope(db)
+    if not lesson_ids:
+        return 0
+    result = await db.execute(
+        select(ExerciseAttempt).where(
+            ExerciseAttempt.user_id == user_id,
+            ExerciseAttempt.lesson_id.in_(lesson_ids),
+            ExerciseAttempt.correct.is_(True),
+        )
+    )
+    return int(
+        sum(
+            attempt.score * 10
+            for attempt in result.scalars().all()
+            if (attempt.lesson_id, attempt.exercise_id) in graded_exercises
+        )
+    )
 
 
 async def has_correct_completion(
     db: AsyncSession, user_id: UUID, lesson_id: str, exercise_id: str
 ) -> bool:
     result = await db.execute(
-        select(ExerciseAttempt.id).where(
+        select(ExerciseAttempt.id)
+        .where(
             ExerciseAttempt.user_id == user_id,
             ExerciseAttempt.lesson_id == lesson_id,
             ExerciseAttempt.exercise_id == exercise_id,
             ExerciseAttempt.correct.is_(True),
-        ).limit(1)
+        )
+        .limit(1)
     )
     return result.scalar_one_or_none() is not None
 
@@ -120,17 +189,11 @@ async def get_skill_summary(db: AsyncSession, user_id: UUID) -> list[dict]:
     completed = {skill: 0 for skill in skills}
     exercise_skills: dict[tuple[str, str], str] = {}
 
-    version_result = await db.execute(
-        select(CurriculumVersion)
-        .where(CurriculumVersion.level == "beginner")
-        .order_by(CurriculumVersion.created_at.desc())
-        .limit(1)
-    )
-    version = version_result.scalar_one_or_none()
+    version = await get_latest_curriculum_version(db)
     lesson_result = await db.execute(
-        select(Lesson).join(Unit, Lesson.unit_id == Unit.id).where(
-            Unit.curriculum_version_id == version.id
-        )
+        select(Lesson)
+        .join(Unit, Lesson.unit_id == Unit.id)
+        .where(Unit.curriculum_version_id == version.id)
         if version
         else select(Lesson).where(False)
     )
@@ -164,9 +227,7 @@ async def get_skill_summary(db: AsyncSession, user_id: UUID) -> list[dict]:
             "skill": skill,
             "completed": completed[skill],
             "total": totals[skill],
-            "percentage": round(
-                completed[skill] / totals[skill] * 100, 1
-            )
+            "percentage": round(completed[skill] / totals[skill] * 100, 1)
             if totals[skill]
             else 0.0,
         }

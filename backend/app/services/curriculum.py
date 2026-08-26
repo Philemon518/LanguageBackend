@@ -1,8 +1,10 @@
 """Curriculum loading and lesson rendering."""
 
 import json
+from copy import deepcopy
 from functools import lru_cache
 from pathlib import Path
+from typing import Any
 
 from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -10,7 +12,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from ..core.config import get_settings
 from ..models.orm import CurriculumVersion, Lesson, LessonProgress, MediaAsset, Unit
 from ..models.schemas import CurriculumManifest, LessonDocument, LessonSummary, UnitSummary
-from .qwen import audio_content_hash
+from .tts import audio_content_hash
 
 
 @lru_cache
@@ -33,16 +35,16 @@ def _manifest_audio_urls() -> dict[str, str]:
 
 
 def _audio_url_for_text(text: str, asset: MediaAsset | None) -> str | None:
+    if asset:
+        return asset.public_url or f"/media/{asset.storage_path}"
+
     manifest_url = _manifest_audio_urls().get(text)
     if manifest_url:
         return manifest_url
 
-    if asset:
-        return asset.public_url or f"/media/{asset.storage_path}"
-
     settings = get_settings()
     content_hash = audio_content_hash(
-        text, settings.qwen_tts_voice, settings.qwen_tts_model
+        text, settings.cantonese_ai_voice_id, settings.cantonese_ai_tts_model
     )
     path = f"beginner/{content_hash}.wav"
     if (Path(settings.local_audio_dir) / path).exists():
@@ -51,6 +53,13 @@ def _audio_url_for_text(text: str, asset: MediaAsset | None) -> str | None:
 
 
 def _cantonese_lesson_title(content: dict, stored_title: str) -> str:
+    allowed_punctuation = {" ", "·", "、", "，", "：", "！", "？"}
+    if stored_title and all(
+        "\u3400" <= character <= "\u9fff" or character in allowed_punctuation
+        for character in stored_title
+    ):
+        return stored_title
+
     target = content.get("target") or {}
     words = target.get("words") or []
     if words:
@@ -61,9 +70,29 @@ def _cantonese_lesson_title(content: dict, stored_title: str) -> str:
     return stored_title
 
 
-def _is_bundled_lesson(content: dict) -> bool:
-    words = (content.get("target") or {}).get("words") or []
-    return len(words) >= 2
+async def get_latest_curriculum_version(
+    db: AsyncSession, level: str = "beginner"
+) -> CurriculumVersion | None:
+    """Return the newest curriculum for a level with deterministic tie-breaking."""
+    result = await db.execute(
+        select(CurriculumVersion)
+        .where(CurriculumVersion.level == level)
+        .order_by(CurriculumVersion.created_at.desc(), CurriculumVersion.version.desc())
+        .limit(1)
+    )
+    return result.scalar_one_or_none()
+
+
+def _iter_audio_refs(value: Any):
+    """Yield audio reference mappings at any depth in curriculum content."""
+    if isinstance(value, dict):
+        if value.get("text"):
+            yield value
+        for child in value.values():
+            yield from _iter_audio_refs(child)
+    elif isinstance(value, list):
+        for child in value:
+            yield from _iter_audio_refs(child)
 
 
 def _lesson_summary_fields(content: dict, lesson, unit_phase: str) -> dict:
@@ -80,19 +109,11 @@ def _lesson_summary_fields(content: dict, lesson, unit_phase: str) -> dict:
 
 
 async def get_manifest(db: AsyncSession, level: str = "beginner") -> CurriculumManifest:
-    version_result = await db.execute(
-        select(CurriculumVersion)
-        .where(CurriculumVersion.level == level)
-        .order_by(CurriculumVersion.created_at.desc())
-        .limit(1)
-    )
-    version = version_result.scalar_one_or_none()
+    version = await get_latest_curriculum_version(db, level)
     if version is None:
         return CurriculumManifest(version="0.0.0", level=level, units=[])
     units_result = await db.execute(
-        select(Unit)
-        .where(Unit.curriculum_version_id == version.id)
-        .order_by(Unit.sort_order)
+        select(Unit).where(Unit.curriculum_version_id == version.id).order_by(Unit.sort_order)
     )
     units = units_result.scalars().all()
     summaries: list[UnitSummary] = []
@@ -113,11 +134,19 @@ async def get_manifest(db: AsyncSession, level: str = "beginner") -> CurriculumM
     return CurriculumManifest(version=version.version, level=level, units=summaries)
 
 
-async def list_lessons(
-    db: AsyncSession, unit_id: str, user_id=None
-) -> list[LessonSummary]:
-    unit_result = await db.execute(select(Unit).where(Unit.id == unit_id))
+async def list_lessons(db: AsyncSession, unit_id: str, user_id=None) -> list[LessonSummary]:
+    version = await get_latest_curriculum_version(db)
+    if version is None:
+        return []
+    unit_result = await db.execute(
+        select(Unit).where(
+            Unit.id == unit_id,
+            Unit.curriculum_version_id == version.id,
+        )
+    )
     unit = unit_result.scalar_one_or_none()
+    if unit is None:
+        return []
     result = await db.execute(
         select(Lesson).where(Lesson.unit_id == unit_id).order_by(Lesson.sort_order)
     )
@@ -145,24 +174,15 @@ async def list_lessons(
             **_lesson_summary_fields(l.content_json or {}, l, unit.phase if unit else "sound"),
         )
         for l in lessons
-        if _is_bundled_lesson(l.content_json or {})
     ]
 
 
 async def list_road(db: AsyncSession, user_id=None) -> list[LessonSummary]:
-    version_result = await db.execute(
-        select(CurriculumVersion)
-        .where(CurriculumVersion.level == "beginner")
-        .order_by(CurriculumVersion.created_at.desc())
-        .limit(1)
-    )
-    version = version_result.scalar_one_or_none()
+    version = await get_latest_curriculum_version(db)
     if version is None:
         return []
     units_result = await db.execute(
-        select(Unit)
-        .where(Unit.curriculum_version_id == version.id)
-        .order_by(Unit.sort_order)
+        select(Unit).where(Unit.curriculum_version_id == version.id).order_by(Unit.sort_order)
     )
     units = units_result.scalars().all()
     road: list[LessonSummary] = []
@@ -186,8 +206,6 @@ async def list_road(db: AsyncSession, user_id=None) -> list[LessonSummary]:
 
         for lesson in lessons:
             content = lesson.content_json or {}
-            if not _is_bundled_lesson(content):
-                continue
             progress = progress_map.get(lesson.id)
             completed = bool(progress and progress.completed)
             road.append(
@@ -211,60 +229,44 @@ async def list_road(db: AsyncSession, user_id=None) -> list[LessonSummary]:
 
 
 async def get_lesson(db: AsyncSession, lesson_id: str) -> LessonDocument | None:
-    result = await db.execute(select(Lesson).where(Lesson.id == lesson_id))
+    version = await get_latest_curriculum_version(db)
+    if version is None:
+        return None
+    result = await db.execute(
+        select(Lesson)
+        .join(Unit, Lesson.unit_id == Unit.id)
+        .where(
+            Lesson.id == lesson_id,
+            Unit.curriculum_version_id == version.id,
+        )
+    )
     lesson = result.scalar_one_or_none()
     if not lesson:
         return None
     content = lesson.content_json or {}
-    if not _is_bundled_lesson(content):
-        return None
-    steps = [dict(step) for step in content.get("steps", [])]
-    audio_texts = {
-        (step.get("audio") or {}).get("text")
-        for step in steps
-        if (step.get("audio") or {}).get("text")
-    }
-    audio_texts.update(
-        audio.get("text")
-        for step in steps
-        for option in step.get("options", [])
-        if (audio := option.get("audio")) and audio.get("text")
-    )
+    steps = deepcopy(content.get("steps", []))
+    audio_refs = list(_iter_audio_refs(steps))
+    audio_texts = {audio["text"] for audio in audio_refs}
     media_by_text: dict[str, MediaAsset] = {}
     if audio_texts:
         settings = get_settings()
         media_result = await db.execute(
             select(MediaAsset).where(
                 MediaAsset.text.in_(audio_texts),
-                MediaAsset.voice == settings.qwen_tts_voice,
-                MediaAsset.model == settings.qwen_tts_model,
+                MediaAsset.voice == settings.cantonese_ai_voice_id,
+                MediaAsset.model == settings.cantonese_ai_tts_model,
             )
         )
         for asset in media_result.scalars().all():
             media_by_text.setdefault(asset.text, asset)
-    for step in steps:
-        audio = step.get("audio")
-        if audio and audio.get("text"):
-            asset = media_by_text.get(audio["text"])
-            url = _audio_url_for_text(audio["text"], asset)
-            if url:
-                step["audio"] = {
-                    **audio,
-                    "asset_id": str(asset.id) if asset else None,
-                    "url": url,
-                }
-        for option in step.get("options", []):
-            option_audio = option.get("audio")
-            if not option_audio or not option_audio.get("text"):
-                continue
-            option_asset = media_by_text.get(option_audio["text"])
-            option_url = _audio_url_for_text(option_audio["text"], option_asset)
-            if option_url:
-                option["audio"] = {
-                    **option_audio,
-                    "asset_id": str(option_asset.id) if option_asset else None,
-                    "url": option_url,
-                }
+    for audio in audio_refs:
+        asset = media_by_text.get(audio["text"])
+        url = _audio_url_for_text(audio["text"], asset)
+        if url:
+            audio.update(
+                asset_id=str(asset.id) if asset else None,
+                url=url,
+            )
     return LessonDocument(
         id=lesson.id,
         unit_id=lesson.unit_id,

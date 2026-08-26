@@ -14,6 +14,10 @@ CHOICE_TYPES = {
     "select_character",
     "match",
     "word_intro",
+    "lesson_intro",
+    "choice",
+    "image_comparison",
+    "audio_comparison",
 }
 SUPPORTED_TYPES = CHOICE_TYPES | {
     "order_words",
@@ -21,6 +25,7 @@ SUPPORTED_TYPES = CHOICE_TYPES | {
     "dictation",
     "speak",
     "write_sentence",
+    "typing",
 }
 SIMPLIFIED_ONLY = set("这们个为么说从东丝乐习买车过边师学语时间见饭饮书")
 
@@ -33,6 +38,14 @@ def _load_v2_expectations() -> dict:
     return curriculum_expectations()
 
 
+def _load_v3_expectations() -> dict:
+    try:
+        from generate_beginner_v3 import curriculum_expectations
+    except ImportError:
+        from content.scripts.generate_beginner_v3 import curriculum_expectations
+    return curriculum_expectations()
+
+
 V2_EXPECTATIONS = _load_v2_expectations()
 V2_LESSON_TYPES = V2_EXPECTATIONS["lesson_types"]
 V2_SKILLS = V2_EXPECTATIONS["skills"]
@@ -40,6 +53,7 @@ V2_EXERCISE_TYPES = V2_EXPECTATIONS["exercise_types"]
 V2_LESSON_COUNT = V2_EXPECTATIONS["lesson_count"]
 V2_UNIT_LESSON_COUNTS = V2_EXPECTATIONS["unit_lesson_counts"]
 V2_PROGRESSION = V2_EXPECTATIONS["progression"]
+V3_EXPECTATIONS = _load_v3_expectations()
 
 
 def validate_jyutping(jyutping: str) -> list[str]:
@@ -147,6 +161,8 @@ def _validate_step(step: dict, lesson_id: str) -> list[str]:
         not metadata.get("expected_patterns") or not metadata.get("target_vocab")
     ):
         errors.append(f"{label} missing writing answer metadata")
+    if exercise_type == "typing" and not metadata.get("accepted_answers"):
+        errors.append(f"{label} missing accepted typing answers")
 
     audio_text = (step.get("audio") or {}).get("text")
     if (
@@ -155,6 +171,40 @@ def _validate_step(step: dict, lesson_id: str) -> list[str]:
     ) and not audio_text:
         errors.append(f"{label} requires audio text")
     return errors
+
+
+def _validate_v3_audio(audio: dict | None, label: str) -> list[str]:
+    if not audio:
+        return [f"{label} requires explicit audio metadata"]
+    errors: list[str] = []
+    for field in ("text", "traditional", "jyutping", "language", "script"):
+        if not audio.get(field):
+            errors.append(f"{label} audio missing {field}")
+    if audio.get("text") and audio.get("traditional") != audio.get("text"):
+        errors.append(f"{label} audio text must match Traditional Chinese")
+    if audio.get("traditional"):
+        errors.extend(_validate_traditional(audio["traditional"], f"{label} audio"))
+    if audio.get("jyutping"):
+        errors.extend(
+            f"{label} audio: {error}"
+            for error in validate_jyutping(audio["jyutping"])
+        )
+    if audio.get("language") != "yue-HK":
+        errors.append(f"{label} audio language must be yue-HK")
+    if audio.get("script") != "Hant":
+        errors.append(f"{label} audio script must be Hant")
+    return errors
+
+
+def _iter_audio_refs(value):
+    if isinstance(value, dict):
+        for key, child in value.items():
+            if key == "audio" and isinstance(child, dict) and child.get("text"):
+                yield child
+            yield from _iter_audio_refs(child)
+    elif isinstance(value, list):
+        for child in value:
+            yield from _iter_audio_refs(child)
 
 
 def validate_lesson(lesson: dict, *, require_v2: bool = False) -> list[str]:
@@ -299,9 +349,125 @@ def _validate_v2(doc: dict) -> list[str]:
     return errors
 
 
+def _validate_v3(doc: dict) -> list[str]:
+    errors: list[str] = []
+    lessons = doc.get("lessons", [])
+    units = doc.get("units", [])
+    expected_count = V3_EXPECTATIONS["lesson_count"]
+    if len(units) != 2:
+        errors.append(f"Beginner v3 must contain exactly 2 units, found {len(units)}")
+    if len(lessons) != expected_count:
+        errors.append(
+            f"Beginner v3 must contain exactly {expected_count} lessons, found {len(lessons)}"
+        )
+    actual_unit_counts = [
+        sum(lesson.get("unit_id") == unit.get("id") for lesson in lessons)
+        for unit in units
+    ]
+    if actual_unit_counts != V3_EXPECTATIONS["unit_lesson_counts"]:
+        errors.append(
+            "Beginner v3 unit lesson counts must be "
+            f"{V3_EXPECTATIONS['unit_lesson_counts']}, found {actual_unit_counts}"
+        )
+    lesson_types = Counter(lesson.get("lesson_type") for lesson in lessons)
+    if dict(lesson_types) != V3_EXPECTATIONS["lesson_types"]:
+        errors.append(
+            "Beginner v3 lesson distribution must be "
+            f"{V3_EXPECTATIONS['lesson_types']}, found {dict(lesson_types)}"
+        )
+    progressions = [
+        lesson.get("content", {}).get("context", {}).get("progression")
+        for lesson in lessons
+    ]
+    if progressions != V3_EXPECTATIONS["progression"]:
+        errors.append(
+            f"Beginner v3 context progression must be exactly 1 through {expected_count}"
+        )
+
+    intro_lesson_ids = {
+        "v3-orientation",
+        "v3-tones",
+        *(f"v3-number-{index:02d}" for index in range(1, 9)),
+    }
+    no_intro_lesson_ids = {"v3-number-review", "v3-number-challenge"}
+    for lesson in lessons:
+        lesson_id = lesson.get("id", "<missing>")
+        content = lesson.get("content", {})
+        intro = content.get("lesson_intro")
+        steps = content.get("steps", [])
+        if lesson_id in intro_lesson_ids and not isinstance(intro, dict):
+            errors.append(f"Lesson {lesson_id} requires structured lesson_intro content")
+        elif isinstance(intro, dict):
+            for field in (
+                "title",
+                "summary",
+                "learning_goals",
+                "new_items",
+                "review_items",
+                "presentation",
+            ):
+                if field not in intro:
+                    errors.append(f"Lesson {lesson_id} lesson_intro missing {field}")
+            errors.extend(
+                _validate_v3_audio(intro.get("audio"), f"Lesson {lesson_id} intro")
+            )
+        if lesson_id in intro_lesson_ids and (
+            not steps or steps[0].get("type") != "lesson_intro"
+        ):
+            errors.append(f"Lesson {lesson_id} must begin with lesson_intro")
+        if lesson_id in no_intro_lesson_ids and (
+            intro is not None or any(step.get("type") == "lesson_intro" for step in steps)
+        ):
+            errors.append(f"Lesson {lesson_id} must not contain lesson_intro")
+        for audio_index, audio_ref in enumerate(_iter_audio_refs(content), start=1):
+            errors.extend(
+                _validate_v3_audio(
+                    audio_ref,
+                    f"Audio {audio_index} in lesson {lesson_id}",
+                )
+            )
+
+    number_lessons = [
+        lesson for lesson in lessons if lesson.get("lesson_type") == "number"
+    ]
+    expected_pool_sizes = list(range(3, 11))
+    for expected_number, lesson in zip(
+        expected_pool_sizes, number_lessons, strict=False
+    ):
+        lesson_id = lesson.get("id", "<missing>")
+        words = lesson.get("content", {}).get("target", {}).get("words", [])
+        vocabulary = lesson.get("content", {}).get("vocabulary", [])
+        intro = lesson.get("content", {}).get("lesson_intro", {})
+        if len(words) != expected_number or len(vocabulary) != expected_number:
+            errors.append(
+                f"Lesson {lesson_id} must cumulatively cover numbers 1-{expected_number}"
+            )
+        expected_new = 3 if expected_number == 3 else 1
+        if len(intro.get("new_items", [])) != expected_new:
+            errors.append(
+                f"Lesson {lesson_id} must introduce exactly {expected_new} number(s)"
+            )
+        if len(intro.get("review_items", [])) != expected_number - expected_new:
+            errors.append(
+                f"Lesson {lesson_id} must review all earlier numbers"
+            )
+
+    exercise_ids = [
+        step.get("id")
+        for lesson in lessons
+        for step in lesson.get("content", {}).get("steps", [])
+    ]
+    if len(exercise_ids) != len(set(exercise_ids)):
+        errors.append("Beginner v3 exercise IDs must be globally unique")
+    errors.extend(_validate_prerequisites(units, "Unit", require_previous=True))
+    errors.extend(_validate_prerequisites(lessons, "Lesson", require_previous=True))
+    return errors
+
+
 def validate_seed_document(doc: dict) -> list[str]:
     errors: list[str] = []
     is_v2 = doc.get("version") == "2.0.0"
+    is_v3 = doc.get("version") == "3.0.0"
     lexemes = doc.get("lexemes", [])
     characters = doc.get("characters", [])
     lessons = doc.get("lessons", [])
@@ -317,7 +483,7 @@ def validate_seed_document(doc: dict) -> list[str]:
         errors.extend(_duplicate_id_errors(collection, kind))
     for lex in lexemes:
         errors.extend(validate_lexeme(lex))
-        if is_v2:
+        if is_v2 or is_v3:
             errors.extend(_validate_traditional(lex.get("traditional", ""), f"Lexeme {lex.get('id')}"))
             errors.extend(
                 _validate_tone_metadata(lex, f"Lexeme {lex.get('id')}", require_tones=True)
@@ -344,4 +510,6 @@ def validate_seed_document(doc: dict) -> list[str]:
     errors.extend(_validate_prerequisites(units, "Unit", require_previous=is_v2))
     if is_v2:
         errors.extend(_validate_v2(doc))
+    if is_v3:
+        errors.extend(_validate_v3(doc))
     return errors

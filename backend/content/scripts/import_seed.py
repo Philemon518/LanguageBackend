@@ -304,7 +304,7 @@ async def import_seed(seed_path: Path, version: str | None = None) -> None:
 
 
 def main() -> None:
-    seed = ROOT / "content" / "seeds" / "beginner_v2.json"
+    seed = ROOT / "content" / "seeds" / "beginner_v3.json"
     asyncio.run(import_seed(seed))
 
 

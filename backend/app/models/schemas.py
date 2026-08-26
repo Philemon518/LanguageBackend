@@ -3,7 +3,7 @@
 from typing import Any
 from uuid import UUID
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 
 class HealthResponse(BaseModel):
@@ -61,23 +61,29 @@ class LessonSummary(BaseModel):
 
 
 class AudioRef(BaseModel):
+    model_config = ConfigDict(extra="allow")
+
     asset_id: str | None = None
     url: str | None = None
     text: str | None = None
 
 
 class ExerciseOption(BaseModel):
+    model_config = ConfigDict(extra="allow")
+
     id: str
-    label: str
+    label: str = ""
     jyutping: str | None = None
     audio: AudioRef | None = None
 
 
 class ExerciseStep(BaseModel):
+    model_config = ConfigDict(extra="allow")
+
     id: str
     type: str
-    skill: str
-    prompt: str
+    skill: str = "reading"
+    prompt: str = ""
     audio: AudioRef | None = None
     options: list[ExerciseOption] = Field(default_factory=list)
     correct_option_id: str | None = None

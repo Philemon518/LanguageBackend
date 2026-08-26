@@ -1,1108 +1,260 @@
 {
-  "voice": "Kiki",
-  "model": "qwen3-tts-flash-realtime",
-  "generated_at": "2026-08-20T10:52:14.839639+00:00",
+  "voice": "50a9a698-1f99-437c-a07d-9cad435c5f8a",
+  "model": "v6",
+  "generated_at": "2026-08-26T08:18:33.383023+00:00",
   "assets": {
-    "水": {
-      "content_hash": "e35123162974562d6f2b46c4d2610bddabb974723a5f47acd88f3cd3e71b9ff6",
-      "path": "beginner/e35123162974562d6f2b46c4d2610bddabb974723a5f47acd88f3cd3e71b9ff6.wav",
-      "url": "/media/beginner/e35123162974562d6f2b46c4d2610bddabb974723a5f47acd88f3cd3e71b9ff6.wav",
-      "duration_seconds": 0.72,
-      "stt_transcript": "水。",
-      "stt_validated": true,
-      "generation_attempts": 2
-    },
-    "火": {
-      "content_hash": "ee9a769789db0ede44b6e30bd660c1fa834ebf236a812901bb6f6b8d73d3349b",
-      "path": "beginner/ee9a769789db0ede44b6e30bd660c1fa834ebf236a812901bb6f6b8d73d3349b.wav",
-      "url": "/media/beginner/ee9a769789db0ede44b6e30bd660c1fa834ebf236a812901bb6f6b8d73d3349b.wav",
-      "duration_seconds": 1.44,
-      "stt_transcript": "火。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "我": {
-      "content_hash": "afeb893e5747218a6008483ae40380d74825f5a6236cbf7804636a3913957078",
-      "path": "beginner/afeb893e5747218a6008483ae40380d74825f5a6236cbf7804636a3913957078.wav",
-      "url": "/media/beginner/afeb893e5747218a6008483ae40380d74825f5a6236cbf7804636a3913957078.wav",
-      "duration_seconds": 0.8,
-      "stt_transcript": "我。",
-      "stt_validated": true,
-      "generation_attempts": 3
-    },
-    "好": {
-      "content_hash": "c5e1ccdca7af5ff27e0a78a02bbdcca8ba11be57483a2459c4236df83cf5b1c3",
-      "path": "beginner/c5e1ccdca7af5ff27e0a78a02bbdcca8ba11be57483a2459c4236df83cf5b1c3.wav",
-      "url": "/media/beginner/c5e1ccdca7af5ff27e0a78a02bbdcca8ba11be57483a2459c4236df83cf5b1c3.wav",
-      "duration_seconds": 0.24,
-      "stt_transcript": "好。",
-      "stt_validated": true,
-      "generation_attempts": 3
-    },
-    "杯水": {
-      "content_hash": "46d6292ce5d6923bde2f4ac05b3efc72f7a5b6e23bfaf962944e2ace429f9b09",
-      "path": "beginner/46d6292ce5d6923bde2f4ac05b3efc72f7a5b6e23bfaf962944e2ace429f9b09.wav",
-      "url": "/media/beginner/46d6292ce5d6923bde2f4ac05b3efc72f7a5b6e23bfaf962944e2ace429f9b09.wav",
-      "duration_seconds": 0.56,
-      "stt_transcript": "杯水。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "喺度": {
-      "content_hash": "35680a5b2be14130269d79f85c7cadca3d38704b776cd1de17218b29ab615cb3",
-      "path": "beginner/35680a5b2be14130269d79f85c7cadca3d38704b776cd1de17218b29ab615cb3.wav",
-      "url": "/media/beginner/35680a5b2be14130269d79f85c7cadca3d38704b776cd1de17218b29ab615cb3.wav",
-      "duration_seconds": 0.4,
-      "stt_transcript": "喺度。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "杯水喺度。": {
-      "content_hash": "2b39f0ad59010aef99547ccf8f68bd9a21bfd4ff2e3b20ba5f91ccd214ba4227",
-      "path": "beginner/2b39f0ad59010aef99547ccf8f68bd9a21bfd4ff2e3b20ba5f91ccd214ba4227.wav",
-      "url": "/media/beginner/2b39f0ad59010aef99547ccf8f68bd9a21bfd4ff2e3b20ba5f91ccd214ba4227.wav",
-      "duration_seconds": 1.04,
-      "stt_transcript": "杯水喺度。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "飲": {
-      "content_hash": "79b04ca274210e9ada54d9a87f5b0fd25fb638be24e81273429801fb58aea3d9",
-      "path": "beginner/79b04ca274210e9ada54d9a87f5b0fd25fb638be24e81273429801fb58aea3d9.wav",
-      "url": "/media/beginner/79b04ca274210e9ada54d9a87f5b0fd25fb638be24e81273429801fb58aea3d9.wav",
-      "duration_seconds": 0.24,
-      "stt_transcript": "飲。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "我飲水。": {
-      "content_hash": "93eb9b4b7a0cb88c2d6cda5d4a654974c29befec664dcf551d2a8d935266bb13",
-      "path": "beginner/93eb9b4b7a0cb88c2d6cda5d4a654974c29befec664dcf551d2a8d935266bb13.wav",
-      "url": "/media/beginner/93eb9b4b7a0cb88c2d6cda5d4a654974c29befec664dcf551d2a8d935266bb13.wav",
-      "duration_seconds": 0.88,
-      "stt_transcript": "我飲水。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "試": {
-      "content_hash": "5aa89af01acbf8137f8b5b1aeb21cdeb6e5a91a698720de9b252bdbc3162cc2a",
-      "path": "beginner/5aa89af01acbf8137f8b5b1aeb21cdeb6e5a91a698720de9b252bdbc3162cc2a.wav",
-      "url": "/media/beginner/5aa89af01acbf8137f8b5b1aeb21cdeb6e5a91a698720de9b252bdbc3162cc2a.wav",
-      "duration_seconds": 0.96,
-      "stt_transcript": "試。",
-      "stt_validated": true,
-      "generation_attempts": 4
-    },
-    "試吓": {
-      "content_hash": "a1ae96e546be5b7b13be4f424821c94f642c6d9df03a25ef40ec6c68aaae19b3",
-      "path": "beginner/a1ae96e546be5b7b13be4f424821c94f642c6d9df03a25ef40ec6c68aaae19b3.wav",
-      "url": "/media/beginner/a1ae96e546be5b7b13be4f424821c94f642c6d9df03a25ef40ec6c68aaae19b3.wav",
-      "duration_seconds": 0.8,
-      "stt_transcript": "試嚇。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "茶": {
-      "content_hash": "f62365ccf56bf20abbb0e882b195b7c1a75821de7df7931268d4a44b48532338",
-      "path": "beginner/f62365ccf56bf20abbb0e882b195b7c1a75821de7df7931268d4a44b48532338.wav",
-      "url": "/media/beginner/f62365ccf56bf20abbb0e882b195b7c1a75821de7df7931268d4a44b48532338.wav",
-      "duration_seconds": 0.64,
-      "stt_transcript": "茶。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "我飲茶。": {
-      "content_hash": "47ea4de126df0cba94b5523185bc2ea2654c134e9975ea4bb851851727551471",
-      "path": "beginner/47ea4de126df0cba94b5523185bc2ea2654c134e9975ea4bb851851727551471.wav",
-      "url": "/media/beginner/47ea4de126df0cba94b5523185bc2ea2654c134e9975ea4bb851851727551471.wav",
-      "duration_seconds": 0.88,
-      "stt_transcript": "我飲茶。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "學生": {
-      "content_hash": "026af3cc8e0e29a933abcf23a135019f359e5ab738ea48960cf6885ffb25c283",
-      "path": "beginner/026af3cc8e0e29a933abcf23a135019f359e5ab738ea48960cf6885ffb25c283.wav",
-      "url": "/media/beginner/026af3cc8e0e29a933abcf23a135019f359e5ab738ea48960cf6885ffb25c283.wav",
-      "duration_seconds": 0.56,
-      "stt_transcript": "學生。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "我係學生。": {
-      "content_hash": "2a116c9bca0fa997594e29eff5a33741d20d218e67e739071197678b8bbc27dd",
-      "path": "beginner/2a116c9bca0fa997594e29eff5a33741d20d218e67e739071197678b8bbc27dd.wav",
-      "url": "/media/beginner/2a116c9bca0fa997594e29eff5a33741d20d218e67e739071197678b8bbc27dd.wav",
-      "duration_seconds": 0.96,
-      "stt_transcript": "我係學生。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "食": {
-      "content_hash": "9fa2d4bc02ad5101e449b3dbe67af33cebe3d132a366bdf89946cd6b7e68c098",
-      "path": "beginner/9fa2d4bc02ad5101e449b3dbe67af33cebe3d132a366bdf89946cd6b7e68c098.wav",
-      "url": "/media/beginner/9fa2d4bc02ad5101e449b3dbe67af33cebe3d132a366bdf89946cd6b7e68c098.wav",
-      "duration_seconds": 0.32,
-      "stt_transcript": "食。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "飯": {
-      "content_hash": "3c48ddbf4ef2cb8e8bdf22e6d77cab656a64fabff82da904ff076fb4131e8c45",
-      "path": "beginner/3c48ddbf4ef2cb8e8bdf22e6d77cab656a64fabff82da904ff076fb4131e8c45.wav",
-      "url": "/media/beginner/3c48ddbf4ef2cb8e8bdf22e6d77cab656a64fabff82da904ff076fb4131e8c45.wav",
-      "duration_seconds": 0.64,
-      "stt_transcript": "飯。",
-      "stt_validated": true,
-      "generation_attempts": 3
-    },
-    "我食飯。": {
-      "content_hash": "a37cd232dc42dd893afd7d9bd87919f72dcc64dd6538c914b304194ac511ac7f",
-      "path": "beginner/a37cd232dc42dd893afd7d9bd87919f72dcc64dd6538c914b304194ac511ac7f.wav",
-      "url": "/media/beginner/a37cd232dc42dd893afd7d9bd87919f72dcc64dd6538c914b304194ac511ac7f.wav",
-      "duration_seconds": 1.04,
-      "stt_transcript": "我食飯。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "書": {
-      "content_hash": "3cc7379efe3d110c7271b659a7b23ab1a0710d9bfe261caa1885ea5a8f1c3ad5",
-      "path": "beginner/3cc7379efe3d110c7271b659a7b23ab1a0710d9bfe261caa1885ea5a8f1c3ad5.wav",
-      "url": "/media/beginner/3cc7379efe3d110c7271b659a7b23ab1a0710d9bfe261caa1885ea5a8f1c3ad5.wav",
-      "duration_seconds": 0.48,
-      "stt_transcript": "書。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "睇": {
-      "content_hash": "80768d874f9837aa6e8f3d511f46434a7f132bc77c4c4fe615ea06e705a81c3d",
-      "path": "beginner/80768d874f9837aa6e8f3d511f46434a7f132bc77c4c4fe615ea06e705a81c3d.wav",
-      "url": "/media/beginner/80768d874f9837aa6e8f3d511f46434a7f132bc77c4c4fe615ea06e705a81c3d.wav",
-      "duration_seconds": 0.48,
-      "stt_transcript": "睇。",
-      "stt_validated": true,
-      "generation_attempts": 3
-    },
-    "我睇書。": {
-      "content_hash": "6b32b63449fe80f22e35e7d62cfcf4dd33cecdbd03b495a0796fa9e3cc82a22c",
-      "path": "beginner/6b32b63449fe80f22e35e7d62cfcf4dd33cecdbd03b495a0796fa9e3cc82a22c.wav",
-      "url": "/media/beginner/6b32b63449fe80f22e35e7d62cfcf4dd33cecdbd03b495a0796fa9e3cc82a22c.wav",
-      "duration_seconds": 0.96,
-      "stt_transcript": "我睇書。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "衫": {
-      "content_hash": "c87a51e51b38086fa5a549a904862074adc96831046c970b3fdc47a4c6e75343",
-      "path": "beginner/c87a51e51b38086fa5a549a904862074adc96831046c970b3fdc47a4c6e75343.wav",
-      "url": "/media/beginner/c87a51e51b38086fa5a549a904862074adc96831046c970b3fdc47a4c6e75343.wav",
-      "duration_seconds": 0.56,
-      "stt_transcript": "衫。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "件衫": {
-      "content_hash": "7c41c01fb85e8b35164b98857f6402004d30840c23d20b8976a67403a843a4fb",
-      "path": "beginner/7c41c01fb85e8b35164b98857f6402004d30840c23d20b8976a67403a843a4fb.wav",
-      "url": "/media/beginner/7c41c01fb85e8b35164b98857f6402004d30840c23d20b8976a67403a843a4fb.wav",
-      "duration_seconds": 0.8,
-      "stt_transcript": "件衫。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "好靚": {
-      "content_hash": "dbe4135fbbfbebfb11760f15fc8667418a0d8123e5c18d86ee497dcdf47767e3",
-      "path": "beginner/dbe4135fbbfbebfb11760f15fc8667418a0d8123e5c18d86ee497dcdf47767e3.wav",
-      "url": "/media/beginner/dbe4135fbbfbebfb11760f15fc8667418a0d8123e5c18d86ee497dcdf47767e3.wav",
-      "duration_seconds": 0.88,
-      "stt_transcript": "好靚。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "件衫好靚。": {
-      "content_hash": "de44db2e7cb1b14aa4604371e966ac909611d33974cb5b24ee07edd9cec597a7",
-      "path": "beginner/de44db2e7cb1b14aa4604371e966ac909611d33974cb5b24ee07edd9cec597a7.wav",
-      "url": "/media/beginner/de44db2e7cb1b14aa4604371e966ac909611d33974cb5b24ee07edd9cec597a7.wav",
-      "duration_seconds": 1.76,
-      "stt_transcript": "件衫好靚。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "去": {
-      "content_hash": "266e3ef261c5e0c70b35d4ee4a1035d51c7dc8c7d1c865f52d1f061b489b68f8",
-      "path": "beginner/266e3ef261c5e0c70b35d4ee4a1035d51c7dc8c7d1c865f52d1f061b489b68f8.wav",
-      "url": "/media/beginner/266e3ef261c5e0c70b35d4ee4a1035d51c7dc8c7d1c865f52d1f061b489b68f8.wav",
-      "duration_seconds": 0.64,
-      "stt_transcript": "去。",
-      "stt_validated": true,
-      "generation_attempts": 3
-    },
-    "學校": {
-      "content_hash": "42a42a5c85678ae40634bc9a915ab7af67fe032b0eb413ef5b985c9ff4aee2a7",
-      "path": "beginner/42a42a5c85678ae40634bc9a915ab7af67fe032b0eb413ef5b985c9ff4aee2a7.wav",
-      "url": "/media/beginner/42a42a5c85678ae40634bc9a915ab7af67fe032b0eb413ef5b985c9ff4aee2a7.wav",
-      "duration_seconds": 0.64,
-      "stt_transcript": "學校。",
-      "stt_validated": true,
-      "generation_attempts": 2
-    },
-    "我去學校。": {
-      "content_hash": "8afe6ba51f193b408da8a6716f2832caaa402ff95c31ea599a012ca65659f00b",
-      "path": "beginner/8afe6ba51f193b408da8a6716f2832caaa402ff95c31ea599a012ca65659f00b.wav",
-      "url": "/media/beginner/8afe6ba51f193b408da8a6716f2832caaa402ff95c31ea599a012ca65659f00b.wav",
-      "duration_seconds": 1.04,
-      "stt_transcript": "我去學校。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "人": {
-      "content_hash": "cb75dcdc6428e99756250ba5f4dcf0606607264fe0f604ccfbdc853184bf4ba9",
-      "path": "beginner/cb75dcdc6428e99756250ba5f4dcf0606607264fe0f604ccfbdc853184bf4ba9.wav",
-      "url": "/media/beginner/cb75dcdc6428e99756250ba5f4dcf0606607264fe0f604ccfbdc853184bf4ba9.wav",
-      "duration_seconds": 0.64,
-      "stt_transcript": "人。",
-      "stt_validated": true,
-      "generation_attempts": 5
-    },
-    "佢": {
-      "content_hash": "6da3c152045eeb7cd1be9f4b93099a174ffbfcd93910c160879dd5dca3547a6f",
-      "path": "beginner/6da3c152045eeb7cd1be9f4b93099a174ffbfcd93910c160879dd5dca3547a6f.wav",
-      "url": "/media/beginner/6da3c152045eeb7cd1be9f4b93099a174ffbfcd93910c160879dd5dca3547a6f.wav",
-      "duration_seconds": 0.32,
-      "stt_transcript": "佢。",
-      "stt_validated": true,
-      "generation_attempts": 4
-    },
-    "香港人": {
-      "content_hash": "cebadfeb61527d83eaaae845a7f7d7430c6888a67af9029c7ae79b45fd428c04",
-      "path": "beginner/cebadfeb61527d83eaaae845a7f7d7430c6888a67af9029c7ae79b45fd428c04.wav",
-      "url": "/media/beginner/cebadfeb61527d83eaaae845a7f7d7430c6888a67af9029c7ae79b45fd428c04.wav",
-      "duration_seconds": 0.88,
-      "stt_transcript": "香港人。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "佢係香港人。": {
-      "content_hash": "308392f14446cdbeccc81dad81530bde374c091036cd14d74675430a677a7847",
-      "path": "beginner/308392f14446cdbeccc81dad81530bde374c091036cd14d74675430a677a7847.wav",
-      "url": "/media/beginner/308392f14446cdbeccc81dad81530bde374c091036cd14d74675430a677a7847.wav",
-      "duration_seconds": 1.2,
-      "stt_transcript": "佢係香港人。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "有": {
-      "content_hash": "8e1bea262b4ba352acebbf062d3a1a87cc58f17ed3c2c9eaabcce4f55ccd6422",
-      "path": "beginner/8e1bea262b4ba352acebbf062d3a1a87cc58f17ed3c2c9eaabcce4f55ccd6422.wav",
-      "url": "/media/beginner/8e1bea262b4ba352acebbf062d3a1a87cc58f17ed3c2c9eaabcce4f55ccd6422.wav",
-      "duration_seconds": 0.24,
-      "stt_transcript": "有。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "時間": {
-      "content_hash": "ecc815dc3be0a79dbcc4cea132a02b784775e07a392fe0e37868a93c2290c5b8",
-      "path": "beginner/ecc815dc3be0a79dbcc4cea132a02b784775e07a392fe0e37868a93c2290c5b8.wav",
-      "url": "/media/beginner/ecc815dc3be0a79dbcc4cea132a02b784775e07a392fe0e37868a93c2290c5b8.wav",
-      "duration_seconds": 0.88,
-      "stt_transcript": "時間。",
-      "stt_validated": true,
-      "generation_attempts": 2
-    },
-    "我有時間。": {
-      "content_hash": "958183be3b38e6a3d6131732b46c40e683066bf7707b5d560fd5438f4fd75847",
-      "path": "beginner/958183be3b38e6a3d6131732b46c40e683066bf7707b5d560fd5438f4fd75847.wav",
-      "url": "/media/beginner/958183be3b38e6a3d6131732b46c40e683066bf7707b5d560fd5438f4fd75847.wav",
-      "duration_seconds": 1.36,
-      "stt_transcript": "我有時間。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "食咗": {
-      "content_hash": "c841b8b3016ad4ed1fab4f6fdb87475c87a671a38fc5693015804c5a284d9502",
-      "path": "beginner/c841b8b3016ad4ed1fab4f6fdb87475c87a671a38fc5693015804c5a284d9502.wav",
-      "url": "/media/beginner/c841b8b3016ad4ed1fab4f6fdb87475c87a671a38fc5693015804c5a284d9502.wav",
-      "duration_seconds": 0.8,
-      "stt_transcript": "食咗。",
-      "stt_validated": true,
-      "generation_attempts": 2
-    },
-    "我食咗飯。": {
-      "content_hash": "0c3aec0048cd61022d54d070eeef7a676cee195d31a29ea98153110716395b3f",
-      "path": "beginner/0c3aec0048cd61022d54d070eeef7a676cee195d31a29ea98153110716395b3f.wav",
-      "url": "/media/beginner/0c3aec0048cd61022d54d070eeef7a676cee195d31a29ea98153110716395b3f.wav",
-      "duration_seconds": 1.12,
-      "stt_transcript": "我食咗飯。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "想": {
-      "content_hash": "2b610eec1b401e0c50e6d9bf78cb778507eeaeef3909031a0350195fb5d7c006",
-      "path": "beginner/2b610eec1b401e0c50e6d9bf78cb778507eeaeef3909031a0350195fb5d7c006.wav",
-      "url": "/media/beginner/2b610eec1b401e0c50e6d9bf78cb778507eeaeef3909031a0350195fb5d7c006.wav",
-      "duration_seconds": 0.72,
-      "stt_transcript": "想。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "休息": {
-      "content_hash": "5e51f248a017f2eb97b094a2b232d5715ddcc8fc4f588baee5707fb9457e0a32",
-      "path": "beginner/5e51f248a017f2eb97b094a2b232d5715ddcc8fc4f588baee5707fb9457e0a32.wav",
-      "url": "/media/beginner/5e51f248a017f2eb97b094a2b232d5715ddcc8fc4f588baee5707fb9457e0a32.wav",
-      "duration_seconds": 0.56,
-      "stt_transcript": "休息。",
-      "stt_validated": true,
-      "generation_attempts": 3
-    },
-    "我想休息。": {
-      "content_hash": "316456956cc9a0abb126e88669f754caeb02fa82457e1b7324b109604e0280a5",
-      "path": "beginner/316456956cc9a0abb126e88669f754caeb02fa82457e1b7324b109604e0280a5.wav",
-      "url": "/media/beginner/316456956cc9a0abb126e88669f754caeb02fa82457e1b7324b109604e0280a5.wav",
-      "duration_seconds": 0.8,
-      "stt_transcript": "我想休息。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "今日": {
-      "content_hash": "3c4a0c5c5b9d5f0ce503c593a04ab580d8238625221a41a7b659a78bb3ed60e5",
-      "path": "beginner/3c4a0c5c5b9d5f0ce503c593a04ab580d8238625221a41a7b659a78bb3ed60e5.wav",
-      "url": "/media/beginner/3c4a0c5c5b9d5f0ce503c593a04ab580d8238625221a41a7b659a78bb3ed60e5.wav",
-      "duration_seconds": 0.56,
-      "stt_transcript": "今日。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "好熱": {
-      "content_hash": "2d020c808dc844c72a35c1718f3ab88c08397cacb097a30a3a98fa362d244a60",
-      "path": "beginner/2d020c808dc844c72a35c1718f3ab88c08397cacb097a30a3a98fa362d244a60.wav",
-      "url": "/media/beginner/2d020c808dc844c72a35c1718f3ab88c08397cacb097a30a3a98fa362d244a60.wav",
-      "duration_seconds": 0.56,
-      "stt_transcript": "好熱。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "今日好熱。": {
-      "content_hash": "d15ecd439944d4f0766cd26f7234dfb2549150713f4c6c9cef3037ec849a9304",
-      "path": "beginner/d15ecd439944d4f0766cd26f7234dfb2549150713f4c6c9cef3037ec849a9304.wav",
-      "url": "/media/beginner/d15ecd439944d4f0766cd26f7234dfb2549150713f4c6c9cef3037ec849a9304.wav",
-      "duration_seconds": 1.12,
-      "stt_transcript": "今日好熱。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "明": {
-      "content_hash": "524ab05d70c31d72f6f4589e8100e98f9b959d88786ab9298050733efc3b2870",
-      "path": "beginner/524ab05d70c31d72f6f4589e8100e98f9b959d88786ab9298050733efc3b2870.wav",
-      "url": "/media/beginner/524ab05d70c31d72f6f4589e8100e98f9b959d88786ab9298050733efc3b2870.wav",
-      "duration_seconds": 0.56,
-      "stt_transcript": "明。",
-      "stt_validated": true,
-      "generation_attempts": 5
-    },
-    "明白": {
-      "content_hash": "59d81d5deb686d2040ed151e74e932c0ab26ea2ee008789c9c714065a0239ebf",
-      "path": "beginner/59d81d5deb686d2040ed151e74e932c0ab26ea2ee008789c9c714065a0239ebf.wav",
-      "url": "/media/beginner/59d81d5deb686d2040ed151e74e932c0ab26ea2ee008789c9c714065a0239ebf.wav",
-      "duration_seconds": 0.64,
-      "stt_transcript": "明白。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "我明白。": {
-      "content_hash": "f94a7b7a99f5ba3da6b97506d56f88749e9a83498eabfad2307701e23408a8f4",
-      "path": "beginner/f94a7b7a99f5ba3da6b97506d56f88749e9a83498eabfad2307701e23408a8f4.wav",
-      "url": "/media/beginner/f94a7b7a99f5ba3da6b97506d56f88749e9a83498eabfad2307701e23408a8f4.wav",
-      "duration_seconds": 0.88,
-      "stt_transcript": "我明白。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "想問": {
-      "content_hash": "b0f648fb83a3be79d2e6fdfd4587f1389e615e73c1a9b8ca0b95060c6cfd17f2",
-      "path": "beginner/b0f648fb83a3be79d2e6fdfd4587f1389e615e73c1a9b8ca0b95060c6cfd17f2.wav",
-      "url": "/media/beginner/b0f648fb83a3be79d2e6fdfd4587f1389e615e73c1a9b8ca0b95060c6cfd17f2.wav",
-      "duration_seconds": 0.72,
-      "stt_transcript": "想問。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "你": {
-      "content_hash": "be8980b8c5390244fbdff99ffb6290532b1338a165ce19466df76f655f8e0f94",
-      "path": "beginner/be8980b8c5390244fbdff99ffb6290532b1338a165ce19466df76f655f8e0f94.wav",
-      "url": "/media/beginner/be8980b8c5390244fbdff99ffb6290532b1338a165ce19466df76f655f8e0f94.wav",
-      "duration_seconds": 0.4,
-      "stt_transcript": "你。",
-      "stt_validated": true,
-      "generation_attempts": 2
-    },
-    "我想問你。": {
-      "content_hash": "9f1634f17ebd3d13251173c119171f96f22b33855c7b3a1e1f9528d42b340d12",
-      "path": "beginner/9f1634f17ebd3d13251173c119171f96f22b33855c7b3a1e1f9528d42b340d12.wav",
-      "url": "/media/beginner/9f1634f17ebd3d13251173c119171f96f22b33855c7b3a1e1f9528d42b340d12.wav",
-      "duration_seconds": 0.96,
-      "stt_transcript": "我想問你。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "學": {
-      "content_hash": "6512cbcbd23ff307c15f0e190cebba63b300093b4ac049853d43ec40e3b547c2",
-      "path": "beginner/6512cbcbd23ff307c15f0e190cebba63b300093b4ac049853d43ec40e3b547c2.wav",
-      "url": "/media/beginner/6512cbcbd23ff307c15f0e190cebba63b300093b4ac049853d43ec40e3b547c2.wav",
-      "duration_seconds": 0.32,
-      "stt_transcript": "學。",
-      "stt_validated": true,
-      "generation_attempts": 3
-    },
-    "我學粵語。": {
-      "content_hash": "03d152bfb0da87f1ab57c1a10b607de959850d79cd60228adba6fc7332d3210c",
-      "path": "beginner/03d152bfb0da87f1ab57c1a10b607de959850d79cd60228adba6fc7332d3210c.wav",
-      "url": "/media/beginner/03d152bfb0da87f1ab57c1a10b607de959850d79cd60228adba6fc7332d3210c.wav",
-      "duration_seconds": 1.28,
-      "stt_transcript": "我學粵語。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "時": {
-      "content_hash": "b7801dd9d04c48bd7d5ef648e577a14d00a84f1ceb68047af6aabec890831b22",
-      "path": "beginner/b7801dd9d04c48bd7d5ef648e577a14d00a84f1ceb68047af6aabec890831b22.wav",
-      "url": "/media/beginner/b7801dd9d04c48bd7d5ef648e577a14d00a84f1ceb68047af6aabec890831b22.wav",
-      "duration_seconds": 0.32,
-      "stt_transcript": "時。",
-      "stt_validated": true,
-      "generation_attempts": 5
-    },
-    "冇": {
-      "content_hash": "2fbe049c4db07c07069c2afe6da92cd70af86ea5130170e9517a32d37b2bde01",
-      "path": "beginner/2fbe049c4db07c07069c2afe6da92cd70af86ea5130170e9517a32d37b2bde01.wav",
-      "url": "/media/beginner/2fbe049c4db07c07069c2afe6da92cd70af86ea5130170e9517a32d37b2bde01.wav",
-      "duration_seconds": 0.24,
-      "stt_transcript": "冇。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "我冇時間。": {
-      "content_hash": "91a26584bc175439fa8bf57d8e2cd9b55fd2cf4c4a262c3065659e5e8fd127fe",
-      "path": "beginner/91a26584bc175439fa8bf57d8e2cd9b55fd2cf4c4a262c3065659e5e8fd127fe.wav",
-      "url": "/media/beginner/91a26584bc175439fa8bf57d8e2cd9b55fd2cf4c4a262c3065659e5e8fd127fe.wav",
-      "duration_seconds": 1.12,
-      "stt_transcript": "我冇時間。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "飲茶": {
-      "content_hash": "8065b3bc102f1644b14629e332a8f2b6d3f74d21d9a38abf941141ed6e215001",
-      "path": "beginner/8065b3bc102f1644b14629e332a8f2b6d3f74d21d9a38abf941141ed6e215001.wav",
-      "url": "/media/beginner/8065b3bc102f1644b14629e332a8f2b6d3f74d21d9a38abf941141ed6e215001.wav",
-      "duration_seconds": 0.72,
-      "stt_transcript": "飲茶。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "我想飲茶。": {
-      "content_hash": "71243c7cd41949daa5979dcbcc2dfac9bacb644239665ec885a3a3b60cac4e92",
-      "path": "beginner/71243c7cd41949daa5979dcbcc2dfac9bacb644239665ec885a3a3b60cac4e92.wav",
-      "url": "/media/beginner/71243c7cd41949daa5979dcbcc2dfac9bacb644239665ec885a3a3b60cac4e92.wav",
-      "duration_seconds": 1.12,
-      "stt_transcript": "我想飲茶。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "你好": {
-      "content_hash": "1b09dbc3a5a100ef3e176fc77e8a0d4960a2ed620ea7e54a313a19f448dd5b50",
-      "path": "beginner/1b09dbc3a5a100ef3e176fc77e8a0d4960a2ed620ea7e54a313a19f448dd5b50.wav",
-      "url": "/media/beginner/1b09dbc3a5a100ef3e176fc77e8a0d4960a2ed620ea7e54a313a19f448dd5b50.wav",
-      "duration_seconds": 0.56,
-      "stt_transcript": "你好。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "我叫": {
-      "content_hash": "4628c422e9882652d8bb9fdc55121de21f76bdf518abaec5ea5decacdd931d4a",
-      "path": "beginner/4628c422e9882652d8bb9fdc55121de21f76bdf518abaec5ea5decacdd931d4a.wav",
-      "url": "/media/beginner/4628c422e9882652d8bb9fdc55121de21f76bdf518abaec5ea5decacdd931d4a.wav",
-      "duration_seconds": 0.72,
-      "stt_transcript": "我叫。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "阿明": {
-      "content_hash": "faf07e8673a5c70c84f2dbd19f524e8663713345ddad469077830b98eafc15f4",
-      "path": "beginner/faf07e8673a5c70c84f2dbd19f524e8663713345ddad469077830b98eafc15f4.wav",
-      "url": "/media/beginner/faf07e8673a5c70c84f2dbd19f524e8663713345ddad469077830b98eafc15f4.wav",
-      "duration_seconds": 0.56,
-      "stt_transcript": "阿明。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "你好，我叫阿明。": {
-      "content_hash": "fa52bb95de5a48571b96f658871c0ac75b5f1dfcbe398c6ea0cd27507da9abb5",
-      "path": "beginner/fa52bb95de5a48571b96f658871c0ac75b5f1dfcbe398c6ea0cd27507da9abb5.wav",
-      "url": "/media/beginner/fa52bb95de5a48571b96f658871c0ac75b5f1dfcbe398c6ea0cd27507da9abb5.wav",
-      "duration_seconds": 1.2,
-      "stt_transcript": "你好，我叫阿明。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "唔該": {
-      "content_hash": "631c9ae4e46b309f3eb5ff477548cff1634bca8d189b9e2e7097f9ff29d65d3e",
-      "path": "beginner/631c9ae4e46b309f3eb5ff477548cff1634bca8d189b9e2e7097f9ff29d65d3e.wav",
-      "url": "/media/beginner/631c9ae4e46b309f3eb5ff477548cff1634bca8d189b9e2e7097f9ff29d65d3e.wav",
-      "duration_seconds": 0.48,
-      "stt_transcript": "唔該。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "我想要": {
-      "content_hash": "90ade545cdd4aada103725788b1b95b2faa34e7a2195d78d956c161abc95aef0",
-      "path": "beginner/90ade545cdd4aada103725788b1b95b2faa34e7a2195d78d956c161abc95aef0.wav",
-      "url": "/media/beginner/90ade545cdd4aada103725788b1b95b2faa34e7a2195d78d956c161abc95aef0.wav",
-      "duration_seconds": 0.72,
-      "stt_transcript": "我想要。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "唔該，我想要杯水。": {
-      "content_hash": "c138f58682fcfaed2033cd285549cbbcddb62926294754674b41a10b94293b59",
-      "path": "beginner/c138f58682fcfaed2033cd285549cbbcddb62926294754674b41a10b94293b59.wav",
-      "url": "/media/beginner/c138f58682fcfaed2033cd285549cbbcddb62926294754674b41a10b94293b59.wav",
-      "duration_seconds": 2.0,
-      "stt_transcript": "唔該，我想要杯水。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "多謝": {
-      "content_hash": "948cabd8fab405166a485070d37cf70a750f05c7b82ac54f16f037d67f09578f",
-      "path": "beginner/948cabd8fab405166a485070d37cf70a750f05c7b82ac54f16f037d67f09578f.wav",
-      "url": "/media/beginner/948cabd8fab405166a485070d37cf70a750f05c7b82ac54f16f037d67f09578f.wav",
-      "duration_seconds": 0.72,
-      "stt_transcript": "多謝。",
-      "stt_validated": true,
-      "generation_attempts": 3
-    },
-    "你幫我": {
-      "content_hash": "97af3239c6756fef6baba364f09ba34d3f85bbf5b05eaf1ccd4874857650e0fa",
-      "path": "beginner/97af3239c6756fef6baba364f09ba34d3f85bbf5b05eaf1ccd4874857650e0fa.wav",
-      "url": "/media/beginner/97af3239c6756fef6baba364f09ba34d3f85bbf5b05eaf1ccd4874857650e0fa.wav",
-      "duration_seconds": 0.64,
-      "stt_transcript": "你幫我。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "多謝你幫我。": {
-      "content_hash": "72a633ea1567772f45f2c62ffae42b081c69b6e4fbc76b88cd4fe841872dc900",
-      "path": "beginner/72a633ea1567772f45f2c62ffae42b081c69b6e4fbc76b88cd4fe841872dc900.wav",
-      "url": "/media/beginner/72a633ea1567772f45f2c62ffae42b081c69b6e4fbc76b88cd4fe841872dc900.wav",
-      "duration_seconds": 1.12,
-      "stt_transcript": "多謝你幫我。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "早晨": {
-      "content_hash": "afe9d5f9380e32f08acfee5352ea20c6e0429023fffbf5bc54b776e3e0c53f43",
-      "path": "beginner/afe9d5f9380e32f08acfee5352ea20c6e0429023fffbf5bc54b776e3e0c53f43.wav",
-      "url": "/media/beginner/afe9d5f9380e32f08acfee5352ea20c6e0429023fffbf5bc54b776e3e0c53f43.wav",
-      "duration_seconds": 0.88,
-      "stt_transcript": "早晨。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "老師": {
-      "content_hash": "50ce742953cff4a890d137ab1f3529ef429ea27b69e56fa4873f2dedb122c48d",
-      "path": "beginner/50ce742953cff4a890d137ab1f3529ef429ea27b69e56fa4873f2dedb122c48d.wav",
-      "url": "/media/beginner/50ce742953cff4a890d137ab1f3529ef429ea27b69e56fa4873f2dedb122c48d.wav",
-      "duration_seconds": 0.48,
-      "stt_transcript": "老師。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "老師，早晨。": {
-      "content_hash": "e1631d7718dca980b534a1971834674e702c03653a708bde9a23da2bb1a7a803",
-      "path": "beginner/e1631d7718dca980b534a1971834674e702c03653a708bde9a23da2bb1a7a803.wav",
-      "url": "/media/beginner/e1631d7718dca980b534a1971834674e702c03653a708bde9a23da2bb1a7a803.wav",
-      "duration_seconds": 1.52,
-      "stt_transcript": "老師，早晨。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "再見": {
-      "content_hash": "106a29bc3e09f86967a7779d744b25fddc4a665a23804fc4001ec8659b1455ae",
-      "path": "beginner/106a29bc3e09f86967a7779d744b25fddc4a665a23804fc4001ec8659b1455ae.wav",
-      "url": "/media/beginner/106a29bc3e09f86967a7779d744b25fddc4a665a23804fc4001ec8659b1455ae.wav",
-      "duration_seconds": 0.72,
-      "stt_transcript": "再見。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "聽日": {
-      "content_hash": "236d529aeba891ae153db969147073391efc16f638eb5a5dd2016c1062ae3d21",
-      "path": "beginner/236d529aeba891ae153db969147073391efc16f638eb5a5dd2016c1062ae3d21.wav",
-      "url": "/media/beginner/236d529aeba891ae153db969147073391efc16f638eb5a5dd2016c1062ae3d21.wav",
-      "duration_seconds": 0.32,
-      "stt_transcript": "聽日。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "聽日再見。": {
-      "content_hash": "5915a9e526cb5641ce4518966d78d1fbd5c456c1892fb830c70d9ba9cd7bf130",
-      "path": "beginner/5915a9e526cb5641ce4518966d78d1fbd5c456c1892fb830c70d9ba9cd7bf130.wav",
-      "url": "/media/beginner/5915a9e526cb5641ce4518966d78d1fbd5c456c1892fb830c70d9ba9cd7bf130.wav",
-      "duration_seconds": 1.04,
-      "stt_transcript": "聽日再見。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "屋企": {
-      "content_hash": "be89875d4d8955ae501d6cb27f0f57c41fe39667d383b75ed61fcf1f4213b491",
-      "path": "beginner/be89875d4d8955ae501d6cb27f0f57c41fe39667d383b75ed61fcf1f4213b491.wav",
-      "url": "/media/beginner/be89875d4d8955ae501d6cb27f0f57c41fe39667d383b75ed61fcf1f4213b491.wav",
-      "duration_seconds": 0.64,
-      "stt_transcript": "屋企。",
-      "stt_validated": true,
-      "generation_attempts": 2
-    },
-    "而家": {
-      "content_hash": "0841042440714b3ab62b09e6cc884d618bf9698bdfe8dffa13bd7cb91dc28fc5",
-      "path": "beginner/0841042440714b3ab62b09e6cc884d618bf9698bdfe8dffa13bd7cb91dc28fc5.wav",
-      "url": "/media/beginner/0841042440714b3ab62b09e6cc884d618bf9698bdfe8dffa13bd7cb91dc28fc5.wav",
-      "duration_seconds": 0.64,
-      "stt_transcript": "而家。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "返屋企": {
-      "content_hash": "a135fb66f7463337ca70e52b74849bce1e82d245ce67c5dfb3907519ce09f8c3",
-      "path": "beginner/a135fb66f7463337ca70e52b74849bce1e82d245ce67c5dfb3907519ce09f8c3.wav",
-      "url": "/media/beginner/a135fb66f7463337ca70e52b74849bce1e82d245ce67c5dfb3907519ce09f8c3.wav",
-      "duration_seconds": 1.12,
-      "stt_transcript": "返屋企。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "我而家返屋企。": {
-      "content_hash": "17eff1ab069fd1b36abf95697cfef11365df00e954fb4aa113c1e75852b0edf6",
-      "path": "beginner/17eff1ab069fd1b36abf95697cfef11365df00e954fb4aa113c1e75852b0edf6.wav",
-      "url": "/media/beginner/17eff1ab069fd1b36abf95697cfef11365df00e954fb4aa113c1e75852b0edf6.wav",
-      "duration_seconds": 1.2,
-      "stt_transcript": "我而家返屋企。",
-      "stt_validated": true,
-      "generation_attempts": 3
-    },
-    "搭巴士": {
-      "content_hash": "64174809e5c7281a1ca62ef2d41e2b55238778d223922cf6df6bf2852a984064",
-      "path": "beginner/64174809e5c7281a1ca62ef2d41e2b55238778d223922cf6df6bf2852a984064.wav",
-      "url": "/media/beginner/64174809e5c7281a1ca62ef2d41e2b55238778d223922cf6df6bf2852a984064.wav",
-      "duration_seconds": 0.88,
-      "stt_transcript": "搭巴士。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "去學校": {
-      "content_hash": "7b54fed0e998b647197b515efe2d35a51a5360dc3e9e26787f92d9c0848d3957",
-      "path": "beginner/7b54fed0e998b647197b515efe2d35a51a5360dc3e9e26787f92d9c0848d3957.wav",
-      "url": "/media/beginner/7b54fed0e998b647197b515efe2d35a51a5360dc3e9e26787f92d9c0848d3957.wav",
-      "duration_seconds": 0.64,
-      "stt_transcript": "去學校。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "我搭巴士去學校。": {
-      "content_hash": "cebc30ed52246671516ab05def2fc147f95db35e9072d6047d3e14ffefa356c4",
-      "path": "beginner/cebc30ed52246671516ab05def2fc147f95db35e9072d6047d3e14ffefa356c4.wav",
-      "url": "/media/beginner/cebc30ed52246671516ab05def2fc147f95db35e9072d6047d3e14ffefa356c4.wav",
-      "duration_seconds": 1.44,
-      "stt_transcript": "我搭巴士去學校。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "巴士": {
-      "content_hash": "ece46fce99c614e8a0543f7d5de2ea02fb20133cf1a96bb4919ed43a5ca97c1a",
-      "path": "beginner/ece46fce99c614e8a0543f7d5de2ea02fb20133cf1a96bb4919ed43a5ca97c1a.wav",
-      "url": "/media/beginner/ece46fce99c614e8a0543f7d5de2ea02fb20133cf1a96bb4919ed43a5ca97c1a.wav",
-      "duration_seconds": 0.64,
-      "stt_transcript": "巴士。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "呢架巴士": {
-      "content_hash": "371553d5472ef305d03dc61823f184e2bd7f428f63e633d4f901f2892409e88d",
-      "path": "beginner/371553d5472ef305d03dc61823f184e2bd7f428f63e633d4f901f2892409e88d.wav",
-      "url": "/media/beginner/371553d5472ef305d03dc61823f184e2bd7f428f63e633d4f901f2892409e88d.wav",
-      "duration_seconds": 0.88,
-      "stt_transcript": "呢架巴士。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "中環": {
-      "content_hash": "ce23211519c9f35e9dac9037b51d2b9c54e04b84ed36393c6663bbc43f94cc63",
-      "path": "beginner/ce23211519c9f35e9dac9037b51d2b9c54e04b84ed36393c6663bbc43f94cc63.wav",
-      "url": "/media/beginner/ce23211519c9f35e9dac9037b51d2b9c54e04b84ed36393c6663bbc43f94cc63.wav",
-      "duration_seconds": 0.88,
-      "stt_transcript": "中環。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "呢架巴士去中環。": {
-      "content_hash": "6d8cfe0bb97b01c07c2693167b4e83cfdf0d5eb4b84eed4079868aa51c4d880f",
-      "path": "beginner/6d8cfe0bb97b01c07c2693167b4e83cfdf0d5eb4b84eed4079868aa51c4d880f.wav",
-      "url": "/media/beginner/6d8cfe0bb97b01c07c2693167b4e83cfdf0d5eb4b84eed4079868aa51c4d880f.wav",
-      "duration_seconds": 1.44,
-      "stt_transcript": "呢架巴士去中環。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "茶餐廳": {
-      "content_hash": "2b0a744017373cd96d8f76bb990544f3c6c98404a434c4a5194c7d090e33399b",
-      "path": "beginner/2b0a744017373cd96d8f76bb990544f3c6c98404a434c4a5194c7d090e33399b.wav",
-      "url": "/media/beginner/2b0a744017373cd96d8f76bb990544f3c6c98404a434c4a5194c7d090e33399b.wav",
-      "duration_seconds": 1.28,
-      "stt_transcript": "茶餐廳。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "我哋": {
-      "content_hash": "84657f53706c37883f08313e958c62ae9d96fab5c90ac9083203bf20b7d376b4",
-      "path": "beginner/84657f53706c37883f08313e958c62ae9d96fab5c90ac9083203bf20b7d376b4.wav",
-      "url": "/media/beginner/84657f53706c37883f08313e958c62ae9d96fab5c90ac9083203bf20b7d376b4.wav",
-      "duration_seconds": 0.48,
-      "stt_transcript": "我哋。",
-      "stt_validated": true,
-      "generation_attempts": 2
-    },
-    "去茶餐廳": {
-      "content_hash": "38fa3899d9375cdfaf14adc584c3d9f0aeed54e988c1d8a20ae120be041246dc",
-      "path": "beginner/38fa3899d9375cdfaf14adc584c3d9f0aeed54e988c1d8a20ae120be041246dc.wav",
-      "url": "/media/beginner/38fa3899d9375cdfaf14adc584c3d9f0aeed54e988c1d8a20ae120be041246dc.wav",
-      "duration_seconds": 1.44,
-      "stt_transcript": "去茶餐廳。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "食飯": {
-      "content_hash": "175dd8d52fb1b1e8306f548f030424166c4b1d42d6a629aa172e835b91dffd6b",
-      "path": "beginner/175dd8d52fb1b1e8306f548f030424166c4b1d42d6a629aa172e835b91dffd6b.wav",
-      "url": "/media/beginner/175dd8d52fb1b1e8306f548f030424166c4b1d42d6a629aa172e835b91dffd6b.wav",
-      "duration_seconds": 0.88,
-      "stt_transcript": "食飯。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "我哋去茶餐廳食飯。": {
-      "content_hash": "6fb35413b79f24ff8a02d1ceeaa8558dcfc1ac01d85a130d64604c1c785b04d5",
-      "path": "beginner/6fb35413b79f24ff8a02d1ceeaa8558dcfc1ac01d85a130d64604c1c785b04d5.wav",
-      "url": "/media/beginner/6fb35413b79f24ff8a02d1ceeaa8558dcfc1ac01d85a130d64604c1c785b04d5.wav",
-      "duration_seconds": 1.6,
-      "stt_transcript": "我哋去茶餐廳食飯。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "想要": {
-      "content_hash": "a06f92b0e6a9edf392b0cae4944dc2402f662363790b4eddc5256adc23560e52",
-      "path": "beginner/a06f92b0e6a9edf392b0cae4944dc2402f662363790b4eddc5256adc23560e52.wav",
-      "url": "/media/beginner/a06f92b0e6a9edf392b0cae4944dc2402f662363790b4eddc5256adc23560e52.wav",
-      "duration_seconds": 0.8,
-      "stt_transcript": "想要。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "一碗飯": {
-      "content_hash": "1501b1f7b9b8b0546d7f16e87e4ed287fd2358b59ac7300722c798ae2c55dc2d",
-      "path": "beginner/1501b1f7b9b8b0546d7f16e87e4ed287fd2358b59ac7300722c798ae2c55dc2d.wav",
-      "url": "/media/beginner/1501b1f7b9b8b0546d7f16e87e4ed287fd2358b59ac7300722c798ae2c55dc2d.wav",
-      "duration_seconds": 0.88,
-      "stt_transcript": "一碗飯。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "我想要一碗飯。": {
-      "content_hash": "94b21e0be8d71b2d46b474693ae60db31aabc2abb84e134051d6167441d08894",
-      "path": "beginner/94b21e0be8d71b2d46b474693ae60db31aabc2abb84e134051d6167441d08894.wav",
-      "url": "/media/beginner/94b21e0be8d71b2d46b474693ae60db31aabc2abb84e134051d6167441d08894.wav",
-      "duration_seconds": 1.44,
-      "stt_transcript": "我想要一碗飯。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "畀杯水": {
-      "content_hash": "60c53edb44d6b92d0396fbd48de4ccd909db24d6242467694e9374b416380b06",
-      "path": "beginner/60c53edb44d6b92d0396fbd48de4ccd909db24d6242467694e9374b416380b06.wav",
-      "url": "/media/beginner/60c53edb44d6b92d0396fbd48de4ccd909db24d6242467694e9374b416380b06.wav",
-      "duration_seconds": 0.72,
-      "stt_transcript": "畀杯水。",
-      "stt_validated": true,
-      "generation_attempts": 2
-    },
-    "唔該畀杯水我。": {
-      "content_hash": "4fbf4562dd907475f009735166732b1565c925d1921af805703e51663c84f1a6",
-      "path": "beginner/4fbf4562dd907475f009735166732b1565c925d1921af805703e51663c84f1a6.wav",
-      "url": "/media/beginner/4fbf4562dd907475f009735166732b1565c925d1921af805703e51663c84f1a6.wav",
-      "duration_seconds": 1.52,
-      "stt_transcript": "唔該，畀杯水我。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "請問": {
-      "content_hash": "0813de928167e359e67ea074f1cd527a4ebd096bc177f46bd4f37919566b640d",
-      "path": "beginner/0813de928167e359e67ea074f1cd527a4ebd096bc177f46bd4f37919566b640d.wav",
-      "url": "/media/beginner/0813de928167e359e67ea074f1cd527a4ebd096bc177f46bd4f37919566b640d.wav",
-      "duration_seconds": 0.88,
-      "stt_transcript": "請問。",
-      "stt_validated": true,
-      "generation_attempts": 4
-    },
-    "喺邊度": {
-      "content_hash": "74fd17ccfb0ca28a6fc362da328660fac98db2a245401456f32a972e488422b4",
-      "path": "beginner/74fd17ccfb0ca28a6fc362da328660fac98db2a245401456f32a972e488422b4.wav",
-      "url": "/media/beginner/74fd17ccfb0ca28a6fc362da328660fac98db2a245401456f32a972e488422b4.wav",
-      "duration_seconds": 0.64,
-      "stt_transcript": "喺邊度。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "請問廁所喺邊度？": {
-      "content_hash": "9ef64a1616d5641f3bdb3bc08633fd683aa057943dc8e12e0f9624f60394d456",
-      "path": "beginner/9ef64a1616d5641f3bdb3bc08633fd683aa057943dc8e12e0f9624f60394d456.wav",
-      "url": "/media/beginner/9ef64a1616d5641f3bdb3bc08633fd683aa057943dc8e12e0f9624f60394d456.wav",
-      "duration_seconds": 1.6,
-      "stt_transcript": "請問廁所喺邊度？",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "我係學生": {
-      "content_hash": "a728e57c2a69da26dc3ec14b4404a8d9264eb37935c6d308fcf79d793116f4a0",
-      "path": "beginner/a728e57c2a69da26dc3ec14b4404a8d9264eb37935c6d308fcf79d793116f4a0.wav",
-      "url": "/media/beginner/a728e57c2a69da26dc3ec14b4404a8d9264eb37935c6d308fcf79d793116f4a0.wav",
-      "duration_seconds": 0.96,
-      "stt_transcript": "我係學生。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "我唔係老師": {
-      "content_hash": "cb52dfa6c4d488e93059fe8153139cbd33c49e3656a9091ee22459a4a53b323e",
-      "path": "beginner/cb52dfa6c4d488e93059fe8153139cbd33c49e3656a9091ee22459a4a53b323e.wav",
-      "url": "/media/beginner/cb52dfa6c4d488e93059fe8153139cbd33c49e3656a9091ee22459a4a53b323e.wav",
-      "duration_seconds": 0.96,
-      "stt_transcript": "我唔係老師。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "唔": {
-      "content_hash": "e4b402f2eb8bc7f59b4fd2a2d276bde6083e6d3c6dc9a08721f97e10c7fa3a1f",
-      "path": "beginner/e4b402f2eb8bc7f59b4fd2a2d276bde6083e6d3c6dc9a08721f97e10c7fa3a1f.wav",
-      "url": "/media/beginner/e4b402f2eb8bc7f59b4fd2a2d276bde6083e6d3c6dc9a08721f97e10c7fa3a1f.wav",
-      "duration_seconds": 0.56,
-      "stt_transcript": "唔。",
-      "stt_validated": true,
-      "generation_attempts": 5
-    },
-    "我唔係老師。": {
-      "content_hash": "053fb86ba1d78a1d64ca7f2c8626fd646aaad861ad225779b3fcb99e6a848cd3",
-      "path": "beginner/053fb86ba1d78a1d64ca7f2c8626fd646aaad861ad225779b3fcb99e6a848cd3.wav",
-      "url": "/media/beginner/053fb86ba1d78a1d64ca7f2c8626fd646aaad861ad225779b3fcb99e6a848cd3.wav",
-      "duration_seconds": 1.2,
-      "stt_transcript": "我唔係老師。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "我有一本書": {
-      "content_hash": "36f651258eb26603ef57738efed261df5bda9d3339f3b3adedc9aa158f45055a",
-      "path": "beginner/36f651258eb26603ef57738efed261df5bda9d3339f3b3adedc9aa158f45055a.wav",
-      "url": "/media/beginner/36f651258eb26603ef57738efed261df5bda9d3339f3b3adedc9aa158f45055a.wav",
-      "duration_seconds": 1.2,
-      "stt_transcript": "我有一本書。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "一本書": {
-      "content_hash": "b7a14081d3504d3c9a87e38a0a7146e160aace6f4e96f2890ea5cf26555fe96b",
-      "path": "beginner/b7a14081d3504d3c9a87e38a0a7146e160aace6f4e96f2890ea5cf26555fe96b.wav",
-      "url": "/media/beginner/b7a14081d3504d3c9a87e38a0a7146e160aace6f4e96f2890ea5cf26555fe96b.wav",
-      "duration_seconds": 0.8,
-      "stt_transcript": "一本書。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "我有一本書。": {
-      "content_hash": "cccdff8ac35014c28c4e1312602cda6e5be5c47ceb53985aa488a7214ff6856e",
-      "path": "beginner/cccdff8ac35014c28c4e1312602cda6e5be5c47ceb53985aa488a7214ff6856e.wav",
-      "url": "/media/beginner/cccdff8ac35014c28c4e1312602cda6e5be5c47ceb53985aa488a7214ff6856e.wav",
-      "duration_seconds": 1.12,
-      "stt_transcript": "我有一本書。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "我冇時間": {
-      "content_hash": "7f1aaa36cd703a1091e4163ec98e0967f8d0f933f7d14aaca2559295c018e0fa",
-      "path": "beginner/7f1aaa36cd703a1091e4163ec98e0967f8d0f933f7d14aaca2559295c018e0fa.wav",
-      "url": "/media/beginner/7f1aaa36cd703a1091e4163ec98e0967f8d0f933f7d14aaca2559295c018e0fa.wav",
-      "duration_seconds": 1.28,
-      "stt_transcript": "我冇時間。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "邊度": {
-      "content_hash": "a2e027b25470efc9c279095030b339142bfa8c2cb86b45578404ccb9808cb5fa",
-      "path": "beginner/a2e027b25470efc9c279095030b339142bfa8c2cb86b45578404ccb9808cb5fa.wav",
-      "url": "/media/beginner/a2e027b25470efc9c279095030b339142bfa8c2cb86b45578404ccb9808cb5fa.wav",
-      "duration_seconds": 0.56,
-      "stt_transcript": "邊度。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "你去邊度呀？": {
-      "content_hash": "a6fd9e19f7695eafb35fa444fa1c801a17087b8bc82a12a24dd23745aff49c69",
-      "path": "beginner/a6fd9e19f7695eafb35fa444fa1c801a17087b8bc82a12a24dd23745aff49c69.wav",
-      "url": "/media/beginner/a6fd9e19f7695eafb35fa444fa1c801a17087b8bc82a12a24dd23745aff49c69.wav",
-      "duration_seconds": 0.96,
-      "stt_transcript": "你去邊度呀？",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "我想飲茶": {
-      "content_hash": "b60ae539bd0343ec4e861b82976ca181375a1844ec2a9745b0895a0fc0f57c90",
-      "path": "beginner/b60ae539bd0343ec4e861b82976ca181375a1844ec2a9745b0895a0fc0f57c90.wav",
-      "url": "/media/beginner/b60ae539bd0343ec4e861b82976ca181375a1844ec2a9745b0895a0fc0f57c90.wav",
-      "duration_seconds": 0.96,
-      "stt_transcript": "我想飲茶。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "唔該畀杯水我": {
-      "content_hash": "ff626fa22505db0908a579d4c18fdbcbacecee7dee5fa72f05a437970d7dd75f",
-      "path": "beginner/ff626fa22505db0908a579d4c18fdbcbacecee7dee5fa72f05a437970d7dd75f.wav",
-      "url": "/media/beginner/ff626fa22505db0908a579d4c18fdbcbacecee7dee5fa72f05a437970d7dd75f.wav",
-      "duration_seconds": 1.28,
-      "stt_transcript": "唔該，畀杯水我。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "我食咗飯": {
-      "content_hash": "2dd54cb387b9f77f683166dbb32588002ef4841690e96f8319d6478936f79213",
-      "path": "beginner/2dd54cb387b9f77f683166dbb32588002ef4841690e96f8319d6478936f79213.wav",
-      "url": "/media/beginner/2dd54cb387b9f77f683166dbb32588002ef4841690e96f8319d6478936f79213.wav",
-      "duration_seconds": 1.04,
-      "stt_transcript": "我食咗飯。",
-      "stt_validated": true,
-      "generation_attempts": 2
-    },
-    "咗": {
-      "content_hash": "ec8535eee38a7a8fff0e60e6301cf1a2493ecd5172af5e4211788405dbaa544a",
-      "path": "beginner/ec8535eee38a7a8fff0e60e6301cf1a2493ecd5172af5e4211788405dbaa544a.wav",
-      "url": "/media/beginner/ec8535eee38a7a8fff0e60e6301cf1a2493ecd5172af5e4211788405dbaa544a.wav",
-      "duration_seconds": 0.56,
-      "stt_transcript": "咗。",
-      "stt_validated": true,
-      "generation_attempts": 3
-    },
-    "山": {
-      "content_hash": "b59e34d8c7176af5edb1bbfdc31c15a3b9c6adb0d8a6d520fcd2e6c9cecfb4cb",
-      "path": "beginner/b59e34d8c7176af5edb1bbfdc31c15a3b9c6adb0d8a6d520fcd2e6c9cecfb4cb.wav",
-      "url": "/media/beginner/b59e34d8c7176af5edb1bbfdc31c15a3b9c6adb0d8a6d520fcd2e6c9cecfb4cb.wav",
-      "duration_seconds": 0.56,
-      "stt_transcript": "山。",
-      "stt_validated": true,
-      "generation_attempts": 1
-    },
-    "我試吓。": {
-      "content_hash": "48e325bc30524ecfeb37621db11989e2b27bf2ca0c46849377f7354361fa09bb",
-      "path": "beginner/48e325bc30524ecfeb37621db11989e2b27bf2ca0c46849377f7354361fa09bb.wav",
-      "url": "/media/beginner/48e325bc30524ecfeb37621db11989e2b27bf2ca0c46849377f7354361fa09bb.wav",
-      "duration_seconds": 1.04,
-      "stt_transcript": "我試嚇。",
-      "stt_validated": true,
-      "generation_attempts": 4
-    },
-    "係": {
-      "content_hash": "eaf2a8c61987779669931e56990655ee09ee6189ca56a5db4c1b677bf6c0a439",
-      "path": "beginner/eaf2a8c61987779669931e56990655ee09ee6189ca56a5db4c1b677bf6c0a439.wav",
-      "url": "/media/beginner/eaf2a8c61987779669931e56990655ee09ee6189ca56a5db4c1b677bf6c0a439.wav",
-      "duration_seconds": 0.64,
-      "stt_transcript": "係。",
-      "stt_validated": true,
-      "generation_attempts": 3
-    },
-    "休": {
-      "content_hash": "8a9f55ead7764887676f6c1332551fe7f18b470247e45777bf1a801eabd9469f",
-      "path": "beginner/8a9f55ead7764887676f6c1332551fe7f18b470247e45777bf1a801eabd9469f.wav",
-      "url": "/media/beginner/8a9f55ead7764887676f6c1332551fe7f18b470247e45777bf1a801eabd9469f.wav",
-      "duration_seconds": 0.32,
-      "stt_transcript": "休。",
-      "stt_validated": true,
-      "generation_attempts": 8
+    "廣東話": {
+      "content_hash": "de87d3fb6142eeefbf00351d5512183cd98edd3b9a6b2466758a7516017dd8d9",
+      "path": "beginner/de87d3fb6142eeefbf00351d5512183cd98edd3b9a6b2466758a7516017dd8d9.wav",
+      "url": "/media/beginner/de87d3fb6142eeefbf00351d5512183cd98edd3b9a6b2466758a7516017dd8d9.wav",
+      "duration_seconds": 1.312,
+      "stt_transcript": "廣東話。",
+      "stt_validated": true,
+      "jyutping": "gwong2 dung1 waa2",
+      "generation_attempts": 1,
+      "generation_voice": "Gigi"
     },
     "粵語": {
-      "content_hash": "9185b2b7d6ce5e8daedd2be1efee5e4a5fdb714a89ed642459ba3397e0a49f71",
-      "path": "beginner/9185b2b7d6ce5e8daedd2be1efee5e4a5fdb714a89ed642459ba3397e0a49f71.wav",
-      "url": "/media/beginner/9185b2b7d6ce5e8daedd2be1efee5e4a5fdb714a89ed642459ba3397e0a49f71.wav",
-      "duration_seconds": 0.96,
+      "content_hash": "ad7a7c47791e07dc51785c581af4d395c6258598dad4a885d5e8c3f5835c1d26",
+      "path": "beginner/ad7a7c47791e07dc51785c581af4d395c6258598dad4a885d5e8c3f5835c1d26.wav",
+      "url": "/media/beginner/ad7a7c47791e07dc51785c581af4d395c6258598dad4a885d5e8c3f5835c1d26.wav",
+      "duration_seconds": 0.801,
       "stt_transcript": "粵語。",
       "stt_validated": true,
-      "generation_attempts": 4
+      "jyutping": "jyut6 jyu5",
+      "generation_attempts": 1,
+      "generation_voice": "Gigi"
     },
-    "廁所": {
-      "content_hash": "11b62c8968aa03896a2a9860ccaf0b541682ca390796b010082f0d6feca4a5fd",
-      "path": "beginner/11b62c8968aa03896a2a9860ccaf0b541682ca390796b010082f0d6feca4a5fd.wav",
-      "url": "/media/beginner/11b62c8968aa03896a2a9860ccaf0b541682ca390796b010082f0d6feca4a5fd.wav",
-      "duration_seconds": 1.04,
-      "stt_transcript": "廁所。",
+    "詩": {
+      "content_hash": "e38e0c374e8e45f399bdf5caa385cad4c68b4943e97e60f783d57b9af7d7a1ae",
+      "path": "beginner/e38e0c374e8e45f399bdf5caa385cad4c68b4943e97e60f783d57b9af7d7a1ae.wav",
+      "url": "/media/beginner/e38e0c374e8e45f399bdf5caa385cad4c68b4943e97e60f783d57b9af7d7a1ae.wav",
+      "duration_seconds": 0.766,
+      "stt_transcript": "詩。",
       "stt_validated": true,
-      "generation_attempts": 5
+      "jyutping": "si1",
+      "generation_attempts": 1,
+      "generation_voice": "Gigi"
     },
-    "唔係": {
-      "content_hash": "453c610ea5738351ec0f654f0681e733ca45b02a9a40433f70edcceb68a51a2d",
-      "path": "beginner/453c610ea5738351ec0f654f0681e733ca45b02a9a40433f70edcceb68a51a2d.wav",
-      "url": "/media/beginner/453c610ea5738351ec0f654f0681e733ca45b02a9a40433f70edcceb68a51a2d.wav",
-      "duration_seconds": 0.88,
-      "stt_transcript": "唔係。",
+    "試": {
+      "content_hash": "57fa52299e90689e54e81d99432a231d00a2fd7367aadea99289469a5eb064b4",
+      "path": "beginner/57fa52299e90689e54e81d99432a231d00a2fd7367aadea99289469a5eb064b4.wav",
+      "url": "/media/beginner/57fa52299e90689e54e81d99432a231d00a2fd7367aadea99289469a5eb064b4.wav",
+      "duration_seconds": 0.894,
+      "stt_transcript": "試。",
       "stt_validated": true,
-      "generation_attempts": 4
+      "jyutping": "si3",
+      "generation_attempts": 2,
+      "generation_voice": "Gigi"
     },
-    "你去邊度呀": {
-      "content_hash": "ffcaf517de604112afe59761dc17e1fe7c44209d7441ac5ee32427c92aa3536b",
-      "path": "beginner/ffcaf517de604112afe59761dc17e1fe7c44209d7441ac5ee32427c92aa3536b.wav",
-      "url": "/media/beginner/ffcaf517de604112afe59761dc17e1fe7c44209d7441ac5ee32427c92aa3536b.wav",
-      "duration_seconds": 1.6,
-      "stt_transcript": "你去邊度呀？",
+    "市": {
+      "content_hash": "a151b01c850d6b713e873fe81849269d4be15f3823070c038334d3928db6d23b",
+      "path": "beginner/a151b01c850d6b713e873fe81849269d4be15f3823070c038334d3928db6d23b.wav",
+      "url": "/media/beginner/a151b01c850d6b713e873fe81849269d4be15f3823070c038334d3928db6d23b.wav",
+      "duration_seconds": 1.614,
+      "stt_transcript": "市。",
       "stt_validated": true,
-      "generation_attempts": 7
+      "jyutping": "si5",
+      "generation_attempts": 2,
+      "generation_voice": "Gigi"
     },
-    "邊度呀": {
-      "content_hash": "572e8445252e3c4e4d32da709d62530bcd8c7e3fd0d8ceb118663a5f0cf12ae8",
-      "path": "beginner/572e8445252e3c4e4d32da709d62530bcd8c7e3fd0d8ceb118663a5f0cf12ae8.wav",
-      "url": "/media/beginner/572e8445252e3c4e4d32da709d62530bcd8c7e3fd0d8ceb118663a5f0cf12ae8.wav",
-      "duration_seconds": 0.96,
-      "stt_transcript": "邊度呀？",
+    "一": {
+      "content_hash": "997e45d5f210ede00b4cea7fe95f88cfaed5ae0186648e3bbc487ee3d4a48f11",
+      "path": "beginner/997e45d5f210ede00b4cea7fe95f88cfaed5ae0186648e3bbc487ee3d4a48f11.wav",
+      "url": "/media/beginner/997e45d5f210ede00b4cea7fe95f88cfaed5ae0186648e3bbc487ee3d4a48f11.wav",
+      "duration_seconds": 0.464,
+      "stt_transcript": "一。",
       "stt_validated": true,
-      "generation_attempts": 4
+      "jyutping": "jat1",
+      "generation_attempts": 2,
+      "generation_voice": "Gigi"
     },
-    "問": {
-      "content_hash": "587a1a605e53e71a4e394badf0ca7904f1e7524c3fe6bb76ea845bebbfef4b1b",
-      "path": "beginner/587a1a605e53e71a4e394badf0ca7904f1e7524c3fe6bb76ea845bebbfef4b1b.wav",
-      "url": "/media/beginner/587a1a605e53e71a4e394badf0ca7904f1e7524c3fe6bb76ea845bebbfef4b1b.wav",
-      "duration_seconds": 1.16,
-      "stt_transcript": "問。",
+    "二": {
+      "content_hash": "348125e207ed48c437e42f6ff67cc9ca55c8eb0bcb24d8ec1c271f0ba1be9985",
+      "path": "beginner/348125e207ed48c437e42f6ff67cc9ca55c8eb0bcb24d8ec1c271f0ba1be9985.wav",
+      "url": "/media/beginner/348125e207ed48c437e42f6ff67cc9ca55c8eb0bcb24d8ec1c271f0ba1be9985.wav",
+      "duration_seconds": 0.801,
+      "stt_transcript": "二。",
       "stt_validated": true,
-      "generation_attempts": 3,
-      "generation_voice": "longanyue_v3"
+      "jyutping": "ji6",
+      "generation_attempts": 1,
+      "generation_voice": "Gigi"
     },
-    "語": {
-      "content_hash": "d5192e574d51b1c07e545bd6ea968c5a5002624b4bbe105e29b0cf9a251e127f",
-      "path": "beginner/d5192e574d51b1c07e545bd6ea968c5a5002624b4bbe105e29b0cf9a251e127f.wav",
-      "url": "/media/beginner/d5192e574d51b1c07e545bd6ea968c5a5002624b4bbe105e29b0cf9a251e127f.wav",
-      "duration_seconds": 1.04,
-      "stt_transcript": "語。",
+    "三": {
+      "content_hash": "8e4095e029e53d4baf0055c53ad775e77ad5310fac6e194ee8c4bb8914577c6b",
+      "path": "beginner/8e4095e029e53d4baf0055c53ad775e77ad5310fac6e194ee8c4bb8914577c6b.wav",
+      "url": "/media/beginner/8e4095e029e53d4baf0055c53ad775e77ad5310fac6e194ee8c4bb8914577c6b.wav",
+      "duration_seconds": 0.72,
+      "stt_transcript": "三。",
       "stt_validated": true,
-      "generation_attempts": 3,
-      "generation_voice": "longanyue_v3"
+      "jyutping": "saam1",
+      "generation_attempts": 1,
+      "generation_voice": "Gigi"
     },
-    "畀": {
-      "content_hash": "8bb08d330b1c205f95fd0f6b2a073b6683019550a790cae19f63c6555fa98790",
-      "path": "beginner/8bb08d330b1c205f95fd0f6b2a073b6683019550a790cae19f63c6555fa98790.wav",
-      "url": "/media/beginner/8bb08d330b1c205f95fd0f6b2a073b6683019550a790cae19f63c6555fa98790.wav",
-      "duration_seconds": 0.96,
-      "stt_transcript": "畀。",
+    "四": {
+      "content_hash": "e0884259aebdf1551f8df84333d467bd8832aed9ebc61ccce9f301831858c47d",
+      "path": "beginner/e0884259aebdf1551f8df84333d467bd8832aed9ebc61ccce9f301831858c47d.wav",
+      "url": "/media/beginner/e0884259aebdf1551f8df84333d467bd8832aed9ebc61ccce9f301831858c47d.wav",
+      "duration_seconds": 0.848,
+      "stt_transcript": "四。",
       "stt_validated": true,
-      "generation_attempts": 3,
-      "generation_voice": "longanyue_v3"
+      "jyutping": "sei3",
+      "generation_attempts": 1,
+      "generation_voice": "Gigi"
+    },
+    "六": {
+      "content_hash": "fbcf5652c2b467a3a3ec43dc8edd8871e2b5e9f50da9b4cc11ef9c070cb455cd",
+      "path": "beginner/fbcf5652c2b467a3a3ec43dc8edd8871e2b5e9f50da9b4cc11ef9c070cb455cd.wav",
+      "url": "/media/beginner/fbcf5652c2b467a3a3ec43dc8edd8871e2b5e9f50da9b4cc11ef9c070cb455cd.wav",
+      "duration_seconds": 0.639,
+      "stt_transcript": "六。",
+      "stt_validated": true,
+      "jyutping": "luk6",
+      "generation_attempts": 2,
+      "generation_voice": "Gigi"
+    },
+    "七": {
+      "content_hash": "54ebfe490d5fea135491235eff956ccde8142d497ef9165e07021c093460cd4b",
+      "path": "beginner/54ebfe490d5fea135491235eff956ccde8142d497ef9165e07021c093460cd4b.wav",
+      "url": "/media/beginner/54ebfe490d5fea135491235eff956ccde8142d497ef9165e07021c093460cd4b.wav",
+      "duration_seconds": 0.546,
+      "stt_transcript": "七。",
+      "stt_validated": true,
+      "jyutping": "cat1",
+      "generation_attempts": 1,
+      "generation_voice": "Gigi"
+    },
+    "八": {
+      "content_hash": "b88af36e207c2fd3badb8636c274be3b3a55d300c376de49638858ff23a11175",
+      "path": "beginner/b88af36e207c2fd3badb8636c274be3b3a55d300c376de49638858ff23a11175.wav",
+      "url": "/media/beginner/b88af36e207c2fd3badb8636c274be3b3a55d300c376de49638858ff23a11175.wav",
+      "duration_seconds": 0.592,
+      "stt_transcript": "八。",
+      "stt_validated": true,
+      "jyutping": "baat3",
+      "generation_attempts": 2,
+      "generation_voice": "Gigi"
+    },
+    "九": {
+      "content_hash": "c7dfb65564b2d52f6dc7bede52ea3a5dc1bf4698234d29170a923d1ea4dea0f8",
+      "path": "beginner/c7dfb65564b2d52f6dc7bede52ea3a5dc1bf4698234d29170a923d1ea4dea0f8.wav",
+      "url": "/media/beginner/c7dfb65564b2d52f6dc7bede52ea3a5dc1bf4698234d29170a923d1ea4dea0f8.wav",
+      "duration_seconds": 0.72,
+      "stt_transcript": "九。",
+      "stt_validated": true,
+      "jyutping": "gau2",
+      "generation_attempts": 1,
+      "generation_voice": "Gigi"
+    },
+    "十": {
+      "content_hash": "57da8ade0b0f408d05cf5daa9ebdd20d30defe0f16962b8bf99c9d4db8f4d519",
+      "path": "beginner/57da8ade0b0f408d05cf5daa9ebdd20d30defe0f16962b8bf99c9d4db8f4d519.wav",
+      "url": "/media/beginner/57da8ade0b0f408d05cf5daa9ebdd20d30defe0f16962b8bf99c9d4db8f4d519.wav",
+      "duration_seconds": 0.72,
+      "stt_transcript": "十。",
+      "stt_validated": true,
+      "jyutping": "sap6",
+      "generation_attempts": 1,
+      "generation_voice": "Gigi"
+    },
+    "一、四、七": {
+      "content_hash": "4a1934b14084ddfa1f40dcbe3669d19b55d808e448c72c02807d5df066ae2066",
+      "path": "beginner/4a1934b14084ddfa1f40dcbe3669d19b55d808e448c72c02807d5df066ae2066.wav",
+      "url": "/media/beginner/4a1934b14084ddfa1f40dcbe3669d19b55d808e448c72c02807d5df066ae2066.wav",
+      "duration_seconds": 2.601,
+      "stt_transcript": "一、四、七。",
+      "stt_validated": true,
+      "jyutping": "jat1 sei3 cat1",
+      "generation_attempts": 1,
+      "generation_voice": "Gigi"
+    },
+    "八、二、十": {
+      "content_hash": "58acc676b9613228d5914b2eb9c67d4f3f885d23d58d621d56da51c9c6f23057",
+      "path": "beginner/58acc676b9613228d5914b2eb9c67d4f3f885d23d58d621d56da51c9c6f23057.wav",
+      "url": "/media/beginner/58acc676b9613228d5914b2eb9c67d4f3f885d23d58d621d56da51c9c6f23057.wav",
+      "duration_seconds": 2.508,
+      "stt_transcript": "八、二、十。",
+      "stt_validated": true,
+      "jyutping": "baat3 ji6 sap6",
+      "generation_attempts": 1,
+      "generation_voice": "Gigi"
+    },
+    "三、九、五": {
+      "content_hash": "042b8f2d5454be2e37ff5ed71519249348440fcfc0df4cba803796cbe5eccb79",
+      "path": "beginner/042b8f2d5454be2e37ff5ed71519249348440fcfc0df4cba803796cbe5eccb79.wav",
+      "url": "/media/beginner/042b8f2d5454be2e37ff5ed71519249348440fcfc0df4cba803796cbe5eccb79.wav",
+      "duration_seconds": 2.299,
+      "stt_transcript": "三九五。",
+      "stt_validated": true,
+      "jyutping": "saam1 gau2 ng5",
+      "generation_attempts": 1,
+      "generation_voice": "Gigi"
+    },
+    "六、一、八": {
+      "content_hash": "8e926e5d874051376078dc75f60a3c3cbfe1fe75107f6b96ce560d0fd486419d",
+      "path": "beginner/8e926e5d874051376078dc75f60a3c3cbfe1fe75107f6b96ce560d0fd486419d.wav",
+      "url": "/media/beginner/8e926e5d874051376078dc75f60a3c3cbfe1fe75107f6b96ce560d0fd486419d.wav",
+      "duration_seconds": 1.916,
+      "stt_transcript": "六，一，八。",
+      "stt_validated": true,
+      "jyutping": "luk6 jat1 baat3",
+      "generation_attempts": 1,
+      "generation_voice": "Gigi"
+    },
+    "十、七、四": {
+      "content_hash": "61d7fc77967255f3ef99ae9c36ffee3c9924b7144b6821ae6c88423005a1f494",
+      "path": "beginner/61d7fc77967255f3ef99ae9c36ffee3c9924b7144b6821ae6c88423005a1f494.wav",
+      "url": "/media/beginner/61d7fc77967255f3ef99ae9c36ffee3c9924b7144b6821ae6c88423005a1f494.wav",
+      "duration_seconds": 2.858,
+      "stt_transcript": "十、七、四。",
+      "stt_validated": true,
+      "jyutping": "sap6 cat1 sei3",
+      "generation_attempts": 1,
+      "generation_voice": "Gigi"
+    },
+    "史": {
+      "content_hash": "d1f7254483664b707f7e572cebefccd6c9e1d4b5a4f51e0f44f5cc7d8dd44452",
+      "path": "beginner/d1f7254483664b707f7e572cebefccd6c9e1d4b5a4f51e0f44f5cc7d8dd44452.wav",
+      "url": "/media/beginner/d1f7254483664b707f7e572cebefccd6c9e1d4b5a4f51e0f44f5cc7d8dd44452.wav",
+      "duration_seconds": 1.533,
+      "stt_transcript": "誒史。",
+      "stt_validated": true,
+      "jyutping": "si2",
+      "generation_attempts": 1,
+      "generation_voice": "Gigi"
+    },
+    "時": {
+      "content_hash": "7ef2ebedcb1bda303327c575a3701100e2831ccb4a9d076ea7074d27e4ebad64",
+      "path": "beginner/7ef2ebedcb1bda303327c575a3701100e2831ccb4a9d076ea7074d27e4ebad64.wav",
+      "url": "/media/beginner/7ef2ebedcb1bda303327c575a3701100e2831ccb4a9d076ea7074d27e4ebad64.wav",
+      "duration_seconds": 0.848,
+      "stt_transcript": "時。",
+      "stt_validated": true,
+      "jyutping": "si4",
+      "generation_attempts": 1,
+      "generation_voice": "Gigi"
+    },
+    "事": {
+      "content_hash": "66e26bc11efcd3270a98a53fbb5e850008a8e8679e4f9e90e0f717b6f9c2d78b",
+      "path": "beginner/66e26bc11efcd3270a98a53fbb5e850008a8e8679e4f9e90e0f717b6f9c2d78b.wav",
+      "url": "/media/beginner/66e26bc11efcd3270a98a53fbb5e850008a8e8679e4f9e90e0f717b6f9c2d78b.wav",
+      "duration_seconds": 1.707,
+      "stt_transcript": "誒事。",
+      "stt_validated": true,
+      "jyutping": "si6",
+      "generation_attempts": 2,
+      "generation_voice": "Gigi"
+    },
+    "五": {
+      "content_hash": "597f091460e0784cf714fd3ae8cc97d1dd6e04d6c9e0d70ecf03d117790da541",
+      "path": "beginner/597f091460e0784cf714fd3ae8cc97d1dd6e04d6c9e0d70ecf03d117790da541.wav",
+      "url": "/media/beginner/597f091460e0784cf714fd3ae8cc97d1dd6e04d6c9e0d70ecf03d117790da541.wav",
+      "duration_seconds": 0.639,
+      "stt_transcript": "嗯。",
+      "stt_validated": true,
+      "jyutping": "ng5",
+      "generation_attempts": 2,
+      "generation_voice": "Gigi"
     }
   },
   "failed": []

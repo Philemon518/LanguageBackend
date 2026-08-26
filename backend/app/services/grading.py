@@ -2,6 +2,28 @@
 
 from ..models.schemas import ExerciseStep, WritingFeedback
 
+INTRO_STEP_TYPES = {"lesson_intro", "word_intro"}
+CHOICE_STEP_TYPES = {
+    "choice",
+    "multiple_choice",
+    "image",
+    "audio",
+    "image_choice",
+    "audio_choice",
+}
+COMPARISON_STEP_TYPES = {
+    "image_comparison",
+    "audio_comparison",
+    "image_compare",
+    "audio_compare",
+    "compare_images",
+    "compare_audio",
+}
+
+
+def is_intro_step(step: ExerciseStep) -> bool:
+    return step.type in INTRO_STEP_TYPES or step.type.endswith("_intro")
+
 
 def _looks_like_english(text: str) -> bool:
     stripped = text.strip()
@@ -14,16 +36,62 @@ def _looks_like_english(text: str) -> bool:
 
 def grade_exercise(step: ExerciseStep, response: dict) -> tuple[bool, float, str | None]:
     ex_type = step.type
-    if ex_type in (
-        "select_tone",
-        "select_meaning",
-        "select_jyutping",
-        "select_character",
-        "match",
-        "word_intro",
+    if is_intro_step(step):
+        return True, 1.0, None
+
+    if (
+        ex_type
+        in (
+            "select_tone",
+            "select_meaning",
+            "select_jyutping",
+            "select_character",
+            "match",
+        )
+        or ex_type in CHOICE_STEP_TYPES
     ):
-        selected = response.get("selected_option_id")
-        correct = selected == step.correct_option_id
+        selected = (
+            response.get("selected_option_id")
+            or response.get("selected_id")
+            or response.get("choice_id")
+            or response.get("selected")
+        )
+        expected = step.correct_option_id or step.metadata.get("correct_option_id")
+        correct = selected == expected
+        return correct, 1.0 if correct else 0.0, None if correct else step.hint
+
+    if ex_type == "comparison" or ex_type in COMPARISON_STEP_TYPES:
+        selected_ids = response.get("selected_option_ids")
+        expected_ids = step.metadata.get("expected_option_ids") or (step.model_extra or {}).get(
+            "correct_option_ids"
+        )
+        if selected_ids is not None and expected_ids is not None:
+            correct = selected_ids == expected_ids
+        else:
+            selected = (
+                response.get("selected_option_id")
+                or response.get("selected_id")
+                or response.get("selected")
+            )
+            expected = step.correct_option_id or step.metadata.get("correct_option_id")
+            correct = selected == expected
+        return correct, 1.0 if correct else 0.0, None if correct else step.hint
+
+    if ex_type in {"typing", "type_answer"}:
+        answer = str(response.get("text") or response.get("answer") or "").strip()
+        accepted = step.metadata.get("accepted_answers")
+        if accepted is None:
+            extra = step.model_extra or {}
+            accepted = extra.get("accepted_answers") or extra.get("correct_answer")
+        if not isinstance(accepted, list):
+            accepted = [
+                accepted
+                or step.metadata.get("expected")
+                or step.reveal_character
+                or step.reveal_jyutping
+                or ""
+            ]
+        correct = answer.casefold() in {str(candidate).strip().casefold() for candidate in accepted}
         return correct, 1.0 if correct else 0.0, None if correct else step.hint
 
     if ex_type == "order_words":
@@ -53,18 +121,13 @@ def grade_exercise(step: ExerciseStep, response: dict) -> tuple[bool, float, str
         transcript = (response.get("transcript") or "").strip()
         expected_text = (step.metadata.get("expected_text") or "").strip()
         expected = (
-            expected_text
-            or step.metadata.get("expected")
-            or step.reveal_jyutping
-            or ""
+            expected_text or step.metadata.get("expected") or step.reveal_jyutping or ""
         ).strip()
         if not transcript:
             return False, 0.0, "No speech detected. Try again."
         if _looks_like_english(transcript):
             return False, 0.0, "We heard English. Try again in Cantonese."
-        if expected_text and (
-            expected_text in transcript or transcript in expected_text
-        ):
+        if expected_text and (expected_text in transcript or transcript in expected_text):
             return True, 1.0, "Clear match. Listen once more and compare your tone."
         # Conservative: partial match on jyutping syllables
         exp_parts = expected.lower().split()
@@ -72,7 +135,9 @@ def grade_exercise(step: ExerciseStep, response: dict) -> tuple[bool, float, str
         overlap = len(set(exp_parts) & set(got_parts))
         score = min(1.0, overlap / max(len(exp_parts), 1))
         correct = score >= 0.7
-        feedback = None if correct else "Focus on tone and syllable shape. Listen again, then retry."
+        feedback = (
+            None if correct else "Focus on tone and syllable shape. Listen again, then retry."
+        )
         return correct, score, feedback
 
     if ex_type == "write_sentence":
@@ -86,7 +151,9 @@ def grade_exercise(step: ExerciseStep, response: dict) -> tuple[bool, float, str
     return False, 0.0, "Unknown exercise type"
 
 
-def grade_writing(text: str, patterns: list[str], vocab: list[str]) -> tuple[bool, float, str | None]:
+def grade_writing(
+    text: str, patterns: list[str], vocab: list[str]
+) -> tuple[bool, float, str | None]:
     if not text:
         return False, 0.0, "Write a sentence using the target vocabulary."
     matched_vocab = [v for v in vocab if v in text]
@@ -97,7 +164,9 @@ def grade_writing(text: str, patterns: list[str], vocab: list[str]) -> tuple[boo
     acceptable = score >= 0.5 and len(matched_vocab) >= 1
     feedback = WritingFeedback(
         acceptable=acceptable,
-        feedback="Good use of vocabulary." if acceptable else "Include more target words and patterns.",
+        feedback="Good use of vocabulary."
+        if acceptable
+        else "Include more target words and patterns.",
         matched_vocab=matched_vocab,
         matched_patterns=matched_patterns,
     )

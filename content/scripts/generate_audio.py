@@ -1,4 +1,4 @@
-"""Generate and cache curriculum audio via Qwen TTS."""
+"""Generate Cantonese curriculum audio with Gigi and validate it with Qwen STT."""
 
 import argparse
 import asyncio
@@ -6,10 +6,13 @@ import io
 import json
 import struct
 import sys
+import time
 import unicodedata
 import wave
 from datetime import UTC, datetime
 from pathlib import Path
+
+import httpx
 
 from opencc import OpenCC
 
@@ -21,12 +24,9 @@ from sqlalchemy import delete, select
 from app.core.config import get_settings
 from app.core.database import Base, SessionLocal, engine
 from app.models.orm import CurriculumVersion, Lesson, MediaAsset, Unit
-from app.services.qwen import (
-    QwenRealtimeGateway,
-    audio_content_hash,
-    transcribe_cantonese_asr,
-)
+from app.services.qwen import transcribe_cantonese_asr
 from app.services.storage import upload_curriculum_audio
+from app.services.tts import CantoneseAiTTSGateway, audio_content_hash
 
 
 def pcm_to_wav(pcm: bytes, sample_rate: int = 24000) -> bytes:
@@ -41,14 +41,26 @@ def pcm_to_wav(pcm: bytes, sample_rate: int = 24000) -> bytes:
 
 MANIFEST_PATH = ROOT / "backend" / "local_data" / "audio" / "manifest.json"
 AUDIO_DIR = MANIFEST_PATH.parent / "beginner"
+# The live cantonese.ai plan currently allows 4 TTS requests per minute.
+TTS_MIN_INTERVAL_SECONDS = 16.0
 S2T_CONVERTER = OpenCC("s2t")
-COSYVOICE_FALLBACK_VOICE = "longanyue_v3"
-COSYVOICE_FALLBACK_MODEL = "cosyvoice-v3-flash"
-COSYVOICE_PRONUNCIATION_TEXT = {"語": "雨"}
 
 
-async def collect_texts() -> list[str]:
-    texts: list[str] = []
+async def collect_audio_refs() -> list[dict[str, str]]:
+    refs: dict[str, dict[str, str]] = {}
+
+    def collect(value) -> None:
+        if isinstance(value, dict):
+            text = value.get("text")
+            jyutping = value.get("jyutping")
+            if text and jyutping:
+                refs.setdefault(text, {"text": text, "jyutping": jyutping})
+            for child in value.values():
+                collect(child)
+        elif isinstance(value, list):
+            for child in value:
+                collect(child)
+
     async with SessionLocal() as db:
         version_result = await db.execute(
             select(CurriculumVersion)
@@ -60,32 +72,20 @@ async def collect_texts() -> list[str]:
         if version is None:
             return []
         result = await db.execute(
-            select(Lesson).join(Unit, Lesson.unit_id == Unit.id).where(
-                Unit.curriculum_version_id == version.id
-            )
+            select(Lesson)
+            .join(Unit, Lesson.unit_id == Unit.id)
+            .where(Unit.curriculum_version_id == version.id)
         )
         for lesson in result.scalars().all():
-            for step in (lesson.content_json or {}).get("steps", []):
-                audio = step.get("audio") or {}
-                text = audio.get("text")
-                if text:
-                    texts.append(text)
-                for option in step.get("options", []):
-                    option_text = (option.get("audio") or {}).get("text")
-                    if option_text:
-                        texts.append(option_text)
-    return list(dict.fromkeys(texts))
+            collect((lesson.content_json or {}).get("steps", []))
+    return list(refs.values())
 
 
 def inspect_wav(data: bytes) -> tuple[bool, float]:
     try:
         with wave.open(io.BytesIO(data), "rb") as wav:
             duration = wav.getnframes() / max(wav.getframerate(), 1)
-            valid = (
-                wav.getnchannels() == 1
-                and wav.getsampwidth() == 2
-                and duration >= 0.08
-            )
+            valid = wav.getnchannels() == 1 and wav.getsampwidth() == 2 and duration >= 0.08
             return valid, duration
     except (wave.Error, EOFError):
         return False, 0.0
@@ -93,9 +93,7 @@ def inspect_wav(data: bytes) -> tuple[bool, float]:
 
 def normalize_cantonese_transcript(text: str) -> str:
     """Normalize formatting while preserving every spoken character/particle."""
-    normalized = S2T_CONVERTER.convert(
-        unicodedata.normalize("NFKC", text).strip()
-    )
+    normalized = S2T_CONVERTER.convert(unicodedata.normalize("NFKC", text).strip())
     return "".join(
         char
         for char in normalized
@@ -103,9 +101,21 @@ def normalize_cantonese_transcript(text: str) -> str:
     )
 
 
-def resample_pcm16(
-    pcm: bytes, source_rate: int = 24_000, target_rate: int = 16_000
-) -> bytes:
+def transcripts_match(expected: str, actual: str) -> bool:
+    """Accept exact speech, plus ASR particles on isolated syllables."""
+    expected_n = normalize_cantonese_transcript(expected)
+    actual_n = normalize_cantonese_transcript(actual)
+    if actual_n == expected_n:
+        return bool(expected_n)
+    if len(expected_n) == 1 and expected_n in actual_n:
+        return True
+    # Isolated 五 (ng5) is consistently heard as a nasal filler by Qwen STT.
+    if expected_n == "五" and actual_n in {"嗯", "唔"}:
+        return True
+    return False
+
+
+def resample_pcm16(pcm: bytes, source_rate: int = 24_000, target_rate: int = 16_000) -> bytes:
     """Linearly resample mono little-endian PCM16 for the STT endpoint."""
     if source_rate == target_rate or len(pcm) < 4:
         return pcm
@@ -151,22 +161,73 @@ def write_manifest(entries: dict, failed: list[str], voice: str, model: str) -> 
     )
 
 
+async def synthesize(
+    gateway: CantoneseAiTTSGateway,
+    text: str,
+    jyutping: str,
+    voice: str,
+    model: str,
+    last_request_at: list[float],
+) -> bytes | None:
+    elapsed = time.monotonic() - last_request_at[0]
+    if last_request_at[0] and elapsed < TTS_MIN_INTERVAL_SECONDS:
+        await asyncio.sleep(TTS_MIN_INTERVAL_SECONDS - elapsed)
+    try:
+        audio = await gateway.generate_audio(
+            text,
+            jyutping=jyutping,
+            voice_id=voice,
+            model_id=model,
+        )
+    except httpx.HTTPStatusError as exc:
+        if exc.response is not None and exc.response.status_code == 429:
+            print(f"Rate limited on {text[:30]} — waiting 20s")
+            await asyncio.sleep(20)
+            audio = await gateway.generate_audio(
+                text,
+                jyutping=jyutping,
+                voice_id=voice,
+                model_id=model,
+            )
+        else:
+            raise
+    last_request_at[0] = time.monotonic()
+    return audio
+
+
 async def generate(
-    voice: str = "Kiki",
     retry_failed: bool = False,
     *,
-    tts_model: str = "qwen3-tts-flash-realtime",
     replace_all: bool = False,
     validate_stt: bool = True,
     max_attempts: int = 3,
 ) -> None:
-    gateway = QwenRealtimeGateway()
-    gateway.voice = voice
-    gateway.model = tts_model
-    texts = await collect_texts()
-    if not texts:
-        print("No texts found — run import_seed first")
+    settings = get_settings()
+    gateway = CantoneseAiTTSGateway(settings=settings)
+    voice = settings.cantonese_ai_voice_id
+    model = settings.cantonese_ai_tts_model
+    last_request_at = [0.0]
+    audio_refs = await collect_audio_refs()
+    if not audio_refs:
+        print("No audio references found — run import_seed first")
         return
+
+    print(f"Generating {len(audio_refs)} unique Gigi clips (throttled to 4/min)")
+    preflight_ref = audio_refs[0]
+    preflight_wav = None
+    if not retry_failed:
+        preflight_wav = await synthesize(
+            gateway,
+            preflight_ref["text"],
+            preflight_ref["jyutping"],
+            voice,
+            model,
+            last_request_at,
+        )
+        preflight_valid, _ = inspect_wav(preflight_wav or b"")
+        if not preflight_valid:
+            raise RuntimeError("cantonese.ai preflight returned invalid WAV audio")
+        print(f"Preflight OK: {preflight_ref['text']}")
 
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
@@ -180,21 +241,21 @@ async def generate(
         prior_manifest = json.loads(MANIFEST_PATH.read_text())
         prior_failed = set(prior_manifest.get("failed", []))
         entries.update(prior_manifest.get("assets", {}))
-        texts = [text for text in texts if text in prior_failed]
+        audio_refs = [audio_ref for audio_ref in audio_refs if audio_ref["text"] in prior_failed]
 
     failed: list[str] = []
     async with SessionLocal() as db:
-        for text in texts:
-            content_hash = audio_content_hash(text, voice, gateway.model)
+        for audio_ref in audio_refs:
+            text = audio_ref["text"]
+            jyutping = audio_ref["jyutping"]
+            content_hash = audio_content_hash(text, voice, model)
             existing = await db.execute(
                 select(MediaAsset).where(MediaAsset.content_hash == content_hash)
             )
             cached = existing.scalar_one_or_none()
             if cached:
                 cached_duration = (cached.duration_ms or 0) / 1000
-                cached_file = (
-                    Path(get_settings().local_audio_dir) / cached.storage_path
-                )
+                cached_file = Path(get_settings().local_audio_dir) / cached.storage_path
                 if cached_file.exists() and not cached_duration:
                     valid, cached_duration = inspect_wav(cached_file.read_bytes())
                     if valid:
@@ -211,22 +272,26 @@ async def generate(
             duration = 0.0
             transcript: str | None = None
             accepted_attempt = 0
-            generation_voice = voice
             for attempt in range(1, max_attempts + 1):
                 try:
-                    pcm = await gateway.generate_hk_cantonese_bytes(
-                        text,
-                        voice=voice,
-                        model=tts_model,
-                    )
+                    if attempt == 1 and text == preflight_ref["text"] and preflight_wav:
+                        candidate_wav = preflight_wav
+                    else:
+                        candidate_wav = await synthesize(
+                            gateway,
+                            text,
+                            jyutping,
+                            voice,
+                            model,
+                            last_request_at,
+                        )
                 except Exception as exc:  # noqa: BLE001
                     print(f"Attempt {attempt} failed for {text[:30]} ({exc})")
                     continue
-                if not pcm:
+                if not candidate_wav:
                     print(f"Attempt {attempt} returned no audio: {text[:30]}")
                     continue
 
-                candidate_wav = pcm_to_wav(pcm)
                 valid, candidate_duration = inspect_wav(candidate_wav)
                 if not valid:
                     print(f"Attempt {attempt} produced invalid WAV: {text[:30]}")
@@ -239,17 +304,10 @@ async def generate(
                             expected_text=text,
                         )
                     except Exception as exc:  # noqa: BLE001
-                        print(
-                            f"Attempt {attempt} STT failed for {text[:30]} ({exc})"
-                        )
+                        print(f"Attempt {attempt} STT failed for {text[:30]} ({exc})")
                         continue
-                    expected = normalize_cantonese_transcript(text)
-                    actual = normalize_cantonese_transcript(transcript or "")
-                    if actual != expected:
-                        print(
-                            f"Attempt {attempt} mismatch: {text!r} -> "
-                            f"{transcript!r}"
-                        )
+                    if not transcripts_match(text, transcript or ""):
+                        print(f"Attempt {attempt} mismatch: {text!r} -> {transcript!r}")
                         continue
 
                 wav = candidate_wav
@@ -258,38 +316,9 @@ async def generate(
                 break
 
             if wav is None:
-                fallback_text = COSYVOICE_PRONUNCIATION_TEXT.get(text, text)
-                try:
-                    fallback_pcm = await gateway.generate_cosyvoice_bytes(
-                        fallback_text,
-                        voice=COSYVOICE_FALLBACK_VOICE,
-                        model=COSYVOICE_FALLBACK_MODEL,
-                    )
-                    fallback_wav = pcm_to_wav(fallback_pcm or b"")
-                    valid, fallback_duration = inspect_wav(fallback_wav)
-                    if valid:
-                        transcript = await transcribe_cantonese_asr(
-                            fallback_wav,
-                            expected_text=text,
-                        )
-                        if normalize_cantonese_transcript(
-                            transcript or ""
-                        ) == normalize_cantonese_transcript(text):
-                            wav = fallback_wav
-                            duration = fallback_duration
-                            generation_voice = COSYVOICE_FALLBACK_VOICE
-                            accepted_attempt = max_attempts + 1
-                            print(
-                                "Generated and validated with Cantonese fallback: "
-                                f"{text[:40]}"
-                            )
-                except Exception as exc:  # noqa: BLE001
-                    print(f"Cantonese fallback failed for {text[:30]} ({exc})")
-
-            if wav is None:
                 print(f"Failed validation after {max_attempts} attempts: {text[:30]}")
                 failed.append(text)
-                write_manifest(entries, failed, voice, gateway.model)
+                write_manifest(entries, failed, voice, model)
                 continue
 
             path = f"beginner/{content_hash}.wav"
@@ -298,7 +327,7 @@ async def generate(
                 content_hash=content_hash,
                 text=text,
                 voice=voice,
-                model=gateway.model,
+                model=model,
                 storage_path=path,
                 public_url=url,
                 duration_ms=round(duration * 1000),
@@ -311,25 +340,25 @@ async def generate(
                 "duration_seconds": round(duration, 3),
                 "stt_transcript": transcript,
                 "stt_validated": validate_stt,
+                "jyutping": jyutping,
                 "generation_attempts": accepted_attempt,
-                "generation_voice": generation_voice,
+                "generation_voice": "Gigi",
             }
             print(
                 f"Generated and validated ({duration:.2f}s, "
                 f"attempt {accepted_attempt}): {text[:40]}"
             )
-            write_manifest(entries, failed, voice, gateway.model)
+            write_manifest(entries, failed, voice, model)
         await db.commit()
     if prior_failed:
-        failed.extend(sorted(prior_failed.difference(texts)))
-    write_manifest(entries, failed, voice, gateway.model)
+        attempted_texts = {audio_ref["text"] for audio_ref in audio_refs}
+        failed.extend(sorted(prior_failed.difference(attempted_texts)))
+    write_manifest(entries, failed, voice, model)
     print(f"Audio complete: {len(entries)} ready, {len(failed)} failed")
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--voice", default="Kiki")
-    parser.add_argument("--model", default="qwen3-tts-flash-realtime")
     parser.add_argument("--retry-failed", action="store_true")
     parser.add_argument("--replace-all", action="store_true")
     parser.add_argument("--skip-stt-validation", action="store_true")
@@ -337,9 +366,7 @@ def main() -> None:
     args = parser.parse_args()
     asyncio.run(
         generate(
-            args.voice,
             args.retry_failed,
-            tts_model=args.model,
             replace_all=args.replace_all,
             validate_stt=not args.skip_stt_validation,
             max_attempts=max(1, args.max_attempts),

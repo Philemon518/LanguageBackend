@@ -7,16 +7,8 @@ from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from ..core.config import get_settings
-from ..models.orm import (
-    CurriculumVersion,
-    ExerciseAttempt,
-    Lesson,
-    LessonProgress,
-    Lexeme,
-    MediaAsset,
-    Unit,
-)
-from .curriculum import _audio_url_for_text
+from ..models.orm import ExerciseAttempt, Lesson, LessonProgress, Lexeme, MediaAsset, Unit
+from .curriculum import _audio_url_for_text, get_latest_curriculum_version
 
 
 async def get_user_library(db: AsyncSession, user_id: UUID) -> list[dict]:
@@ -30,10 +22,7 @@ async def get_user_library(db: AsyncSession, user_id: UUID) -> list[dict]:
         .where(ExerciseAttempt.user_id == user_id)
         .group_by(ExerciseAttempt.lesson_id)
     )
-    attempt_map = {
-        lesson_id: encountered_at
-        for lesson_id, encountered_at in attempt_rows.all()
-    }
+    attempt_map = {lesson_id: encountered_at for lesson_id, encountered_at in attempt_rows.all()}
 
     progress_rows = await db.execute(
         select(LessonProgress).where(
@@ -47,20 +36,12 @@ async def get_user_library(db: AsyncSession, user_id: UUID) -> list[dict]:
     if not attempt_map:
         return []
 
-    version_result = await db.execute(
-        select(CurriculumVersion)
-        .where(CurriculumVersion.level == "beginner")
-        .order_by(CurriculumVersion.created_at.desc())
-        .limit(1)
-    )
-    version = version_result.scalar_one_or_none()
+    version = await get_latest_curriculum_version(db)
     if version is None:
         return []
 
     units_result = await db.execute(
-        select(Unit)
-        .where(Unit.curriculum_version_id == version.id)
-        .order_by(Unit.sort_order)
+        select(Unit).where(Unit.curriculum_version_id == version.id).order_by(Unit.sort_order)
     )
     units = units_result.scalars().all()
     unit_phase = {unit.id: unit.phase for unit in units}
@@ -68,17 +49,21 @@ async def get_user_library(db: AsyncSession, user_id: UUID) -> list[dict]:
     order = 0
     for unit in units:
         lessons_result = await db.execute(
-            select(Lesson)
-            .where(Lesson.unit_id == unit.id)
-            .order_by(Lesson.sort_order)
+            select(Lesson).where(Lesson.unit_id == unit.id).order_by(Lesson.sort_order)
         )
         for lesson in lessons_result.scalars().all():
             lesson_order[lesson.id] = order
             order += 1
 
-    lessons_result = await db.execute(
-        select(Lesson).where(Lesson.id.in_(attempt_map.keys()))
-    )
+    attempt_map = {
+        lesson_id: encountered_at
+        for lesson_id, encountered_at in attempt_map.items()
+        if lesson_id in lesson_order
+    }
+    if not attempt_map:
+        return []
+
+    lessons_result = await db.execute(select(Lesson).where(Lesson.id.in_(attempt_map.keys())))
     lessons = lessons_result.scalars().all()
 
     lexeme_ids: set[str] = set()
@@ -121,21 +106,18 @@ async def get_user_library(db: AsyncSession, user_id: UUID) -> list[dict]:
     lexeme_by_id = {row.id: row for row in lexeme_rows.scalars().all()}
 
     audio_texts = {row.traditional for row in lexeme_by_id.values()}
-    media_by_text: dict[str, str] = {}
+    media_by_text: dict[str, MediaAsset] = {}
     if audio_texts:
         settings = get_settings()
         media_result = await db.execute(
             select(MediaAsset).where(
                 MediaAsset.text.in_(audio_texts),
-                MediaAsset.voice == settings.qwen_tts_voice,
-                MediaAsset.model == settings.qwen_tts_model,
+                MediaAsset.voice == settings.cantonese_ai_voice_id,
+                MediaAsset.model == settings.cantonese_ai_tts_model,
             )
         )
         for asset in media_result.scalars().all():
-            media_by_text.setdefault(
-                asset.text,
-                asset.public_url or f"/media/{asset.storage_path}",
-            )
+            media_by_text.setdefault(asset.text, asset)
 
     entries: list[dict] = []
     for lesson_id, lesson_lexeme_list in lesson_lexemes.items():
@@ -162,8 +144,10 @@ async def get_user_library(db: AsyncSession, user_id: UUID) -> list[dict]:
                     "lesson_title": meta["lesson_title"],
                     "lesson_type": meta["lesson_type"],
                     "encountered_at": encountered_at.isoformat() if encountered_at else None,
-                    "audio_url": _audio_url_for_text(lexeme.traditional, None)
-                    or media_by_text.get(lexeme.traditional),
+                    "audio_url": _audio_url_for_text(
+                        lexeme.traditional,
+                        media_by_text.get(lexeme.traditional),
+                    ),
                     "context_traditional": target.get("traditional"),
                     "context_jyutping": target.get("jyutping"),
                     "context_english": target.get("english"),

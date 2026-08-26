@@ -16,6 +16,7 @@ import app.core.database as database_module
 from app.core.database import Base
 from app.models.orm import Character, CurriculumVersion, Lesson
 from content.scripts.generate_beginner_v2 import generate_document
+from content.scripts.generate_beginner_v3 import generate_document as generate_v3_document
 from content.scripts.import_seed import import_seed
 
 
@@ -70,9 +71,7 @@ async def test_import_seed_removes_stale_lessons_on_update(import_db, tmp_path):
     await import_seed(seed_path)
 
     async with import_db() as session:
-        lesson_ids = (
-            await session.scalars(select(Lesson.id).order_by(Lesson.id))
-        ).all()
+        lesson_ids = (await session.scalars(select(Lesson.id).order_by(Lesson.id))).all()
         assert len(lesson_ids) == 10
         assert "v2-sound-99" not in lesson_ids
 
@@ -84,9 +83,7 @@ async def test_import_seed_removes_stale_lessons_on_update(import_db, tmp_path):
 
 
 @pytest.mark.asyncio
-async def test_import_seed_reconciles_when_hash_matches_but_lessons_differ(
-    import_db, tmp_path
-):
+async def test_import_seed_reconciles_when_hash_matches_but_lessons_differ(import_db, tmp_path):
     seed_path = tmp_path / "beginner_v2.json"
     doc = generate_document()
     seed_path.write_text(json.dumps(doc, ensure_ascii=False), encoding="utf-8")
@@ -139,9 +136,7 @@ async def test_import_seed_upserts_characters_by_glyph(import_db, tmp_path):
 
         from app.models.orm import Unit
 
-        cv = CurriculumVersion(
-            id=uuid4(), version="2.0.0", level="beginner", metadata_json={}
-        )
+        cv = CurriculumVersion(id=uuid4(), version="2.0.0", level="beginner", metadata_json={})
         session.add(cv)
         await session.flush()
         session.add(
@@ -172,6 +167,29 @@ async def test_import_seed_upserts_characters_by_glyph(import_db, tmp_path):
         assert by_glyph is not None
         assert by_glyph.meaning == "rest"
         assert (
-            await session.scalar(select(func.count()).select_from(Character).where(Character.glyph == "休"))
+            await session.scalar(
+                select(func.count()).select_from(Character).where(Character.glyph == "休")
+            )
             == 1
         )
+
+
+@pytest.mark.asyncio
+async def test_import_seed_imports_beginner_v3_foundation_road(import_db, tmp_path):
+    seed_path = tmp_path / "beginner_v3.json"
+    seed_path.write_text(
+        json.dumps(generate_v3_document(), ensure_ascii=False),
+        encoding="utf-8",
+    )
+
+    await import_seed(seed_path)
+
+    async with import_db() as session:
+        version = await session.scalar(
+            select(CurriculumVersion).where(CurriculumVersion.version == "3.0.0")
+        )
+        lessons = (await session.scalars(select(Lesson))).all()
+        assert version is not None
+        assert len(lessons) == 12
+        assert sum(lesson.unit_id == "v3-unit-0" for lesson in lessons) == 2
+        assert sum(lesson.unit_id == "v3-unit-1" for lesson in lessons) == 10

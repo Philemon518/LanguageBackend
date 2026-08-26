@@ -21,8 +21,8 @@ async def bootstrap_media_assets() -> None:
         return
 
     manifest = json.loads(manifest_path.read_text())
-    voice = manifest.get("voice", settings.qwen_tts_voice)
-    model = manifest.get("model", settings.qwen_tts_model)
+    voice = manifest.get("voice", settings.cantonese_ai_voice_id)
+    model = manifest.get("model", settings.cantonese_ai_tts_model)
     assets = manifest.get("assets", {})
     if not assets:
         logger.warning("Audio manifest contains no assets")
@@ -31,9 +31,7 @@ async def bootstrap_media_assets() -> None:
     inserted = 0
     async with SessionLocal() as session:
         stale = await session.execute(
-            delete(MediaAsset).where(
-                (MediaAsset.voice != voice) | (MediaAsset.model != model)
-            )
+            delete(MediaAsset).where((MediaAsset.voice != voice) | (MediaAsset.model != model))
         )
         removed = stale.rowcount or 0
         for text, entry in assets.items():
@@ -52,9 +50,7 @@ async def bootstrap_media_assets() -> None:
                 existing_asset.model = model
                 existing_asset.storage_path = path
                 existing_asset.public_url = entry.get("url") or f"/media/{path}"
-                existing_asset.duration_ms = round(
-                    float(entry.get("duration_seconds", 0)) * 1000
-                )
+                existing_asset.duration_ms = round(float(entry.get("duration_seconds", 0)) * 1000)
                 continue
 
             file_path = Path(settings.local_audio_dir) / path

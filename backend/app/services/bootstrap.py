@@ -14,7 +14,9 @@ async def bootstrap_if_empty() -> None:
     ]
     seed_path = next((path for path in candidates if path.exists()), candidates[0])
     if not seed_path.exists():
-        logger.error("Curriculum seed not found. Checked: %s", ", ".join(str(p) for p in candidates))
+        logger.error(
+            "Curriculum seed not found. Checked: %s", ", ".join(str(p) for p in candidates)
+        )
         return
 
     # Inline import avoids making content generation part of the app package.
