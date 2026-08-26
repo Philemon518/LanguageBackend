@@ -3,7 +3,7 @@
 from pathlib import Path
 
 import pytest
-from sqlalchemy import select
+from sqlalchemy import func, select
 
 from app.core.config import get_settings
 from app.core.database import Base, SessionLocal, engine
@@ -24,6 +24,17 @@ async def test_bootstrap_media_assets_registers_manifest():
         asset = result.scalar_one_or_none()
     assert asset is not None
     assert _audio_url_for_text("廣東話", asset).endswith(".wav")
+
+
+@pytest.mark.asyncio
+async def test_bootstrap_media_assets_is_idempotent():
+    async with engine.begin() as connection:
+        await connection.run_sync(Base.metadata.create_all)
+    await bootstrap_media_assets()
+    await bootstrap_media_assets()
+    async with SessionLocal() as session:
+        count = await session.scalar(select(func.count()).select_from(MediaAsset))
+    assert count and count > 0
 
 
 @pytest.mark.asyncio

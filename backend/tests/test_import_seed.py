@@ -193,3 +193,21 @@ async def test_import_seed_imports_beginner_v3_foundation_road(import_db, tmp_pa
         assert len(lessons) == 12
         assert sum(lesson.unit_id == "v3-unit-0" for lesson in lessons) == 2
         assert sum(lesson.unit_id == "v3-unit-1" for lesson in lessons) == 10
+
+
+@pytest.mark.asyncio
+async def test_import_seed_v3_import_is_idempotent(import_db, tmp_path):
+    seed_path = tmp_path / "beginner_v3.json"
+    seed_path.write_text(
+        json.dumps(generate_v3_document(), ensure_ascii=False),
+        encoding="utf-8",
+    )
+
+    await import_seed(seed_path)
+    await import_seed(seed_path)
+
+    async with import_db() as session:
+        versions = (await session.scalars(select(CurriculumVersion))).all()
+        lessons = (await session.scalars(select(Lesson))).all()
+        assert len(versions) == 1
+        assert len(lessons) == 12
