@@ -43,8 +43,12 @@ async def lifespan(app: FastAPI):
 
     await bootstrap_if_empty()
     logger.info("Curriculum bootstrap finished")
-    await bootstrap_media_assets()
-    logger.info("Media bootstrap finished")
+    try:
+        await bootstrap_media_assets()
+    except Exception:
+        logger.exception("Media bootstrap failed; continuing with manifest fallbacks")
+    else:
+        logger.info("Media bootstrap finished")
 
     yield
 

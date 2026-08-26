@@ -4,7 +4,7 @@ import json
 import logging
 from pathlib import Path
 
-from sqlalchemy import delete, func, select, text
+from sqlalchemy import func, select, text
 from sqlalchemy.exc import IntegrityError
 
 from ..core.config import get_settings
@@ -16,26 +16,33 @@ settings = get_settings()
 MEDIA_LOCK_ID = 8_192_002
 
 
-async def _media_assets_ready(session) -> bool:
+async def _media_assets_ready(session, expected_count: int | None = None) -> bool:
     count = await session.scalar(select(func.count()).select_from(MediaAsset))
-    return bool(count and count > 0)
+    if not count:
+        return False
+    if expected_count is not None:
+        return count >= expected_count
+    return True
 
 
-async def _sync_media_assets(session) -> tuple[int, int]:
+def _load_manifest() -> tuple[str, str, dict] | None:
     manifest_path = Path(settings.local_audio_dir) / "manifest.json"
+    if not manifest_path.exists():
+        return None
+
     manifest = json.loads(manifest_path.read_text())
     voice = manifest.get("voice", settings.cantonese_ai_voice_id)
     model = manifest.get("model", settings.cantonese_ai_tts_model)
     assets = manifest.get("assets", {})
     if not assets:
-        logger.warning("Audio manifest contains no assets")
-        return 0, 0
+        return None
+    return voice, model, assets
 
+
+async def _sync_media_assets(session, voice: str, model: str, assets: dict) -> tuple[int, int]:
     inserted = 0
-    stale = await session.execute(
-        delete(MediaAsset).where((MediaAsset.voice != voice) | (MediaAsset.model != model))
-    )
-    removed = stale.rowcount or 0
+    updated = 0
+    pending_hashes: set[str] = set()
 
     with session.no_autoflush:
         for asset_text, entry in assets.items():
@@ -43,12 +50,15 @@ async def _sync_media_assets(session) -> tuple[int, int]:
             path = entry.get("path")
             if not content_hash or not path:
                 continue
+            if content_hash in pending_hashes:
+                continue
+            pending_hashes.add(content_hash)
 
+            public_url = entry.get("url") or f"/media/{path}"
+            duration_ms = round(float(entry.get("duration_seconds", 0)) * 1000)
             existing_asset = await session.scalar(
                 select(MediaAsset).where(MediaAsset.content_hash == content_hash)
             )
-            public_url = entry.get("url") or f"/media/{path}"
-            duration_ms = round(float(entry.get("duration_seconds", 0)) * 1000)
             if existing_asset is not None:
                 existing_asset.text = asset_text
                 existing_asset.voice = voice
@@ -56,6 +66,7 @@ async def _sync_media_assets(session) -> tuple[int, int]:
                 existing_asset.storage_path = path
                 existing_asset.public_url = public_url
                 existing_asset.duration_ms = duration_ms
+                updated += 1
                 continue
 
             file_path = Path(settings.local_audio_dir) / path
@@ -76,14 +87,23 @@ async def _sync_media_assets(session) -> tuple[int, int]:
             )
             inserted += 1
 
-    return inserted, removed
+    return inserted, updated
 
 
 async def bootstrap_media_assets() -> None:
-    manifest_path = Path(settings.local_audio_dir) / "manifest.json"
-    if not manifest_path.exists():
-        logger.warning("Audio manifest not found at %s", manifest_path)
+    manifest = _load_manifest()
+    if manifest is None:
+        logger.warning("Audio manifest not found or empty at %s", settings.local_audio_dir)
         return
+
+    voice, model, assets = manifest
+    expected_assets = sum(
+        1
+        for entry in assets.values()
+        if entry.get("content_hash")
+        and entry.get("path")
+        and (Path(settings.local_audio_dir) / entry["path"]).exists()
+    )
 
     async with SessionLocal() as session:
         if engine.dialect.name == "postgresql":
@@ -93,30 +113,24 @@ async def bootstrap_media_assets() -> None:
             )
 
         try:
-            inserted, removed = await _sync_media_assets(session)
+            inserted, updated = await _sync_media_assets(session, voice, model, assets)
             await session.flush()
             await session.commit()
             logger.info(
-                "Synchronized bundled audio assets: %s inserted, %s stale removed",
+                "Synchronized bundled audio assets: %s inserted, %s updated",
                 inserted,
-                removed,
+                updated,
             )
-        except IntegrityError:
+            return
+        except IntegrityError as exc:
             await session.rollback()
-            if await _media_assets_ready(session):
-                logger.info("Bundled audio already present after duplicate-key conflict")
-                return
+            logger.warning("Media bootstrap duplicate-key conflict: %s", exc)
 
-            if engine.dialect.name == "postgresql":
-                await session.execute(
-                    text("SELECT pg_advisory_xact_lock(:lock_id)"),
-                    {"lock_id": MEDIA_LOCK_ID},
-                )
-            inserted, removed = await _sync_media_assets(session)
-            await session.flush()
-            await session.commit()
-            logger.info(
-                "Synchronized bundled audio assets after retry: %s inserted, %s stale removed",
-                inserted,
-                removed,
-            )
+    async with SessionLocal() as session:
+        if await _media_assets_ready(session, expected_assets):
+            logger.info("Bundled audio already present after duplicate-key conflict")
+            return
+
+    logger.warning(
+        "Media bootstrap incomplete; API will continue using bundled manifest fallbacks"
+    )

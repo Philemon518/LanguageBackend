@@ -38,6 +38,20 @@ async def test_bootstrap_media_assets_is_idempotent():
 
 
 @pytest.mark.asyncio
+async def test_bootstrap_media_assets_tolerates_existing_rows():
+    async with engine.begin() as connection:
+        await connection.run_sync(Base.metadata.create_all)
+    await bootstrap_media_assets()
+    async with SessionLocal() as session:
+        before = await session.scalar(select(func.count()).select_from(MediaAsset))
+    await bootstrap_media_assets()
+    async with SessionLocal() as session:
+        after = await session.scalar(select(func.count()).select_from(MediaAsset))
+    assert before and before > 0
+    assert before == after
+
+
+@pytest.mark.asyncio
 async def test_audio_url_falls_back_to_manifest():
     settings = get_settings()
     url = _audio_url_for_text("廣東話", None)
