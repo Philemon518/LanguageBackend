@@ -6,7 +6,7 @@ import pytest
 from sqlalchemy import select
 
 from app.core.config import get_settings
-from app.core.database import SessionLocal
+from app.core.database import Base, SessionLocal, engine
 from app.models.orm import MediaAsset
 from app.services.curriculum import _audio_url_for_text
 from app.services.media_bootstrap import bootstrap_media_assets
@@ -14,6 +14,8 @@ from app.services.media_bootstrap import bootstrap_media_assets
 
 @pytest.mark.asyncio
 async def test_bootstrap_media_assets_registers_manifest():
+    async with engine.begin() as connection:
+        await connection.run_sync(Base.metadata.create_all)
     await bootstrap_media_assets()
     async with SessionLocal() as session:
         result = await session.execute(

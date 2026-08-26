@@ -10,6 +10,7 @@ import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
+from app.services import qwen
 from app.services.qwen import pcm16_to_wav, transcribe_cantonese_asr
 
 
@@ -29,7 +30,10 @@ async def test_transcribe_cantonese_asr_uses_yue_language():
     pcm = b"\x00\x00" * 1600
     wav_bytes = pcm16_to_wav(pcm)
 
-    with patch("dashscope.MultiModalConversation.call") as mock_call:
+    with (
+        patch.object(qwen.settings, "dashscope_api_key", "test-key"),
+        patch("dashscope.MultiModalConversation.call") as mock_call,
+    ):
         mock_call.return_value.status_code = 200
         mock_call.return_value.output = {
             "choices": [{"message": {"content": [{"text": "水"}]}}]

@@ -10,13 +10,16 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
 from content.scripts.generate_beginner_v2 import (
     curriculum_expectations as v2_curriculum_expectations,
+)
+from content.scripts.generate_beginner_v2 import (
     generate_document as generate_v2_document,
 )
 from content.scripts.generate_beginner_v3 import (
     curriculum_expectations as v3_curriculum_expectations,
+)
+from content.scripts.generate_beginner_v3 import (
     generate_document as generate_v3_document,
 )
-
 from content.scripts.validate import validate_jyutping, validate_seed_document
 
 ROOT = Path(__file__).resolve().parents[2]
