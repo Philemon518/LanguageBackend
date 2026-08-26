@@ -14,7 +14,9 @@ sys.path.insert(0, str(ROOT))
 
 import app.core.database as database_module
 from app.core.database import Base
-from app.models.orm import Character, CurriculumVersion, Lesson
+from uuid import uuid4
+
+from app.models.orm import Character, CurriculumVersion, Lesson, Unit
 from content.scripts.generate_beginner_v2 import generate_document
 from content.scripts.generate_beginner_v3 import generate_document as generate_v3_document
 from content.scripts.import_seed import import_seed
@@ -210,4 +212,52 @@ async def test_import_seed_v3_import_is_idempotent(import_db, tmp_path):
         versions = (await session.scalars(select(CurriculumVersion))).all()
         lessons = (await session.scalars(select(Lesson))).all()
         assert len(versions) == 1
+        assert len(lessons) == 12
+
+
+@pytest.mark.asyncio
+async def test_import_seed_reconciles_orphaned_v3_units(import_db, tmp_path):
+    seed_path = tmp_path / "beginner_v3.json"
+    doc = generate_v3_document()
+    seed_path.write_text(json.dumps(doc, ensure_ascii=False), encoding="utf-8")
+
+    async with import_db() as session:
+        orphan_cv = CurriculumVersion(
+            id=uuid4(),
+            version="9.9.9",
+            level="beginner",
+            metadata_json={},
+        )
+        session.add(orphan_cv)
+        await session.flush()
+        session.add(
+            Unit(
+                id="v3-unit-0",
+                curriculum_version_id=orphan_cv.id,
+                title="廣東話",
+                phase="orientation",
+                sort_order=0,
+            )
+        )
+        session.add(
+            CurriculumVersion(
+                id=uuid4(),
+                version="3.0.0",
+                level="beginner",
+                metadata_json={},
+            )
+        )
+        await session.commit()
+
+    await import_seed(seed_path)
+
+    async with import_db() as session:
+        version = await session.scalar(
+            select(CurriculumVersion).where(CurriculumVersion.version == "3.0.0")
+        )
+        unit = await session.get(Unit, "v3-unit-0")
+        lessons = (await session.scalars(select(Lesson))).all()
+        assert version is not None
+        assert unit is not None
+        assert unit.curriculum_version_id == version.id
         assert len(lessons) == 12

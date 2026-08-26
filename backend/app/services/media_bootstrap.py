@@ -2,10 +2,9 @@
 
 import json
 import logging
-from contextlib import suppress
 from pathlib import Path
 
-from sqlalchemy import delete, select, text
+from sqlalchemy import delete, func, select, text
 from sqlalchemy.exc import IntegrityError
 
 from ..core.config import get_settings
@@ -15,6 +14,11 @@ from ..models.orm import MediaAsset
 logger = logging.getLogger("canto.media_bootstrap")
 settings = get_settings()
 MEDIA_LOCK_ID = 8_192_002
+
+
+async def _media_assets_ready(session) -> bool:
+    count = await session.scalar(select(func.count()).select_from(MediaAsset))
+    return bool(count and count > 0)
 
 
 async def _sync_media_assets(session) -> tuple[int, int]:
@@ -33,43 +37,44 @@ async def _sync_media_assets(session) -> tuple[int, int]:
     )
     removed = stale.rowcount or 0
 
-    for text, entry in assets.items():
-        content_hash = entry.get("content_hash")
-        path = entry.get("path")
-        if not content_hash or not path:
-            continue
+    with session.no_autoflush:
+        for asset_text, entry in assets.items():
+            content_hash = entry.get("content_hash")
+            path = entry.get("path")
+            if not content_hash or not path:
+                continue
 
-        existing_asset = await session.scalar(
-            select(MediaAsset).where(MediaAsset.content_hash == content_hash)
-        )
-        public_url = entry.get("url") or f"/media/{path}"
-        duration_ms = round(float(entry.get("duration_seconds", 0)) * 1000)
-        if existing_asset is not None:
-            existing_asset.text = text
-            existing_asset.voice = voice
-            existing_asset.model = model
-            existing_asset.storage_path = path
-            existing_asset.public_url = public_url
-            existing_asset.duration_ms = duration_ms
-            continue
-
-        file_path = Path(settings.local_audio_dir) / path
-        if not file_path.exists():
-            logger.warning("Missing audio file for %r at %s", text, file_path)
-            continue
-
-        session.add(
-            MediaAsset(
-                content_hash=content_hash,
-                text=text,
-                voice=voice,
-                model=model,
-                storage_path=path,
-                public_url=public_url,
-                duration_ms=duration_ms,
+            existing_asset = await session.scalar(
+                select(MediaAsset).where(MediaAsset.content_hash == content_hash)
             )
-        )
-        inserted += 1
+            public_url = entry.get("url") or f"/media/{path}"
+            duration_ms = round(float(entry.get("duration_seconds", 0)) * 1000)
+            if existing_asset is not None:
+                existing_asset.text = asset_text
+                existing_asset.voice = voice
+                existing_asset.model = model
+                existing_asset.storage_path = path
+                existing_asset.public_url = public_url
+                existing_asset.duration_ms = duration_ms
+                continue
+
+            file_path = Path(settings.local_audio_dir) / path
+            if not file_path.exists():
+                logger.warning("Missing audio file for %r at %s", asset_text, file_path)
+                continue
+
+            session.add(
+                MediaAsset(
+                    content_hash=content_hash,
+                    text=asset_text,
+                    voice=voice,
+                    model=model,
+                    storage_path=path,
+                    public_url=public_url,
+                    duration_ms=duration_ms,
+                )
+            )
+            inserted += 1
 
     return inserted, removed
 
@@ -83,28 +88,35 @@ async def bootstrap_media_assets() -> None:
     async with SessionLocal() as session:
         if engine.dialect.name == "postgresql":
             await session.execute(
-                text("SELECT pg_advisory_lock(:lock_id)"),
+                text("SELECT pg_advisory_xact_lock(:lock_id)"),
                 {"lock_id": MEDIA_LOCK_ID},
             )
+
         try:
             inserted, removed = await _sync_media_assets(session)
-
-            try:
-                await session.commit()
-            except IntegrityError:
-                await session.rollback()
-                inserted, removed = await _sync_media_assets(session)
-                await session.commit()
-
+            await session.flush()
+            await session.commit()
             logger.info(
                 "Synchronized bundled audio assets: %s inserted, %s stale removed",
                 inserted,
                 removed,
             )
-        finally:
+        except IntegrityError:
+            await session.rollback()
+            if await _media_assets_ready(session):
+                logger.info("Bundled audio already present after duplicate-key conflict")
+                return
+
             if engine.dialect.name == "postgresql":
-                with suppress(Exception):
-                    await session.execute(
-                        text("SELECT pg_advisory_unlock(:lock_id)"),
-                        {"lock_id": MEDIA_LOCK_ID},
-                    )
+                await session.execute(
+                    text("SELECT pg_advisory_xact_lock(:lock_id)"),
+                    {"lock_id": MEDIA_LOCK_ID},
+                )
+            inserted, removed = await _sync_media_assets(session)
+            await session.flush()
+            await session.commit()
+            logger.info(
+                "Synchronized bundled audio assets after retry: %s inserted, %s stale removed",
+                inserted,
+                removed,
+            )

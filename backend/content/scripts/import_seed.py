@@ -7,8 +7,9 @@ import logging
 import sys
 from contextlib import suppress
 from pathlib import Path
+from uuid import uuid4
 
-from sqlalchemy import select, text
+from sqlalchemy import func, select, text
 from sqlalchemy.exc import IntegrityError
 
 # Add backend to path
@@ -35,6 +36,25 @@ async def _db_lesson_ids(session, unit_ids: list[str]) -> set[str]:
     return set(result.all())
 
 
+async def curriculum_is_ready(session, version: str, expected_lessons: int) -> bool:
+    existing_version = await session.scalar(
+        select(CurriculumVersion).where(CurriculumVersion.version == version)
+    )
+    if existing_version is None:
+        return False
+
+    unit_present = await session.scalar(
+        select(Unit.id)
+        .where(Unit.curriculum_version_id == existing_version.id)
+        .limit(1)
+    )
+    if unit_present is None:
+        return False
+
+    lesson_count = await session.scalar(select(func.count()).select_from(Lesson))
+    return bool(lesson_count and lesson_count >= expected_lessons)
+
+
 def _apply_character_fields(row: Character, char: dict) -> None:
     row.glyph = char["glyph"]
     row.meaning = char["meaning"]
@@ -46,7 +66,7 @@ def _apply_character_fields(row: Character, char: dict) -> None:
 
 
 async def _upsert_character(session, char: dict) -> None:
-    row = await session.get(Character, char["id"])
+    row = await session.scalar(select(Character).where(Character.id == char["id"]))
     if row:
         _apply_character_fields(row, char)
         return
@@ -72,7 +92,7 @@ async def _upsert_character(session, char: dict) -> None:
 
 
 async def _upsert_lexeme(session, lex: dict) -> None:
-    row = await session.get(Lexeme, lex["id"])
+    row = await session.scalar(select(Lexeme).where(Lexeme.id == lex["id"]))
     if row:
         row.traditional = lex["traditional"]
         row.jyutping = lex["jyutping"]
@@ -97,7 +117,7 @@ async def _upsert_lexeme(session, lex: dict) -> None:
 
 
 async def _upsert_unit(session, curriculum_version_id, unit_data: dict) -> None:
-    row = await session.get(Unit, unit_data["id"])
+    row = await session.scalar(select(Unit).where(Unit.id == unit_data["id"]))
     if row:
         row.curriculum_version_id = curriculum_version_id
         row.title = unit_data["title"]
@@ -119,7 +139,7 @@ async def _upsert_unit(session, curriculum_version_id, unit_data: dict) -> None:
 
 
 async def _upsert_lesson(session, lesson_data: dict) -> None:
-    row = await session.get(Lesson, lesson_data["id"])
+    row = await session.scalar(select(Lesson).where(Lesson.id == lesson_data["id"]))
     if row:
         row.unit_id = lesson_data["unit_id"]
         row.title = lesson_data["title"]
@@ -143,23 +163,6 @@ async def _upsert_lesson(session, lesson_data: dict) -> None:
     )
 
 
-async def _remove_incomplete_version(session, version_row: CurriculumVersion) -> None:
-    unit_ids = list(
-        await session.scalars(
-            select(Unit.id).where(Unit.curriculum_version_id == version_row.id)
-        )
-    )
-    if unit_ids:
-        stale_lessons = await session.execute(select(Lesson).where(Lesson.unit_id.in_(unit_ids)))
-        for lesson in stale_lessons.scalars():
-            await session.delete(lesson)
-        stale_units = await session.execute(select(Unit).where(Unit.id.in_(unit_ids)))
-        for unit in stale_units.scalars():
-            await session.delete(unit)
-    await session.delete(version_row)
-    await session.flush()
-
-
 async def _sync_seed_document(session, doc: dict, version: str, seed_hash: str) -> bool:
     """Synchronize seed content into the database.
 
@@ -168,69 +171,84 @@ async def _sync_seed_document(session, doc: dict, version: str, seed_hash: str) 
     unit_ids = [unit["id"] for unit in doc.get("units", [])]
     seed_lesson_ids = _seed_lesson_ids(doc)
 
-    existing_version = await session.scalar(
-        select(CurriculumVersion).where(CurriculumVersion.version == version)
-    )
-    if existing_version:
-        units_present = await session.scalar(
-            select(Unit.id)
-            .where(Unit.curriculum_version_id == existing_version.id)
-            .limit(1)
+    with session.no_autoflush:
+        existing_version = await session.scalar(
+            select(CurriculumVersion).where(CurriculumVersion.version == version)
         )
-        if units_present is None:
-            logger.warning(
-                "Version %s exists without units; removing incomplete import",
-                version,
+        if existing_version:
+            units_present = await session.scalar(
+                select(Unit.id)
+                .where(Unit.curriculum_version_id == existing_version.id)
+                .limit(1)
             )
-            await _remove_incomplete_version(session, existing_version)
-            existing_version = None
-        else:
-            db_lesson_ids = await _db_lesson_ids(session, unit_ids)
-            hash_matches = (existing_version.metadata_json or {}).get("seed_hash") == seed_hash
-            if hash_matches and db_lesson_ids == seed_lesson_ids:
-                logger.info("Version %s already up to date", version)
-                return False
-            if hash_matches:
+            if units_present is not None:
+                db_lesson_ids = await _db_lesson_ids(session, unit_ids)
+                hash_matches = (existing_version.metadata_json or {}).get("seed_hash") == seed_hash
+                if hash_matches and db_lesson_ids == seed_lesson_ids:
+                    logger.info("Version %s already up to date", version)
+                    return False
+                if hash_matches:
+                    logger.warning(
+                        "Version %s hash matches but %s lessons in db vs %s in seed; reconciling",
+                        version,
+                        len(db_lesson_ids),
+                        len(seed_lesson_ids),
+                    )
+            else:
                 logger.warning(
-                    "Version %s hash matches but %s lessons in db vs %s in seed; reconciling",
+                    "Version %s exists without linked units; reconciling seed units",
                     version,
-                    len(db_lesson_ids),
-                    len(seed_lesson_ids),
                 )
+        else:
+            existing_version = CurriculumVersion(
+                id=uuid4(),
+                version=version,
+                level=doc["level"],
+                status="published",
+                metadata_json={"seed_hash": seed_hash},
+            )
+            session.add(existing_version)
 
-    if existing_version is None:
-        existing_version = CurriculumVersion(
-            version=version,
-            level=doc["level"],
-            status="published",
-            metadata_json={"seed_hash": seed_hash},
-        )
-        session.add(existing_version)
-        await session.flush()
+        for unit_data in doc.get("units", []):
+            await _upsert_unit(session, existing_version.id, unit_data)
 
-    for unit_data in doc.get("units", []):
-        await _upsert_unit(session, existing_version.id, unit_data)
+        for lex in doc.get("lexemes", []):
+            await _upsert_lexeme(session, lex)
 
-    for lex in doc.get("lexemes", []):
-        await _upsert_lexeme(session, lex)
+        for char in doc.get("characters", []):
+            await _upsert_character(session, char)
 
-    for char in doc.get("characters", []):
-        await _upsert_character(session, char)
+        if unit_ids:
+            stale_lessons = await session.execute(
+                select(Lesson).where(Lesson.unit_id.in_(unit_ids))
+            )
+            for lesson in stale_lessons.scalars():
+                if lesson.id not in seed_lesson_ids:
+                    await session.delete(lesson)
 
-    if unit_ids:
-        stale_lessons = await session.execute(select(Lesson).where(Lesson.unit_id.in_(unit_ids)))
-        for lesson in stale_lessons.scalars():
-            if lesson.id not in seed_lesson_ids:
-                await session.delete(lesson)
+        for lesson_data in doc.get("lessons", []):
+            await _upsert_lesson(session, lesson_data)
 
-    for lesson_data in doc.get("lessons", []):
-        await _upsert_lesson(session, lesson_data)
-
-    existing_version.metadata_json = {
-        **(existing_version.metadata_json or {}),
-        "seed_hash": seed_hash,
-    }
+        existing_version.metadata_json = {
+            **(existing_version.metadata_json or {}),
+            "seed_hash": seed_hash,
+        }
     return True
+
+
+async def _commit_seed_sync(session, doc: dict, version: str, seed_hash: str) -> None:
+    changed = await _sync_seed_document(session, doc, version, seed_hash)
+    if not changed:
+        return
+
+    await session.flush()
+    await session.commit()
+    logger.info(
+        "Synchronized version %s (%s lessons, %s lexemes)",
+        version,
+        len(doc.get("lessons", [])),
+        len(doc.get("lexemes", [])),
+    )
 
 
 async def import_seed(seed_path: Path, version: str | None = None) -> None:
@@ -243,48 +261,32 @@ async def import_seed(seed_path: Path, version: str | None = None) -> None:
     if errors:
         raise ValueError("Validation failed:\n" + "\n".join(errors))
 
+    expected_lessons = len(doc.get("lessons", []))
+
     async with db.SessionLocal() as session:
         if db.engine.dialect.name == "postgresql":
             await session.execute(
-                text("SELECT pg_advisory_lock(:lock_id)"),
+                text("SELECT pg_advisory_xact_lock(:lock_id)"),
                 {"lock_id": SEED_LOCK_ID},
             )
+
         try:
-            changed = await _sync_seed_document(session, doc, version, seed_hash)
-            if not changed:
-                return
-
-            try:
-                await session.commit()
-            except IntegrityError:
-                await session.rollback()
-                retry_version = await session.scalar(
-                    select(CurriculumVersion.id).where(CurriculumVersion.version == version)
+            await _commit_seed_sync(session, doc, version, seed_hash)
+        except IntegrityError:
+            await session.rollback()
+            if await curriculum_is_ready(session, version, expected_lessons):
+                logger.info(
+                    "Version %s already present after duplicate-key conflict",
+                    version,
                 )
-                if retry_version is not None:
-                    logger.info(
-                        "Version %s synchronized by another worker during startup",
-                        version,
-                    )
-                    return
-                changed = await _sync_seed_document(session, doc, version, seed_hash)
-                if changed:
-                    await session.commit()
                 return
 
-            logger.info(
-                "Synchronized version %s (%s lessons, %s lexemes)",
-                version,
-                len(doc.get("lessons", [])),
-                len(doc.get("lexemes", [])),
-            )
-        finally:
             if db.engine.dialect.name == "postgresql":
-                with suppress(Exception):
-                    await session.execute(
-                        text("SELECT pg_advisory_unlock(:lock_id)"),
-                        {"lock_id": SEED_LOCK_ID},
-                    )
+                await session.execute(
+                    text("SELECT pg_advisory_xact_lock(:lock_id)"),
+                    {"lock_id": SEED_LOCK_ID},
+                )
+            await _commit_seed_sync(session, doc, version, seed_hash)
 
 
 def main() -> None:
