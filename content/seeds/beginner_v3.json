@@ -4,9 +4,9 @@
   "generator": {
     "name": "generate_beginner_v3.py",
     "deterministic": true,
-    "unit_count": 2,
-    "lesson_count": 12,
-    "step_count": 576,
+    "unit_count": 3,
+    "lesson_count": 18,
+    "step_count": 645,
     "number_gesture_assets": [
       "assets/number_gestures/1.png",
       "assets/number_gestures/2.png",
@@ -35,6 +35,15 @@
       "sort_order": 1,
       "prerequisites": [
         "v3-unit-0"
+      ]
+    },
+    {
+      "id": "v3-unit-2",
+      "title": "介紹自己",
+      "phase": "introductions",
+      "sort_order": 2,
+      "prerequisites": [
+        "v3-unit-1"
       ]
     }
   ],
@@ -453,6 +462,273 @@
         "number-10"
       ],
       "difficulty": 2
+    },
+    {
+      "id": "v3-wo",
+      "traditional": "我",
+      "jyutping": "ngo5",
+      "tone": 5,
+      "tones": [
+        5
+      ],
+      "english": "I / me",
+      "audio": {
+        "text": "我",
+        "traditional": "我",
+        "jyutping": "ngo5",
+        "language": "yue-HK",
+        "script": "Hant"
+      },
+      "tags": [
+        "beginner-v3",
+        "introduction",
+        "spoken"
+      ],
+      "difficulty": 1
+    },
+    {
+      "id": "v3-giu",
+      "traditional": "叫",
+      "jyutping": "giu3",
+      "tone": 3,
+      "tones": [
+        3
+      ],
+      "english": "to be called",
+      "audio": {
+        "text": "叫",
+        "traditional": "叫",
+        "jyutping": "giu3",
+        "language": "yue-HK",
+        "script": "Hant"
+      },
+      "tags": [
+        "beginner-v3",
+        "introduction",
+        "spoken"
+      ],
+      "difficulty": 1
+    },
+    {
+      "id": "v3-hai",
+      "traditional": "係",
+      "jyutping": "hai6",
+      "tone": 6,
+      "tones": [
+        6
+      ],
+      "english": "is / are / yes",
+      "audio": {
+        "text": "係",
+        "traditional": "係",
+        "jyutping": "hai6",
+        "language": "yue-HK",
+        "script": "Hant"
+      },
+      "tags": [
+        "beginner-v3",
+        "introduction",
+        "spoken"
+      ],
+      "difficulty": 1
+    },
+    {
+      "id": "v3-go",
+      "traditional": "個",
+      "jyutping": "go3",
+      "tone": 3,
+      "tones": [
+        3
+      ],
+      "english": "classifier",
+      "audio": {
+        "text": "個",
+        "traditional": "個",
+        "jyutping": "go3",
+        "language": "yue-HK",
+        "script": "Hant"
+      },
+      "tags": [
+        "beginner-v3",
+        "introduction",
+        "spoken"
+      ],
+      "difficulty": 1
+    },
+    {
+      "id": "v3-ming",
+      "traditional": "名",
+      "jyutping": "ming4",
+      "tone": 4,
+      "tones": [
+        4
+      ],
+      "english": "name",
+      "audio": {
+        "text": "名",
+        "traditional": "名",
+        "jyutping": "ming4",
+        "language": "yue-HK",
+        "script": "Hant"
+      },
+      "tags": [
+        "beginner-v3",
+        "introduction",
+        "spoken"
+      ],
+      "difficulty": 1
+    },
+    {
+      "id": "v3-jau",
+      "traditional": "有",
+      "jyutping": "jau5",
+      "tone": 5,
+      "tones": [
+        5
+      ],
+      "english": "have",
+      "audio": {
+        "text": "有",
+        "traditional": "有",
+        "jyutping": "jau5",
+        "language": "yue-HK",
+        "script": "Hant"
+      },
+      "tags": [
+        "beginner-v3",
+        "introduction",
+        "spoken"
+      ],
+      "difficulty": 1
+    },
+    {
+      "id": "v3-bun",
+      "traditional": "本",
+      "jyutping": "bun2",
+      "tone": 2,
+      "tones": [
+        2
+      ],
+      "english": "book classifier",
+      "audio": {
+        "text": "本",
+        "traditional": "本",
+        "jyutping": "bun2",
+        "language": "yue-HK",
+        "script": "Hant"
+      },
+      "tags": [
+        "beginner-v3",
+        "introduction",
+        "spoken"
+      ],
+      "difficulty": 1
+    },
+    {
+      "id": "v3-syu",
+      "traditional": "書",
+      "jyutping": "syu1",
+      "tone": 1,
+      "tones": [
+        1
+      ],
+      "english": "book",
+      "audio": {
+        "text": "書",
+        "traditional": "書",
+        "jyutping": "syu1",
+        "language": "yue-HK",
+        "script": "Hant"
+      },
+      "tags": [
+        "beginner-v3",
+        "introduction",
+        "spoken"
+      ],
+      "difficulty": 1
+    },
+    {
+      "id": "v3-nei",
+      "traditional": "你",
+      "jyutping": "nei5",
+      "tone": 5,
+      "tones": [
+        5
+      ],
+      "english": "you",
+      "audio": {
+        "text": "你",
+        "traditional": "你",
+        "jyutping": "nei5",
+        "language": "yue-HK",
+        "script": "Hant"
+      },
+      "tags": [
+        "beginner-v3",
+        "introduction",
+        "spoken"
+      ],
+      "difficulty": 1
+    },
+    {
+      "id": "v3-me",
+      "traditional": "咩",
+      "jyutping": "me1",
+      "tone": 1,
+      "tones": [
+        1
+      ],
+      "english": "what",
+      "audio": {
+        "text": "咩",
+        "traditional": "咩",
+        "jyutping": "me1",
+        "language": "yue-HK",
+        "script": "Hant"
+      },
+      "tags": [
+        "beginner-v3",
+        "introduction",
+        "spoken"
+      ],
+      "difficulty": 1
+    },
+    {
+      "id": "v3-hai-mai",
+      "traditional": "係咪",
+      "jyutping": "hai6 mai6",
+      "tone": 6,
+      "tones": [
+        6,
+        6
+      ],
+      "english": "is it?",
+      "audio": {
+        "text": "係咪",
+        "traditional": "係咪",
+        "jyutping": "hai6 mai6",
+        "language": "yue-HK",
+        "script": "Hant"
+      },
+      "tags": [
+        "beginner-v3",
+        "introduction",
+        "spoken"
+      ],
+      "difficulty": 1
+    },
+    {
+      "id": "v3-jordyn",
+      "traditional": "Jordyn",
+      "jyutping": "",
+      "english": "Jordyn",
+      "placeholder": true,
+      "tags": [
+        "beginner-v3",
+        "introduction",
+        "placeholder"
+      ],
+      "difficulty": 1
     }
   ],
   "characters": [],
@@ -34301,6 +34577,5914 @@
                 "十"
               ],
               "input_mode": "chinese_character"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "v3-intro-01",
+      "unit_id": "v3-unit-2",
+      "title": "我 · 叫",
+      "lesson_type": "introduction",
+      "sort_order": 1,
+      "prerequisites": [
+        "v3-number-challenge"
+      ],
+      "objectives": [
+        "v3-intro-01-speak"
+      ],
+      "content": {
+        "target": {
+          "traditional": "我",
+          "jyutping": "ngo5",
+          "tone": 5,
+          "tones": [
+            5
+          ],
+          "english": "I / me",
+          "audio": {
+            "text": "我",
+            "traditional": "我",
+            "jyutping": "ngo5",
+            "language": "yue-HK",
+            "script": "Hant"
+          },
+          "theme": "我叫 Jordyn",
+          "words": [
+            {
+              "traditional": "我",
+              "jyutping": "ngo5",
+              "tone": 5,
+              "tones": [
+                5
+              ],
+              "english": "I / me",
+              "audio": {
+                "text": "我",
+                "traditional": "我",
+                "jyutping": "ngo5",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
+            },
+            {
+              "traditional": "叫",
+              "jyutping": "giu3",
+              "tone": 3,
+              "tones": [
+                3
+              ],
+              "english": "to be called",
+              "audio": {
+                "text": "叫",
+                "traditional": "叫",
+                "jyutping": "giu3",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
+            }
+          ]
+        },
+        "context": {
+          "traditional": "我、叫",
+          "jyutping": "ngo5 giu3",
+          "tones": [
+            5,
+            3
+          ],
+          "english": "我叫 Jordyn",
+          "progression": 13
+        },
+        "vocabulary": [
+          {
+            "lexeme_id": "v3-wo"
+          },
+          {
+            "lexeme_id": "v3-giu"
+          },
+          {
+            "lexeme_id": "v3-jordyn"
+          }
+        ],
+        "steps": [
+          {
+            "id": "v3-intro-01-intro",
+            "type": "lesson_intro",
+            "skill": "listening",
+            "prompt": "我 · 叫",
+            "audio": {
+              "text": "我",
+              "traditional": "我",
+              "jyutping": "ngo5",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "options": [
+              {
+                "id": "intro-ready",
+                "label": "Start lesson"
+              }
+            ],
+            "correct_option_id": "intro-ready",
+            "reveal_character": "我",
+            "reveal_jyutping": "ngo5",
+            "reveal_english": "I / me",
+            "metadata": {
+              "objective_id": "v3-intro-01-speak",
+              "section": "introduction",
+              "exercise_kind": "introduction",
+              "lesson_intro": {
+                "id": "v3-intro-01-intro",
+                "title": "我 · 叫",
+                "summary": "Say who you are in spoken Cantonese: 我叫 Jordyn.",
+                "learning_goals": [
+                  "Hear and read 我 and 叫",
+                  "Build 我叫 Jordyn with tiles",
+                  "Say 我叫"
+                ],
+                "new_items": [
+                  {
+                    "traditional": "我",
+                    "jyutping": "ngo5",
+                    "tone": 5,
+                    "tones": [
+                      5
+                    ],
+                    "english": "I / me",
+                    "audio": {
+                      "text": "我",
+                      "traditional": "我",
+                      "jyutping": "ngo5",
+                      "language": "yue-HK",
+                      "script": "Hant"
+                    }
+                  },
+                  {
+                    "traditional": "叫",
+                    "jyutping": "giu3",
+                    "tone": 3,
+                    "tones": [
+                      3
+                    ],
+                    "english": "to be called",
+                    "audio": {
+                      "text": "叫",
+                      "traditional": "叫",
+                      "jyutping": "giu3",
+                      "language": "yue-HK",
+                      "script": "Hant"
+                    }
+                  },
+                  {
+                    "traditional": "Jordyn",
+                    "jyutping": "",
+                    "english": "Jordyn",
+                    "placeholder": true
+                  }
+                ],
+                "review_items": [],
+                "audio": {
+                  "text": "我",
+                  "traditional": "我",
+                  "jyutping": "ngo5",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                },
+                "presentation": {
+                  "traditional_label": "Spoken Cantonese",
+                  "romanization_label": "Jyutping",
+                  "listen_first": true
+                },
+                "sections": [
+                  {
+                    "type": "text",
+                    "title": "Spoken Cantonese",
+                    "body": "This is how people talk. 我叫 Jordyn means “I'm called Jordyn.” Jordyn is a name tile you choose, not a name you type."
+                  },
+                  {
+                    "type": "cards",
+                    "title": "First sentence",
+                    "cards": [
+                      {
+                        "title": "我叫",
+                        "body": "Spoken: ngo5 giu3 — I'm called"
+                      },
+                      {
+                        "title": "Jordyn",
+                        "body": "A name block. Tap it. Do not type your own name."
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "v3-intro-01-hear-wo",
+            "type": "select_character",
+            "skill": "listening",
+            "prompt": "Listen. Choose the spoken word you hear.",
+            "audio": {
+              "text": "我",
+              "traditional": "我",
+              "jyutping": "ngo5",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "options": [
+              {
+                "id": "v3-intro-01-hear-wo-opt-1",
+                "label": "我",
+                "jyutping": "ngo5",
+                "audio": {
+                  "text": "我",
+                  "traditional": "我",
+                  "jyutping": "ngo5",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-01-hear-wo-opt-2",
+                "label": "叫",
+                "jyutping": "giu3",
+                "audio": {
+                  "text": "叫",
+                  "traditional": "叫",
+                  "jyutping": "giu3",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-01-hear-wo-opt-3",
+                "label": "你",
+                "jyutping": "nei5",
+                "audio": {
+                  "text": "你",
+                  "traditional": "你",
+                  "jyutping": "nei5",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              }
+            ],
+            "correct_option_id": "v3-intro-01-hear-wo-opt-1",
+            "reveal_character": "我",
+            "reveal_jyutping": "ngo5",
+            "reveal_english": "I / me",
+            "metadata": {
+              "objective_id": "v3-intro-01-speak",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "traditional": "我",
+              "jyutping": "ngo5",
+              "tones": [
+                5
+              ],
+              "auditory_only_until_answer": true,
+              "spoken_cantonese": true
+            }
+          },
+          {
+            "id": "v3-intro-01-hear-giu",
+            "type": "select_character",
+            "skill": "listening",
+            "prompt": "Listen. Choose the spoken word you hear.",
+            "audio": {
+              "text": "叫",
+              "traditional": "叫",
+              "jyutping": "giu3",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "options": [
+              {
+                "id": "v3-intro-01-hear-giu-opt-1",
+                "label": "叫",
+                "jyutping": "giu3",
+                "audio": {
+                  "text": "叫",
+                  "traditional": "叫",
+                  "jyutping": "giu3",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-01-hear-giu-opt-2",
+                "label": "我",
+                "jyutping": "ngo5",
+                "audio": {
+                  "text": "我",
+                  "traditional": "我",
+                  "jyutping": "ngo5",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-01-hear-giu-opt-3",
+                "label": "係",
+                "jyutping": "hai6",
+                "audio": {
+                  "text": "係",
+                  "traditional": "係",
+                  "jyutping": "hai6",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              }
+            ],
+            "correct_option_id": "v3-intro-01-hear-giu-opt-1",
+            "reveal_character": "叫",
+            "reveal_jyutping": "giu3",
+            "reveal_english": "to be called",
+            "metadata": {
+              "objective_id": "v3-intro-01-speak",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "traditional": "叫",
+              "jyutping": "giu3",
+              "tones": [
+                3
+              ],
+              "auditory_only_until_answer": true,
+              "spoken_cantonese": true
+            }
+          },
+          {
+            "id": "v3-intro-01-order-wo-giu",
+            "type": "order_words",
+            "skill": "listening",
+            "prompt": "Build this spoken sentence: 我叫 Jordyn。",
+            "options": [
+              {
+                "id": "v3-intro-01-order-wo-giu-word-1",
+                "label": "我",
+                "jyutping": "ngo5",
+                "audio": {
+                  "text": "我",
+                  "traditional": "我",
+                  "jyutping": "ngo5",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-01-order-wo-giu-word-2",
+                "label": "叫",
+                "jyutping": "giu3",
+                "audio": {
+                  "text": "叫",
+                  "traditional": "叫",
+                  "jyutping": "giu3",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-01-order-wo-giu-word-3",
+                "label": "Jordyn",
+                "placeholder": true
+              }
+            ],
+            "metadata": {
+              "objective_id": "v3-intro-01-speak",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "expected_order": [
+                "v3-intro-01-order-wo-giu-word-1",
+                "v3-intro-01-order-wo-giu-word-2",
+                "v3-intro-01-order-wo-giu-word-3"
+              ],
+              "spoken_cantonese": true,
+              "auditory_only_until_answer": true
+            },
+            "audio": {
+              "text": "我叫",
+              "traditional": "我叫",
+              "jyutping": "ngo5 giu3",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "reveal_character": "我叫",
+            "reveal_jyutping": "ngo5 giu3",
+            "reveal_english": "I'm called"
+          },
+          {
+            "id": "v3-intro-01-cloze-giu",
+            "type": "cloze",
+            "skill": "reading",
+            "prompt": "我＿＿ Jordyn。",
+            "options": [
+              {
+                "id": "v3-intro-01-cloze-giu-choice-1",
+                "label": "叫",
+                "jyutping": "giu3",
+                "audio": {
+                  "text": "叫",
+                  "traditional": "叫",
+                  "jyutping": "giu3",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-01-cloze-giu-choice-2",
+                "label": "係",
+                "jyutping": "hai6",
+                "audio": {
+                  "text": "係",
+                  "traditional": "係",
+                  "jyutping": "hai6",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-01-cloze-giu-choice-3",
+                "label": "有",
+                "jyutping": "jau5",
+                "audio": {
+                  "text": "有",
+                  "traditional": "有",
+                  "jyutping": "jau5",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              }
+            ],
+            "correct_option_id": "v3-intro-01-cloze-giu-choice-1",
+            "metadata": {
+              "objective_id": "v3-intro-01-speak",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "expected": "叫",
+              "allow_manual_input": false,
+              "spoken_cantonese": true
+            },
+            "reveal_character": "叫",
+            "reveal_jyutping": "giu3",
+            "reveal_english": "to be called"
+          },
+          {
+            "id": "v3-intro-01-cloze-jordyn",
+            "type": "cloze",
+            "skill": "reading",
+            "prompt": "我叫 ＿＿。",
+            "options": [
+              {
+                "id": "v3-intro-01-cloze-jordyn-choice-1",
+                "label": "Jordyn",
+                "placeholder": true
+              },
+              {
+                "id": "v3-intro-01-cloze-jordyn-choice-2",
+                "label": "Alex",
+                "placeholder": true
+              },
+              {
+                "id": "v3-intro-01-cloze-jordyn-choice-3",
+                "label": "Sam",
+                "placeholder": true
+              }
+            ],
+            "correct_option_id": "v3-intro-01-cloze-jordyn-choice-1",
+            "metadata": {
+              "objective_id": "v3-intro-01-speak",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "expected": "Jordyn",
+              "allow_manual_input": false,
+              "spoken_cantonese": true
+            }
+          },
+          {
+            "id": "v3-intro-01-speak-wo-giu",
+            "type": "speak",
+            "skill": "speaking",
+            "prompt": "Listen, then say 我叫.",
+            "audio": {
+              "text": "我叫",
+              "traditional": "我叫",
+              "jyutping": "ngo5 giu3",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "reveal_character": "我叫",
+            "reveal_jyutping": "ngo5 giu3",
+            "reveal_english": "I'm called",
+            "metadata": {
+              "objective_id": "v3-intro-01-speak",
+              "section": "challenge",
+              "exercise_kind": "challenge",
+              "expected": "ngo5 giu3",
+              "expected_text": "我叫",
+              "spoken_cantonese": true
+            }
+          },
+          {
+            "id": "v3-intro-01-recognition-01",
+            "type": "select_character",
+            "skill": "listening",
+            "prompt": "Listen. Choose the Traditional Chinese number you hear.",
+            "audio": {
+              "text": "一",
+              "traditional": "一",
+              "jyutping": "jat1",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "options": [
+              {
+                "id": "number-1",
+                "label": "一",
+                "jyutping": "jat1",
+                "audio": {
+                  "text": "一",
+                  "traditional": "一",
+                  "jyutping": "jat1",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "number-2",
+                "label": "二",
+                "jyutping": "ji6",
+                "audio": {
+                  "text": "二",
+                  "traditional": "二",
+                  "jyutping": "ji6",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "number-3",
+                "label": "三",
+                "jyutping": "saam1",
+                "audio": {
+                  "text": "三",
+                  "traditional": "三",
+                  "jyutping": "saam1",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              }
+            ],
+            "correct_option_id": "number-1",
+            "reveal_character": "一",
+            "reveal_jyutping": "jat1",
+            "reveal_english": "one",
+            "metadata": {
+              "objective_id": "v3-intro-01-recognize",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "traditional": "一",
+              "jyutping": "jat1",
+              "tones": [
+                1
+              ],
+              "cumulative_through": 10,
+              "auditory_only_until_answer": true
+            }
+          },
+          {
+            "id": "v3-intro-01-recognition-02",
+            "type": "select_character",
+            "skill": "listening",
+            "prompt": "Listen. Choose the Traditional Chinese number you hear.",
+            "audio": {
+              "text": "三",
+              "traditional": "三",
+              "jyutping": "saam1",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "options": [
+              {
+                "id": "number-3",
+                "label": "三",
+                "jyutping": "saam1",
+                "audio": {
+                  "text": "三",
+                  "traditional": "三",
+                  "jyutping": "saam1",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "number-1",
+                "label": "一",
+                "jyutping": "jat1",
+                "audio": {
+                  "text": "一",
+                  "traditional": "一",
+                  "jyutping": "jat1",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "number-2",
+                "label": "二",
+                "jyutping": "ji6",
+                "audio": {
+                  "text": "二",
+                  "traditional": "二",
+                  "jyutping": "ji6",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              }
+            ],
+            "correct_option_id": "number-3",
+            "reveal_character": "三",
+            "reveal_jyutping": "saam1",
+            "reveal_english": "three",
+            "metadata": {
+              "objective_id": "v3-intro-01-recognize",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "traditional": "三",
+              "jyutping": "saam1",
+              "tones": [
+                1
+              ],
+              "cumulative_through": 10,
+              "auditory_only_until_answer": true
+            }
+          },
+          {
+            "id": "v3-intro-01-recognition-03",
+            "type": "select_character",
+            "skill": "listening",
+            "prompt": "Listen. Choose the Traditional Chinese number you hear.",
+            "audio": {
+              "text": "十",
+              "traditional": "十",
+              "jyutping": "sap6",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "options": [
+              {
+                "id": "number-10",
+                "label": "十",
+                "jyutping": "sap6",
+                "audio": {
+                  "text": "十",
+                  "traditional": "十",
+                  "jyutping": "sap6",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "number-1",
+                "label": "一",
+                "jyutping": "jat1",
+                "audio": {
+                  "text": "一",
+                  "traditional": "一",
+                  "jyutping": "jat1",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "number-2",
+                "label": "二",
+                "jyutping": "ji6",
+                "audio": {
+                  "text": "二",
+                  "traditional": "二",
+                  "jyutping": "ji6",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              }
+            ],
+            "correct_option_id": "number-10",
+            "reveal_character": "十",
+            "reveal_jyutping": "sap6",
+            "reveal_english": "ten",
+            "metadata": {
+              "objective_id": "v3-intro-01-recognize",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "traditional": "十",
+              "jyutping": "sap6",
+              "tones": [
+                6
+              ],
+              "cumulative_through": 10,
+              "auditory_only_until_answer": true
+            }
+          }
+        ],
+        "lesson_intro": {
+          "id": "v3-intro-01-intro",
+          "title": "我 · 叫",
+          "summary": "Say who you are in spoken Cantonese: 我叫 Jordyn.",
+          "learning_goals": [
+            "Hear and read 我 and 叫",
+            "Build 我叫 Jordyn with tiles",
+            "Say 我叫"
+          ],
+          "new_items": [
+            {
+              "traditional": "我",
+              "jyutping": "ngo5",
+              "tone": 5,
+              "tones": [
+                5
+              ],
+              "english": "I / me",
+              "audio": {
+                "text": "我",
+                "traditional": "我",
+                "jyutping": "ngo5",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
+            },
+            {
+              "traditional": "叫",
+              "jyutping": "giu3",
+              "tone": 3,
+              "tones": [
+                3
+              ],
+              "english": "to be called",
+              "audio": {
+                "text": "叫",
+                "traditional": "叫",
+                "jyutping": "giu3",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
+            },
+            {
+              "traditional": "Jordyn",
+              "jyutping": "",
+              "english": "Jordyn",
+              "placeholder": true
+            }
+          ],
+          "review_items": [],
+          "audio": {
+            "text": "我",
+            "traditional": "我",
+            "jyutping": "ngo5",
+            "language": "yue-HK",
+            "script": "Hant"
+          },
+          "presentation": {
+            "traditional_label": "Spoken Cantonese",
+            "romanization_label": "Jyutping",
+            "listen_first": true
+          },
+          "sections": [
+            {
+              "type": "text",
+              "title": "Spoken Cantonese",
+              "body": "This is how people talk. 我叫 Jordyn means “I'm called Jordyn.” Jordyn is a name tile you choose, not a name you type."
+            },
+            {
+              "type": "cards",
+              "title": "First sentence",
+              "cards": [
+                {
+                  "title": "我叫",
+                  "body": "Spoken: ngo5 giu3 — I'm called"
+                },
+                {
+                  "title": "Jordyn",
+                  "body": "A name block. Tap it. Do not type your own name."
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "v3-intro-02",
+      "unit_id": "v3-unit-2",
+      "title": "係 · 個 · 名",
+      "lesson_type": "introduction",
+      "sort_order": 2,
+      "prerequisites": [
+        "v3-intro-01"
+      ],
+      "objectives": [
+        "v3-intro-02-speak"
+      ],
+      "content": {
+        "target": {
+          "traditional": "係",
+          "jyutping": "hai6",
+          "tone": 6,
+          "tones": [
+            6
+          ],
+          "english": "is / are / yes",
+          "audio": {
+            "text": "係",
+            "traditional": "係",
+            "jyutping": "hai6",
+            "language": "yue-HK",
+            "script": "Hant"
+          },
+          "theme": "我個名係 Jordyn",
+          "words": [
+            {
+              "traditional": "係",
+              "jyutping": "hai6",
+              "tone": 6,
+              "tones": [
+                6
+              ],
+              "english": "is / are / yes",
+              "audio": {
+                "text": "係",
+                "traditional": "係",
+                "jyutping": "hai6",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
+            },
+            {
+              "traditional": "個",
+              "jyutping": "go3",
+              "tone": 3,
+              "tones": [
+                3
+              ],
+              "english": "classifier",
+              "audio": {
+                "text": "個",
+                "traditional": "個",
+                "jyutping": "go3",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
+            },
+            {
+              "traditional": "名",
+              "jyutping": "ming4",
+              "tone": 4,
+              "tones": [
+                4
+              ],
+              "english": "name",
+              "audio": {
+                "text": "名",
+                "traditional": "名",
+                "jyutping": "ming4",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
+            }
+          ]
+        },
+        "context": {
+          "traditional": "係、個、名",
+          "jyutping": "hai6 go3 ming4",
+          "tones": [
+            6,
+            3,
+            4
+          ],
+          "english": "我個名係 Jordyn",
+          "progression": 14
+        },
+        "vocabulary": [
+          {
+            "lexeme_id": "v3-hai"
+          },
+          {
+            "lexeme_id": "v3-go"
+          },
+          {
+            "lexeme_id": "v3-ming"
+          },
+          {
+            "lexeme_id": "v3-wo"
+          },
+          {
+            "lexeme_id": "v3-giu"
+          },
+          {
+            "lexeme_id": "v3-jordyn"
+          }
+        ],
+        "steps": [
+          {
+            "id": "v3-intro-02-intro",
+            "type": "lesson_intro",
+            "skill": "listening",
+            "prompt": "係 · 個 · 名",
+            "audio": {
+              "text": "係",
+              "traditional": "係",
+              "jyutping": "hai6",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "options": [
+              {
+                "id": "intro-ready",
+                "label": "Start lesson"
+              }
+            ],
+            "correct_option_id": "intro-ready",
+            "reveal_character": "係",
+            "reveal_jyutping": "hai6",
+            "reveal_english": "is / are / yes",
+            "metadata": {
+              "objective_id": "v3-intro-02-speak",
+              "section": "introduction",
+              "exercise_kind": "introduction",
+              "lesson_intro": {
+                "id": "v3-intro-02-intro",
+                "title": "係 · 個 · 名",
+                "summary": "Same meaning, three spoken shapes: 我叫 / 我係 / 我個名係.",
+                "learning_goals": [
+                  "Hear 係, 個, and 名",
+                  "Say 我係 and 我個名係",
+                  "Know 係 can also mean yes"
+                ],
+                "new_items": [
+                  {
+                    "traditional": "係",
+                    "jyutping": "hai6",
+                    "tone": 6,
+                    "tones": [
+                      6
+                    ],
+                    "english": "is / are / yes",
+                    "audio": {
+                      "text": "係",
+                      "traditional": "係",
+                      "jyutping": "hai6",
+                      "language": "yue-HK",
+                      "script": "Hant"
+                    }
+                  },
+                  {
+                    "traditional": "個",
+                    "jyutping": "go3",
+                    "tone": 3,
+                    "tones": [
+                      3
+                    ],
+                    "english": "classifier",
+                    "audio": {
+                      "text": "個",
+                      "traditional": "個",
+                      "jyutping": "go3",
+                      "language": "yue-HK",
+                      "script": "Hant"
+                    }
+                  },
+                  {
+                    "traditional": "名",
+                    "jyutping": "ming4",
+                    "tone": 4,
+                    "tones": [
+                      4
+                    ],
+                    "english": "name",
+                    "audio": {
+                      "text": "名",
+                      "traditional": "名",
+                      "jyutping": "ming4",
+                      "language": "yue-HK",
+                      "script": "Hant"
+                    }
+                  }
+                ],
+                "review_items": [
+                  {
+                    "traditional": "我",
+                    "jyutping": "ngo5",
+                    "tone": 5,
+                    "tones": [
+                      5
+                    ],
+                    "english": "I / me",
+                    "audio": {
+                      "text": "我",
+                      "traditional": "我",
+                      "jyutping": "ngo5",
+                      "language": "yue-HK",
+                      "script": "Hant"
+                    }
+                  },
+                  {
+                    "traditional": "叫",
+                    "jyutping": "giu3",
+                    "tone": 3,
+                    "tones": [
+                      3
+                    ],
+                    "english": "to be called",
+                    "audio": {
+                      "text": "叫",
+                      "traditional": "叫",
+                      "jyutping": "giu3",
+                      "language": "yue-HK",
+                      "script": "Hant"
+                    }
+                  },
+                  {
+                    "traditional": "Jordyn",
+                    "jyutping": "",
+                    "english": "Jordyn",
+                    "placeholder": true
+                  }
+                ],
+                "audio": {
+                  "text": "係",
+                  "traditional": "係",
+                  "jyutping": "hai6",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                },
+                "presentation": {
+                  "traditional_label": "Spoken Cantonese",
+                  "romanization_label": "Jyutping",
+                  "listen_first": true
+                },
+                "sections": [
+                  {
+                    "type": "text",
+                    "title": "Same idea, different talk",
+                    "body": "In spoken Cantonese you can say 我叫 Jordyn, 我係 Jordyn, or 我個名係 Jordyn. All mean you are Jordyn."
+                  },
+                  {
+                    "type": "cards",
+                    "title": "Three spoken sentences",
+                    "cards": [
+                      {
+                        "title": "我叫 Jordyn。",
+                        "body": "I'm called Jordyn."
+                      },
+                      {
+                        "title": "我係 Jordyn。",
+                        "body": "I am Jordyn. 係 also answers yes."
+                      },
+                      {
+                        "title": "我個名係 Jordyn。",
+                        "body": "My name is Jordyn."
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "v3-intro-02-hear-hai6",
+            "type": "select_character",
+            "skill": "listening",
+            "prompt": "Listen. Choose the spoken word you hear.",
+            "audio": {
+              "text": "係",
+              "traditional": "係",
+              "jyutping": "hai6",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "options": [
+              {
+                "id": "v3-intro-02-hear-hai6-opt-1",
+                "label": "係",
+                "jyutping": "hai6",
+                "audio": {
+                  "text": "係",
+                  "traditional": "係",
+                  "jyutping": "hai6",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-02-hear-hai6-opt-2",
+                "label": "叫",
+                "jyutping": "giu3",
+                "audio": {
+                  "text": "叫",
+                  "traditional": "叫",
+                  "jyutping": "giu3",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-02-hear-hai6-opt-3",
+                "label": "我",
+                "jyutping": "ngo5",
+                "audio": {
+                  "text": "我",
+                  "traditional": "我",
+                  "jyutping": "ngo5",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              }
+            ],
+            "correct_option_id": "v3-intro-02-hear-hai6-opt-1",
+            "reveal_character": "係",
+            "reveal_jyutping": "hai6",
+            "reveal_english": "is / are / yes",
+            "metadata": {
+              "objective_id": "v3-intro-02-speak",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "traditional": "係",
+              "jyutping": "hai6",
+              "tones": [
+                6
+              ],
+              "auditory_only_until_answer": true,
+              "spoken_cantonese": true
+            }
+          },
+          {
+            "id": "v3-intro-02-hear-go3",
+            "type": "select_character",
+            "skill": "listening",
+            "prompt": "Listen. Choose the spoken word you hear.",
+            "audio": {
+              "text": "個",
+              "traditional": "個",
+              "jyutping": "go3",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "options": [
+              {
+                "id": "v3-intro-02-hear-go3-opt-1",
+                "label": "個",
+                "jyutping": "go3",
+                "audio": {
+                  "text": "個",
+                  "traditional": "個",
+                  "jyutping": "go3",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-02-hear-go3-opt-2",
+                "label": "名",
+                "jyutping": "ming4",
+                "audio": {
+                  "text": "名",
+                  "traditional": "名",
+                  "jyutping": "ming4",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-02-hear-go3-opt-3",
+                "label": "我",
+                "jyutping": "ngo5",
+                "audio": {
+                  "text": "我",
+                  "traditional": "我",
+                  "jyutping": "ngo5",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              }
+            ],
+            "correct_option_id": "v3-intro-02-hear-go3-opt-1",
+            "reveal_character": "個",
+            "reveal_jyutping": "go3",
+            "reveal_english": "classifier",
+            "metadata": {
+              "objective_id": "v3-intro-02-speak",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "traditional": "個",
+              "jyutping": "go3",
+              "tones": [
+                3
+              ],
+              "auditory_only_until_answer": true,
+              "spoken_cantonese": true
+            }
+          },
+          {
+            "id": "v3-intro-02-hear-ming4",
+            "type": "select_character",
+            "skill": "listening",
+            "prompt": "Listen. Choose the spoken word you hear.",
+            "audio": {
+              "text": "名",
+              "traditional": "名",
+              "jyutping": "ming4",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "options": [
+              {
+                "id": "v3-intro-02-hear-ming4-opt-1",
+                "label": "名",
+                "jyutping": "ming4",
+                "audio": {
+                  "text": "名",
+                  "traditional": "名",
+                  "jyutping": "ming4",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-02-hear-ming4-opt-2",
+                "label": "個",
+                "jyutping": "go3",
+                "audio": {
+                  "text": "個",
+                  "traditional": "個",
+                  "jyutping": "go3",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-02-hear-ming4-opt-3",
+                "label": "你",
+                "jyutping": "nei5",
+                "audio": {
+                  "text": "你",
+                  "traditional": "你",
+                  "jyutping": "nei5",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              }
+            ],
+            "correct_option_id": "v3-intro-02-hear-ming4-opt-1",
+            "reveal_character": "名",
+            "reveal_jyutping": "ming4",
+            "reveal_english": "name",
+            "metadata": {
+              "objective_id": "v3-intro-02-speak",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "traditional": "名",
+              "jyutping": "ming4",
+              "tones": [
+                4
+              ],
+              "auditory_only_until_answer": true,
+              "spoken_cantonese": true
+            }
+          },
+          {
+            "id": "v3-intro-02-order-wo-hai",
+            "type": "order_words",
+            "skill": "listening",
+            "prompt": "Build this spoken sentence: 我係 Jordyn。",
+            "options": [
+              {
+                "id": "v3-intro-02-order-wo-hai-word-1",
+                "label": "我",
+                "jyutping": "ngo5",
+                "audio": {
+                  "text": "我",
+                  "traditional": "我",
+                  "jyutping": "ngo5",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-02-order-wo-hai-word-2",
+                "label": "係",
+                "jyutping": "hai6",
+                "audio": {
+                  "text": "係",
+                  "traditional": "係",
+                  "jyutping": "hai6",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-02-order-wo-hai-word-3",
+                "label": "Jordyn",
+                "placeholder": true
+              }
+            ],
+            "metadata": {
+              "objective_id": "v3-intro-02-speak",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "expected_order": [
+                "v3-intro-02-order-wo-hai-word-1",
+                "v3-intro-02-order-wo-hai-word-2",
+                "v3-intro-02-order-wo-hai-word-3"
+              ],
+              "spoken_cantonese": true,
+              "auditory_only_until_answer": true
+            },
+            "audio": {
+              "text": "我係",
+              "traditional": "我係",
+              "jyutping": "ngo5 hai6",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "reveal_character": "我係",
+            "reveal_jyutping": "ngo5 hai6",
+            "reveal_english": "I am"
+          },
+          {
+            "id": "v3-intro-02-order-wo-go-ming",
+            "type": "order_words",
+            "skill": "listening",
+            "prompt": "Build this spoken sentence: 我個名係 Jordyn。",
+            "options": [
+              {
+                "id": "v3-intro-02-order-wo-go-ming-word-1",
+                "label": "我",
+                "jyutping": "ngo5",
+                "audio": {
+                  "text": "我",
+                  "traditional": "我",
+                  "jyutping": "ngo5",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-02-order-wo-go-ming-word-2",
+                "label": "個",
+                "jyutping": "go3",
+                "audio": {
+                  "text": "個",
+                  "traditional": "個",
+                  "jyutping": "go3",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-02-order-wo-go-ming-word-3",
+                "label": "名",
+                "jyutping": "ming4",
+                "audio": {
+                  "text": "名",
+                  "traditional": "名",
+                  "jyutping": "ming4",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-02-order-wo-go-ming-word-4",
+                "label": "係",
+                "jyutping": "hai6",
+                "audio": {
+                  "text": "係",
+                  "traditional": "係",
+                  "jyutping": "hai6",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-02-order-wo-go-ming-word-5",
+                "label": "Jordyn",
+                "placeholder": true
+              }
+            ],
+            "metadata": {
+              "objective_id": "v3-intro-02-speak",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "expected_order": [
+                "v3-intro-02-order-wo-go-ming-word-1",
+                "v3-intro-02-order-wo-go-ming-word-2",
+                "v3-intro-02-order-wo-go-ming-word-3",
+                "v3-intro-02-order-wo-go-ming-word-4",
+                "v3-intro-02-order-wo-go-ming-word-5"
+              ],
+              "spoken_cantonese": true,
+              "auditory_only_until_answer": true
+            },
+            "audio": {
+              "text": "我個名係",
+              "traditional": "我個名係",
+              "jyutping": "ngo5 go3 ming4 hai6",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "reveal_character": "我個名係",
+            "reveal_jyutping": "ngo5 go3 ming4 hai6",
+            "reveal_english": "my name is"
+          },
+          {
+            "id": "v3-intro-02-cloze-hai",
+            "type": "cloze",
+            "skill": "reading",
+            "prompt": "我＿＿ Jordyn。",
+            "options": [
+              {
+                "id": "v3-intro-02-cloze-hai-choice-1",
+                "label": "係",
+                "jyutping": "hai6",
+                "audio": {
+                  "text": "係",
+                  "traditional": "係",
+                  "jyutping": "hai6",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-02-cloze-hai-choice-2",
+                "label": "叫",
+                "jyutping": "giu3",
+                "audio": {
+                  "text": "叫",
+                  "traditional": "叫",
+                  "jyutping": "giu3",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-02-cloze-hai-choice-3",
+                "label": "有",
+                "jyutping": "jau5",
+                "audio": {
+                  "text": "有",
+                  "traditional": "有",
+                  "jyutping": "jau5",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              }
+            ],
+            "correct_option_id": "v3-intro-02-cloze-hai-choice-1",
+            "metadata": {
+              "objective_id": "v3-intro-02-speak",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "expected": "係",
+              "allow_manual_input": false,
+              "spoken_cantonese": true
+            },
+            "reveal_character": "係",
+            "reveal_jyutping": "hai6",
+            "reveal_english": "is / are / yes"
+          },
+          {
+            "id": "v3-intro-02-cloze-ming",
+            "type": "cloze",
+            "skill": "reading",
+            "prompt": "我個＿＿係 Jordyn。",
+            "options": [
+              {
+                "id": "v3-intro-02-cloze-ming-choice-1",
+                "label": "名",
+                "jyutping": "ming4",
+                "audio": {
+                  "text": "名",
+                  "traditional": "名",
+                  "jyutping": "ming4",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-02-cloze-ming-choice-2",
+                "label": "叫",
+                "jyutping": "giu3",
+                "audio": {
+                  "text": "叫",
+                  "traditional": "叫",
+                  "jyutping": "giu3",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-02-cloze-ming-choice-3",
+                "label": "你",
+                "jyutping": "nei5",
+                "audio": {
+                  "text": "你",
+                  "traditional": "你",
+                  "jyutping": "nei5",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              }
+            ],
+            "correct_option_id": "v3-intro-02-cloze-ming-choice-1",
+            "metadata": {
+              "objective_id": "v3-intro-02-speak",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "expected": "名",
+              "allow_manual_input": false,
+              "spoken_cantonese": true
+            },
+            "reveal_character": "名",
+            "reveal_jyutping": "ming4",
+            "reveal_english": "name"
+          },
+          {
+            "id": "v3-intro-02-speak-wo-hai",
+            "type": "speak",
+            "skill": "speaking",
+            "prompt": "Listen, then say 我係.",
+            "audio": {
+              "text": "我係",
+              "traditional": "我係",
+              "jyutping": "ngo5 hai6",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "reveal_character": "我係",
+            "reveal_jyutping": "ngo5 hai6",
+            "reveal_english": "I am",
+            "metadata": {
+              "objective_id": "v3-intro-02-speak",
+              "section": "challenge",
+              "exercise_kind": "challenge",
+              "expected": "ngo5 hai6",
+              "expected_text": "我係",
+              "spoken_cantonese": true
+            }
+          },
+          {
+            "id": "v3-intro-02-speak-wo-go-ming",
+            "type": "speak",
+            "skill": "speaking",
+            "prompt": "Listen, then say 我個名係.",
+            "audio": {
+              "text": "我個名係",
+              "traditional": "我個名係",
+              "jyutping": "ngo5 go3 ming4 hai6",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "reveal_character": "我個名係",
+            "reveal_jyutping": "ngo5 go3 ming4 hai6",
+            "reveal_english": "my name is",
+            "metadata": {
+              "objective_id": "v3-intro-02-speak",
+              "section": "challenge",
+              "exercise_kind": "challenge",
+              "expected": "ngo5 go3 ming4 hai6",
+              "expected_text": "我個名係",
+              "spoken_cantonese": true
+            }
+          },
+          {
+            "id": "v3-intro-02-recognition-01",
+            "type": "select_character",
+            "skill": "listening",
+            "prompt": "Listen. Choose the Traditional Chinese number you hear.",
+            "audio": {
+              "text": "二",
+              "traditional": "二",
+              "jyutping": "ji6",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "options": [
+              {
+                "id": "number-2",
+                "label": "二",
+                "jyutping": "ji6",
+                "audio": {
+                  "text": "二",
+                  "traditional": "二",
+                  "jyutping": "ji6",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "number-1",
+                "label": "一",
+                "jyutping": "jat1",
+                "audio": {
+                  "text": "一",
+                  "traditional": "一",
+                  "jyutping": "jat1",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "number-3",
+                "label": "三",
+                "jyutping": "saam1",
+                "audio": {
+                  "text": "三",
+                  "traditional": "三",
+                  "jyutping": "saam1",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              }
+            ],
+            "correct_option_id": "number-2",
+            "reveal_character": "二",
+            "reveal_jyutping": "ji6",
+            "reveal_english": "two",
+            "metadata": {
+              "objective_id": "v3-intro-02-recognize",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "traditional": "二",
+              "jyutping": "ji6",
+              "tones": [
+                6
+              ],
+              "cumulative_through": 10,
+              "auditory_only_until_answer": true
+            }
+          },
+          {
+            "id": "v3-intro-02-recognition-02",
+            "type": "select_character",
+            "skill": "listening",
+            "prompt": "Listen. Choose the Traditional Chinese number you hear.",
+            "audio": {
+              "text": "五",
+              "traditional": "五",
+              "jyutping": "ng5",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "options": [
+              {
+                "id": "number-5",
+                "label": "五",
+                "jyutping": "ng5",
+                "audio": {
+                  "text": "五",
+                  "traditional": "五",
+                  "jyutping": "ng5",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "number-1",
+                "label": "一",
+                "jyutping": "jat1",
+                "audio": {
+                  "text": "一",
+                  "traditional": "一",
+                  "jyutping": "jat1",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "number-2",
+                "label": "二",
+                "jyutping": "ji6",
+                "audio": {
+                  "text": "二",
+                  "traditional": "二",
+                  "jyutping": "ji6",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              }
+            ],
+            "correct_option_id": "number-5",
+            "reveal_character": "五",
+            "reveal_jyutping": "ng5",
+            "reveal_english": "five",
+            "metadata": {
+              "objective_id": "v3-intro-02-recognize",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "traditional": "五",
+              "jyutping": "ng5",
+              "tones": [
+                5
+              ],
+              "cumulative_through": 10,
+              "auditory_only_until_answer": true
+            }
+          },
+          {
+            "id": "v3-intro-02-recognition-03",
+            "type": "select_character",
+            "skill": "listening",
+            "prompt": "Listen. Choose the Traditional Chinese number you hear.",
+            "audio": {
+              "text": "七",
+              "traditional": "七",
+              "jyutping": "cat1",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "options": [
+              {
+                "id": "number-7",
+                "label": "七",
+                "jyutping": "cat1",
+                "audio": {
+                  "text": "七",
+                  "traditional": "七",
+                  "jyutping": "cat1",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "number-1",
+                "label": "一",
+                "jyutping": "jat1",
+                "audio": {
+                  "text": "一",
+                  "traditional": "一",
+                  "jyutping": "jat1",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "number-2",
+                "label": "二",
+                "jyutping": "ji6",
+                "audio": {
+                  "text": "二",
+                  "traditional": "二",
+                  "jyutping": "ji6",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              }
+            ],
+            "correct_option_id": "number-7",
+            "reveal_character": "七",
+            "reveal_jyutping": "cat1",
+            "reveal_english": "seven",
+            "metadata": {
+              "objective_id": "v3-intro-02-recognize",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "traditional": "七",
+              "jyutping": "cat1",
+              "tones": [
+                1
+              ],
+              "cumulative_through": 10,
+              "auditory_only_until_answer": true
+            }
+          }
+        ],
+        "lesson_intro": {
+          "id": "v3-intro-02-intro",
+          "title": "係 · 個 · 名",
+          "summary": "Same meaning, three spoken shapes: 我叫 / 我係 / 我個名係.",
+          "learning_goals": [
+            "Hear 係, 個, and 名",
+            "Say 我係 and 我個名係",
+            "Know 係 can also mean yes"
+          ],
+          "new_items": [
+            {
+              "traditional": "係",
+              "jyutping": "hai6",
+              "tone": 6,
+              "tones": [
+                6
+              ],
+              "english": "is / are / yes",
+              "audio": {
+                "text": "係",
+                "traditional": "係",
+                "jyutping": "hai6",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
+            },
+            {
+              "traditional": "個",
+              "jyutping": "go3",
+              "tone": 3,
+              "tones": [
+                3
+              ],
+              "english": "classifier",
+              "audio": {
+                "text": "個",
+                "traditional": "個",
+                "jyutping": "go3",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
+            },
+            {
+              "traditional": "名",
+              "jyutping": "ming4",
+              "tone": 4,
+              "tones": [
+                4
+              ],
+              "english": "name",
+              "audio": {
+                "text": "名",
+                "traditional": "名",
+                "jyutping": "ming4",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
+            }
+          ],
+          "review_items": [
+            {
+              "traditional": "我",
+              "jyutping": "ngo5",
+              "tone": 5,
+              "tones": [
+                5
+              ],
+              "english": "I / me",
+              "audio": {
+                "text": "我",
+                "traditional": "我",
+                "jyutping": "ngo5",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
+            },
+            {
+              "traditional": "叫",
+              "jyutping": "giu3",
+              "tone": 3,
+              "tones": [
+                3
+              ],
+              "english": "to be called",
+              "audio": {
+                "text": "叫",
+                "traditional": "叫",
+                "jyutping": "giu3",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
+            },
+            {
+              "traditional": "Jordyn",
+              "jyutping": "",
+              "english": "Jordyn",
+              "placeholder": true
+            }
+          ],
+          "audio": {
+            "text": "係",
+            "traditional": "係",
+            "jyutping": "hai6",
+            "language": "yue-HK",
+            "script": "Hant"
+          },
+          "presentation": {
+            "traditional_label": "Spoken Cantonese",
+            "romanization_label": "Jyutping",
+            "listen_first": true
+          },
+          "sections": [
+            {
+              "type": "text",
+              "title": "Same idea, different talk",
+              "body": "In spoken Cantonese you can say 我叫 Jordyn, 我係 Jordyn, or 我個名係 Jordyn. All mean you are Jordyn."
+            },
+            {
+              "type": "cards",
+              "title": "Three spoken sentences",
+              "cards": [
+                {
+                  "title": "我叫 Jordyn。",
+                  "body": "I'm called Jordyn."
+                },
+                {
+                  "title": "我係 Jordyn。",
+                  "body": "I am Jordyn. 係 also answers yes."
+                },
+                {
+                  "title": "我個名係 Jordyn。",
+                  "body": "My name is Jordyn."
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "v3-intro-03",
+      "unit_id": "v3-unit-2",
+      "title": "練習",
+      "lesson_type": "introduction",
+      "sort_order": 3,
+      "prerequisites": [
+        "v3-intro-02"
+      ],
+      "objectives": [
+        "v3-intro-03-speak"
+      ],
+      "content": {
+        "target": {
+          "traditional": "我叫",
+          "jyutping": "ngo5 giu3",
+          "tone": 3,
+          "tones": [
+            5,
+            3
+          ],
+          "english": "I'm called",
+          "audio": {
+            "text": "我叫",
+            "traditional": "我叫",
+            "jyutping": "ngo5 giu3",
+            "language": "yue-HK",
+            "script": "Hant"
+          },
+          "theme": "Practice 我叫 / 我係 / 我個名係",
+          "words": [
+            {
+              "traditional": "我",
+              "jyutping": "ngo5",
+              "tone": 5,
+              "tones": [
+                5
+              ],
+              "english": "I / me",
+              "audio": {
+                "text": "我",
+                "traditional": "我",
+                "jyutping": "ngo5",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
+            },
+            {
+              "traditional": "叫",
+              "jyutping": "giu3",
+              "tone": 3,
+              "tones": [
+                3
+              ],
+              "english": "to be called",
+              "audio": {
+                "text": "叫",
+                "traditional": "叫",
+                "jyutping": "giu3",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
+            },
+            {
+              "traditional": "係",
+              "jyutping": "hai6",
+              "tone": 6,
+              "tones": [
+                6
+              ],
+              "english": "is / are / yes",
+              "audio": {
+                "text": "係",
+                "traditional": "係",
+                "jyutping": "hai6",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
+            },
+            {
+              "traditional": "個",
+              "jyutping": "go3",
+              "tone": 3,
+              "tones": [
+                3
+              ],
+              "english": "classifier",
+              "audio": {
+                "text": "個",
+                "traditional": "個",
+                "jyutping": "go3",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
+            },
+            {
+              "traditional": "名",
+              "jyutping": "ming4",
+              "tone": 4,
+              "tones": [
+                4
+              ],
+              "english": "name",
+              "audio": {
+                "text": "名",
+                "traditional": "名",
+                "jyutping": "ming4",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
+            }
+          ]
+        },
+        "context": {
+          "traditional": "我、叫、係、個、名",
+          "jyutping": "ngo5 giu3 hai6 go3 ming4",
+          "tones": [
+            5,
+            3,
+            6,
+            3,
+            4
+          ],
+          "english": "Practice 我叫 / 我係 / 我個名係",
+          "progression": 15
+        },
+        "vocabulary": [
+          {
+            "lexeme_id": "v3-wo"
+          },
+          {
+            "lexeme_id": "v3-giu"
+          },
+          {
+            "lexeme_id": "v3-hai"
+          },
+          {
+            "lexeme_id": "v3-go"
+          },
+          {
+            "lexeme_id": "v3-ming"
+          },
+          {
+            "lexeme_id": "v3-jordyn"
+          }
+        ],
+        "steps": [
+          {
+            "id": "v3-intro-03-intro",
+            "type": "lesson_intro",
+            "skill": "listening",
+            "prompt": "練習",
+            "audio": {
+              "text": "我叫",
+              "traditional": "我叫",
+              "jyutping": "ngo5 giu3",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "options": [
+              {
+                "id": "intro-ready",
+                "label": "Start lesson"
+              }
+            ],
+            "correct_option_id": "intro-ready",
+            "reveal_character": "我叫",
+            "reveal_jyutping": "ngo5 giu3",
+            "reveal_english": "I'm called",
+            "metadata": {
+              "objective_id": "v3-intro-03-speak",
+              "section": "introduction",
+              "exercise_kind": "introduction",
+              "lesson_intro": {
+                "id": "v3-intro-03-intro",
+                "title": "練習",
+                "summary": "Practice the spoken sentences you already have. No new words.",
+                "learning_goals": [
+                  "Reuse 我叫, 我係, and 我個名係",
+                  "Keep numbers in play"
+                ],
+                "new_items": [
+                  {
+                    "traditional": "我叫",
+                    "jyutping": "ngo5 giu3",
+                    "tone": 3,
+                    "tones": [
+                      5,
+                      3
+                    ],
+                    "english": "I'm called",
+                    "audio": {
+                      "text": "我叫",
+                      "traditional": "我叫",
+                      "jyutping": "ngo5 giu3",
+                      "language": "yue-HK",
+                      "script": "Hant"
+                    }
+                  }
+                ],
+                "review_items": [
+                  {
+                    "traditional": "我",
+                    "jyutping": "ngo5",
+                    "tone": 5,
+                    "tones": [
+                      5
+                    ],
+                    "english": "I / me",
+                    "audio": {
+                      "text": "我",
+                      "traditional": "我",
+                      "jyutping": "ngo5",
+                      "language": "yue-HK",
+                      "script": "Hant"
+                    }
+                  },
+                  {
+                    "traditional": "叫",
+                    "jyutping": "giu3",
+                    "tone": 3,
+                    "tones": [
+                      3
+                    ],
+                    "english": "to be called",
+                    "audio": {
+                      "text": "叫",
+                      "traditional": "叫",
+                      "jyutping": "giu3",
+                      "language": "yue-HK",
+                      "script": "Hant"
+                    }
+                  },
+                  {
+                    "traditional": "係",
+                    "jyutping": "hai6",
+                    "tone": 6,
+                    "tones": [
+                      6
+                    ],
+                    "english": "is / are / yes",
+                    "audio": {
+                      "text": "係",
+                      "traditional": "係",
+                      "jyutping": "hai6",
+                      "language": "yue-HK",
+                      "script": "Hant"
+                    }
+                  },
+                  {
+                    "traditional": "個",
+                    "jyutping": "go3",
+                    "tone": 3,
+                    "tones": [
+                      3
+                    ],
+                    "english": "classifier",
+                    "audio": {
+                      "text": "個",
+                      "traditional": "個",
+                      "jyutping": "go3",
+                      "language": "yue-HK",
+                      "script": "Hant"
+                    }
+                  },
+                  {
+                    "traditional": "名",
+                    "jyutping": "ming4",
+                    "tone": 4,
+                    "tones": [
+                      4
+                    ],
+                    "english": "name",
+                    "audio": {
+                      "text": "名",
+                      "traditional": "名",
+                      "jyutping": "ming4",
+                      "language": "yue-HK",
+                      "script": "Hant"
+                    }
+                  },
+                  {
+                    "traditional": "Jordyn",
+                    "jyutping": "",
+                    "english": "Jordyn",
+                    "placeholder": true
+                  }
+                ],
+                "audio": {
+                  "text": "我叫",
+                  "traditional": "我叫",
+                  "jyutping": "ngo5 giu3",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                },
+                "presentation": {
+                  "traditional_label": "Spoken Cantonese",
+                  "romanization_label": "Jyutping",
+                  "listen_first": true
+                },
+                "sections": [
+                  {
+                    "type": "text",
+                    "title": "Keep talking",
+                    "body": "Same spoken sentences: 我叫 Jordyn。我係 Jordyn。我個名係 Jordyn。"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "v3-intro-03-order-wo-giu",
+            "type": "order_words",
+            "skill": "listening",
+            "prompt": "Build this spoken sentence: 我叫 Jordyn。",
+            "options": [
+              {
+                "id": "v3-intro-03-order-wo-giu-word-1",
+                "label": "我",
+                "jyutping": "ngo5",
+                "audio": {
+                  "text": "我",
+                  "traditional": "我",
+                  "jyutping": "ngo5",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-03-order-wo-giu-word-2",
+                "label": "叫",
+                "jyutping": "giu3",
+                "audio": {
+                  "text": "叫",
+                  "traditional": "叫",
+                  "jyutping": "giu3",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-03-order-wo-giu-word-3",
+                "label": "Jordyn",
+                "placeholder": true
+              }
+            ],
+            "metadata": {
+              "objective_id": "v3-intro-03-speak",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "expected_order": [
+                "v3-intro-03-order-wo-giu-word-1",
+                "v3-intro-03-order-wo-giu-word-2",
+                "v3-intro-03-order-wo-giu-word-3"
+              ],
+              "spoken_cantonese": true,
+              "auditory_only_until_answer": true
+            },
+            "audio": {
+              "text": "我叫",
+              "traditional": "我叫",
+              "jyutping": "ngo5 giu3",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "reveal_character": "我叫",
+            "reveal_jyutping": "ngo5 giu3",
+            "reveal_english": "I'm called"
+          },
+          {
+            "id": "v3-intro-03-order-wo-hai",
+            "type": "order_words",
+            "skill": "listening",
+            "prompt": "Build this spoken sentence: 我係 Jordyn。",
+            "options": [
+              {
+                "id": "v3-intro-03-order-wo-hai-word-1",
+                "label": "我",
+                "jyutping": "ngo5",
+                "audio": {
+                  "text": "我",
+                  "traditional": "我",
+                  "jyutping": "ngo5",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-03-order-wo-hai-word-2",
+                "label": "係",
+                "jyutping": "hai6",
+                "audio": {
+                  "text": "係",
+                  "traditional": "係",
+                  "jyutping": "hai6",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-03-order-wo-hai-word-3",
+                "label": "Jordyn",
+                "placeholder": true
+              }
+            ],
+            "metadata": {
+              "objective_id": "v3-intro-03-speak",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "expected_order": [
+                "v3-intro-03-order-wo-hai-word-1",
+                "v3-intro-03-order-wo-hai-word-2",
+                "v3-intro-03-order-wo-hai-word-3"
+              ],
+              "spoken_cantonese": true,
+              "auditory_only_until_answer": true
+            },
+            "audio": {
+              "text": "我係",
+              "traditional": "我係",
+              "jyutping": "ngo5 hai6",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "reveal_character": "我係",
+            "reveal_jyutping": "ngo5 hai6",
+            "reveal_english": "I am"
+          },
+          {
+            "id": "v3-intro-03-order-ming",
+            "type": "order_words",
+            "skill": "listening",
+            "prompt": "Build this spoken sentence: 我個名係 Jordyn。",
+            "options": [
+              {
+                "id": "v3-intro-03-order-ming-word-1",
+                "label": "我",
+                "jyutping": "ngo5",
+                "audio": {
+                  "text": "我",
+                  "traditional": "我",
+                  "jyutping": "ngo5",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-03-order-ming-word-2",
+                "label": "個",
+                "jyutping": "go3",
+                "audio": {
+                  "text": "個",
+                  "traditional": "個",
+                  "jyutping": "go3",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-03-order-ming-word-3",
+                "label": "名",
+                "jyutping": "ming4",
+                "audio": {
+                  "text": "名",
+                  "traditional": "名",
+                  "jyutping": "ming4",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-03-order-ming-word-4",
+                "label": "係",
+                "jyutping": "hai6",
+                "audio": {
+                  "text": "係",
+                  "traditional": "係",
+                  "jyutping": "hai6",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-03-order-ming-word-5",
+                "label": "Jordyn",
+                "placeholder": true
+              }
+            ],
+            "metadata": {
+              "objective_id": "v3-intro-03-speak",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "expected_order": [
+                "v3-intro-03-order-ming-word-1",
+                "v3-intro-03-order-ming-word-2",
+                "v3-intro-03-order-ming-word-3",
+                "v3-intro-03-order-ming-word-4",
+                "v3-intro-03-order-ming-word-5"
+              ],
+              "spoken_cantonese": true,
+              "auditory_only_until_answer": true
+            },
+            "audio": {
+              "text": "我個名係",
+              "traditional": "我個名係",
+              "jyutping": "ngo5 go3 ming4 hai6",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "reveal_character": "我個名係",
+            "reveal_jyutping": "ngo5 go3 ming4 hai6",
+            "reveal_english": "my name is"
+          },
+          {
+            "id": "v3-intro-03-cloze-jordyn",
+            "type": "cloze",
+            "skill": "reading",
+            "prompt": "我個名係 ＿＿。",
+            "options": [
+              {
+                "id": "v3-intro-03-cloze-jordyn-choice-1",
+                "label": "Jordyn",
+                "placeholder": true
+              },
+              {
+                "id": "v3-intro-03-cloze-jordyn-choice-2",
+                "label": "Alex",
+                "placeholder": true
+              },
+              {
+                "id": "v3-intro-03-cloze-jordyn-choice-3",
+                "label": "Sam",
+                "placeholder": true
+              }
+            ],
+            "correct_option_id": "v3-intro-03-cloze-jordyn-choice-1",
+            "metadata": {
+              "objective_id": "v3-intro-03-speak",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "expected": "Jordyn",
+              "allow_manual_input": false,
+              "spoken_cantonese": true
+            }
+          },
+          {
+            "id": "v3-intro-03-speak-wo-giu",
+            "type": "speak",
+            "skill": "speaking",
+            "prompt": "Listen, then say 我叫.",
+            "audio": {
+              "text": "我叫",
+              "traditional": "我叫",
+              "jyutping": "ngo5 giu3",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "reveal_character": "我叫",
+            "reveal_jyutping": "ngo5 giu3",
+            "reveal_english": "I'm called",
+            "metadata": {
+              "objective_id": "v3-intro-03-speak",
+              "section": "challenge",
+              "exercise_kind": "challenge",
+              "expected": "ngo5 giu3",
+              "expected_text": "我叫",
+              "spoken_cantonese": true
+            }
+          },
+          {
+            "id": "v3-intro-03-type-wo",
+            "type": "typing",
+            "skill": "writing",
+            "prompt": "Type 我.",
+            "reveal_character": "我",
+            "reveal_jyutping": "ngo5",
+            "reveal_english": "I / me",
+            "metadata": {
+              "objective_id": "v3-intro-03-speak",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "accepted_answers": [
+                "我"
+              ],
+              "input_mode": "chinese_character",
+              "spoken_cantonese": true
+            }
+          },
+          {
+            "id": "v3-intro-03-recognition-01",
+            "type": "select_character",
+            "skill": "listening",
+            "prompt": "Listen. Choose the Traditional Chinese number you hear.",
+            "audio": {
+              "text": "四",
+              "traditional": "四",
+              "jyutping": "sei3",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "options": [
+              {
+                "id": "number-4",
+                "label": "四",
+                "jyutping": "sei3",
+                "audio": {
+                  "text": "四",
+                  "traditional": "四",
+                  "jyutping": "sei3",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "number-1",
+                "label": "一",
+                "jyutping": "jat1",
+                "audio": {
+                  "text": "一",
+                  "traditional": "一",
+                  "jyutping": "jat1",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "number-2",
+                "label": "二",
+                "jyutping": "ji6",
+                "audio": {
+                  "text": "二",
+                  "traditional": "二",
+                  "jyutping": "ji6",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              }
+            ],
+            "correct_option_id": "number-4",
+            "reveal_character": "四",
+            "reveal_jyutping": "sei3",
+            "reveal_english": "four",
+            "metadata": {
+              "objective_id": "v3-intro-03-recognize",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "traditional": "四",
+              "jyutping": "sei3",
+              "tones": [
+                3
+              ],
+              "cumulative_through": 10,
+              "auditory_only_until_answer": true
+            }
+          },
+          {
+            "id": "v3-intro-03-recognition-02",
+            "type": "select_character",
+            "skill": "listening",
+            "prompt": "Listen. Choose the Traditional Chinese number you hear.",
+            "audio": {
+              "text": "八",
+              "traditional": "八",
+              "jyutping": "baat3",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "options": [
+              {
+                "id": "number-8",
+                "label": "八",
+                "jyutping": "baat3",
+                "audio": {
+                  "text": "八",
+                  "traditional": "八",
+                  "jyutping": "baat3",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "number-1",
+                "label": "一",
+                "jyutping": "jat1",
+                "audio": {
+                  "text": "一",
+                  "traditional": "一",
+                  "jyutping": "jat1",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "number-2",
+                "label": "二",
+                "jyutping": "ji6",
+                "audio": {
+                  "text": "二",
+                  "traditional": "二",
+                  "jyutping": "ji6",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              }
+            ],
+            "correct_option_id": "number-8",
+            "reveal_character": "八",
+            "reveal_jyutping": "baat3",
+            "reveal_english": "eight",
+            "metadata": {
+              "objective_id": "v3-intro-03-recognize",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "traditional": "八",
+              "jyutping": "baat3",
+              "tones": [
+                3
+              ],
+              "cumulative_through": 10,
+              "auditory_only_until_answer": true
+            }
+          },
+          {
+            "id": "v3-intro-03-recognition-03",
+            "type": "select_character",
+            "skill": "listening",
+            "prompt": "Listen. Choose the Traditional Chinese number you hear.",
+            "audio": {
+              "text": "九",
+              "traditional": "九",
+              "jyutping": "gau2",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "options": [
+              {
+                "id": "number-9",
+                "label": "九",
+                "jyutping": "gau2",
+                "audio": {
+                  "text": "九",
+                  "traditional": "九",
+                  "jyutping": "gau2",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "number-1",
+                "label": "一",
+                "jyutping": "jat1",
+                "audio": {
+                  "text": "一",
+                  "traditional": "一",
+                  "jyutping": "jat1",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "number-2",
+                "label": "二",
+                "jyutping": "ji6",
+                "audio": {
+                  "text": "二",
+                  "traditional": "二",
+                  "jyutping": "ji6",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              }
+            ],
+            "correct_option_id": "number-9",
+            "reveal_character": "九",
+            "reveal_jyutping": "gau2",
+            "reveal_english": "nine",
+            "metadata": {
+              "objective_id": "v3-intro-03-recognize",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "traditional": "九",
+              "jyutping": "gau2",
+              "tones": [
+                2
+              ],
+              "cumulative_through": 10,
+              "auditory_only_until_answer": true
+            }
+          }
+        ],
+        "lesson_intro": {
+          "id": "v3-intro-03-intro",
+          "title": "練習",
+          "summary": "Practice the spoken sentences you already have. No new words.",
+          "learning_goals": [
+            "Reuse 我叫, 我係, and 我個名係",
+            "Keep numbers in play"
+          ],
+          "new_items": [
+            {
+              "traditional": "我叫",
+              "jyutping": "ngo5 giu3",
+              "tone": 3,
+              "tones": [
+                5,
+                3
+              ],
+              "english": "I'm called",
+              "audio": {
+                "text": "我叫",
+                "traditional": "我叫",
+                "jyutping": "ngo5 giu3",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
+            }
+          ],
+          "review_items": [
+            {
+              "traditional": "我",
+              "jyutping": "ngo5",
+              "tone": 5,
+              "tones": [
+                5
+              ],
+              "english": "I / me",
+              "audio": {
+                "text": "我",
+                "traditional": "我",
+                "jyutping": "ngo5",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
+            },
+            {
+              "traditional": "叫",
+              "jyutping": "giu3",
+              "tone": 3,
+              "tones": [
+                3
+              ],
+              "english": "to be called",
+              "audio": {
+                "text": "叫",
+                "traditional": "叫",
+                "jyutping": "giu3",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
+            },
+            {
+              "traditional": "係",
+              "jyutping": "hai6",
+              "tone": 6,
+              "tones": [
+                6
+              ],
+              "english": "is / are / yes",
+              "audio": {
+                "text": "係",
+                "traditional": "係",
+                "jyutping": "hai6",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
+            },
+            {
+              "traditional": "個",
+              "jyutping": "go3",
+              "tone": 3,
+              "tones": [
+                3
+              ],
+              "english": "classifier",
+              "audio": {
+                "text": "個",
+                "traditional": "個",
+                "jyutping": "go3",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
+            },
+            {
+              "traditional": "名",
+              "jyutping": "ming4",
+              "tone": 4,
+              "tones": [
+                4
+              ],
+              "english": "name",
+              "audio": {
+                "text": "名",
+                "traditional": "名",
+                "jyutping": "ming4",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
+            },
+            {
+              "traditional": "Jordyn",
+              "jyutping": "",
+              "english": "Jordyn",
+              "placeholder": true
+            }
+          ],
+          "audio": {
+            "text": "我叫",
+            "traditional": "我叫",
+            "jyutping": "ngo5 giu3",
+            "language": "yue-HK",
+            "script": "Hant"
+          },
+          "presentation": {
+            "traditional_label": "Spoken Cantonese",
+            "romanization_label": "Jyutping",
+            "listen_first": true
+          },
+          "sections": [
+            {
+              "type": "text",
+              "title": "Keep talking",
+              "body": "Same spoken sentences: 我叫 Jordyn。我係 Jordyn。我個名係 Jordyn。"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "v3-intro-04",
+      "unit_id": "v3-unit-2",
+      "title": "有",
+      "lesson_type": "introduction",
+      "sort_order": 4,
+      "prerequisites": [
+        "v3-intro-03"
+      ],
+      "objectives": [
+        "v3-intro-04-speak"
+      ],
+      "content": {
+        "target": {
+          "traditional": "有",
+          "jyutping": "jau5",
+          "tone": 5,
+          "tones": [
+            5
+          ],
+          "english": "have",
+          "audio": {
+            "text": "有",
+            "traditional": "有",
+            "jyutping": "jau5",
+            "language": "yue-HK",
+            "script": "Hant"
+          },
+          "theme": "我有三本書",
+          "words": [
+            {
+              "traditional": "有",
+              "jyutping": "jau5",
+              "tone": 5,
+              "tones": [
+                5
+              ],
+              "english": "have",
+              "audio": {
+                "text": "有",
+                "traditional": "有",
+                "jyutping": "jau5",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
+            },
+            {
+              "traditional": "本",
+              "jyutping": "bun2",
+              "tone": 2,
+              "tones": [
+                2
+              ],
+              "english": "book classifier",
+              "audio": {
+                "text": "本",
+                "traditional": "本",
+                "jyutping": "bun2",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
+            },
+            {
+              "traditional": "書",
+              "jyutping": "syu1",
+              "tone": 1,
+              "tones": [
+                1
+              ],
+              "english": "book",
+              "audio": {
+                "text": "書",
+                "traditional": "書",
+                "jyutping": "syu1",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
+            },
+            {
+              "traditional": "三",
+              "jyutping": "saam1",
+              "tone": 1,
+              "tones": [
+                1
+              ],
+              "english": "three",
+              "audio": {
+                "text": "三",
+                "traditional": "三",
+                "jyutping": "saam1",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
+            }
+          ]
+        },
+        "context": {
+          "traditional": "有、本、書、三",
+          "jyutping": "jau5 bun2 syu1 saam1",
+          "tones": [
+            5,
+            2,
+            1,
+            1
+          ],
+          "english": "我有三本書",
+          "progression": 16
+        },
+        "vocabulary": [
+          {
+            "lexeme_id": "v3-jau"
+          },
+          {
+            "lexeme_id": "v3-bun"
+          },
+          {
+            "lexeme_id": "v3-syu"
+          },
+          {
+            "lexeme_id": "v3-wo"
+          },
+          {
+            "lexeme_id": "v3-giu"
+          },
+          {
+            "lexeme_id": "v3-jordyn"
+          }
+        ],
+        "steps": [
+          {
+            "id": "v3-intro-04-intro",
+            "type": "lesson_intro",
+            "skill": "listening",
+            "prompt": "有",
+            "audio": {
+              "text": "有",
+              "traditional": "有",
+              "jyutping": "jau5",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "options": [
+              {
+                "id": "intro-ready",
+                "label": "Start lesson"
+              }
+            ],
+            "correct_option_id": "intro-ready",
+            "reveal_character": "有",
+            "reveal_jyutping": "jau5",
+            "reveal_english": "have",
+            "metadata": {
+              "objective_id": "v3-intro-04-speak",
+              "section": "introduction",
+              "exercise_kind": "introduction",
+              "lesson_intro": {
+                "id": "v3-intro-04-intro",
+                "title": "有",
+                "summary": "Put numbers into spoken talk: 我有三本書.",
+                "learning_goals": [
+                  "Hear 有",
+                  "Use a number inside 我有三本書",
+                  "Keep 我叫 in play"
+                ],
+                "new_items": [
+                  {
+                    "traditional": "有",
+                    "jyutping": "jau5",
+                    "tone": 5,
+                    "tones": [
+                      5
+                    ],
+                    "english": "have",
+                    "audio": {
+                      "text": "有",
+                      "traditional": "有",
+                      "jyutping": "jau5",
+                      "language": "yue-HK",
+                      "script": "Hant"
+                    }
+                  },
+                  {
+                    "traditional": "本",
+                    "jyutping": "bun2",
+                    "tone": 2,
+                    "tones": [
+                      2
+                    ],
+                    "english": "book classifier",
+                    "audio": {
+                      "text": "本",
+                      "traditional": "本",
+                      "jyutping": "bun2",
+                      "language": "yue-HK",
+                      "script": "Hant"
+                    }
+                  },
+                  {
+                    "traditional": "書",
+                    "jyutping": "syu1",
+                    "tone": 1,
+                    "tones": [
+                      1
+                    ],
+                    "english": "book",
+                    "audio": {
+                      "text": "書",
+                      "traditional": "書",
+                      "jyutping": "syu1",
+                      "language": "yue-HK",
+                      "script": "Hant"
+                    }
+                  }
+                ],
+                "review_items": [
+                  {
+                    "traditional": "我",
+                    "jyutping": "ngo5",
+                    "tone": 5,
+                    "tones": [
+                      5
+                    ],
+                    "english": "I / me",
+                    "audio": {
+                      "text": "我",
+                      "traditional": "我",
+                      "jyutping": "ngo5",
+                      "language": "yue-HK",
+                      "script": "Hant"
+                    }
+                  },
+                  {
+                    "traditional": "叫",
+                    "jyutping": "giu3",
+                    "tone": 3,
+                    "tones": [
+                      3
+                    ],
+                    "english": "to be called",
+                    "audio": {
+                      "text": "叫",
+                      "traditional": "叫",
+                      "jyutping": "giu3",
+                      "language": "yue-HK",
+                      "script": "Hant"
+                    }
+                  },
+                  {
+                    "traditional": "係",
+                    "jyutping": "hai6",
+                    "tone": 6,
+                    "tones": [
+                      6
+                    ],
+                    "english": "is / are / yes",
+                    "audio": {
+                      "text": "係",
+                      "traditional": "係",
+                      "jyutping": "hai6",
+                      "language": "yue-HK",
+                      "script": "Hant"
+                    }
+                  },
+                  {
+                    "traditional": "三",
+                    "jyutping": "saam1",
+                    "tone": 1,
+                    "tones": [
+                      1
+                    ],
+                    "english": "three",
+                    "audio": {
+                      "text": "三",
+                      "traditional": "三",
+                      "jyutping": "saam1",
+                      "language": "yue-HK",
+                      "script": "Hant"
+                    }
+                  },
+                  {
+                    "traditional": "Jordyn",
+                    "jyutping": "",
+                    "english": "Jordyn",
+                    "placeholder": true
+                  }
+                ],
+                "audio": {
+                  "text": "有",
+                  "traditional": "有",
+                  "jyutping": "jau5",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                },
+                "presentation": {
+                  "traditional_label": "Spoken Cantonese",
+                  "romanization_label": "Jyutping",
+                  "listen_first": true
+                },
+                "sections": [
+                  {
+                    "type": "text",
+                    "title": "Numbers in a sentence",
+                    "body": "我叫 Jordyn。我有三本書。有 means have. 三本書 is a spoken chunk for three books."
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "v3-intro-04-hear-jau",
+            "type": "select_character",
+            "skill": "listening",
+            "prompt": "Listen. Choose the spoken word you hear.",
+            "audio": {
+              "text": "有",
+              "traditional": "有",
+              "jyutping": "jau5",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "options": [
+              {
+                "id": "v3-intro-04-hear-jau-opt-1",
+                "label": "有",
+                "jyutping": "jau5",
+                "audio": {
+                  "text": "有",
+                  "traditional": "有",
+                  "jyutping": "jau5",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-04-hear-jau-opt-2",
+                "label": "係",
+                "jyutping": "hai6",
+                "audio": {
+                  "text": "係",
+                  "traditional": "係",
+                  "jyutping": "hai6",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-04-hear-jau-opt-3",
+                "label": "叫",
+                "jyutping": "giu3",
+                "audio": {
+                  "text": "叫",
+                  "traditional": "叫",
+                  "jyutping": "giu3",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              }
+            ],
+            "correct_option_id": "v3-intro-04-hear-jau-opt-1",
+            "reveal_character": "有",
+            "reveal_jyutping": "jau5",
+            "reveal_english": "have",
+            "metadata": {
+              "objective_id": "v3-intro-04-speak",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "traditional": "有",
+              "jyutping": "jau5",
+              "tones": [
+                5
+              ],
+              "auditory_only_until_answer": true,
+              "spoken_cantonese": true
+            }
+          },
+          {
+            "id": "v3-intro-04-hear-books",
+            "type": "select_character",
+            "skill": "listening",
+            "prompt": "Listen. Choose what you hear.",
+            "audio": {
+              "text": "三本書",
+              "traditional": "三本書",
+              "jyutping": "saam1 bun2 syu1",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "options": [
+              {
+                "id": "v3-intro-04-hear-books-opt-1",
+                "label": "三本書",
+                "jyutping": "saam1 bun2 syu1",
+                "audio": {
+                  "text": "三本書",
+                  "traditional": "三本書",
+                  "jyutping": "saam1 bun2 syu1",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-04-hear-books-opt-2",
+                "label": "一本書",
+                "jyutping": "jat1 bun2 syu1",
+                "audio": {
+                  "text": "一本書",
+                  "traditional": "一本書",
+                  "jyutping": "jat1 bun2 syu1",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-04-hear-books-opt-3",
+                "label": "我叫",
+                "jyutping": "ngo5 giu3",
+                "audio": {
+                  "text": "我叫",
+                  "traditional": "我叫",
+                  "jyutping": "ngo5 giu3",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              }
+            ],
+            "correct_option_id": "v3-intro-04-hear-books-opt-1",
+            "reveal_character": "三本書",
+            "reveal_jyutping": "saam1 bun2 syu1",
+            "reveal_english": "three books",
+            "metadata": {
+              "objective_id": "v3-intro-04-speak",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "traditional": "三本書",
+              "jyutping": "saam1 bun2 syu1",
+              "tones": [
+                1,
+                2,
+                1
+              ],
+              "auditory_only_until_answer": true,
+              "spoken_cantonese": true
+            }
+          },
+          {
+            "id": "v3-intro-04-order-books",
+            "type": "order_words",
+            "skill": "listening",
+            "prompt": "Build this spoken sentence: 我有三本書。",
+            "options": [
+              {
+                "id": "v3-intro-04-order-books-word-1",
+                "label": "我",
+                "jyutping": "ngo5",
+                "audio": {
+                  "text": "我",
+                  "traditional": "我",
+                  "jyutping": "ngo5",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-04-order-books-word-2",
+                "label": "有",
+                "jyutping": "jau5",
+                "audio": {
+                  "text": "有",
+                  "traditional": "有",
+                  "jyutping": "jau5",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-04-order-books-word-3",
+                "label": "三",
+                "jyutping": "saam1",
+                "audio": {
+                  "text": "三",
+                  "traditional": "三",
+                  "jyutping": "saam1",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-04-order-books-word-4",
+                "label": "本",
+                "jyutping": "bun2",
+                "audio": {
+                  "text": "本",
+                  "traditional": "本",
+                  "jyutping": "bun2",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-04-order-books-word-5",
+                "label": "書",
+                "jyutping": "syu1",
+                "audio": {
+                  "text": "書",
+                  "traditional": "書",
+                  "jyutping": "syu1",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              }
+            ],
+            "metadata": {
+              "objective_id": "v3-intro-04-speak",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "expected_order": [
+                "v3-intro-04-order-books-word-1",
+                "v3-intro-04-order-books-word-2",
+                "v3-intro-04-order-books-word-3",
+                "v3-intro-04-order-books-word-4",
+                "v3-intro-04-order-books-word-5"
+              ],
+              "spoken_cantonese": true,
+              "auditory_only_until_answer": true
+            },
+            "audio": {
+              "text": "我有三本書",
+              "traditional": "我有三本書",
+              "jyutping": "ngo5 jau5 saam1 bun2 syu1",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "reveal_character": "我有三本書",
+            "reveal_jyutping": "ngo5 jau5 saam1 bun2 syu1",
+            "reveal_english": "I have three books"
+          },
+          {
+            "id": "v3-intro-04-cloze-jau",
+            "type": "cloze",
+            "skill": "reading",
+            "prompt": "我＿＿三本書。",
+            "options": [
+              {
+                "id": "v3-intro-04-cloze-jau-choice-1",
+                "label": "有",
+                "jyutping": "jau5",
+                "audio": {
+                  "text": "有",
+                  "traditional": "有",
+                  "jyutping": "jau5",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-04-cloze-jau-choice-2",
+                "label": "係",
+                "jyutping": "hai6",
+                "audio": {
+                  "text": "係",
+                  "traditional": "係",
+                  "jyutping": "hai6",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-04-cloze-jau-choice-3",
+                "label": "叫",
+                "jyutping": "giu3",
+                "audio": {
+                  "text": "叫",
+                  "traditional": "叫",
+                  "jyutping": "giu3",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              }
+            ],
+            "correct_option_id": "v3-intro-04-cloze-jau-choice-1",
+            "metadata": {
+              "objective_id": "v3-intro-04-speak",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "expected": "有",
+              "allow_manual_input": false,
+              "spoken_cantonese": true
+            },
+            "reveal_character": "有",
+            "reveal_jyutping": "jau5",
+            "reveal_english": "have"
+          },
+          {
+            "id": "v3-intro-04-cloze-number",
+            "type": "cloze",
+            "skill": "reading",
+            "prompt": "我有＿＿本書。",
+            "options": [
+              {
+                "id": "v3-intro-04-cloze-number-choice-1",
+                "label": "三",
+                "jyutping": "saam1",
+                "audio": {
+                  "text": "三",
+                  "traditional": "三",
+                  "jyutping": "saam1",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-04-cloze-number-choice-2",
+                "label": "一",
+                "jyutping": "jat1",
+                "audio": {
+                  "text": "一",
+                  "traditional": "一",
+                  "jyutping": "jat1",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-04-cloze-number-choice-3",
+                "label": "五",
+                "jyutping": "ng5",
+                "audio": {
+                  "text": "五",
+                  "traditional": "五",
+                  "jyutping": "ng5",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              }
+            ],
+            "correct_option_id": "v3-intro-04-cloze-number-choice-1",
+            "metadata": {
+              "objective_id": "v3-intro-04-speak",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "expected": "三",
+              "allow_manual_input": false,
+              "spoken_cantonese": true
+            },
+            "reveal_character": "三",
+            "reveal_jyutping": "saam1",
+            "reveal_english": "three"
+          },
+          {
+            "id": "v3-intro-04-speak-jau",
+            "type": "speak",
+            "skill": "speaking",
+            "prompt": "Listen, then say 我有.",
+            "audio": {
+              "text": "我有",
+              "traditional": "我有",
+              "jyutping": "ngo5 jau5",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "reveal_character": "我有",
+            "reveal_jyutping": "ngo5 jau5",
+            "reveal_english": "I have",
+            "metadata": {
+              "objective_id": "v3-intro-04-speak",
+              "section": "challenge",
+              "exercise_kind": "challenge",
+              "expected": "ngo5 jau5",
+              "expected_text": "我有",
+              "spoken_cantonese": true
+            }
+          },
+          {
+            "id": "v3-intro-04-speak-books",
+            "type": "speak",
+            "skill": "speaking",
+            "prompt": "Listen, then say 三本書.",
+            "audio": {
+              "text": "三本書",
+              "traditional": "三本書",
+              "jyutping": "saam1 bun2 syu1",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "reveal_character": "三本書",
+            "reveal_jyutping": "saam1 bun2 syu1",
+            "reveal_english": "three books",
+            "metadata": {
+              "objective_id": "v3-intro-04-speak",
+              "section": "challenge",
+              "exercise_kind": "challenge",
+              "expected": "saam1 bun2 syu1",
+              "expected_text": "三本書",
+              "spoken_cantonese": true
+            }
+          },
+          {
+            "id": "v3-intro-04-recognition-01",
+            "type": "select_character",
+            "skill": "listening",
+            "prompt": "Listen. Choose the Traditional Chinese number you hear.",
+            "audio": {
+              "text": "三",
+              "traditional": "三",
+              "jyutping": "saam1",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "options": [
+              {
+                "id": "number-3",
+                "label": "三",
+                "jyutping": "saam1",
+                "audio": {
+                  "text": "三",
+                  "traditional": "三",
+                  "jyutping": "saam1",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "number-1",
+                "label": "一",
+                "jyutping": "jat1",
+                "audio": {
+                  "text": "一",
+                  "traditional": "一",
+                  "jyutping": "jat1",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "number-2",
+                "label": "二",
+                "jyutping": "ji6",
+                "audio": {
+                  "text": "二",
+                  "traditional": "二",
+                  "jyutping": "ji6",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              }
+            ],
+            "correct_option_id": "number-3",
+            "reveal_character": "三",
+            "reveal_jyutping": "saam1",
+            "reveal_english": "three",
+            "metadata": {
+              "objective_id": "v3-intro-04-recognize",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "traditional": "三",
+              "jyutping": "saam1",
+              "tones": [
+                1
+              ],
+              "cumulative_through": 10,
+              "auditory_only_until_answer": true
+            }
+          },
+          {
+            "id": "v3-intro-04-recognition-02",
+            "type": "select_character",
+            "skill": "listening",
+            "prompt": "Listen. Choose the Traditional Chinese number you hear.",
+            "audio": {
+              "text": "六",
+              "traditional": "六",
+              "jyutping": "luk6",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "options": [
+              {
+                "id": "number-6",
+                "label": "六",
+                "jyutping": "luk6",
+                "audio": {
+                  "text": "六",
+                  "traditional": "六",
+                  "jyutping": "luk6",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "number-1",
+                "label": "一",
+                "jyutping": "jat1",
+                "audio": {
+                  "text": "一",
+                  "traditional": "一",
+                  "jyutping": "jat1",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "number-2",
+                "label": "二",
+                "jyutping": "ji6",
+                "audio": {
+                  "text": "二",
+                  "traditional": "二",
+                  "jyutping": "ji6",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              }
+            ],
+            "correct_option_id": "number-6",
+            "reveal_character": "六",
+            "reveal_jyutping": "luk6",
+            "reveal_english": "six",
+            "metadata": {
+              "objective_id": "v3-intro-04-recognize",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "traditional": "六",
+              "jyutping": "luk6",
+              "tones": [
+                6
+              ],
+              "cumulative_through": 10,
+              "auditory_only_until_answer": true
+            }
+          },
+          {
+            "id": "v3-intro-04-recognition-03",
+            "type": "select_character",
+            "skill": "listening",
+            "prompt": "Listen. Choose the Traditional Chinese number you hear.",
+            "audio": {
+              "text": "一",
+              "traditional": "一",
+              "jyutping": "jat1",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "options": [
+              {
+                "id": "number-1",
+                "label": "一",
+                "jyutping": "jat1",
+                "audio": {
+                  "text": "一",
+                  "traditional": "一",
+                  "jyutping": "jat1",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "number-2",
+                "label": "二",
+                "jyutping": "ji6",
+                "audio": {
+                  "text": "二",
+                  "traditional": "二",
+                  "jyutping": "ji6",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "number-3",
+                "label": "三",
+                "jyutping": "saam1",
+                "audio": {
+                  "text": "三",
+                  "traditional": "三",
+                  "jyutping": "saam1",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              }
+            ],
+            "correct_option_id": "number-1",
+            "reveal_character": "一",
+            "reveal_jyutping": "jat1",
+            "reveal_english": "one",
+            "metadata": {
+              "objective_id": "v3-intro-04-recognize",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "traditional": "一",
+              "jyutping": "jat1",
+              "tones": [
+                1
+              ],
+              "cumulative_through": 10,
+              "auditory_only_until_answer": true
+            }
+          }
+        ],
+        "lesson_intro": {
+          "id": "v3-intro-04-intro",
+          "title": "有",
+          "summary": "Put numbers into spoken talk: 我有三本書.",
+          "learning_goals": [
+            "Hear 有",
+            "Use a number inside 我有三本書",
+            "Keep 我叫 in play"
+          ],
+          "new_items": [
+            {
+              "traditional": "有",
+              "jyutping": "jau5",
+              "tone": 5,
+              "tones": [
+                5
+              ],
+              "english": "have",
+              "audio": {
+                "text": "有",
+                "traditional": "有",
+                "jyutping": "jau5",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
+            },
+            {
+              "traditional": "本",
+              "jyutping": "bun2",
+              "tone": 2,
+              "tones": [
+                2
+              ],
+              "english": "book classifier",
+              "audio": {
+                "text": "本",
+                "traditional": "本",
+                "jyutping": "bun2",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
+            },
+            {
+              "traditional": "書",
+              "jyutping": "syu1",
+              "tone": 1,
+              "tones": [
+                1
+              ],
+              "english": "book",
+              "audio": {
+                "text": "書",
+                "traditional": "書",
+                "jyutping": "syu1",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
+            }
+          ],
+          "review_items": [
+            {
+              "traditional": "我",
+              "jyutping": "ngo5",
+              "tone": 5,
+              "tones": [
+                5
+              ],
+              "english": "I / me",
+              "audio": {
+                "text": "我",
+                "traditional": "我",
+                "jyutping": "ngo5",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
+            },
+            {
+              "traditional": "叫",
+              "jyutping": "giu3",
+              "tone": 3,
+              "tones": [
+                3
+              ],
+              "english": "to be called",
+              "audio": {
+                "text": "叫",
+                "traditional": "叫",
+                "jyutping": "giu3",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
+            },
+            {
+              "traditional": "係",
+              "jyutping": "hai6",
+              "tone": 6,
+              "tones": [
+                6
+              ],
+              "english": "is / are / yes",
+              "audio": {
+                "text": "係",
+                "traditional": "係",
+                "jyutping": "hai6",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
+            },
+            {
+              "traditional": "三",
+              "jyutping": "saam1",
+              "tone": 1,
+              "tones": [
+                1
+              ],
+              "english": "three",
+              "audio": {
+                "text": "三",
+                "traditional": "三",
+                "jyutping": "saam1",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
+            },
+            {
+              "traditional": "Jordyn",
+              "jyutping": "",
+              "english": "Jordyn",
+              "placeholder": true
+            }
+          ],
+          "audio": {
+            "text": "有",
+            "traditional": "有",
+            "jyutping": "jau5",
+            "language": "yue-HK",
+            "script": "Hant"
+          },
+          "presentation": {
+            "traditional_label": "Spoken Cantonese",
+            "romanization_label": "Jyutping",
+            "listen_first": true
+          },
+          "sections": [
+            {
+              "type": "text",
+              "title": "Numbers in a sentence",
+              "body": "我叫 Jordyn。我有三本書。有 means have. 三本書 is a spoken chunk for three books."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "v3-intro-05",
+      "unit_id": "v3-unit-2",
+      "title": "你 · 咩 · 係咪",
+      "lesson_type": "introduction",
+      "sort_order": 5,
+      "prerequisites": [
+        "v3-intro-04"
+      ],
+      "objectives": [
+        "v3-intro-05-speak"
+      ],
+      "content": {
+        "target": {
+          "traditional": "你",
+          "jyutping": "nei5",
+          "tone": 5,
+          "tones": [
+            5
+          ],
+          "english": "you",
+          "audio": {
+            "text": "你",
+            "traditional": "你",
+            "jyutping": "nei5",
+            "language": "yue-HK",
+            "script": "Hant"
+          },
+          "theme": "你叫咩名？",
+          "words": [
+            {
+              "traditional": "你",
+              "jyutping": "nei5",
+              "tone": 5,
+              "tones": [
+                5
+              ],
+              "english": "you",
+              "audio": {
+                "text": "你",
+                "traditional": "你",
+                "jyutping": "nei5",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
+            },
+            {
+              "traditional": "咩",
+              "jyutping": "me1",
+              "tone": 1,
+              "tones": [
+                1
+              ],
+              "english": "what",
+              "audio": {
+                "text": "咩",
+                "traditional": "咩",
+                "jyutping": "me1",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
+            },
+            {
+              "traditional": "係咪",
+              "jyutping": "hai6 mai6",
+              "tone": 6,
+              "tones": [
+                6,
+                6
+              ],
+              "english": "is it?",
+              "audio": {
+                "text": "係咪",
+                "traditional": "係咪",
+                "jyutping": "hai6 mai6",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
+            }
+          ]
+        },
+        "context": {
+          "traditional": "你、咩、係咪",
+          "jyutping": "nei5 me1 hai6 mai6",
+          "tones": [
+            5,
+            1,
+            6,
+            6
+          ],
+          "english": "你叫咩名？",
+          "progression": 17
+        },
+        "vocabulary": [
+          {
+            "lexeme_id": "v3-nei"
+          },
+          {
+            "lexeme_id": "v3-me"
+          },
+          {
+            "lexeme_id": "v3-hai-mai"
+          },
+          {
+            "lexeme_id": "v3-ming"
+          },
+          {
+            "lexeme_id": "v3-hai"
+          },
+          {
+            "lexeme_id": "v3-jordyn"
+          }
+        ],
+        "steps": [
+          {
+            "id": "v3-intro-05-intro",
+            "type": "lesson_intro",
+            "skill": "listening",
+            "prompt": "你 · 咩 · 係咪",
+            "audio": {
+              "text": "你",
+              "traditional": "你",
+              "jyutping": "nei5",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "options": [
+              {
+                "id": "intro-ready",
+                "label": "Start lesson"
+              }
+            ],
+            "correct_option_id": "intro-ready",
+            "reveal_character": "你",
+            "reveal_jyutping": "nei5",
+            "reveal_english": "you",
+            "metadata": {
+              "objective_id": "v3-intro-05-speak",
+              "section": "introduction",
+              "exercise_kind": "introduction",
+              "lesson_intro": {
+                "id": "v3-intro-05-intro",
+                "title": "你 · 咩 · 係咪",
+                "summary": "Ask in spoken Cantonese: 你叫咩名？你係咪 Jordyn？",
+                "learning_goals": [
+                  "Hear 你, 咩, and 係咪",
+                  "Ask 你叫咩名 and 你叫咩",
+                  "Ask 你係咪 Jordyn and answer 係"
+                ],
+                "new_items": [
+                  {
+                    "traditional": "你",
+                    "jyutping": "nei5",
+                    "tone": 5,
+                    "tones": [
+                      5
+                    ],
+                    "english": "you",
+                    "audio": {
+                      "text": "你",
+                      "traditional": "你",
+                      "jyutping": "nei5",
+                      "language": "yue-HK",
+                      "script": "Hant"
+                    }
+                  },
+                  {
+                    "traditional": "咩",
+                    "jyutping": "me1",
+                    "tone": 1,
+                    "tones": [
+                      1
+                    ],
+                    "english": "what",
+                    "audio": {
+                      "text": "咩",
+                      "traditional": "咩",
+                      "jyutping": "me1",
+                      "language": "yue-HK",
+                      "script": "Hant"
+                    }
+                  },
+                  {
+                    "traditional": "係咪",
+                    "jyutping": "hai6 mai6",
+                    "tone": 6,
+                    "tones": [
+                      6,
+                      6
+                    ],
+                    "english": "is it?",
+                    "audio": {
+                      "text": "係咪",
+                      "traditional": "係咪",
+                      "jyutping": "hai6 mai6",
+                      "language": "yue-HK",
+                      "script": "Hant"
+                    }
+                  }
+                ],
+                "review_items": [
+                  {
+                    "traditional": "我",
+                    "jyutping": "ngo5",
+                    "tone": 5,
+                    "tones": [
+                      5
+                    ],
+                    "english": "I / me",
+                    "audio": {
+                      "text": "我",
+                      "traditional": "我",
+                      "jyutping": "ngo5",
+                      "language": "yue-HK",
+                      "script": "Hant"
+                    }
+                  },
+                  {
+                    "traditional": "叫",
+                    "jyutping": "giu3",
+                    "tone": 3,
+                    "tones": [
+                      3
+                    ],
+                    "english": "to be called",
+                    "audio": {
+                      "text": "叫",
+                      "traditional": "叫",
+                      "jyutping": "giu3",
+                      "language": "yue-HK",
+                      "script": "Hant"
+                    }
+                  },
+                  {
+                    "traditional": "係",
+                    "jyutping": "hai6",
+                    "tone": 6,
+                    "tones": [
+                      6
+                    ],
+                    "english": "is / are / yes",
+                    "audio": {
+                      "text": "係",
+                      "traditional": "係",
+                      "jyutping": "hai6",
+                      "language": "yue-HK",
+                      "script": "Hant"
+                    }
+                  },
+                  {
+                    "traditional": "名",
+                    "jyutping": "ming4",
+                    "tone": 4,
+                    "tones": [
+                      4
+                    ],
+                    "english": "name",
+                    "audio": {
+                      "text": "名",
+                      "traditional": "名",
+                      "jyutping": "ming4",
+                      "language": "yue-HK",
+                      "script": "Hant"
+                    }
+                  },
+                  {
+                    "traditional": "Jordyn",
+                    "jyutping": "",
+                    "english": "Jordyn",
+                    "placeholder": true
+                  }
+                ],
+                "audio": {
+                  "text": "你",
+                  "traditional": "你",
+                  "jyutping": "nei5",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                },
+                "presentation": {
+                  "traditional_label": "Spoken Cantonese",
+                  "romanization_label": "Jyutping",
+                  "listen_first": true
+                },
+                "sections": [
+                  {
+                    "type": "text",
+                    "title": "Questions people actually ask",
+                    "body": "Ask with 咩 and 係咪. 你叫咩名？你叫咩？你係咪 Jordyn？ Answer 係。"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "v3-intro-05-hear-你",
+            "type": "select_character",
+            "skill": "listening",
+            "prompt": "Listen. Choose the spoken word you hear.",
+            "audio": {
+              "text": "你",
+              "traditional": "你",
+              "jyutping": "nei5",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "options": [
+              {
+                "id": "v3-intro-05-hear-你-opt-1",
+                "label": "你",
+                "jyutping": "nei5",
+                "audio": {
+                  "text": "你",
+                  "traditional": "你",
+                  "jyutping": "nei5",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-05-hear-你-opt-2",
+                "label": "我",
+                "jyutping": "ngo5",
+                "audio": {
+                  "text": "我",
+                  "traditional": "我",
+                  "jyutping": "ngo5",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-05-hear-你-opt-3",
+                "label": "咩",
+                "jyutping": "me1",
+                "audio": {
+                  "text": "咩",
+                  "traditional": "咩",
+                  "jyutping": "me1",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              }
+            ],
+            "correct_option_id": "v3-intro-05-hear-你-opt-1",
+            "reveal_character": "你",
+            "reveal_jyutping": "nei5",
+            "reveal_english": "you",
+            "metadata": {
+              "objective_id": "v3-intro-05-speak",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "traditional": "你",
+              "jyutping": "nei5",
+              "tones": [
+                5
+              ],
+              "auditory_only_until_answer": true,
+              "spoken_cantonese": true
+            }
+          },
+          {
+            "id": "v3-intro-05-hear-咩",
+            "type": "select_character",
+            "skill": "listening",
+            "prompt": "Listen. Choose the spoken word you hear.",
+            "audio": {
+              "text": "咩",
+              "traditional": "咩",
+              "jyutping": "me1",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "options": [
+              {
+                "id": "v3-intro-05-hear-咩-opt-1",
+                "label": "咩",
+                "jyutping": "me1",
+                "audio": {
+                  "text": "咩",
+                  "traditional": "咩",
+                  "jyutping": "me1",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-05-hear-咩-opt-2",
+                "label": "名",
+                "jyutping": "ming4",
+                "audio": {
+                  "text": "名",
+                  "traditional": "名",
+                  "jyutping": "ming4",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-05-hear-咩-opt-3",
+                "label": "叫",
+                "jyutping": "giu3",
+                "audio": {
+                  "text": "叫",
+                  "traditional": "叫",
+                  "jyutping": "giu3",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              }
+            ],
+            "correct_option_id": "v3-intro-05-hear-咩-opt-1",
+            "reveal_character": "咩",
+            "reveal_jyutping": "me1",
+            "reveal_english": "what",
+            "metadata": {
+              "objective_id": "v3-intro-05-speak",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "traditional": "咩",
+              "jyutping": "me1",
+              "tones": [
+                1
+              ],
+              "auditory_only_until_answer": true,
+              "spoken_cantonese": true
+            }
+          },
+          {
+            "id": "v3-intro-05-hear-係咪",
+            "type": "select_character",
+            "skill": "listening",
+            "prompt": "Listen. Choose the spoken word you hear.",
+            "audio": {
+              "text": "係咪",
+              "traditional": "係咪",
+              "jyutping": "hai6 mai6",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "options": [
+              {
+                "id": "v3-intro-05-hear-係咪-opt-1",
+                "label": "係咪",
+                "jyutping": "hai6 mai6",
+                "audio": {
+                  "text": "係咪",
+                  "traditional": "係咪",
+                  "jyutping": "hai6 mai6",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-05-hear-係咪-opt-2",
+                "label": "係",
+                "jyutping": "hai6",
+                "audio": {
+                  "text": "係",
+                  "traditional": "係",
+                  "jyutping": "hai6",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-05-hear-係咪-opt-3",
+                "label": "咩",
+                "jyutping": "me1",
+                "audio": {
+                  "text": "咩",
+                  "traditional": "咩",
+                  "jyutping": "me1",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              }
+            ],
+            "correct_option_id": "v3-intro-05-hear-係咪-opt-1",
+            "reveal_character": "係咪",
+            "reveal_jyutping": "hai6 mai6",
+            "reveal_english": "is it?",
+            "metadata": {
+              "objective_id": "v3-intro-05-speak",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "traditional": "係咪",
+              "jyutping": "hai6 mai6",
+              "tones": [
+                6,
+                6
+              ],
+              "auditory_only_until_answer": true,
+              "spoken_cantonese": true
+            }
+          },
+          {
+            "id": "v3-intro-05-order-name-q",
+            "type": "order_words",
+            "skill": "listening",
+            "prompt": "Build this spoken question: 你叫咩名？",
+            "options": [
+              {
+                "id": "v3-intro-05-order-name-q-word-1",
+                "label": "你",
+                "jyutping": "nei5",
+                "audio": {
+                  "text": "你",
+                  "traditional": "你",
+                  "jyutping": "nei5",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-05-order-name-q-word-2",
+                "label": "叫",
+                "jyutping": "giu3",
+                "audio": {
+                  "text": "叫",
+                  "traditional": "叫",
+                  "jyutping": "giu3",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-05-order-name-q-word-3",
+                "label": "咩",
+                "jyutping": "me1",
+                "audio": {
+                  "text": "咩",
+                  "traditional": "咩",
+                  "jyutping": "me1",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-05-order-name-q-word-4",
+                "label": "名",
+                "jyutping": "ming4",
+                "audio": {
+                  "text": "名",
+                  "traditional": "名",
+                  "jyutping": "ming4",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              }
+            ],
+            "metadata": {
+              "objective_id": "v3-intro-05-speak",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "expected_order": [
+                "v3-intro-05-order-name-q-word-1",
+                "v3-intro-05-order-name-q-word-2",
+                "v3-intro-05-order-name-q-word-3",
+                "v3-intro-05-order-name-q-word-4"
+              ],
+              "spoken_cantonese": true,
+              "auditory_only_until_answer": true
+            },
+            "audio": {
+              "text": "你叫咩名",
+              "traditional": "你叫咩名",
+              "jyutping": "nei5 giu3 me1 ming4",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "reveal_character": "你叫咩名",
+            "reveal_jyutping": "nei5 giu3 me1 ming4",
+            "reveal_english": "what's your name"
+          },
+          {
+            "id": "v3-intro-05-order-me",
+            "type": "order_words",
+            "skill": "listening",
+            "prompt": "Build this spoken question: 你叫咩？",
+            "options": [
+              {
+                "id": "v3-intro-05-order-me-word-1",
+                "label": "你",
+                "jyutping": "nei5",
+                "audio": {
+                  "text": "你",
+                  "traditional": "你",
+                  "jyutping": "nei5",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-05-order-me-word-2",
+                "label": "叫",
+                "jyutping": "giu3",
+                "audio": {
+                  "text": "叫",
+                  "traditional": "叫",
+                  "jyutping": "giu3",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-05-order-me-word-3",
+                "label": "咩",
+                "jyutping": "me1",
+                "audio": {
+                  "text": "咩",
+                  "traditional": "咩",
+                  "jyutping": "me1",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              }
+            ],
+            "metadata": {
+              "objective_id": "v3-intro-05-speak",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "expected_order": [
+                "v3-intro-05-order-me-word-1",
+                "v3-intro-05-order-me-word-2",
+                "v3-intro-05-order-me-word-3"
+              ],
+              "spoken_cantonese": true,
+              "auditory_only_until_answer": true
+            },
+            "audio": {
+              "text": "你叫咩",
+              "traditional": "你叫咩",
+              "jyutping": "nei5 giu3 me1",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "reveal_character": "你叫咩",
+            "reveal_jyutping": "nei5 giu3 me1",
+            "reveal_english": "what are you called"
+          },
+          {
+            "id": "v3-intro-05-order-hai-mai",
+            "type": "order_words",
+            "skill": "listening",
+            "prompt": "Build this spoken question: 你係咪 Jordyn？",
+            "options": [
+              {
+                "id": "v3-intro-05-order-hai-mai-word-1",
+                "label": "你",
+                "jyutping": "nei5",
+                "audio": {
+                  "text": "你",
+                  "traditional": "你",
+                  "jyutping": "nei5",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-05-order-hai-mai-word-2",
+                "label": "係咪",
+                "jyutping": "hai6 mai6",
+                "audio": {
+                  "text": "係咪",
+                  "traditional": "係咪",
+                  "jyutping": "hai6 mai6",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-05-order-hai-mai-word-3",
+                "label": "Jordyn",
+                "placeholder": true
+              }
+            ],
+            "metadata": {
+              "objective_id": "v3-intro-05-speak",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "expected_order": [
+                "v3-intro-05-order-hai-mai-word-1",
+                "v3-intro-05-order-hai-mai-word-2",
+                "v3-intro-05-order-hai-mai-word-3"
+              ],
+              "spoken_cantonese": true,
+              "auditory_only_until_answer": true
+            },
+            "audio": {
+              "text": "你係咪",
+              "traditional": "你係咪",
+              "jyutping": "nei5 hai6 mai6",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "reveal_character": "你係咪",
+            "reveal_jyutping": "nei5 hai6 mai6",
+            "reveal_english": "are you"
+          },
+          {
+            "id": "v3-intro-05-cloze-me",
+            "type": "cloze",
+            "skill": "reading",
+            "prompt": "你叫＿＿名？",
+            "options": [
+              {
+                "id": "v3-intro-05-cloze-me-choice-1",
+                "label": "咩",
+                "jyutping": "me1",
+                "audio": {
+                  "text": "咩",
+                  "traditional": "咩",
+                  "jyutping": "me1",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-05-cloze-me-choice-2",
+                "label": "名",
+                "jyutping": "ming4",
+                "audio": {
+                  "text": "名",
+                  "traditional": "名",
+                  "jyutping": "ming4",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-05-cloze-me-choice-3",
+                "label": "係",
+                "jyutping": "hai6",
+                "audio": {
+                  "text": "係",
+                  "traditional": "係",
+                  "jyutping": "hai6",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              }
+            ],
+            "correct_option_id": "v3-intro-05-cloze-me-choice-1",
+            "metadata": {
+              "objective_id": "v3-intro-05-speak",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "expected": "咩",
+              "allow_manual_input": false,
+              "spoken_cantonese": true
+            },
+            "reveal_character": "咩",
+            "reveal_jyutping": "me1",
+            "reveal_english": "what"
+          },
+          {
+            "id": "v3-intro-05-cloze-jordyn",
+            "type": "cloze",
+            "skill": "reading",
+            "prompt": "你係咪 ＿＿？",
+            "options": [
+              {
+                "id": "v3-intro-05-cloze-jordyn-choice-1",
+                "label": "Jordyn",
+                "placeholder": true
+              },
+              {
+                "id": "v3-intro-05-cloze-jordyn-choice-2",
+                "label": "Alex",
+                "placeholder": true
+              },
+              {
+                "id": "v3-intro-05-cloze-jordyn-choice-3",
+                "label": "Sam",
+                "placeholder": true
+              }
+            ],
+            "correct_option_id": "v3-intro-05-cloze-jordyn-choice-1",
+            "metadata": {
+              "objective_id": "v3-intro-05-speak",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "expected": "Jordyn",
+              "allow_manual_input": false,
+              "spoken_cantonese": true
+            }
+          },
+          {
+            "id": "v3-intro-05-cloze-yes",
+            "type": "cloze",
+            "skill": "reading",
+            "prompt": "你係咪 Jordyn？＿＿。",
+            "options": [
+              {
+                "id": "v3-intro-05-cloze-yes-choice-1",
+                "label": "係",
+                "jyutping": "hai6",
+                "audio": {
+                  "text": "係",
+                  "traditional": "係",
+                  "jyutping": "hai6",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-05-cloze-yes-choice-2",
+                "label": "叫",
+                "jyutping": "giu3",
+                "audio": {
+                  "text": "叫",
+                  "traditional": "叫",
+                  "jyutping": "giu3",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-05-cloze-yes-choice-3",
+                "label": "咩",
+                "jyutping": "me1",
+                "audio": {
+                  "text": "咩",
+                  "traditional": "咩",
+                  "jyutping": "me1",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              }
+            ],
+            "correct_option_id": "v3-intro-05-cloze-yes-choice-1",
+            "metadata": {
+              "objective_id": "v3-intro-05-speak",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "expected": "係",
+              "allow_manual_input": false,
+              "spoken_cantonese": true
+            },
+            "reveal_character": "係",
+            "reveal_jyutping": "hai6",
+            "reveal_english": "is / are / yes"
+          },
+          {
+            "id": "v3-intro-05-speak-name-q",
+            "type": "speak",
+            "skill": "speaking",
+            "prompt": "Listen, then say 你叫咩名.",
+            "audio": {
+              "text": "你叫咩名",
+              "traditional": "你叫咩名",
+              "jyutping": "nei5 giu3 me1 ming4",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "reveal_character": "你叫咩名",
+            "reveal_jyutping": "nei5 giu3 me1 ming4",
+            "reveal_english": "what's your name",
+            "metadata": {
+              "objective_id": "v3-intro-05-speak",
+              "section": "challenge",
+              "exercise_kind": "challenge",
+              "expected": "nei5 giu3 me1 ming4",
+              "expected_text": "你叫咩名",
+              "spoken_cantonese": true
+            }
+          },
+          {
+            "id": "v3-intro-05-speak-hai",
+            "type": "speak",
+            "skill": "speaking",
+            "prompt": "Listen, then say 係.",
+            "audio": {
+              "text": "係",
+              "traditional": "係",
+              "jyutping": "hai6",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "reveal_character": "係",
+            "reveal_jyutping": "hai6",
+            "reveal_english": "is / are / yes",
+            "metadata": {
+              "objective_id": "v3-intro-05-speak",
+              "section": "challenge",
+              "exercise_kind": "challenge",
+              "expected": "hai6",
+              "expected_text": "係",
+              "spoken_cantonese": true
+            }
+          }
+        ],
+        "lesson_intro": {
+          "id": "v3-intro-05-intro",
+          "title": "你 · 咩 · 係咪",
+          "summary": "Ask in spoken Cantonese: 你叫咩名？你係咪 Jordyn？",
+          "learning_goals": [
+            "Hear 你, 咩, and 係咪",
+            "Ask 你叫咩名 and 你叫咩",
+            "Ask 你係咪 Jordyn and answer 係"
+          ],
+          "new_items": [
+            {
+              "traditional": "你",
+              "jyutping": "nei5",
+              "tone": 5,
+              "tones": [
+                5
+              ],
+              "english": "you",
+              "audio": {
+                "text": "你",
+                "traditional": "你",
+                "jyutping": "nei5",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
+            },
+            {
+              "traditional": "咩",
+              "jyutping": "me1",
+              "tone": 1,
+              "tones": [
+                1
+              ],
+              "english": "what",
+              "audio": {
+                "text": "咩",
+                "traditional": "咩",
+                "jyutping": "me1",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
+            },
+            {
+              "traditional": "係咪",
+              "jyutping": "hai6 mai6",
+              "tone": 6,
+              "tones": [
+                6,
+                6
+              ],
+              "english": "is it?",
+              "audio": {
+                "text": "係咪",
+                "traditional": "係咪",
+                "jyutping": "hai6 mai6",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
+            }
+          ],
+          "review_items": [
+            {
+              "traditional": "我",
+              "jyutping": "ngo5",
+              "tone": 5,
+              "tones": [
+                5
+              ],
+              "english": "I / me",
+              "audio": {
+                "text": "我",
+                "traditional": "我",
+                "jyutping": "ngo5",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
+            },
+            {
+              "traditional": "叫",
+              "jyutping": "giu3",
+              "tone": 3,
+              "tones": [
+                3
+              ],
+              "english": "to be called",
+              "audio": {
+                "text": "叫",
+                "traditional": "叫",
+                "jyutping": "giu3",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
+            },
+            {
+              "traditional": "係",
+              "jyutping": "hai6",
+              "tone": 6,
+              "tones": [
+                6
+              ],
+              "english": "is / are / yes",
+              "audio": {
+                "text": "係",
+                "traditional": "係",
+                "jyutping": "hai6",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
+            },
+            {
+              "traditional": "名",
+              "jyutping": "ming4",
+              "tone": 4,
+              "tones": [
+                4
+              ],
+              "english": "name",
+              "audio": {
+                "text": "名",
+                "traditional": "名",
+                "jyutping": "ming4",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
+            },
+            {
+              "traditional": "Jordyn",
+              "jyutping": "",
+              "english": "Jordyn",
+              "placeholder": true
+            }
+          ],
+          "audio": {
+            "text": "你",
+            "traditional": "你",
+            "jyutping": "nei5",
+            "language": "yue-HK",
+            "script": "Hant"
+          },
+          "presentation": {
+            "traditional_label": "Spoken Cantonese",
+            "romanization_label": "Jyutping",
+            "listen_first": true
+          },
+          "sections": [
+            {
+              "type": "text",
+              "title": "Questions people actually ask",
+              "body": "Ask with 咩 and 係咪. 你叫咩名？你叫咩？你係咪 Jordyn？ Answer 係。"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "v3-intro-review",
+      "unit_id": "v3-unit-2",
+      "title": "介紹練習",
+      "lesson_type": "introduction_review",
+      "sort_order": 6,
+      "prerequisites": [
+        "v3-intro-05"
+      ],
+      "objectives": [
+        "v3-intro-review-speak"
+      ],
+      "content": {
+        "target": {
+          "traditional": "我",
+          "jyutping": "ngo5",
+          "tone": 5,
+          "tones": [
+            5
+          ],
+          "english": "I / me",
+          "audio": {
+            "text": "我",
+            "traditional": "我",
+            "jyutping": "ngo5",
+            "language": "yue-HK",
+            "script": "Hant"
+          },
+          "theme": "介紹自己練習",
+          "words": [
+            {
+              "traditional": "我",
+              "jyutping": "ngo5",
+              "tone": 5,
+              "tones": [
+                5
+              ],
+              "english": "I / me",
+              "audio": {
+                "text": "我",
+                "traditional": "我",
+                "jyutping": "ngo5",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
+            },
+            {
+              "traditional": "叫",
+              "jyutping": "giu3",
+              "tone": 3,
+              "tones": [
+                3
+              ],
+              "english": "to be called",
+              "audio": {
+                "text": "叫",
+                "traditional": "叫",
+                "jyutping": "giu3",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
+            },
+            {
+              "traditional": "係",
+              "jyutping": "hai6",
+              "tone": 6,
+              "tones": [
+                6
+              ],
+              "english": "is / are / yes",
+              "audio": {
+                "text": "係",
+                "traditional": "係",
+                "jyutping": "hai6",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
+            },
+            {
+              "traditional": "個",
+              "jyutping": "go3",
+              "tone": 3,
+              "tones": [
+                3
+              ],
+              "english": "classifier",
+              "audio": {
+                "text": "個",
+                "traditional": "個",
+                "jyutping": "go3",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
+            },
+            {
+              "traditional": "名",
+              "jyutping": "ming4",
+              "tone": 4,
+              "tones": [
+                4
+              ],
+              "english": "name",
+              "audio": {
+                "text": "名",
+                "traditional": "名",
+                "jyutping": "ming4",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
+            },
+            {
+              "traditional": "有",
+              "jyutping": "jau5",
+              "tone": 5,
+              "tones": [
+                5
+              ],
+              "english": "have",
+              "audio": {
+                "text": "有",
+                "traditional": "有",
+                "jyutping": "jau5",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
+            },
+            {
+              "traditional": "你",
+              "jyutping": "nei5",
+              "tone": 5,
+              "tones": [
+                5
+              ],
+              "english": "you",
+              "audio": {
+                "text": "你",
+                "traditional": "你",
+                "jyutping": "nei5",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
+            },
+            {
+              "traditional": "咩",
+              "jyutping": "me1",
+              "tone": 1,
+              "tones": [
+                1
+              ],
+              "english": "what",
+              "audio": {
+                "text": "咩",
+                "traditional": "咩",
+                "jyutping": "me1",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
+            },
+            {
+              "traditional": "係咪",
+              "jyutping": "hai6 mai6",
+              "tone": 6,
+              "tones": [
+                6,
+                6
+              ],
+              "english": "is it?",
+              "audio": {
+                "text": "係咪",
+                "traditional": "係咪",
+                "jyutping": "hai6 mai6",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
+            }
+          ]
+        },
+        "context": {
+          "traditional": "我、叫、係、個、名、有、你、咩、係咪",
+          "jyutping": "ngo5 giu3 hai6 go3 ming4 jau5 nei5 me1 hai6 mai6",
+          "tones": [
+            5,
+            3,
+            6,
+            3,
+            4,
+            5,
+            5,
+            1,
+            6,
+            6
+          ],
+          "english": "介紹自己練習",
+          "progression": 18
+        },
+        "vocabulary": [
+          {
+            "lexeme_id": "v3-wo"
+          },
+          {
+            "lexeme_id": "v3-giu"
+          },
+          {
+            "lexeme_id": "v3-hai"
+          },
+          {
+            "lexeme_id": "v3-go"
+          },
+          {
+            "lexeme_id": "v3-ming"
+          },
+          {
+            "lexeme_id": "v3-jau"
+          },
+          {
+            "lexeme_id": "v3-nei"
+          },
+          {
+            "lexeme_id": "v3-me"
+          },
+          {
+            "lexeme_id": "v3-hai-mai"
+          },
+          {
+            "lexeme_id": "v3-jordyn"
+          }
+        ],
+        "steps": [
+          {
+            "id": "v3-intro-review-order-wo-giu",
+            "type": "order_words",
+            "skill": "listening",
+            "prompt": "Build this spoken sentence: 我叫 Jordyn。",
+            "options": [
+              {
+                "id": "v3-intro-review-order-wo-giu-word-1",
+                "label": "我",
+                "jyutping": "ngo5",
+                "audio": {
+                  "text": "我",
+                  "traditional": "我",
+                  "jyutping": "ngo5",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-review-order-wo-giu-word-2",
+                "label": "叫",
+                "jyutping": "giu3",
+                "audio": {
+                  "text": "叫",
+                  "traditional": "叫",
+                  "jyutping": "giu3",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-review-order-wo-giu-word-3",
+                "label": "Jordyn",
+                "placeholder": true
+              }
+            ],
+            "metadata": {
+              "objective_id": "v3-intro-review-speak",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "expected_order": [
+                "v3-intro-review-order-wo-giu-word-1",
+                "v3-intro-review-order-wo-giu-word-2",
+                "v3-intro-review-order-wo-giu-word-3"
+              ],
+              "spoken_cantonese": true,
+              "auditory_only_until_answer": true
+            },
+            "audio": {
+              "text": "我叫",
+              "traditional": "我叫",
+              "jyutping": "ngo5 giu3",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "reveal_character": "我叫",
+            "reveal_jyutping": "ngo5 giu3",
+            "reveal_english": "I'm called"
+          },
+          {
+            "id": "v3-intro-review-order-ming",
+            "type": "order_words",
+            "skill": "listening",
+            "prompt": "Build this spoken sentence: 我個名係 Jordyn。",
+            "options": [
+              {
+                "id": "v3-intro-review-order-ming-word-1",
+                "label": "我",
+                "jyutping": "ngo5",
+                "audio": {
+                  "text": "我",
+                  "traditional": "我",
+                  "jyutping": "ngo5",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-review-order-ming-word-2",
+                "label": "個",
+                "jyutping": "go3",
+                "audio": {
+                  "text": "個",
+                  "traditional": "個",
+                  "jyutping": "go3",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-review-order-ming-word-3",
+                "label": "名",
+                "jyutping": "ming4",
+                "audio": {
+                  "text": "名",
+                  "traditional": "名",
+                  "jyutping": "ming4",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-review-order-ming-word-4",
+                "label": "係",
+                "jyutping": "hai6",
+                "audio": {
+                  "text": "係",
+                  "traditional": "係",
+                  "jyutping": "hai6",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-review-order-ming-word-5",
+                "label": "Jordyn",
+                "placeholder": true
+              }
+            ],
+            "metadata": {
+              "objective_id": "v3-intro-review-speak",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "expected_order": [
+                "v3-intro-review-order-ming-word-1",
+                "v3-intro-review-order-ming-word-2",
+                "v3-intro-review-order-ming-word-3",
+                "v3-intro-review-order-ming-word-4",
+                "v3-intro-review-order-ming-word-5"
+              ],
+              "spoken_cantonese": true,
+              "auditory_only_until_answer": true
+            },
+            "audio": {
+              "text": "我個名係",
+              "traditional": "我個名係",
+              "jyutping": "ngo5 go3 ming4 hai6",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "reveal_character": "我個名係",
+            "reveal_jyutping": "ngo5 go3 ming4 hai6",
+            "reveal_english": "my name is"
+          },
+          {
+            "id": "v3-intro-review-order-books",
+            "type": "order_words",
+            "skill": "listening",
+            "prompt": "Build this spoken sentence: 我有三本書。",
+            "options": [
+              {
+                "id": "v3-intro-review-order-books-word-1",
+                "label": "我",
+                "jyutping": "ngo5",
+                "audio": {
+                  "text": "我",
+                  "traditional": "我",
+                  "jyutping": "ngo5",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-review-order-books-word-2",
+                "label": "有",
+                "jyutping": "jau5",
+                "audio": {
+                  "text": "有",
+                  "traditional": "有",
+                  "jyutping": "jau5",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-review-order-books-word-3",
+                "label": "三",
+                "jyutping": "saam1",
+                "audio": {
+                  "text": "三",
+                  "traditional": "三",
+                  "jyutping": "saam1",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-review-order-books-word-4",
+                "label": "本",
+                "jyutping": "bun2",
+                "audio": {
+                  "text": "本",
+                  "traditional": "本",
+                  "jyutping": "bun2",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-review-order-books-word-5",
+                "label": "書",
+                "jyutping": "syu1",
+                "audio": {
+                  "text": "書",
+                  "traditional": "書",
+                  "jyutping": "syu1",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              }
+            ],
+            "metadata": {
+              "objective_id": "v3-intro-review-speak",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "expected_order": [
+                "v3-intro-review-order-books-word-1",
+                "v3-intro-review-order-books-word-2",
+                "v3-intro-review-order-books-word-3",
+                "v3-intro-review-order-books-word-4",
+                "v3-intro-review-order-books-word-5"
+              ],
+              "spoken_cantonese": true,
+              "auditory_only_until_answer": true
+            },
+            "audio": {
+              "text": "我有三本書",
+              "traditional": "我有三本書",
+              "jyutping": "ngo5 jau5 saam1 bun2 syu1",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "reveal_character": "我有三本書",
+            "reveal_jyutping": "ngo5 jau5 saam1 bun2 syu1",
+            "reveal_english": "I have three books"
+          },
+          {
+            "id": "v3-intro-review-order-q",
+            "type": "order_words",
+            "skill": "listening",
+            "prompt": "Build this spoken question: 你叫咩名？",
+            "options": [
+              {
+                "id": "v3-intro-review-order-q-word-1",
+                "label": "你",
+                "jyutping": "nei5",
+                "audio": {
+                  "text": "你",
+                  "traditional": "你",
+                  "jyutping": "nei5",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-review-order-q-word-2",
+                "label": "叫",
+                "jyutping": "giu3",
+                "audio": {
+                  "text": "叫",
+                  "traditional": "叫",
+                  "jyutping": "giu3",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-review-order-q-word-3",
+                "label": "咩",
+                "jyutping": "me1",
+                "audio": {
+                  "text": "咩",
+                  "traditional": "咩",
+                  "jyutping": "me1",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-review-order-q-word-4",
+                "label": "名",
+                "jyutping": "ming4",
+                "audio": {
+                  "text": "名",
+                  "traditional": "名",
+                  "jyutping": "ming4",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              }
+            ],
+            "metadata": {
+              "objective_id": "v3-intro-review-speak",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "expected_order": [
+                "v3-intro-review-order-q-word-1",
+                "v3-intro-review-order-q-word-2",
+                "v3-intro-review-order-q-word-3",
+                "v3-intro-review-order-q-word-4"
+              ],
+              "spoken_cantonese": true,
+              "auditory_only_until_answer": true
+            },
+            "audio": {
+              "text": "你叫咩名",
+              "traditional": "你叫咩名",
+              "jyutping": "nei5 giu3 me1 ming4",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "reveal_character": "你叫咩名",
+            "reveal_jyutping": "nei5 giu3 me1 ming4",
+            "reveal_english": "what's your name"
+          },
+          {
+            "id": "v3-intro-review-cloze-jordyn",
+            "type": "cloze",
+            "skill": "reading",
+            "prompt": "你係咪 ＿＿？",
+            "options": [
+              {
+                "id": "v3-intro-review-cloze-jordyn-choice-1",
+                "label": "Jordyn",
+                "placeholder": true
+              },
+              {
+                "id": "v3-intro-review-cloze-jordyn-choice-2",
+                "label": "Alex",
+                "placeholder": true
+              },
+              {
+                "id": "v3-intro-review-cloze-jordyn-choice-3",
+                "label": "Sam",
+                "placeholder": true
+              }
+            ],
+            "correct_option_id": "v3-intro-review-cloze-jordyn-choice-1",
+            "metadata": {
+              "objective_id": "v3-intro-review-speak",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "expected": "Jordyn",
+              "allow_manual_input": false,
+              "spoken_cantonese": true
+            }
+          },
+          {
+            "id": "v3-intro-review-cloze-yes",
+            "type": "cloze",
+            "skill": "reading",
+            "prompt": "你係咪 Jordyn？＿＿。",
+            "options": [
+              {
+                "id": "v3-intro-review-cloze-yes-choice-1",
+                "label": "係",
+                "jyutping": "hai6",
+                "audio": {
+                  "text": "係",
+                  "traditional": "係",
+                  "jyutping": "hai6",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-review-cloze-yes-choice-2",
+                "label": "咩",
+                "jyutping": "me1",
+                "audio": {
+                  "text": "咩",
+                  "traditional": "咩",
+                  "jyutping": "me1",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-review-cloze-yes-choice-3",
+                "label": "有",
+                "jyutping": "jau5",
+                "audio": {
+                  "text": "有",
+                  "traditional": "有",
+                  "jyutping": "jau5",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              }
+            ],
+            "correct_option_id": "v3-intro-review-cloze-yes-choice-1",
+            "metadata": {
+              "objective_id": "v3-intro-review-speak",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "expected": "係",
+              "allow_manual_input": false,
+              "spoken_cantonese": true
+            },
+            "reveal_character": "係",
+            "reveal_jyutping": "hai6",
+            "reveal_english": "is / are / yes"
+          },
+          {
+            "id": "v3-intro-review-speak-wo-giu",
+            "type": "speak",
+            "skill": "speaking",
+            "prompt": "Listen, then say 我叫.",
+            "audio": {
+              "text": "我叫",
+              "traditional": "我叫",
+              "jyutping": "ngo5 giu3",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "reveal_character": "我叫",
+            "reveal_jyutping": "ngo5 giu3",
+            "reveal_english": "I'm called",
+            "metadata": {
+              "objective_id": "v3-intro-review-speak",
+              "section": "challenge",
+              "exercise_kind": "challenge",
+              "expected": "ngo5 giu3",
+              "expected_text": "我叫",
+              "spoken_cantonese": true
+            }
+          },
+          {
+            "id": "v3-intro-review-speak-q",
+            "type": "speak",
+            "skill": "speaking",
+            "prompt": "Listen, then say 你叫咩名.",
+            "audio": {
+              "text": "你叫咩名",
+              "traditional": "你叫咩名",
+              "jyutping": "nei5 giu3 me1 ming4",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "reveal_character": "你叫咩名",
+            "reveal_jyutping": "nei5 giu3 me1 ming4",
+            "reveal_english": "what's your name",
+            "metadata": {
+              "objective_id": "v3-intro-review-speak",
+              "section": "challenge",
+              "exercise_kind": "challenge",
+              "expected": "nei5 giu3 me1 ming4",
+              "expected_text": "你叫咩名",
+              "spoken_cantonese": true
+            }
+          },
+          {
+            "id": "v3-intro-review-type-nei",
+            "type": "typing",
+            "skill": "writing",
+            "prompt": "Type 你.",
+            "reveal_character": "你",
+            "reveal_jyutping": "nei5",
+            "reveal_english": "you",
+            "metadata": {
+              "objective_id": "v3-intro-review-speak",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "accepted_answers": [
+                "你"
+              ],
+              "input_mode": "chinese_character",
+              "spoken_cantonese": true
+            }
+          },
+          {
+            "id": "v3-intro-review-recognition-01",
+            "type": "select_character",
+            "skill": "listening",
+            "prompt": "Listen. Choose the Traditional Chinese number you hear.",
+            "audio": {
+              "text": "三",
+              "traditional": "三",
+              "jyutping": "saam1",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "options": [
+              {
+                "id": "number-3",
+                "label": "三",
+                "jyutping": "saam1",
+                "audio": {
+                  "text": "三",
+                  "traditional": "三",
+                  "jyutping": "saam1",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "number-1",
+                "label": "一",
+                "jyutping": "jat1",
+                "audio": {
+                  "text": "一",
+                  "traditional": "一",
+                  "jyutping": "jat1",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "number-2",
+                "label": "二",
+                "jyutping": "ji6",
+                "audio": {
+                  "text": "二",
+                  "traditional": "二",
+                  "jyutping": "ji6",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              }
+            ],
+            "correct_option_id": "number-3",
+            "reveal_character": "三",
+            "reveal_jyutping": "saam1",
+            "reveal_english": "three",
+            "metadata": {
+              "objective_id": "v3-intro-review-recognize",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "traditional": "三",
+              "jyutping": "saam1",
+              "tones": [
+                1
+              ],
+              "cumulative_through": 10,
+              "auditory_only_until_answer": true
+            }
+          },
+          {
+            "id": "v3-intro-review-recognition-02",
+            "type": "select_character",
+            "skill": "listening",
+            "prompt": "Listen. Choose the Traditional Chinese number you hear.",
+            "audio": {
+              "text": "五",
+              "traditional": "五",
+              "jyutping": "ng5",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "options": [
+              {
+                "id": "number-5",
+                "label": "五",
+                "jyutping": "ng5",
+                "audio": {
+                  "text": "五",
+                  "traditional": "五",
+                  "jyutping": "ng5",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "number-1",
+                "label": "一",
+                "jyutping": "jat1",
+                "audio": {
+                  "text": "一",
+                  "traditional": "一",
+                  "jyutping": "jat1",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "number-2",
+                "label": "二",
+                "jyutping": "ji6",
+                "audio": {
+                  "text": "二",
+                  "traditional": "二",
+                  "jyutping": "ji6",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              }
+            ],
+            "correct_option_id": "number-5",
+            "reveal_character": "五",
+            "reveal_jyutping": "ng5",
+            "reveal_english": "five",
+            "metadata": {
+              "objective_id": "v3-intro-review-recognize",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "traditional": "五",
+              "jyutping": "ng5",
+              "tones": [
+                5
+              ],
+              "cumulative_through": 10,
+              "auditory_only_until_answer": true
+            }
+          },
+          {
+            "id": "v3-intro-review-recognition-03",
+            "type": "select_character",
+            "skill": "listening",
+            "prompt": "Listen. Choose the Traditional Chinese number you hear.",
+            "audio": {
+              "text": "十",
+              "traditional": "十",
+              "jyutping": "sap6",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "options": [
+              {
+                "id": "number-10",
+                "label": "十",
+                "jyutping": "sap6",
+                "audio": {
+                  "text": "十",
+                  "traditional": "十",
+                  "jyutping": "sap6",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "number-1",
+                "label": "一",
+                "jyutping": "jat1",
+                "audio": {
+                  "text": "一",
+                  "traditional": "一",
+                  "jyutping": "jat1",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "number-2",
+                "label": "二",
+                "jyutping": "ji6",
+                "audio": {
+                  "text": "二",
+                  "traditional": "二",
+                  "jyutping": "ji6",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              }
+            ],
+            "correct_option_id": "number-10",
+            "reveal_character": "十",
+            "reveal_jyutping": "sap6",
+            "reveal_english": "ten",
+            "metadata": {
+              "objective_id": "v3-intro-review-recognize",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "traditional": "十",
+              "jyutping": "sap6",
+              "tones": [
+                6
+              ],
+              "cumulative_through": 10,
+              "auditory_only_until_answer": true
+            }
+          },
+          {
+            "id": "v3-intro-review-recognition-04",
+            "type": "select_character",
+            "skill": "listening",
+            "prompt": "Listen. Choose the Traditional Chinese number you hear.",
+            "audio": {
+              "text": "二",
+              "traditional": "二",
+              "jyutping": "ji6",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "options": [
+              {
+                "id": "number-2",
+                "label": "二",
+                "jyutping": "ji6",
+                "audio": {
+                  "text": "二",
+                  "traditional": "二",
+                  "jyutping": "ji6",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "number-1",
+                "label": "一",
+                "jyutping": "jat1",
+                "audio": {
+                  "text": "一",
+                  "traditional": "一",
+                  "jyutping": "jat1",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "number-3",
+                "label": "三",
+                "jyutping": "saam1",
+                "audio": {
+                  "text": "三",
+                  "traditional": "三",
+                  "jyutping": "saam1",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              }
+            ],
+            "correct_option_id": "number-2",
+            "reveal_character": "二",
+            "reveal_jyutping": "ji6",
+            "reveal_english": "two",
+            "metadata": {
+              "objective_id": "v3-intro-review-recognize",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "traditional": "二",
+              "jyutping": "ji6",
+              "tones": [
+                6
+              ],
+              "cumulative_through": 10,
+              "auditory_only_until_answer": true
             }
           }
         ]

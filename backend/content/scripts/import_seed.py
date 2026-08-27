@@ -95,8 +95,8 @@ async def _upsert_lexeme(session, lex: dict) -> None:
     row = await session.scalar(select(Lexeme).where(Lexeme.id == lex["id"]))
     if row:
         row.traditional = lex["traditional"]
-        row.jyutping = lex["jyutping"]
-        row.tone = lex["tone"]
+        row.jyutping = lex.get("jyutping") or ""
+        row.tone = lex.get("tone") or 0
         row.english = lex["english"]
         row.tags = lex.get("tags", [])
         row.difficulty = lex.get("difficulty", 1)
@@ -106,8 +106,8 @@ async def _upsert_lexeme(session, lex: dict) -> None:
         Lexeme(
             id=lex["id"],
             traditional=lex["traditional"],
-            jyutping=lex["jyutping"],
-            tone=lex["tone"],
+            jyutping=lex.get("jyutping") or "",
+            tone=lex.get("tone") or 0,
             english=lex["english"],
             tags=lex.get("tags", []),
             difficulty=lex.get("difficulty", 1),

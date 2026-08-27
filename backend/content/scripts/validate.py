@@ -4,6 +4,7 @@ import re
 from collections import Counter
 
 JYUTPING_SYLLABLE = re.compile(r"^[a-z]+[1-6]$", re.IGNORECASE)
+LATIN_PLACEHOLDER = re.compile(r"^[A-Za-z]+$")
 HAN_CHARACTER = re.compile(r"[\u3400-\u9fff]")
 TONE_VALID = {1, 2, 3, 4, 5, 6}
 SKILLS = {"listening", "speaking", "reading", "writing"}
@@ -56,6 +57,10 @@ V2_PROGRESSION = V2_EXPECTATIONS["progression"]
 V3_EXPECTATIONS = _load_v3_expectations()
 
 
+def _is_latin_placeholder(value: str) -> bool:
+    return bool(LATIN_PLACEHOLDER.fullmatch(value or ""))
+
+
 def validate_jyutping(jyutping: str) -> list[str]:
     errors: list[str] = []
     if not jyutping.strip():
@@ -97,9 +102,13 @@ def _validate_tone_metadata(item: dict, label: str, require_tones: bool = False)
 
 def validate_lexeme(lexeme: dict) -> list[str]:
     errors: list[str] = []
-    for field in ("id", "traditional", "jyutping", "english"):
+    for field in ("id", "traditional", "english"):
         if not lexeme.get(field):
             errors.append(f"Missing field: {field}")
+    if lexeme.get("placeholder") or _is_latin_placeholder(str(lexeme.get("traditional", ""))):
+        return errors
+    if not lexeme.get("jyutping"):
+        errors.append("Missing field: jyutping")
     errors.extend(_validate_tone_metadata(lexeme, f"Lexeme {lexeme.get('id')}"))
     return errors
 
@@ -354,8 +363,10 @@ def _validate_v3(doc: dict) -> list[str]:
     lessons = doc.get("lessons", [])
     units = doc.get("units", [])
     expected_count = V3_EXPECTATIONS["lesson_count"]
-    if len(units) != 2:
-        errors.append(f"Beginner v3 must contain exactly 2 units, found {len(units)}")
+    if len(units) != len(V3_EXPECTATIONS["unit_lesson_counts"]):
+        errors.append(
+            f"Beginner v3 must contain exactly {len(V3_EXPECTATIONS['unit_lesson_counts'])} units, found {len(units)}"
+        )
     if len(lessons) != expected_count:
         errors.append(
             f"Beginner v3 must contain exactly {expected_count} lessons, found {len(lessons)}"
@@ -388,8 +399,13 @@ def _validate_v3(doc: dict) -> list[str]:
         "v3-orientation",
         "v3-tones",
         *(f"v3-number-{index:02d}" for index in range(1, 9)),
+        *(f"v3-intro-{index:02d}" for index in range(1, 6)),
     }
-    no_intro_lesson_ids = {"v3-number-review", "v3-number-challenge"}
+    no_intro_lesson_ids = {
+        "v3-number-review",
+        "v3-number-challenge",
+        "v3-intro-review",
+    }
     for lesson in lessons:
         lesson_id = lesson.get("id", "<missing>")
         content = lesson.get("content", {})
@@ -483,7 +499,9 @@ def validate_seed_document(doc: dict) -> list[str]:
         errors.extend(_duplicate_id_errors(collection, kind))
     for lex in lexemes:
         errors.extend(validate_lexeme(lex))
-        if is_v2 or is_v3:
+        if (is_v2 or is_v3) and not (
+            lex.get("placeholder") or _is_latin_placeholder(str(lex.get("traditional", "")))
+        ):
             errors.extend(_validate_traditional(lex.get("traditional", ""), f"Lexeme {lex.get('id')}"))
             errors.extend(
                 _validate_tone_metadata(lex, f"Lexeme {lex.get('id')}", require_tones=True)

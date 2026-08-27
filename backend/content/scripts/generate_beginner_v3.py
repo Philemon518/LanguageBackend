@@ -46,6 +46,30 @@ NUMBERS = (
     Target("十", "sap6", "ten"),
 )
 
+# Spoken Cantonese (口語), not 書面語: 係 / 咩 / 係咪 / 我個名, never 是 / 什麼 / 嗎 / 我的名字.
+WO = Target("我", "ngo5", "I / me")
+GIU = Target("叫", "giu3", "to be called")
+HAI = Target("係", "hai6", "is / are / yes")
+GO = Target("個", "go3", "classifier")
+MING = Target("名", "ming4", "name")
+JAU = Target("有", "jau5", "have")
+BUN = Target("本", "bun2", "book classifier")
+SYU = Target("書", "syu1", "book")
+NEI = Target("你", "nei5", "you")
+ME = Target("咩", "me1", "what")
+HAI_MAI = Target("係咪", "hai6 mai6", "is it?")
+WO_GIU = Target("我叫", "ngo5 giu3", "I'm called")
+WO_HAI = Target("我係", "ngo5 hai6", "I am")
+WO_GO_MING_HAI = Target("我個名係", "ngo5 go3 ming4 hai6", "my name is")
+WO_JAU = Target("我有", "ngo5 jau5", "I have")
+SAAM_BUN_SYU = Target("三本書", "saam1 bun2 syu1", "three books")
+YAT_BUN_SYU = Target("一本書", "jat1 bun2 syu1", "one book")
+NEI_GIU_ME_MING = Target("你叫咩名", "nei5 giu3 me1 ming4", "what's your name")
+NEI_GIU_ME = Target("你叫咩", "nei5 giu3 me1", "what are you called")
+NEI_HAI_MAI = Target("你係咪", "nei5 hai6 mai6", "are you")
+JORDYN = "Jordyn"
+NAME_DISTRACTORS = ("Alex", "Sam")
+
 TONE_LABELS = {
     1: "Tone 1 · high level",
     2: "Tone 2 · high rising",
@@ -137,18 +161,188 @@ def lesson_intro(
     }
 
 
+def latin_item(name: str) -> dict:
+    return {
+        "traditional": name,
+        "jyutping": "",
+        "english": name,
+        "placeholder": True,
+    }
+
+
+def word_tile(option_id: str, item: Target | str) -> dict:
+    if isinstance(item, str):
+        return {"id": option_id, "label": item, "placeholder": True}
+    return option(option_id, item)
+
+
+def order_step(
+    step_id: str,
+    prompt: str,
+    tokens: list[Target | str],
+    *,
+    objective_id: str,
+    section: str,
+    spoken: Target | None = None,
+) -> dict:
+    options = [
+        word_tile(f"{step_id}-word-{index}", token)
+        for index, token in enumerate(tokens, start=1)
+    ]
+    step = {
+        "id": step_id,
+        "type": "order_words",
+        "skill": "writing",
+        "prompt": prompt,
+        "options": options,
+        "metadata": {
+            "objective_id": objective_id,
+            "section": section,
+            "exercise_kind": section,
+            "expected_order": [option["id"] for option in options],
+            "spoken_cantonese": True,
+        },
+    }
+    if spoken:
+        step["audio"] = audio(spoken)
+        step["reveal_character"] = spoken.traditional
+        step["reveal_jyutping"] = spoken.jyutping
+        step["reveal_english"] = spoken.english
+        step["skill"] = "listening"
+        step["metadata"]["auditory_only_until_answer"] = True
+    return step
+
+
+def cloze_step(
+    step_id: str,
+    prompt: str,
+    answer: Target | str,
+    distractors: list[Target | str],
+    *,
+    objective_id: str,
+    section: str,
+    spoken: Target | None = None,
+) -> dict:
+    choices = [answer, *distractors]
+    options = [
+        word_tile(f"{step_id}-choice-{index}", item)
+        for index, item in enumerate(choices, start=1)
+    ]
+    step = {
+        "id": step_id,
+        "type": "cloze",
+        "skill": "reading",
+        "prompt": prompt,
+        "options": options,
+        "correct_option_id": options[0]["id"],
+        "metadata": {
+            "objective_id": objective_id,
+            "section": section,
+            "exercise_kind": section,
+            "expected": answer if isinstance(answer, str) else answer.traditional,
+            "allow_manual_input": False,
+            "spoken_cantonese": True,
+        },
+    }
+    if spoken:
+        step["audio"] = audio(spoken)
+        step["skill"] = "listening"
+        step["reveal_character"] = spoken.traditional
+        step["reveal_jyutping"] = spoken.jyutping
+        step["reveal_english"] = spoken.english
+    if isinstance(answer, Target):
+        step["reveal_character"] = answer.traditional
+        step["reveal_jyutping"] = answer.jyutping
+        step["reveal_english"] = answer.english
+    return step
+
+
+def speak_step(
+    step_id: str,
+    prompt: str,
+    target: Target,
+    *,
+    objective_id: str,
+    section: str,
+) -> dict:
+    return {
+        "id": step_id,
+        "type": "speak",
+        "skill": "speaking",
+        "prompt": prompt,
+        "audio": audio(target),
+        "reveal_character": target.traditional,
+        "reveal_jyutping": target.jyutping,
+        "reveal_english": target.english,
+        "metadata": {
+            "objective_id": objective_id,
+            "section": section,
+            "exercise_kind": section,
+            "expected": target.jyutping,
+            "expected_text": target.traditional,
+            "spoken_cantonese": True,
+        },
+    }
+
+
+def listen_choice_step(
+    step_id: str,
+    prompt: str,
+    target: Target,
+    choices: tuple[Target, ...],
+    *,
+    objective_id: str,
+    section: str,
+) -> dict:
+    options = [
+        option(f"{step_id}-opt-{index}", item)
+        for index, item in enumerate(choices, start=1)
+    ]
+    correct = next(
+        option_row["id"]
+        for option_row, item in zip(options, choices, strict=True)
+        if item == target
+    )
+    return {
+        "id": step_id,
+        "type": "select_character",
+        "skill": "listening",
+        "prompt": prompt,
+        "audio": audio(target),
+        "options": options,
+        "correct_option_id": correct,
+        "reveal_character": target.traditional,
+        "reveal_jyutping": target.jyutping,
+        "reveal_english": target.english,
+        "metadata": {
+            **metadata(objective_id=objective_id, section=section, target=target),
+            "auditory_only_until_answer": True,
+            "spoken_cantonese": True,
+        },
+    }
+
+
+def intro_item(item: Target | str) -> dict:
+    if isinstance(item, str):
+        return latin_item(item)
+    return target_dict(item)
+
+
 def intro_step(lesson_id: str, intro: dict, objective_id: str) -> dict:
-    first = intro["new_items"][0]
+    first = next(
+        (item for item in intro["new_items"] if item.get("audio")),
+        intro["new_items"][0],
+    )
     return {
         "id": f"{lesson_id}-intro",
         "type": "lesson_intro",
         "skill": "listening",
         "prompt": intro["title"],
-        "audio": first["audio"],
+        "audio": first.get("audio") or intro.get("audio"),
         "options": [{"id": "intro-ready", "label": "Start lesson"}],
         "correct_option_id": "intro-ready",
         "reveal_character": first["traditional"],
-        "reveal_jyutping": first["jyutping"],
+        "reveal_jyutping": first.get("jyutping") or "",
         "reveal_english": first["english"],
         "metadata": {
             "objective_id": objective_id,
@@ -451,8 +645,805 @@ def build_number_lesson(
     }
 
 
+def spoken_lesson_intro(
+    *,
+    lesson_id: str,
+    title: str,
+    summary: str,
+    goals: list[str],
+    new_items: tuple[Target | str, ...],
+    review_items: tuple[Target | str, ...],
+    sections: list[dict],
+) -> dict:
+    items = [intro_item(item) for item in new_items]
+    audio_source = next(item for item in items if item.get("audio"))
+    return {
+        "id": f"{lesson_id}-intro",
+        "title": title,
+        "summary": summary,
+        "learning_goals": goals,
+        "new_items": items,
+        "review_items": [intro_item(item) for item in review_items],
+        "audio": audio_source["audio"],
+        "presentation": {
+            "traditional_label": "Spoken Cantonese",
+            "romanization_label": "Jyutping",
+            "listen_first": True,
+        },
+        "sections": sections,
+    }
+
+
+def pack_spoken_lesson(
+    *,
+    lesson_id: str,
+    title: str,
+    lesson_type: str,
+    sort_order: int,
+    previous: str,
+    intro: dict | None,
+    primary: Target,
+    theme: str,
+    words: tuple[Target, ...],
+    lexemes: list[str],
+    steps: list[dict],
+    progression: int,
+) -> dict:
+    content: dict = {
+        "target": {
+            **target_dict(primary),
+            "theme": theme,
+            "words": [target_dict(item) for item in words],
+        },
+        "context": {
+            "traditional": "、".join(item.traditional for item in words),
+            "jyutping": " ".join(item.jyutping for item in words),
+            "tones": [tone for item in words for tone in tones(item.jyutping)],
+            "english": theme,
+            "progression": progression,
+        },
+        "vocabulary": [{"lexeme_id": lexeme_id} for lexeme_id in lexemes],
+        "steps": steps,
+    }
+    if intro is not None:
+        content["lesson_intro"] = intro
+    return {
+        "id": lesson_id,
+        "unit_id": "v3-unit-2",
+        "title": title,
+        "lesson_type": lesson_type,
+        "sort_order": sort_order,
+        "prerequisites": [previous],
+        "objectives": [f"{lesson_id}-speak"],
+        "content": content,
+    }
+
+
+def short_number_review(lesson_id: str, picks: tuple[Target, ...], start: int) -> list[dict]:
+    return [
+        number_recognition_step(lesson_id, start + index, target, NUMBERS)
+        for index, target in enumerate(picks)
+    ]
+
+
+def typing_character_step(
+    step_id: str,
+    target: Target,
+    *,
+    objective_id: str,
+    section: str,
+) -> dict:
+    return {
+        "id": step_id,
+        "type": "typing",
+        "skill": "writing",
+        "prompt": f"Type {target.traditional}.",
+        "reveal_character": target.traditional,
+        "reveal_jyutping": target.jyutping,
+        "reveal_english": target.english,
+        "metadata": {
+            "objective_id": objective_id,
+            "section": section,
+            "exercise_kind": section,
+            "accepted_answers": [target.traditional],
+            "input_mode": "chinese_character",
+            "spoken_cantonese": True,
+        },
+    }
+
+
+def build_introduction_lessons(previous: str) -> list[dict]:
+    """Six spoken-Cantonese introduction lessons. No 书面语, no 字."""
+    lessons: list[dict] = []
+    obj = lambda lesson_id: f"{lesson_id}-speak"
+
+    # 2.1 我 · 叫
+    lesson_id = "v3-intro-01"
+    intro = spoken_lesson_intro(
+        lesson_id=lesson_id,
+        title="我 · 叫",
+        summary="Say who you are in spoken Cantonese: 我叫 Jordyn.",
+        goals=[
+            "Hear and read 我 and 叫",
+            "Build 我叫 Jordyn with tiles",
+            "Say 我叫",
+        ],
+        new_items=(WO, GIU, JORDYN),
+        review_items=(),
+        sections=[
+            {
+                "type": "text",
+                "title": "Spoken Cantonese",
+                "body": "This is how people talk. 我叫 Jordyn means “I'm called Jordyn.” Jordyn is a name tile you choose, not a name you type.",
+            },
+            {
+                "type": "cards",
+                "title": "First sentence",
+                "cards": [
+                    {"title": "我叫", "body": "Spoken: ngo5 giu3 — I'm called"},
+                    {"title": "Jordyn", "body": "A name block. Tap it. Do not type your own name."},
+                ],
+            },
+        ],
+    )
+    steps = [intro_step(lesson_id, intro, obj(lesson_id))]
+    steps.append(
+        listen_choice_step(
+            f"{lesson_id}-hear-wo",
+            "Listen. Choose the spoken word you hear.",
+            WO,
+            (WO, GIU, NEI),
+            objective_id=obj(lesson_id),
+            section="recognition",
+        )
+    )
+    steps.append(
+        listen_choice_step(
+            f"{lesson_id}-hear-giu",
+            "Listen. Choose the spoken word you hear.",
+            GIU,
+            (GIU, WO, HAI),
+            objective_id=obj(lesson_id),
+            section="recognition",
+        )
+    )
+    steps.append(
+        order_step(
+            f"{lesson_id}-order-wo-giu",
+            "Build this spoken sentence: 我叫 Jordyn。",
+            [WO, GIU, JORDYN],
+            objective_id=obj(lesson_id),
+            section="recognition",
+            spoken=WO_GIU,
+        )
+    )
+    steps.append(
+        cloze_step(
+            f"{lesson_id}-cloze-giu",
+            "我＿＿ Jordyn。",
+            GIU,
+            [HAI, JAU],
+            objective_id=obj(lesson_id),
+            section="recognition",
+        )
+    )
+    steps.append(
+        cloze_step(
+            f"{lesson_id}-cloze-jordyn",
+            "我叫 ＿＿。",
+            JORDYN,
+            list(NAME_DISTRACTORS),
+            objective_id=obj(lesson_id),
+            section="recognition",
+        )
+    )
+    steps.append(
+        speak_step(
+            f"{lesson_id}-speak-wo-giu",
+            "Listen, then say 我叫.",
+            WO_GIU,
+            objective_id=obj(lesson_id),
+            section="challenge",
+        )
+    )
+    steps.extend(short_number_review(lesson_id, (NUMBERS[0], NUMBERS[2], NUMBERS[9]), 1))
+    lessons.append(
+        pack_spoken_lesson(
+            lesson_id=lesson_id,
+            title="我 · 叫",
+            lesson_type="introduction",
+            sort_order=1,
+            previous=previous,
+            intro=intro,
+            primary=WO,
+            theme="我叫 Jordyn",
+            words=(WO, GIU),
+            lexemes=["v3-wo", "v3-giu", "v3-jordyn"],
+            steps=steps,
+            progression=13,
+        )
+    )
+    previous = lesson_id
+
+    # 2.2 係 · 個 · 名
+    lesson_id = "v3-intro-02"
+    intro = spoken_lesson_intro(
+        lesson_id=lesson_id,
+        title="係 · 個 · 名",
+        summary="Same meaning, three spoken shapes: 我叫 / 我係 / 我個名係.",
+        goals=[
+            "Hear 係, 個, and 名",
+            "Say 我係 and 我個名係",
+            "Know 係 can also mean yes",
+        ],
+        new_items=(HAI, GO, MING),
+        review_items=(WO, GIU, JORDYN),
+        sections=[
+            {
+                "type": "text",
+                "title": "Same idea, different talk",
+                "body": "In spoken Cantonese you can say 我叫 Jordyn, 我係 Jordyn, or 我個名係 Jordyn. All mean you are Jordyn.",
+            },
+            {
+                "type": "cards",
+                "title": "Three spoken sentences",
+                "cards": [
+                    {"title": "我叫 Jordyn。", "body": "I'm called Jordyn."},
+                    {"title": "我係 Jordyn。", "body": "I am Jordyn. 係 also answers yes."},
+                    {"title": "我個名係 Jordyn。", "body": "My name is Jordyn."},
+                ],
+            },
+        ],
+    )
+    steps = [intro_step(lesson_id, intro, obj(lesson_id))]
+    for target, pool in (
+        (HAI, (HAI, GIU, WO)),
+        (GO, (GO, MING, WO)),
+        (MING, (MING, GO, NEI)),
+    ):
+        steps.append(
+            listen_choice_step(
+                f"{lesson_id}-hear-{target.jyutping.replace(' ', '-')}",
+                "Listen. Choose the spoken word you hear.",
+                target,
+                pool,
+                objective_id=obj(lesson_id),
+                section="recognition",
+            )
+        )
+    steps.append(
+        order_step(
+            f"{lesson_id}-order-wo-hai",
+            "Build this spoken sentence: 我係 Jordyn。",
+            [WO, HAI, JORDYN],
+            objective_id=obj(lesson_id),
+            section="recognition",
+            spoken=WO_HAI,
+        )
+    )
+    steps.append(
+        order_step(
+            f"{lesson_id}-order-wo-go-ming",
+            "Build this spoken sentence: 我個名係 Jordyn。",
+            [WO, GO, MING, HAI, JORDYN],
+            objective_id=obj(lesson_id),
+            section="recognition",
+            spoken=WO_GO_MING_HAI,
+        )
+    )
+    steps.append(
+        cloze_step(
+            f"{lesson_id}-cloze-hai",
+            "我＿＿ Jordyn。",
+            HAI,
+            [GIU, JAU],
+            objective_id=obj(lesson_id),
+            section="recognition",
+        )
+    )
+    steps.append(
+        cloze_step(
+            f"{lesson_id}-cloze-ming",
+            "我個＿＿係 Jordyn。",
+            MING,
+            [GIU, NEI],
+            objective_id=obj(lesson_id),
+            section="recognition",
+        )
+    )
+    steps.append(
+        speak_step(
+            f"{lesson_id}-speak-wo-hai",
+            "Listen, then say 我係.",
+            WO_HAI,
+            objective_id=obj(lesson_id),
+            section="challenge",
+        )
+    )
+    steps.append(
+        speak_step(
+            f"{lesson_id}-speak-wo-go-ming",
+            "Listen, then say 我個名係.",
+            WO_GO_MING_HAI,
+            objective_id=obj(lesson_id),
+            section="challenge",
+        )
+    )
+    steps.extend(short_number_review(lesson_id, (NUMBERS[1], NUMBERS[4], NUMBERS[6]), 1))
+    lessons.append(
+        pack_spoken_lesson(
+            lesson_id=lesson_id,
+            title="係 · 個 · 名",
+            lesson_type="introduction",
+            sort_order=2,
+            previous=previous,
+            intro=intro,
+            primary=HAI,
+            theme="我個名係 Jordyn",
+            words=(HAI, GO, MING),
+            lexemes=["v3-hai", "v3-go", "v3-ming", "v3-wo", "v3-giu", "v3-jordyn"],
+            steps=steps,
+            progression=14,
+        )
+    )
+    previous = lesson_id
+
+    # 2.3 練習
+    lesson_id = "v3-intro-03"
+    intro = spoken_lesson_intro(
+        lesson_id=lesson_id,
+        title="練習",
+        summary="Practice the spoken sentences you already have. No new words.",
+        goals=["Reuse 我叫, 我係, and 我個名係", "Keep numbers in play"],
+        new_items=(WO_GIU,),
+        review_items=(WO, GIU, HAI, GO, MING, JORDYN),
+        sections=[
+            {
+                "type": "text",
+                "title": "Keep talking",
+                "body": "Same spoken sentences: 我叫 Jordyn。我係 Jordyn。我個名係 Jordyn。",
+            }
+        ],
+    )
+    steps = [intro_step(lesson_id, intro, obj(lesson_id))]
+    steps.append(
+        order_step(
+            f"{lesson_id}-order-wo-giu",
+            "Build this spoken sentence: 我叫 Jordyn。",
+            [WO, GIU, JORDYN],
+            objective_id=obj(lesson_id),
+            section="recognition",
+            spoken=WO_GIU,
+        )
+    )
+    steps.append(
+        order_step(
+            f"{lesson_id}-order-wo-hai",
+            "Build this spoken sentence: 我係 Jordyn。",
+            [WO, HAI, JORDYN],
+            objective_id=obj(lesson_id),
+            section="recognition",
+            spoken=WO_HAI,
+        )
+    )
+    steps.append(
+        order_step(
+            f"{lesson_id}-order-ming",
+            "Build this spoken sentence: 我個名係 Jordyn。",
+            [WO, GO, MING, HAI, JORDYN],
+            objective_id=obj(lesson_id),
+            section="recognition",
+            spoken=WO_GO_MING_HAI,
+        )
+    )
+    steps.append(
+        cloze_step(
+            f"{lesson_id}-cloze-jordyn",
+            "我個名係 ＿＿。",
+            JORDYN,
+            list(NAME_DISTRACTORS),
+            objective_id=obj(lesson_id),
+            section="recognition",
+        )
+    )
+    steps.append(
+        speak_step(
+            f"{lesson_id}-speak-wo-giu",
+            "Listen, then say 我叫.",
+            WO_GIU,
+            objective_id=obj(lesson_id),
+            section="challenge",
+        )
+    )
+    steps.append(
+        typing_character_step(
+            f"{lesson_id}-type-wo",
+            WO,
+            objective_id=obj(lesson_id),
+            section="recognition",
+        )
+    )
+    steps.extend(short_number_review(lesson_id, (NUMBERS[3], NUMBERS[7], NUMBERS[8]), 1))
+    lessons.append(
+        pack_spoken_lesson(
+            lesson_id=lesson_id,
+            title="練習",
+            lesson_type="introduction",
+            sort_order=3,
+            previous=previous,
+            intro=intro,
+            primary=WO_GIU,
+            theme="Practice 我叫 / 我係 / 我個名係",
+            words=(WO, GIU, HAI, GO, MING),
+            lexemes=["v3-wo", "v3-giu", "v3-hai", "v3-go", "v3-ming", "v3-jordyn"],
+            steps=steps,
+            progression=15,
+        )
+    )
+    previous = lesson_id
+
+    # 2.4 有
+    lesson_id = "v3-intro-04"
+    intro = spoken_lesson_intro(
+        lesson_id=lesson_id,
+        title="有",
+        summary="Put numbers into spoken talk: 我有三本書.",
+        goals=["Hear 有", "Use a number inside 我有三本書", "Keep 我叫 in play"],
+        new_items=(JAU, BUN, SYU),
+        review_items=(WO, GIU, HAI, NUMBERS[2], JORDYN),
+        sections=[
+            {
+                "type": "text",
+                "title": "Numbers in a sentence",
+                "body": "我叫 Jordyn。我有三本書。有 means have. 三本書 is a spoken chunk for three books.",
+            }
+        ],
+    )
+    steps = [intro_step(lesson_id, intro, obj(lesson_id))]
+    steps.append(
+        listen_choice_step(
+            f"{lesson_id}-hear-jau",
+            "Listen. Choose the spoken word you hear.",
+            JAU,
+            (JAU, HAI, GIU),
+            objective_id=obj(lesson_id),
+            section="recognition",
+        )
+    )
+    steps.append(
+        listen_choice_step(
+            f"{lesson_id}-hear-books",
+            "Listen. Choose what you hear.",
+            SAAM_BUN_SYU,
+            (SAAM_BUN_SYU, YAT_BUN_SYU, WO_GIU),
+            objective_id=obj(lesson_id),
+            section="recognition",
+        )
+    )
+    steps.append(
+        order_step(
+            f"{lesson_id}-order-books",
+            "Build this spoken sentence: 我有三本書。",
+            [WO, JAU, NUMBERS[2], BUN, SYU],
+            objective_id=obj(lesson_id),
+            section="recognition",
+            spoken=Target("我有三本書", "ngo5 jau5 saam1 bun2 syu1", "I have three books"),
+        )
+    )
+    steps.append(
+        cloze_step(
+            f"{lesson_id}-cloze-jau",
+            "我＿＿三本書。",
+            JAU,
+            [HAI, GIU],
+            objective_id=obj(lesson_id),
+            section="recognition",
+        )
+    )
+    steps.append(
+        cloze_step(
+            f"{lesson_id}-cloze-number",
+            "我有＿＿本書。",
+            NUMBERS[2],
+            [NUMBERS[0], NUMBERS[4]],
+            objective_id=obj(lesson_id),
+            section="recognition",
+        )
+    )
+    steps.append(
+        speak_step(
+            f"{lesson_id}-speak-jau",
+            "Listen, then say 我有.",
+            WO_JAU,
+            objective_id=obj(lesson_id),
+            section="challenge",
+        )
+    )
+    steps.append(
+        speak_step(
+            f"{lesson_id}-speak-books",
+            "Listen, then say 三本書.",
+            SAAM_BUN_SYU,
+            objective_id=obj(lesson_id),
+            section="challenge",
+        )
+    )
+    steps.extend(short_number_review(lesson_id, (NUMBERS[2], NUMBERS[5], NUMBERS[0]), 1))
+    lessons.append(
+        pack_spoken_lesson(
+            lesson_id=lesson_id,
+            title="有",
+            lesson_type="introduction",
+            sort_order=4,
+            previous=previous,
+            intro=intro,
+            primary=JAU,
+            theme="我有三本書",
+            words=(JAU, BUN, SYU, NUMBERS[2]),
+            lexemes=["v3-jau", "v3-bun", "v3-syu", "v3-wo", "v3-giu", "v3-jordyn"],
+            steps=steps,
+            progression=16,
+        )
+    )
+    previous = lesson_id
+
+    # 2.5 你 · 咩 · 係咪
+    lesson_id = "v3-intro-05"
+    intro = spoken_lesson_intro(
+        lesson_id=lesson_id,
+        title="你 · 咩 · 係咪",
+        summary="Ask in spoken Cantonese: 你叫咩名？你係咪 Jordyn？",
+        goals=[
+            "Hear 你, 咩, and 係咪",
+            "Ask 你叫咩名 and 你叫咩",
+            "Ask 你係咪 Jordyn and answer 係",
+        ],
+        new_items=(NEI, ME, HAI_MAI),
+        review_items=(WO, GIU, HAI, MING, JORDYN),
+        sections=[
+            {
+                "type": "text",
+                "title": "Questions people actually ask",
+                "body": "Ask with 咩 and 係咪. 你叫咩名？你叫咩？你係咪 Jordyn？ Answer 係。",
+            }
+        ],
+    )
+    steps = [intro_step(lesson_id, intro, obj(lesson_id))]
+    for target, pool in (
+        (NEI, (NEI, WO, ME)),
+        (ME, (ME, MING, GIU)),
+        (HAI_MAI, (HAI_MAI, HAI, ME)),
+    ):
+        steps.append(
+            listen_choice_step(
+                f"{lesson_id}-hear-{target.traditional}",
+                "Listen. Choose the spoken word you hear.",
+                target,
+                pool,
+                objective_id=obj(lesson_id),
+                section="recognition",
+            )
+        )
+    steps.append(
+        order_step(
+            f"{lesson_id}-order-name-q",
+            "Build this spoken question: 你叫咩名？",
+            [NEI, GIU, ME, MING],
+            objective_id=obj(lesson_id),
+            section="recognition",
+            spoken=NEI_GIU_ME_MING,
+        )
+    )
+    steps.append(
+        order_step(
+            f"{lesson_id}-order-me",
+            "Build this spoken question: 你叫咩？",
+            [NEI, GIU, ME],
+            objective_id=obj(lesson_id),
+            section="recognition",
+            spoken=NEI_GIU_ME,
+        )
+    )
+    steps.append(
+        order_step(
+            f"{lesson_id}-order-hai-mai",
+            "Build this spoken question: 你係咪 Jordyn？",
+            [NEI, HAI_MAI, JORDYN],
+            objective_id=obj(lesson_id),
+            section="recognition",
+            spoken=NEI_HAI_MAI,
+        )
+    )
+    steps.append(
+        cloze_step(
+            f"{lesson_id}-cloze-me",
+            "你叫＿＿名？",
+            ME,
+            [MING, HAI],
+            objective_id=obj(lesson_id),
+            section="recognition",
+        )
+    )
+    steps.append(
+        cloze_step(
+            f"{lesson_id}-cloze-jordyn",
+            "你係咪 ＿＿？",
+            JORDYN,
+            list(NAME_DISTRACTORS),
+            objective_id=obj(lesson_id),
+            section="recognition",
+        )
+    )
+    steps.append(
+        cloze_step(
+            f"{lesson_id}-cloze-yes",
+            "你係咪 Jordyn？＿＿。",
+            HAI,
+            [GIU, ME],
+            objective_id=obj(lesson_id),
+            section="recognition",
+        )
+    )
+    steps.append(
+        speak_step(
+            f"{lesson_id}-speak-name-q",
+            "Listen, then say 你叫咩名.",
+            NEI_GIU_ME_MING,
+            objective_id=obj(lesson_id),
+            section="challenge",
+        )
+    )
+    steps.append(
+        speak_step(
+            f"{lesson_id}-speak-hai",
+            "Listen, then say 係.",
+            HAI,
+            objective_id=obj(lesson_id),
+            section="challenge",
+        )
+    )
+    lessons.append(
+        pack_spoken_lesson(
+            lesson_id=lesson_id,
+            title="你 · 咩 · 係咪",
+            lesson_type="introduction",
+            sort_order=5,
+            previous=previous,
+            intro=intro,
+            primary=NEI,
+            theme="你叫咩名？",
+            words=(NEI, ME, HAI_MAI),
+            lexemes=["v3-nei", "v3-me", "v3-hai-mai", "v3-ming", "v3-hai", "v3-jordyn"],
+            steps=steps,
+            progression=17,
+        )
+    )
+    previous = lesson_id
+
+    # 2.6 介紹練習 — no intro page
+    lesson_id = "v3-intro-review"
+    steps = []
+    steps.append(
+        order_step(
+            f"{lesson_id}-order-wo-giu",
+            "Build this spoken sentence: 我叫 Jordyn。",
+            [WO, GIU, JORDYN],
+            objective_id=obj(lesson_id),
+            section="recognition",
+            spoken=WO_GIU,
+        )
+    )
+    steps.append(
+        order_step(
+            f"{lesson_id}-order-ming",
+            "Build this spoken sentence: 我個名係 Jordyn。",
+            [WO, GO, MING, HAI, JORDYN],
+            objective_id=obj(lesson_id),
+            section="recognition",
+            spoken=WO_GO_MING_HAI,
+        )
+    )
+    steps.append(
+        order_step(
+            f"{lesson_id}-order-books",
+            "Build this spoken sentence: 我有三本書。",
+            [WO, JAU, NUMBERS[2], BUN, SYU],
+            objective_id=obj(lesson_id),
+            section="recognition",
+            spoken=Target("我有三本書", "ngo5 jau5 saam1 bun2 syu1", "I have three books"),
+        )
+    )
+    steps.append(
+        order_step(
+            f"{lesson_id}-order-q",
+            "Build this spoken question: 你叫咩名？",
+            [NEI, GIU, ME, MING],
+            objective_id=obj(lesson_id),
+            section="recognition",
+            spoken=NEI_GIU_ME_MING,
+        )
+    )
+    steps.append(
+        cloze_step(
+            f"{lesson_id}-cloze-jordyn",
+            "你係咪 ＿＿？",
+            JORDYN,
+            list(NAME_DISTRACTORS),
+            objective_id=obj(lesson_id),
+            section="recognition",
+        )
+    )
+    steps.append(
+        cloze_step(
+            f"{lesson_id}-cloze-yes",
+            "你係咪 Jordyn？＿＿。",
+            HAI,
+            [ME, JAU],
+            objective_id=obj(lesson_id),
+            section="recognition",
+        )
+    )
+    steps.append(
+        speak_step(
+            f"{lesson_id}-speak-wo-giu",
+            "Listen, then say 我叫.",
+            WO_GIU,
+            objective_id=obj(lesson_id),
+            section="challenge",
+        )
+    )
+    steps.append(
+        speak_step(
+            f"{lesson_id}-speak-q",
+            "Listen, then say 你叫咩名.",
+            NEI_GIU_ME_MING,
+            objective_id=obj(lesson_id),
+            section="challenge",
+        )
+    )
+    steps.append(
+        typing_character_step(
+            f"{lesson_id}-type-nei",
+            NEI,
+            objective_id=obj(lesson_id),
+            section="recognition",
+        )
+    )
+    steps.extend(
+        short_number_review(lesson_id, (NUMBERS[2], NUMBERS[4], NUMBERS[9], NUMBERS[1]), 1)
+    )
+    lessons.append(
+        pack_spoken_lesson(
+            lesson_id=lesson_id,
+            title="介紹練習",
+            lesson_type="introduction_review",
+            sort_order=6,
+            previous=previous,
+            intro=None,
+            primary=WO,
+            theme="介紹自己練習",
+            words=(WO, GIU, HAI, GO, MING, JAU, NEI, ME, HAI_MAI),
+            lexemes=[
+                "v3-wo",
+                "v3-giu",
+                "v3-hai",
+                "v3-go",
+                "v3-ming",
+                "v3-jau",
+                "v3-nei",
+                "v3-me",
+                "v3-hai-mai",
+                "v3-jordyn",
+            ],
+            steps=steps,
+            progression=18,
+        )
+    )
+    return lessons
+
+
 def generate_document() -> dict:
-    """Build exactly Unit 0 orientation and Unit 1 numbers."""
+    """Build Unit 0 orientation, Unit 1 numbers, and Unit 2 spoken introductions."""
 
     def choice_step(
         step_id: str,
@@ -1164,6 +2155,13 @@ def generate_document() -> dict:
             "sort_order": 1,
             "prerequisites": ["v3-unit-0"],
         },
+        {
+            "id": "v3-unit-2",
+            "title": "介紹自己",
+            "phase": "introductions",
+            "sort_order": 2,
+            "prerequisites": ["v3-unit-1"],
+        },
     ]
     lessons = [conceptual_lesson(), tone_lesson()]
     previous = "v3-tones"
@@ -1181,7 +2179,9 @@ def generate_document() -> dict:
         previous = lesson["id"]
     review = review_lesson(False, previous)
     lessons.append(review)
-    lessons.append(review_lesson(True, review["id"]))
+    challenge = review_lesson(True, review["id"])
+    lessons.append(challenge)
+    lessons.extend(build_introduction_lessons(challenge["id"]))
 
     lexemes = [
         {
@@ -1215,6 +2215,39 @@ def generate_document() -> dict:
         }
         for index, target in enumerate(NUMBERS, start=1)
     )
+    spoken_lexemes = [
+        (WO, "v3-wo"),
+        (GIU, "v3-giu"),
+        (HAI, "v3-hai"),
+        (GO, "v3-go"),
+        (MING, "v3-ming"),
+        (JAU, "v3-jau"),
+        (BUN, "v3-bun"),
+        (SYU, "v3-syu"),
+        (NEI, "v3-nei"),
+        (ME, "v3-me"),
+        (HAI_MAI, "v3-hai-mai"),
+    ]
+    lexemes.extend(
+        {
+            "id": lexeme_id,
+            **target_dict(target),
+            "tags": ["beginner-v3", "introduction", "spoken"],
+            "difficulty": 1,
+        }
+        for target, lexeme_id in spoken_lexemes
+    )
+    lexemes.append(
+        {
+            "id": "v3-jordyn",
+            "traditional": JORDYN,
+            "jyutping": "",
+            "english": JORDYN,
+            "placeholder": True,
+            "tags": ["beginner-v3", "introduction", "placeholder"],
+            "difficulty": 1,
+        }
+    )
     step_count = sum(len(lesson["content"]["steps"]) for lesson in lessons)
     return {
         "version": "3.0.0",
@@ -1222,8 +2255,8 @@ def generate_document() -> dict:
         "generator": {
             "name": "generate_beginner_v3.py",
             "deterministic": True,
-            "unit_count": 2,
-            "lesson_count": 12,
+            "unit_count": 3,
+            "lesson_count": 18,
             "step_count": step_count,
             "number_gesture_assets": [gesture_path(number) for number in range(1, 11)],
         },
@@ -1241,11 +2274,14 @@ def curriculum_expectations() -> dict:
     steps = [step for lesson in lessons for step in lesson["content"]["steps"]]
     return {
         "lesson_count": len(lessons),
-        "unit_lesson_counts": [2, 10],
+        "unit_lesson_counts": [
+            sum(lesson["unit_id"] == unit["id"] for lesson in lessons)
+            for unit in document["units"]
+        ],
         "lesson_types": dict(Counter(lesson["lesson_type"] for lesson in lessons)),
         "exercise_types": dict(Counter(step["type"] for step in steps)),
         "skills": dict(Counter(step["skill"] for step in steps)),
-        "progression": list(range(1, 13)),
+        "progression": list(range(1, len(lessons) + 1)),
     }
 
 

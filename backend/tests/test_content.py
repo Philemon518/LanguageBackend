@@ -151,10 +151,10 @@ def test_v2_validation_rejects_invalid_tone_metadata():
 def test_v3_seed_is_deterministic_and_has_exact_foundation_shape():
     doc = json.loads(V3_PATH.read_text())
     assert doc == generate_v3_document()
-    assert [unit["sort_order"] for unit in doc["units"]] == [0, 1]
+    assert [unit["sort_order"] for unit in doc["units"]] == [0, 1, 2]
     assert [
         sum(lesson["unit_id"] == unit["id"] for lesson in doc["lessons"]) for unit in doc["units"]
-    ] == [2, 10]
+    ] == [2, 10, 6]
     assert [lesson["title"] for lesson in doc["lessons"]] == [
         "廣東話",
         "聲調",
@@ -168,24 +168,32 @@ def test_v3_seed_is_deterministic_and_has_exact_foundation_shape():
         "十",
         "數字練習",
         "數字挑戰",
+        "我 · 叫",
+        "係 · 個 · 名",
+        "練習",
+        "有",
+        "你 · 咩 · 係咪",
+        "介紹練習",
     ]
-    assert v3_curriculum_expectations()["lesson_count"] == 12
+    assert v3_curriculum_expectations()["lesson_count"] == 18
     assert validate_seed_document(doc) == []
 
 
 def test_v3_learning_lessons_have_structured_intros():
     lessons = generate_v3_document()["lessons"]
-    for lesson in lessons[:10]:
+    no_intro = {"v3-number-review", "v3-number-challenge", "v3-intro-review"}
+    for lesson in lessons:
         content = lesson["content"]
+        if lesson["id"] in no_intro:
+            assert "lesson_intro" not in content
+            assert all(step["type"] != "lesson_intro" for step in content["steps"])
+            continue
         intro = content["lesson_intro"]
         assert content["steps"][0]["type"] == "lesson_intro"
         assert intro["learning_goals"]
         assert intro["new_items"]
         assert isinstance(intro["presentation"]["listen_first"], bool)
         assert intro["sections"]
-    for lesson in lessons[10:]:
-        assert "lesson_intro" not in lesson["content"]
-        assert all(step["type"] != "lesson_intro" for step in lesson["content"]["steps"])
 
 
 def test_v3_number_lessons_are_strictly_cumulative():
@@ -202,9 +210,13 @@ def test_v3_number_lessons_are_strictly_cumulative():
 
 
 def test_v3_review_and_challenge_have_exact_mastery_shape():
-    lessons = generate_v3_document()["lessons"]
-    review = lessons[-2]["content"]["steps"]
-    challenge = lessons[-1]["content"]["steps"]
+    number_lessons = [
+        lesson
+        for lesson in generate_v3_document()["lessons"]
+        if lesson["unit_id"] == "v3-unit-1"
+    ]
+    review = number_lessons[-2]["content"]["steps"]
+    challenge = number_lessons[-1]["content"]["steps"]
 
     assert len(review) == 85
     assert sum("-sequence-" in step["id"] for step in review) == 5
@@ -215,6 +227,81 @@ def test_v3_review_and_challenge_have_exact_mastery_shape():
         "typing": 10,
     }
     assert all(step["metadata"]["section"] == "challenge" for step in challenge)
+
+
+def test_v3_unit_2_is_spoken_cantonese_with_jordyn_tile():
+    doc = generate_v3_document()
+    intro_lessons = [lesson for lesson in doc["lessons"] if lesson["unit_id"] == "v3-unit-2"]
+    assert [lesson["id"] for lesson in intro_lessons] == [
+        *(f"v3-intro-{index:02d}" for index in range(1, 6)),
+        "v3-intro-review",
+    ]
+    assert [lesson["title"] for lesson in intro_lessons] == [
+        "我 · 叫",
+        "係 · 個 · 名",
+        "練習",
+        "有",
+        "你 · 咩 · 係咪",
+        "介紹練習",
+    ]
+    lexeme_ids = {lexeme["id"] for lexeme in doc["lexemes"]}
+    assert lexeme_ids >= {
+        "v3-wo",
+        "v3-giu",
+        "v3-hai",
+        "v3-go",
+        "v3-ming",
+        "v3-jau",
+        "v3-bun",
+        "v3-syu",
+        "v3-nei",
+        "v3-me",
+        "v3-hai-mai",
+        "v3-jordyn",
+    }
+    assert "v3-zi" not in lexeme_ids
+    assert all(lexeme["traditional"] != "字" for lexeme in doc["lexemes"])
+    jordyn = next(lexeme for lexeme in doc["lexemes"] if lexeme["id"] == "v3-jordyn")
+    assert jordyn["traditional"] == "Jordyn"
+    assert jordyn["placeholder"] is True
+
+    blob = json.dumps(intro_lessons, ensure_ascii=False)
+    for written in ("是", "什麼", "甚么", "嗎", "我的名字", "我名叫", "擁有", "字"):
+        assert written not in blob
+
+    jordyn_tiles: list[dict] = []
+    speak_texts: list[str] = []
+    typing_answers: list[str] = []
+    cloze_manual: list[bool] = []
+
+    def collect(value):
+        if isinstance(value, dict):
+            if value.get("label") == "Jordyn" or value.get("traditional") == "Jordyn":
+                jordyn_tiles.append(value)
+            if value.get("type") == "speak":
+                speak_texts.append(str((value.get("metadata") or {}).get("expected_text") or ""))
+            if value.get("type") == "typing":
+                typing_answers.extend(
+                    str(answer)
+                    for answer in (value.get("metadata") or {}).get("accepted_answers") or []
+                )
+            if value.get("type") == "cloze":
+                cloze_manual.append(bool((value.get("metadata") or {}).get("allow_manual_input")))
+            for child in value.values():
+                collect(child)
+        elif isinstance(value, list):
+            for child in value:
+                collect(child)
+
+    collect(intro_lessons)
+    assert jordyn_tiles
+    assert any(tile.get("placeholder") for tile in jordyn_tiles)
+    assert all(not tile.get("audio") for tile in jordyn_tiles)
+    assert speak_texts
+    assert all("Jordyn" not in text for text in speak_texts)
+    assert cloze_manual and not any(cloze_manual)
+    assert typing_answers
+    assert all(any("\u4e00" <= char <= "\u9fff" for char in answer) for answer in typing_answers)
 
 
 def test_v3_audio_references_are_explicit_traditional_and_jyutping():

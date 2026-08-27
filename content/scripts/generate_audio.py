@@ -212,6 +212,31 @@ async def generate(
         print("No audio references found — run import_seed first")
         return
 
+    prior_failed: set[str] | None = None
+    entries: dict[str, dict] = {}
+    if retry_failed and MANIFEST_PATH.exists():
+        prior_manifest = json.loads(MANIFEST_PATH.read_text())
+        prior_failed = set(prior_manifest.get("failed", []))
+        entries.update(prior_manifest.get("assets", {}))
+        audio_refs = [audio_ref for audio_ref in audio_refs if audio_ref["text"] in prior_failed]
+    elif not replace_all and MANIFEST_PATH.exists():
+        prior_manifest = json.loads(MANIFEST_PATH.read_text())
+        entries.update(prior_manifest.get("assets", {}))
+        audio_dir = Path(settings.local_audio_dir)
+        remaining = []
+        for audio_ref in audio_refs:
+            entry = entries.get(audio_ref["text"])
+            bundled = audio_dir / entry["path"] if entry and entry.get("path") else None
+            if bundled is not None and bundled.exists():
+                print(f"Skip bundled: {audio_ref['text'][:30]}")
+                continue
+            remaining.append(audio_ref)
+        audio_refs = remaining
+        if not audio_refs:
+            write_manifest(entries, [], voice, model)
+            print(f"Audio complete: {len(entries)} ready, 0 failed")
+            return
+
     print(f"Generating {len(audio_refs)} unique Gigi clips (throttled to 4/min)")
     preflight_ref = audio_refs[0]
     preflight_wav = None
@@ -234,14 +259,7 @@ async def generate(
 
     if replace_all:
         await purge_audio_assets()
-
-    prior_failed: set[str] | None = None
-    entries: dict[str, dict] = {}
-    if retry_failed and MANIFEST_PATH.exists():
-        prior_manifest = json.loads(MANIFEST_PATH.read_text())
-        prior_failed = set(prior_manifest.get("failed", []))
-        entries.update(prior_manifest.get("assets", {}))
-        audio_refs = [audio_ref for audio_ref in audio_refs if audio_ref["text"] in prior_failed]
+        entries = {}
 
     failed: list[str] = []
     async with SessionLocal() as db:

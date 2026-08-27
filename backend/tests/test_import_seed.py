@@ -192,9 +192,10 @@ async def test_import_seed_imports_beginner_v3_foundation_road(import_db, tmp_pa
         )
         lessons = (await session.scalars(select(Lesson))).all()
         assert version is not None
-        assert len(lessons) == 12
+        assert len(lessons) == 18
         assert sum(lesson.unit_id == "v3-unit-0" for lesson in lessons) == 2
         assert sum(lesson.unit_id == "v3-unit-1" for lesson in lessons) == 10
+        assert sum(lesson.unit_id == "v3-unit-2" for lesson in lessons) == 6
 
 
 @pytest.mark.asyncio
@@ -212,7 +213,7 @@ async def test_import_seed_v3_import_is_idempotent(import_db, tmp_path):
         versions = (await session.scalars(select(CurriculumVersion))).all()
         lessons = (await session.scalars(select(Lesson))).all()
         assert len(versions) == 1
-        assert len(lessons) == 12
+        assert len(lessons) == 18
 
 
 @pytest.mark.asyncio
@@ -260,4 +261,4 @@ async def test_import_seed_reconciles_orphaned_v3_units(import_db, tmp_path):
         assert version is not None
         assert unit is not None
         assert unit.curriculum_version_id == version.id
-        assert len(lessons) == 12
+        assert len(lessons) == 18
