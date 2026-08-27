@@ -10,8 +10,16 @@ from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from ..core.config import get_settings
-from ..models.orm import CurriculumVersion, Lesson, LessonProgress, MediaAsset, Unit
+from ..models.orm import (
+    CurriculumVersion,
+    ExerciseAttempt,
+    Lesson,
+    LessonProgress,
+    MediaAsset,
+    Unit,
+)
 from ..models.schemas import CurriculumManifest, LessonDocument, LessonSummary, UnitSummary
+from .grading import lesson_is_complete
 from .tts import audio_content_hash
 
 
@@ -188,26 +196,49 @@ async def list_road(db: AsyncSession, user_id=None) -> list[LessonSummary]:
     road: list[LessonSummary] = []
     global_order = 0
     previous_completed = True
-
+    healed = False
+    all_lessons: list[Lesson] = []
+    unit_lessons: list[tuple[Unit, list[Lesson]]] = []
     for unit in units:
         result = await db.execute(
             select(Lesson).where(Lesson.unit_id == unit.id).order_by(Lesson.sort_order)
         )
         lessons = result.scalars().all()
-        progress_map: dict[str, LessonProgress] = {}
-        if user_id and lessons:
-            prog = await db.execute(
-                select(LessonProgress).where(
-                    LessonProgress.user_id == user_id,
-                    LessonProgress.lesson_id.in_([lesson.id for lesson in lessons]),
-                )
-            )
-            progress_map = {p.lesson_id: p for p in prog.scalars().all()}
+        unit_lessons.append((unit, lessons))
+        all_lessons.extend(lessons)
 
+    progress_map: dict[str, LessonProgress] = {}
+    correct_by_lesson: dict[str, set[str]] = {lesson.id: set() for lesson in all_lessons}
+    if user_id and all_lessons:
+        prog = await db.execute(
+            select(LessonProgress).where(
+                LessonProgress.user_id == user_id,
+                LessonProgress.lesson_id.in_([lesson.id for lesson in all_lessons]),
+            )
+        )
+        progress_map = {row.lesson_id: row for row in prog.scalars().all()}
+        attempts = await db.execute(
+            select(ExerciseAttempt.lesson_id, ExerciseAttempt.exercise_id).where(
+                ExerciseAttempt.user_id == user_id,
+                ExerciseAttempt.lesson_id.in_([lesson.id for lesson in all_lessons]),
+                ExerciseAttempt.correct.is_(True),
+            )
+        )
+        for lesson_id, exercise_id in attempts.all():
+            correct_by_lesson.setdefault(lesson_id, set()).add(exercise_id)
+
+    for unit, lessons in unit_lessons:
         for lesson in lessons:
             content = lesson.content_json or {}
             progress = progress_map.get(lesson.id)
-            completed = bool(progress and progress.completed)
+            completed = lesson_is_complete(
+                content.get("steps", []),
+                correct_by_lesson.get(lesson.id, set()),
+            ) or bool(progress and progress.completed)
+            if completed and progress is not None and not progress.completed:
+                progress.completed = True
+                progress.current_step = len(content.get("steps", []))
+                healed = True
             road.append(
                 LessonSummary(
                     id=lesson.id,
@@ -225,6 +256,8 @@ async def list_road(db: AsyncSession, user_id=None) -> list[LessonSummary]:
             global_order += 1
             previous_completed = completed
 
+    if healed:
+        await db.commit()
     return road
 
 
@@ -276,4 +309,5 @@ async def get_lesson(db: AsyncSession, lesson_id: str) -> LessonDocument | None:
         steps=steps,
         vocabulary=content.get("vocabulary", []),
         grammar_points=content.get("grammar_points", []),
+        lesson_intro=content.get("lesson_intro"),
     )

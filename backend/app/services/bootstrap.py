@@ -46,6 +46,7 @@ async def bootstrap_if_empty() -> None:
                     "Curriculum bootstrap hit duplicate rows but version %s is ready",
                     version,
                 )
+                await _log_curriculum_shape(session)
                 return
         logger.exception("Curriculum bootstrap failed on duplicate rows")
         raise
@@ -56,6 +57,24 @@ async def bootstrap_if_empty() -> None:
                     "Curriculum bootstrap failed but version %s is already present",
                     version,
                 )
+                await _log_curriculum_shape(session)
                 return
         logger.exception("Curriculum bootstrap failed")
         raise
+
+    async with SessionLocal() as session:
+        await _log_curriculum_shape(session)
+
+
+async def _log_curriculum_shape(session) -> None:
+    from sqlalchemy import func, select
+
+    from app.models.orm import Lesson, Unit
+
+    lesson_count = await session.scalar(select(func.count()).select_from(Lesson))
+    unit_titles = (await session.scalars(select(Unit.title).order_by(Unit.sort_order))).all()
+    logger.info(
+        "Curriculum ready: %s lessons across units %s",
+        lesson_count,
+        list(unit_titles),
+    )

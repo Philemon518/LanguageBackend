@@ -18,7 +18,13 @@ from ..models.schemas import (
     WritingFeedback,
 )
 from ..services.curriculum import get_lesson, list_road
-from ..services.grading import grade_exercise, grade_writing, is_intro_step
+from ..services.grading import (
+    first_incomplete_index,
+    grade_exercise,
+    grade_writing,
+    is_intro_step,
+    lesson_is_complete,
+)
 from ..services.mastery import (
     compute_mastery_delta,
     count_completed_lessons,
@@ -93,14 +99,7 @@ async def submit_attempt(
         .distinct()
     )
     correct_exercise_ids = set(correct_result.scalars().all())
-    first_incomplete = next(
-        (
-            index
-            for index, lesson_step in enumerate(lesson.steps)
-            if lesson_step.id not in correct_exercise_ids
-        ),
-        len(lesson.steps),
-    )
+    first_incomplete = first_incomplete_index(lesson.steps, correct_exercise_ids)
     if prog is None:
         prog = LessonProgress(
             user_id=user.id,
@@ -111,8 +110,8 @@ async def submit_attempt(
         db.add(prog)
     else:
         prog.current_step = first_incomplete
-        prog.state_json = {**prog.state_json, "last_exercise": body.exercise_id}
-    prog.completed = first_incomplete >= len(lesson.steps)
+        prog.state_json = {**(prog.state_json or {}), "last_exercise": body.exercise_id}
+    prog.completed = lesson_is_complete(lesson.steps, correct_exercise_ids)
 
     profile_result = await db.execute(select(UserProfile).where(UserProfile.id == user.id))
     profile = profile_result.scalar_one()

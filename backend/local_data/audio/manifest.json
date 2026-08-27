@@ -1,7 +1,7 @@
 {
   "voice": "50a9a698-1f99-437c-a07d-9cad435c5f8a",
   "model": "v6",
-  "generated_at": "2026-08-27T08:45:07.513825+00:00",
+  "generated_at": "2026-08-27T09:44:40.503293+00:00",
   "assets": {
     "廣東話": {
       "content_hash": "de87d3fb6142eeefbf00351d5512183cd98edd3b9a6b2466758a7516017dd8d9",
@@ -484,6 +484,17 @@
       "stt_transcript": "你係咪？",
       "stt_validated": true,
       "jyutping": "nei5 hai6 mai6",
+      "generation_attempts": 1,
+      "generation_voice": "Gigi"
+    },
+    "周瑋明": {
+      "content_hash": "1dd32aeb8ae4db4be834d86fe16ede058adeef307533c931e7b5218fa63d0ac3",
+      "path": "beginner/1dd32aeb8ae4db4be834d86fe16ede058adeef307533c931e7b5218fa63d0ac3.wav",
+      "url": "/media/beginner/1dd32aeb8ae4db4be834d86fe16ede058adeef307533c931e7b5218fa63d0ac3.wav",
+      "duration_seconds": 1.231,
+      "stt_transcript": "周瑋明。",
+      "stt_validated": true,
+      "jyutping": "zau1 wai5 ming4",
       "generation_attempts": 1,
       "generation_voice": "Gigi"
     }

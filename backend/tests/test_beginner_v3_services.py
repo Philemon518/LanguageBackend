@@ -193,6 +193,92 @@ async def test_lesson_intro_advances_without_xp_or_mastery():
     await engine.dispose()
 
 
+@pytest.mark.asyncio
+async def test_missing_intro_does_not_block_completion_or_unlock():
+    engine, sessions = await _database()
+    user_id = uuid.uuid4()
+    async with sessions() as db:
+        version = CurriculumVersion(version="3.0.0", level="beginner", status="published")
+        db.add(version)
+        await db.flush()
+        db.add(
+            Unit(
+                id="unit",
+                curriculum_version_id=version.id,
+                title="Unit",
+                phase="numbers",
+                sort_order=1,
+                prerequisites=[],
+            )
+        )
+        first = _lesson(
+            "first-lesson",
+            "unit",
+            [
+                {"id": "intro", "type": "lesson_intro", "skill": "listening", "metadata": {}},
+                {
+                    "id": "choice",
+                    "type": "choice",
+                    "skill": "reading",
+                    "correct_option_id": "right",
+                    "options": [{"id": "right", "label": "Right"}, {"id": "wrong", "label": "Wrong"}],
+                },
+            ],
+        )
+        first.sort_order = 1
+        second = _lesson(
+            "second-lesson",
+            "unit",
+            [
+                {
+                    "id": "next",
+                    "type": "choice",
+                    "skill": "reading",
+                    "correct_option_id": "right",
+                    "options": [{"id": "right", "label": "Right"}],
+                }
+            ],
+        )
+        second.sort_order = 2
+        db.add_all([first, second])
+        db.add(
+            UserProfile(
+                id=user_id,
+                username="progress-user",
+                password_hash="unused",
+                total_xp=0,
+            )
+        )
+        await db.commit()
+
+        await submit_attempt(
+            AttemptRequest(
+                lesson_id="first-lesson",
+                exercise_id="choice",
+                skill="reading",
+                response={"selected_option_id": "right"},
+            ),
+            AuthUser(id=user_id, username="progress-user"),
+            db,
+        )
+
+        progress = (
+            await db.execute(
+                select(LessonProgress).where(
+                    LessonProgress.user_id == user_id,
+                    LessonProgress.lesson_id == "first-lesson",
+                )
+            )
+        ).scalar_one()
+        assert progress.completed
+
+        road = await list_road(db, user_id)
+        assert [lesson.id for lesson in road] == ["first-lesson", "second-lesson"]
+        assert road[0].completed
+        assert not road[1].locked
+    await engine.dispose()
+
+
 def test_v3_choice_comparison_and_typing_types_are_graded():
     for exercise_type in ("choice", "image_comparison", "audio_comparison"):
         step = ExerciseStep(

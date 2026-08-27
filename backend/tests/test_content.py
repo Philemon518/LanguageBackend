@@ -258,18 +258,23 @@ def test_v3_unit_2_is_spoken_cantonese_with_jordyn_tile():
         "v3-me",
         "v3-hai-mai",
         "v3-jordyn",
+        "v3-zhou",
     }
     assert "v3-zi" not in lexeme_ids
     assert all(lexeme["traditional"] != "字" for lexeme in doc["lexemes"])
     jordyn = next(lexeme for lexeme in doc["lexemes"] if lexeme["id"] == "v3-jordyn")
     assert jordyn["traditional"] == "Jordyn"
     assert jordyn["placeholder"] is True
+    zhou = next(lexeme for lexeme in doc["lexemes"] if lexeme["id"] == "v3-zhou")
+    assert zhou["traditional"] == "周瑋明"
+    assert zhou["jyutping"] == "zau1 wai5 ming4"
 
     blob = json.dumps(intro_lessons, ensure_ascii=False)
     for written in ("是", "什麼", "甚么", "嗎", "我的名字", "我名叫", "擁有", "字"):
         assert written not in blob
 
     jordyn_tiles: list[dict] = []
+    zhou_tiles: list[dict] = []
     speak_texts: list[str] = []
     typing_answers: list[str] = []
     cloze_manual: list[bool] = []
@@ -278,6 +283,8 @@ def test_v3_unit_2_is_spoken_cantonese_with_jordyn_tile():
         if isinstance(value, dict):
             if value.get("label") == "Jordyn" or value.get("traditional") == "Jordyn":
                 jordyn_tiles.append(value)
+            if value.get("label") == "周瑋明" or value.get("traditional") == "周瑋明":
+                zhou_tiles.append(value)
             if value.get("type") == "speak":
                 speak_texts.append(str((value.get("metadata") or {}).get("expected_text") or ""))
             if value.get("type") == "typing":
@@ -295,8 +302,10 @@ def test_v3_unit_2_is_spoken_cantonese_with_jordyn_tile():
 
     collect(intro_lessons)
     assert jordyn_tiles
+    assert zhou_tiles
     assert any(tile.get("placeholder") for tile in jordyn_tiles)
     assert all(not tile.get("audio") for tile in jordyn_tiles)
+    assert any(tile.get("audio") for tile in zhou_tiles)
     assert speak_texts
     assert all("Jordyn" not in text for text in speak_texts)
     assert cloze_manual and not any(cloze_manual)

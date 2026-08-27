@@ -103,6 +103,7 @@ class LessonDocument(BaseModel):
     steps: list[ExerciseStep]
     vocabulary: list[dict[str, Any]] = Field(default_factory=list)
     grammar_points: list[dict[str, Any]] = Field(default_factory=list)
+    lesson_intro: dict[str, Any] | None = None
 
 
 class AttemptRequest(BaseModel):

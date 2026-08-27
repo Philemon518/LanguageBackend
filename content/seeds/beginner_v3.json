@@ -6,7 +6,7 @@
     "deterministic": true,
     "unit_count": 3,
     "lesson_count": 18,
-    "step_count": 645,
+    "step_count": 651,
     "number_gesture_assets": [
       "assets/number_gestures/1.png",
       "assets/number_gestures/2.png",
@@ -727,6 +727,32 @@
         "beginner-v3",
         "introduction",
         "placeholder"
+      ],
+      "difficulty": 1
+    },
+    {
+      "id": "v3-zhou",
+      "traditional": "周瑋明",
+      "jyutping": "zau1 wai5 ming4",
+      "tone": 4,
+      "tones": [
+        1,
+        5,
+        4
+      ],
+      "english": "Jordyn",
+      "audio": {
+        "text": "周瑋明",
+        "traditional": "周瑋明",
+        "jyutping": "zau1 wai5 ming4",
+        "language": "yue-HK",
+        "script": "Hant"
+      },
+      "tags": [
+        "beginner-v3",
+        "introduction",
+        "spoken",
+        "name"
       ],
       "difficulty": 1
     }
@@ -34610,7 +34636,7 @@
             "language": "yue-HK",
             "script": "Hant"
           },
-          "theme": "我叫 Jordyn",
+          "theme": "我叫 Jordyn / 周瑋明",
           "words": [
             {
               "traditional": "我",
@@ -34653,7 +34679,7 @@
             5,
             3
           ],
-          "english": "我叫 Jordyn",
+          "english": "我叫 Jordyn / 周瑋明",
           "progression": 13
         },
         "vocabulary": [
@@ -34665,6 +34691,9 @@
           },
           {
             "lexeme_id": "v3-jordyn"
+          },
+          {
+            "lexeme_id": "v3-zhou"
           }
         ],
         "steps": [
@@ -34697,10 +34726,10 @@
               "lesson_intro": {
                 "id": "v3-intro-01-intro",
                 "title": "我 · 叫",
-                "summary": "Say who you are in spoken Cantonese: 我叫 Jordyn.",
+                "summary": "Say who you are in spoken Cantonese: 我叫 Jordyn or 我叫 周瑋明.",
                 "learning_goals": [
                   "Hear and read 我 and 叫",
-                  "Build 我叫 Jordyn with tiles",
+                  "Build 我叫 Jordyn or 我叫 周瑋明 with tiles",
                   "Say 我叫"
                 ],
                 "new_items": [
@@ -34741,6 +34770,24 @@
                     "jyutping": "",
                     "english": "Jordyn",
                     "placeholder": true
+                  },
+                  {
+                    "traditional": "周瑋明",
+                    "jyutping": "zau1 wai5 ming4",
+                    "tone": 4,
+                    "tones": [
+                      1,
+                      5,
+                      4
+                    ],
+                    "english": "Jordyn",
+                    "audio": {
+                      "text": "周瑋明",
+                      "traditional": "周瑋明",
+                      "jyutping": "zau1 wai5 ming4",
+                      "language": "yue-HK",
+                      "script": "Hant"
+                    }
                   }
                 ],
                 "review_items": [],
@@ -34760,11 +34807,11 @@
                   {
                     "type": "text",
                     "title": "Spoken Cantonese",
-                    "body": "This is how people talk. 我叫 Jordyn means “I'm called Jordyn.” Jordyn is a name tile you choose, not a name you type."
+                    "body": "This is how people talk. 我叫 Jordyn and 我叫 周瑋明 both mean “I'm called ….” Names are tiles you choose, not names you type."
                   },
                   {
                     "type": "cards",
-                    "title": "First sentence",
+                    "title": "Name tiles",
                     "cards": [
                       {
                         "title": "我叫",
@@ -34772,7 +34819,11 @@
                       },
                       {
                         "title": "Jordyn",
-                        "body": "A name block. Tap it. Do not type your own name."
+                        "body": "A Latin name block. Tap it."
+                      },
+                      {
+                        "title": "周瑋明",
+                        "body": "A Cantonese name block. Tap it. zau1 wai5 ming4."
                       }
                     ]
                   }
@@ -35042,12 +35093,19 @@
               },
               {
                 "id": "v3-intro-01-cloze-jordyn-choice-2",
-                "label": "Alex",
-                "placeholder": true
+                "label": "周瑋明",
+                "jyutping": "zau1 wai5 ming4",
+                "audio": {
+                  "text": "周瑋明",
+                  "traditional": "周瑋明",
+                  "jyutping": "zau1 wai5 ming4",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
               },
               {
                 "id": "v3-intro-01-cloze-jordyn-choice-3",
-                "label": "Sam",
+                "label": "Alex",
                 "placeholder": true
               }
             ],
@@ -35060,6 +35118,183 @@
               "allow_manual_input": false,
               "spoken_cantonese": true
             }
+          },
+          {
+            "id": "v3-intro-01-hear-zhou",
+            "type": "select_character",
+            "skill": "listening",
+            "prompt": "Listen. Choose the spoken name you hear.",
+            "audio": {
+              "text": "周瑋明",
+              "traditional": "周瑋明",
+              "jyutping": "zau1 wai5 ming4",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "options": [
+              {
+                "id": "v3-intro-01-hear-zhou-opt-1",
+                "label": "周瑋明",
+                "jyutping": "zau1 wai5 ming4",
+                "audio": {
+                  "text": "周瑋明",
+                  "traditional": "周瑋明",
+                  "jyutping": "zau1 wai5 ming4",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-01-hear-zhou-opt-2",
+                "label": "我",
+                "jyutping": "ngo5",
+                "audio": {
+                  "text": "我",
+                  "traditional": "我",
+                  "jyutping": "ngo5",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-01-hear-zhou-opt-3",
+                "label": "叫",
+                "jyutping": "giu3",
+                "audio": {
+                  "text": "叫",
+                  "traditional": "叫",
+                  "jyutping": "giu3",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              }
+            ],
+            "correct_option_id": "v3-intro-01-hear-zhou-opt-1",
+            "reveal_character": "周瑋明",
+            "reveal_jyutping": "zau1 wai5 ming4",
+            "reveal_english": "Jordyn",
+            "metadata": {
+              "objective_id": "v3-intro-01-speak",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "traditional": "周瑋明",
+              "jyutping": "zau1 wai5 ming4",
+              "tones": [
+                1,
+                5,
+                4
+              ],
+              "auditory_only_until_answer": true,
+              "spoken_cantonese": true
+            }
+          },
+          {
+            "id": "v3-intro-01-order-wo-giu-zhou",
+            "type": "order_words",
+            "skill": "listening",
+            "prompt": "Build this spoken sentence: 我叫 周瑋明。",
+            "options": [
+              {
+                "id": "v3-intro-01-order-wo-giu-zhou-word-1",
+                "label": "我",
+                "jyutping": "ngo5",
+                "audio": {
+                  "text": "我",
+                  "traditional": "我",
+                  "jyutping": "ngo5",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-01-order-wo-giu-zhou-word-2",
+                "label": "叫",
+                "jyutping": "giu3",
+                "audio": {
+                  "text": "叫",
+                  "traditional": "叫",
+                  "jyutping": "giu3",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-01-order-wo-giu-zhou-word-3",
+                "label": "周瑋明",
+                "jyutping": "zau1 wai5 ming4",
+                "audio": {
+                  "text": "周瑋明",
+                  "traditional": "周瑋明",
+                  "jyutping": "zau1 wai5 ming4",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              }
+            ],
+            "metadata": {
+              "objective_id": "v3-intro-01-speak",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "expected_order": [
+                "v3-intro-01-order-wo-giu-zhou-word-1",
+                "v3-intro-01-order-wo-giu-zhou-word-2",
+                "v3-intro-01-order-wo-giu-zhou-word-3"
+              ],
+              "spoken_cantonese": true,
+              "auditory_only_until_answer": true
+            },
+            "audio": {
+              "text": "我叫",
+              "traditional": "我叫",
+              "jyutping": "ngo5 giu3",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "reveal_character": "我叫",
+            "reveal_jyutping": "ngo5 giu3",
+            "reveal_english": "I'm called"
+          },
+          {
+            "id": "v3-intro-01-cloze-zhou",
+            "type": "cloze",
+            "skill": "reading",
+            "prompt": "我叫 ＿＿。",
+            "options": [
+              {
+                "id": "v3-intro-01-cloze-zhou-choice-1",
+                "label": "周瑋明",
+                "jyutping": "zau1 wai5 ming4",
+                "audio": {
+                  "text": "周瑋明",
+                  "traditional": "周瑋明",
+                  "jyutping": "zau1 wai5 ming4",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-01-cloze-zhou-choice-2",
+                "label": "Jordyn",
+                "placeholder": true
+              },
+              {
+                "id": "v3-intro-01-cloze-zhou-choice-3",
+                "label": "Sam",
+                "placeholder": true
+              }
+            ],
+            "correct_option_id": "v3-intro-01-cloze-zhou-choice-1",
+            "metadata": {
+              "objective_id": "v3-intro-01-speak",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "expected": "周瑋明",
+              "allow_manual_input": false,
+              "spoken_cantonese": true
+            },
+            "reveal_character": "周瑋明",
+            "reveal_jyutping": "zau1 wai5 ming4",
+            "reveal_english": "Jordyn"
           },
           {
             "id": "v3-intro-01-speak-wo-giu",
@@ -35290,10 +35525,10 @@
         "lesson_intro": {
           "id": "v3-intro-01-intro",
           "title": "我 · 叫",
-          "summary": "Say who you are in spoken Cantonese: 我叫 Jordyn.",
+          "summary": "Say who you are in spoken Cantonese: 我叫 Jordyn or 我叫 周瑋明.",
           "learning_goals": [
             "Hear and read 我 and 叫",
-            "Build 我叫 Jordyn with tiles",
+            "Build 我叫 Jordyn or 我叫 周瑋明 with tiles",
             "Say 我叫"
           ],
           "new_items": [
@@ -35334,6 +35569,24 @@
               "jyutping": "",
               "english": "Jordyn",
               "placeholder": true
+            },
+            {
+              "traditional": "周瑋明",
+              "jyutping": "zau1 wai5 ming4",
+              "tone": 4,
+              "tones": [
+                1,
+                5,
+                4
+              ],
+              "english": "Jordyn",
+              "audio": {
+                "text": "周瑋明",
+                "traditional": "周瑋明",
+                "jyutping": "zau1 wai5 ming4",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
             }
           ],
           "review_items": [],
@@ -35353,11 +35606,11 @@
             {
               "type": "text",
               "title": "Spoken Cantonese",
-              "body": "This is how people talk. 我叫 Jordyn means “I'm called Jordyn.” Jordyn is a name tile you choose, not a name you type."
+              "body": "This is how people talk. 我叫 Jordyn and 我叫 周瑋明 both mean “I'm called ….” Names are tiles you choose, not names you type."
             },
             {
               "type": "cards",
-              "title": "First sentence",
+              "title": "Name tiles",
               "cards": [
                 {
                   "title": "我叫",
@@ -35365,7 +35618,11 @@
                 },
                 {
                   "title": "Jordyn",
-                  "body": "A name block. Tap it. Do not type your own name."
+                  "body": "A Latin name block. Tap it."
+                },
+                {
+                  "title": "周瑋明",
+                  "body": "A Cantonese name block. Tap it. zau1 wai5 ming4."
                 }
               ]
             }
@@ -35482,6 +35739,9 @@
           },
           {
             "lexeme_id": "v3-jordyn"
+          },
+          {
+            "lexeme_id": "v3-zhou"
           }
         ],
         "steps": [
@@ -35608,6 +35868,24 @@
                     "jyutping": "",
                     "english": "Jordyn",
                     "placeholder": true
+                  },
+                  {
+                    "traditional": "周瑋明",
+                    "jyutping": "zau1 wai5 ming4",
+                    "tone": 4,
+                    "tones": [
+                      1,
+                      5,
+                      4
+                    ],
+                    "english": "Jordyn",
+                    "audio": {
+                      "text": "周瑋明",
+                      "traditional": "周瑋明",
+                      "jyutping": "zau1 wai5 ming4",
+                      "language": "yue-HK",
+                      "script": "Hant"
+                    }
                   }
                 ],
                 "audio": {
@@ -36454,6 +36732,24 @@
               "jyutping": "",
               "english": "Jordyn",
               "placeholder": true
+            },
+            {
+              "traditional": "周瑋明",
+              "jyutping": "zau1 wai5 ming4",
+              "tone": 4,
+              "tones": [
+                1,
+                5,
+                4
+              ],
+              "english": "Jordyn",
+              "audio": {
+                "text": "周瑋明",
+                "traditional": "周瑋明",
+                "jyutping": "zau1 wai5 ming4",
+                "language": "yue-HK",
+                "script": "Hant"
+              }
             }
           ],
           "audio": {
@@ -36640,6 +36936,9 @@
           },
           {
             "lexeme_id": "v3-jordyn"
+          },
+          {
+            "lexeme_id": "v3-zhou"
           }
         ],
         "steps": [
@@ -37022,12 +37321,19 @@
               },
               {
                 "id": "v3-intro-03-cloze-jordyn-choice-2",
-                "label": "Alex",
-                "placeholder": true
+                "label": "周瑋明",
+                "jyutping": "zau1 wai5 ming4",
+                "audio": {
+                  "text": "周瑋明",
+                  "traditional": "周瑋明",
+                  "jyutping": "zau1 wai5 ming4",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
               },
               {
                 "id": "v3-intro-03-cloze-jordyn-choice-3",
-                "label": "Sam",
+                "label": "Alex",
                 "placeholder": true
               }
             ],
@@ -37549,6 +37855,9 @@
           },
           {
             "lexeme_id": "v3-jordyn"
+          },
+          {
+            "lexeme_id": "v3-zhou"
           }
         ],
         "steps": [
@@ -38585,6 +38894,9 @@
           },
           {
             "lexeme_id": "v3-jordyn"
+          },
+          {
+            "lexeme_id": "v3-zhou"
           }
         ],
         "steps": [
@@ -39243,12 +39555,19 @@
               },
               {
                 "id": "v3-intro-05-cloze-jordyn-choice-2",
-                "label": "Alex",
-                "placeholder": true
+                "label": "周瑋明",
+                "jyutping": "zau1 wai5 ming4",
+                "audio": {
+                  "text": "周瑋明",
+                  "traditional": "周瑋明",
+                  "jyutping": "zau1 wai5 ming4",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
               },
               {
                 "id": "v3-intro-05-cloze-jordyn-choice-3",
-                "label": "Sam",
+                "label": "Alex",
                 "placeholder": true
               }
             ],
@@ -39261,6 +39580,114 @@
               "allow_manual_input": false,
               "spoken_cantonese": true
             }
+          },
+          {
+            "id": "v3-intro-05-order-hai-mai-zhou",
+            "type": "order_words",
+            "skill": "listening",
+            "prompt": "Build this spoken question: 你係咪 周瑋明？",
+            "options": [
+              {
+                "id": "v3-intro-05-order-hai-mai-zhou-word-1",
+                "label": "你",
+                "jyutping": "nei5",
+                "audio": {
+                  "text": "你",
+                  "traditional": "你",
+                  "jyutping": "nei5",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-05-order-hai-mai-zhou-word-2",
+                "label": "係咪",
+                "jyutping": "hai6 mai6",
+                "audio": {
+                  "text": "係咪",
+                  "traditional": "係咪",
+                  "jyutping": "hai6 mai6",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-05-order-hai-mai-zhou-word-3",
+                "label": "周瑋明",
+                "jyutping": "zau1 wai5 ming4",
+                "audio": {
+                  "text": "周瑋明",
+                  "traditional": "周瑋明",
+                  "jyutping": "zau1 wai5 ming4",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              }
+            ],
+            "metadata": {
+              "objective_id": "v3-intro-05-speak",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "expected_order": [
+                "v3-intro-05-order-hai-mai-zhou-word-1",
+                "v3-intro-05-order-hai-mai-zhou-word-2",
+                "v3-intro-05-order-hai-mai-zhou-word-3"
+              ],
+              "spoken_cantonese": true,
+              "auditory_only_until_answer": true
+            },
+            "audio": {
+              "text": "你係咪",
+              "traditional": "你係咪",
+              "jyutping": "nei5 hai6 mai6",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "reveal_character": "你係咪",
+            "reveal_jyutping": "nei5 hai6 mai6",
+            "reveal_english": "are you"
+          },
+          {
+            "id": "v3-intro-05-cloze-zhou",
+            "type": "cloze",
+            "skill": "reading",
+            "prompt": "你係咪 ＿＿？",
+            "options": [
+              {
+                "id": "v3-intro-05-cloze-zhou-choice-1",
+                "label": "周瑋明",
+                "jyutping": "zau1 wai5 ming4",
+                "audio": {
+                  "text": "周瑋明",
+                  "traditional": "周瑋明",
+                  "jyutping": "zau1 wai5 ming4",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-05-cloze-zhou-choice-2",
+                "label": "Jordyn",
+                "placeholder": true
+              },
+              {
+                "id": "v3-intro-05-cloze-zhou-choice-3",
+                "label": "Sam",
+                "placeholder": true
+              }
+            ],
+            "correct_option_id": "v3-intro-05-cloze-zhou-choice-1",
+            "metadata": {
+              "objective_id": "v3-intro-05-speak",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "expected": "周瑋明",
+              "allow_manual_input": false,
+              "spoken_cantonese": true
+            },
+            "reveal_character": "周瑋明",
+            "reveal_jyutping": "zau1 wai5 ming4",
+            "reveal_english": "Jordyn"
           },
           {
             "id": "v3-intro-05-cloze-yes",
@@ -39746,6 +40173,9 @@
           },
           {
             "lexeme_id": "v3-jordyn"
+          },
+          {
+            "lexeme_id": "v3-zhou"
           }
         ],
         "steps": [
@@ -39793,6 +40223,72 @@
                 "v3-intro-review-order-wo-giu-word-1",
                 "v3-intro-review-order-wo-giu-word-2",
                 "v3-intro-review-order-wo-giu-word-3"
+              ],
+              "spoken_cantonese": true,
+              "auditory_only_until_answer": true
+            },
+            "audio": {
+              "text": "我叫",
+              "traditional": "我叫",
+              "jyutping": "ngo5 giu3",
+              "language": "yue-HK",
+              "script": "Hant"
+            },
+            "reveal_character": "我叫",
+            "reveal_jyutping": "ngo5 giu3",
+            "reveal_english": "I'm called"
+          },
+          {
+            "id": "v3-intro-review-order-wo-giu-zhou",
+            "type": "order_words",
+            "skill": "listening",
+            "prompt": "Build this spoken sentence: 我叫 周瑋明。",
+            "options": [
+              {
+                "id": "v3-intro-review-order-wo-giu-zhou-word-1",
+                "label": "我",
+                "jyutping": "ngo5",
+                "audio": {
+                  "text": "我",
+                  "traditional": "我",
+                  "jyutping": "ngo5",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-review-order-wo-giu-zhou-word-2",
+                "label": "叫",
+                "jyutping": "giu3",
+                "audio": {
+                  "text": "叫",
+                  "traditional": "叫",
+                  "jyutping": "giu3",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              },
+              {
+                "id": "v3-intro-review-order-wo-giu-zhou-word-3",
+                "label": "周瑋明",
+                "jyutping": "zau1 wai5 ming4",
+                "audio": {
+                  "text": "周瑋明",
+                  "traditional": "周瑋明",
+                  "jyutping": "zau1 wai5 ming4",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
+              }
+            ],
+            "metadata": {
+              "objective_id": "v3-intro-review-speak",
+              "section": "recognition",
+              "exercise_kind": "recognition",
+              "expected_order": [
+                "v3-intro-review-order-wo-giu-zhou-word-1",
+                "v3-intro-review-order-wo-giu-zhou-word-2",
+                "v3-intro-review-order-wo-giu-zhou-word-3"
               ],
               "spoken_cantonese": true,
               "auditory_only_until_answer": true
@@ -40077,12 +40573,19 @@
               },
               {
                 "id": "v3-intro-review-cloze-jordyn-choice-2",
-                "label": "Alex",
-                "placeholder": true
+                "label": "周瑋明",
+                "jyutping": "zau1 wai5 ming4",
+                "audio": {
+                  "text": "周瑋明",
+                  "traditional": "周瑋明",
+                  "jyutping": "zau1 wai5 ming4",
+                  "language": "yue-HK",
+                  "script": "Hant"
+                }
               },
               {
                 "id": "v3-intro-review-cloze-jordyn-choice-3",
-                "label": "Sam",
+                "label": "Alex",
                 "placeholder": true
               }
             ],

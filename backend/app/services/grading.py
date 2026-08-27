@@ -21,8 +21,47 @@ COMPARISON_STEP_TYPES = {
 }
 
 
+def is_intro_step_type(step_type: str) -> bool:
+    return step_type in INTRO_STEP_TYPES or step_type.endswith("_intro")
+
+
 def is_intro_step(step: ExerciseStep) -> bool:
-    return step.type in INTRO_STEP_TYPES or step.type.endswith("_intro")
+    return is_intro_step_type(step.type)
+
+
+def _step_identity(step: ExerciseStep | dict) -> tuple[str, str]:
+    if isinstance(step, dict):
+        return str(step.get("id") or ""), str(step.get("type") or "")
+    return step.id, step.type
+
+
+def required_step_ids(steps: list[ExerciseStep | dict]) -> list[str]:
+    ids: list[str] = []
+    for step in steps:
+        step_id, step_type = _step_identity(step)
+        if step_id and not is_intro_step_type(step_type):
+            ids.append(step_id)
+    return ids
+
+
+def lesson_is_complete(steps: list[ExerciseStep | dict], correct_ids: set[str]) -> bool:
+    required = required_step_ids(steps)
+    if required:
+        return all(step_id in correct_ids for step_id in required)
+    return bool(steps) and all(_step_identity(step)[0] in correct_ids for step in steps)
+
+
+def first_incomplete_index(steps: list[ExerciseStep | dict], correct_ids: set[str]) -> int:
+    if lesson_is_complete(steps, correct_ids):
+        return len(steps)
+    return next(
+        (
+            index
+            for index, step in enumerate(steps)
+            if _step_identity(step)[0] not in correct_ids
+        ),
+        len(steps),
+    )
 
 
 def _looks_like_english(text: str) -> bool:

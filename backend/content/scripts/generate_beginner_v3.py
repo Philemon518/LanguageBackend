@@ -68,7 +68,16 @@ NEI_GIU_ME_MING = Target("你叫咩名", "nei5 giu3 me1 ming4", "what's your nam
 NEI_GIU_ME = Target("你叫咩", "nei5 giu3 me1", "what are you called")
 NEI_HAI_MAI = Target("你係咪", "nei5 hai6 mai6", "are you")
 JORDYN = "Jordyn"
+ZHOU = Target("周瑋明", "zau1 wai5 ming4", "Jordyn")
 NAME_DISTRACTORS = ("Alex", "Sam")
+
+def name_distractors(answer: Target | str) -> list[Target | str]:
+    if answer == JORDYN:
+        return [ZHOU, NAME_DISTRACTORS[0]]
+    if answer == ZHOU:
+        return [JORDYN, NAME_DISTRACTORS[1]]
+    return list(NAME_DISTRACTORS)
+
 
 TONE_LABELS = {
     1: "Tone 1 · high level",
@@ -762,26 +771,27 @@ def build_introduction_lessons(previous: str) -> list[dict]:
     intro = spoken_lesson_intro(
         lesson_id=lesson_id,
         title="我 · 叫",
-        summary="Say who you are in spoken Cantonese: 我叫 Jordyn.",
+        summary="Say who you are in spoken Cantonese: 我叫 Jordyn or 我叫 周瑋明.",
         goals=[
             "Hear and read 我 and 叫",
-            "Build 我叫 Jordyn with tiles",
+            "Build 我叫 Jordyn or 我叫 周瑋明 with tiles",
             "Say 我叫",
         ],
-        new_items=(WO, GIU, JORDYN),
+        new_items=(WO, GIU, JORDYN, ZHOU),
         review_items=(),
         sections=[
             {
                 "type": "text",
                 "title": "Spoken Cantonese",
-                "body": "This is how people talk. 我叫 Jordyn means “I'm called Jordyn.” Jordyn is a name tile you choose, not a name you type.",
+                "body": "This is how people talk. 我叫 Jordyn and 我叫 周瑋明 both mean “I'm called ….” Names are tiles you choose, not names you type.",
             },
             {
                 "type": "cards",
-                "title": "First sentence",
+                "title": "Name tiles",
                 "cards": [
                     {"title": "我叫", "body": "Spoken: ngo5 giu3 — I'm called"},
-                    {"title": "Jordyn", "body": "A name block. Tap it. Do not type your own name."},
+                    {"title": "Jordyn", "body": "A Latin name block. Tap it."},
+                    {"title": "周瑋明", "body": "A Cantonese name block. Tap it. zau1 wai5 ming4."},
                 ],
             },
         ],
@@ -832,7 +842,37 @@ def build_introduction_lessons(previous: str) -> list[dict]:
             f"{lesson_id}-cloze-jordyn",
             "我叫 ＿＿。",
             JORDYN,
-            list(NAME_DISTRACTORS),
+            name_distractors(JORDYN),
+            objective_id=obj(lesson_id),
+            section="recognition",
+        )
+    )
+    steps.append(
+        listen_choice_step(
+            f"{lesson_id}-hear-zhou",
+            "Listen. Choose the spoken name you hear.",
+            ZHOU,
+            (ZHOU, WO, GIU),
+            objective_id=obj(lesson_id),
+            section="recognition",
+        )
+    )
+    steps.append(
+        order_step(
+            f"{lesson_id}-order-wo-giu-zhou",
+            "Build this spoken sentence: 我叫 周瑋明。",
+            [WO, GIU, ZHOU],
+            objective_id=obj(lesson_id),
+            section="recognition",
+            spoken=WO_GIU,
+        )
+    )
+    steps.append(
+        cloze_step(
+            f"{lesson_id}-cloze-zhou",
+            "我叫 ＿＿。",
+            ZHOU,
+            name_distractors(ZHOU),
             objective_id=obj(lesson_id),
             section="recognition",
         )
@@ -856,9 +896,9 @@ def build_introduction_lessons(previous: str) -> list[dict]:
             previous=previous,
             intro=intro,
             primary=WO,
-            theme="我叫 Jordyn",
+            theme="我叫 Jordyn / 周瑋明",
             words=(WO, GIU),
-            lexemes=["v3-wo", "v3-giu", "v3-jordyn"],
+            lexemes=["v3-wo", "v3-giu", "v3-jordyn", "v3-zhou"],
             steps=steps,
             progression=13,
         )
@@ -877,7 +917,7 @@ def build_introduction_lessons(previous: str) -> list[dict]:
             "Know 係 can also mean yes",
         ],
         new_items=(HAI, GO, MING),
-        review_items=(WO, GIU, JORDYN),
+        review_items=(WO, GIU, JORDYN, ZHOU),
         sections=[
             {
                 "type": "text",
@@ -981,7 +1021,7 @@ def build_introduction_lessons(previous: str) -> list[dict]:
             primary=HAI,
             theme="我個名係 Jordyn",
             words=(HAI, GO, MING),
-            lexemes=["v3-hai", "v3-go", "v3-ming", "v3-wo", "v3-giu", "v3-jordyn"],
+            lexemes=["v3-hai", "v3-go", "v3-ming", "v3-wo", "v3-giu", "v3-jordyn", "v3-zhou"],
             steps=steps,
             progression=14,
         )
@@ -1041,7 +1081,7 @@ def build_introduction_lessons(previous: str) -> list[dict]:
             f"{lesson_id}-cloze-jordyn",
             "我個名係 ＿＿。",
             JORDYN,
-            list(NAME_DISTRACTORS),
+            name_distractors(JORDYN),
             objective_id=obj(lesson_id),
             section="recognition",
         )
@@ -1075,7 +1115,7 @@ def build_introduction_lessons(previous: str) -> list[dict]:
             primary=WO_GIU,
             theme="Practice 我叫 / 我係 / 我個名係",
             words=(WO, GIU, HAI, GO, MING),
-            lexemes=["v3-wo", "v3-giu", "v3-hai", "v3-go", "v3-ming", "v3-jordyn"],
+            lexemes=["v3-wo", "v3-giu", "v3-hai", "v3-go", "v3-ming", "v3-jordyn", "v3-zhou"],
             steps=steps,
             progression=15,
         )
@@ -1180,7 +1220,7 @@ def build_introduction_lessons(previous: str) -> list[dict]:
             primary=JAU,
             theme="我有三本書",
             words=(JAU, BUN, SYU, NUMBERS[2]),
-            lexemes=["v3-jau", "v3-bun", "v3-syu", "v3-wo", "v3-giu", "v3-jordyn"],
+            lexemes=["v3-jau", "v3-bun", "v3-syu", "v3-wo", "v3-giu", "v3-jordyn", "v3-zhou"],
             steps=steps,
             progression=16,
         )
@@ -1269,7 +1309,27 @@ def build_introduction_lessons(previous: str) -> list[dict]:
             f"{lesson_id}-cloze-jordyn",
             "你係咪 ＿＿？",
             JORDYN,
-            list(NAME_DISTRACTORS),
+            name_distractors(JORDYN),
+            objective_id=obj(lesson_id),
+            section="recognition",
+        )
+    )
+    steps.append(
+        order_step(
+            f"{lesson_id}-order-hai-mai-zhou",
+            "Build this spoken question: 你係咪 周瑋明？",
+            [NEI, HAI_MAI, ZHOU],
+            objective_id=obj(lesson_id),
+            section="recognition",
+            spoken=NEI_HAI_MAI,
+        )
+    )
+    steps.append(
+        cloze_step(
+            f"{lesson_id}-cloze-zhou",
+            "你係咪 ＿＿？",
+            ZHOU,
+            name_distractors(ZHOU),
             objective_id=obj(lesson_id),
             section="recognition",
         )
@@ -1313,7 +1373,7 @@ def build_introduction_lessons(previous: str) -> list[dict]:
             primary=NEI,
             theme="你叫咩名？",
             words=(NEI, ME, HAI_MAI),
-            lexemes=["v3-nei", "v3-me", "v3-hai-mai", "v3-ming", "v3-hai", "v3-jordyn"],
+            lexemes=["v3-nei", "v3-me", "v3-hai-mai", "v3-ming", "v3-hai", "v3-jordyn", "v3-zhou"],
             steps=steps,
             progression=17,
         )
@@ -1328,6 +1388,16 @@ def build_introduction_lessons(previous: str) -> list[dict]:
             f"{lesson_id}-order-wo-giu",
             "Build this spoken sentence: 我叫 Jordyn。",
             [WO, GIU, JORDYN],
+            objective_id=obj(lesson_id),
+            section="recognition",
+            spoken=WO_GIU,
+        )
+    )
+    steps.append(
+        order_step(
+            f"{lesson_id}-order-wo-giu-zhou",
+            "Build this spoken sentence: 我叫 周瑋明。",
+            [WO, GIU, ZHOU],
             objective_id=obj(lesson_id),
             section="recognition",
             spoken=WO_GIU,
@@ -1368,7 +1438,7 @@ def build_introduction_lessons(previous: str) -> list[dict]:
             f"{lesson_id}-cloze-jordyn",
             "你係咪 ＿＿？",
             JORDYN,
-            list(NAME_DISTRACTORS),
+            name_distractors(JORDYN),
             objective_id=obj(lesson_id),
             section="recognition",
         )
@@ -1434,6 +1504,7 @@ def build_introduction_lessons(previous: str) -> list[dict]:
                 "v3-me",
                 "v3-hai-mai",
                 "v3-jordyn",
+                "v3-zhou",
             ],
             steps=steps,
             progression=18,
@@ -2245,6 +2316,14 @@ def generate_document() -> dict:
             "english": JORDYN,
             "placeholder": True,
             "tags": ["beginner-v3", "introduction", "placeholder"],
+            "difficulty": 1,
+        }
+    )
+    lexemes.append(
+        {
+            "id": "v3-zhou",
+            **target_dict(ZHOU),
+            "tags": ["beginner-v3", "introduction", "spoken", "name"],
             "difficulty": 1,
         }
     )
