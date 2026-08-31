@@ -8,7 +8,10 @@ from pydantic import BaseModel, ConfigDict, Field
 
 class HealthResponse(BaseModel):
     status: str = "ok"
-    version: str = "0.1.0"
+    version: str = "0.2.0"
+    units: int | None = None
+    lessons: int | None = None
+    unit_titles: list[str] | None = None
 
 
 class AuthCredentials(BaseModel):

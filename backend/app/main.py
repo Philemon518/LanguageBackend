@@ -8,7 +8,7 @@ from typing import Annotated
 from fastapi import Depends, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-from sqlalchemy import select, text
+from sqlalchemy import func, select, text
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from .api.auth import router as auth_router
@@ -19,7 +19,7 @@ from .api.speech import router as speech_router
 from .core.config import get_settings
 from .core.database import Base, engine, get_db
 from .core.migrations import migrate_user_credentials
-from .models.orm import CurriculumVersion
+from .models.orm import CurriculumVersion, Lesson, Unit
 from .models.schemas import HealthResponse
 from .services.bootstrap import bootstrap_if_empty
 from .services.media_bootstrap import bootstrap_media_assets
@@ -90,4 +90,11 @@ async def ready(db: Annotated[AsyncSession, Depends(get_db)]):
         from fastapi import HTTPException
 
         raise HTTPException(503, "Curriculum bootstrap still in progress")
-    return HealthResponse(status="ready")
+    lesson_count = await db.scalar(select(func.count()).select_from(Lesson)) or 0
+    unit_titles = list((await db.scalars(select(Unit.title).order_by(Unit.sort_order))).all())
+    return HealthResponse(
+        status="ready",
+        units=len(unit_titles),
+        lessons=lesson_count,
+        unit_titles=unit_titles,
+    )

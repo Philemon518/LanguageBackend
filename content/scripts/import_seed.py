@@ -209,8 +209,13 @@ async def _sync_seed_document(session, doc: dict, version: str, seed_hash: str) 
             )
             session.add(existing_version)
 
+        # Persist version and units before lessons so Postgres FK checks pass
+        # when a new unit (e.g. Unit 2) is added to an already-imported seed.
+        await session.flush()
+
         for unit_data in doc.get("units", []):
             await _upsert_unit(session, existing_version.id, unit_data)
+        await session.flush()
 
         for lex in doc.get("lexemes", []):
             await _upsert_lexeme(session, lex)

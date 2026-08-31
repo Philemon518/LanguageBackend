@@ -19,6 +19,7 @@ from ..models.orm import (
     Unit,
 )
 from ..models.schemas import CurriculumManifest, LessonDocument, LessonSummary, UnitSummary
+from .bootstrap import ensure_seed_applied
 from .grading import lesson_is_complete
 from .tts import audio_content_hash
 
@@ -117,6 +118,7 @@ def _lesson_summary_fields(content: dict, lesson, unit_phase: str) -> dict:
 
 
 async def get_manifest(db: AsyncSession, level: str = "beginner") -> CurriculumManifest:
+    await ensure_seed_applied(db)
     version = await get_latest_curriculum_version(db, level)
     if version is None:
         return CurriculumManifest(version="0.0.0", level=level, units=[])
@@ -186,6 +188,7 @@ async def list_lessons(db: AsyncSession, unit_id: str, user_id=None) -> list[Les
 
 
 async def list_road(db: AsyncSession, user_id=None) -> list[LessonSummary]:
+    await ensure_seed_applied(db)
     version = await get_latest_curriculum_version(db)
     if version is None:
         return []
@@ -262,6 +265,7 @@ async def list_road(db: AsyncSession, user_id=None) -> list[LessonSummary]:
 
 
 async def get_lesson(db: AsyncSession, lesson_id: str) -> LessonDocument | None:
+    await ensure_seed_applied(db)
     version = await get_latest_curriculum_version(db)
     if version is None:
         return None

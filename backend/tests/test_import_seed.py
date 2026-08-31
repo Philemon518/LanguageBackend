@@ -3,6 +3,7 @@
 import json
 import sys
 from pathlib import Path
+from uuid import uuid4
 
 import pytest
 import pytest_asyncio
@@ -14,8 +15,6 @@ sys.path.insert(0, str(ROOT))
 
 import app.core.database as database_module
 from app.core.database import Base
-from uuid import uuid4
-
 from app.models.orm import Character, CurriculumVersion, Lesson, Unit
 from content.scripts.generate_beginner_v2 import generate_document
 from content.scripts.generate_beginner_v3 import generate_document as generate_v3_document
@@ -262,3 +261,71 @@ async def test_import_seed_reconciles_orphaned_v3_units(import_db, tmp_path):
         assert unit is not None
         assert unit.curriculum_version_id == version.id
         assert len(lessons) == 18
+
+
+@pytest.mark.asyncio
+async def test_import_seed_adds_unit_2_to_existing_12_lesson_curriculum(import_db, tmp_path):
+    seed_path = tmp_path / "beginner_v3.json"
+    seed_path.write_text(
+        json.dumps(generate_v3_document(), ensure_ascii=False),
+        encoding="utf-8",
+    )
+
+    await import_seed(seed_path)
+
+    async with import_db() as session:
+        for lesson in (
+            await session.scalars(select(Lesson).where(Lesson.unit_id == "v3-unit-2"))
+        ).all():
+            await session.delete(lesson)
+        unit_two = await session.get(Unit, "v3-unit-2")
+        await session.delete(unit_two)
+        version = await session.scalar(
+            select(CurriculumVersion).where(CurriculumVersion.version == "3.0.0")
+        )
+        version.metadata_json = {"seed_hash": "outdated-hash"}
+        await session.commit()
+        assert await session.scalar(select(func.count()).select_from(Lesson)) == 12
+        assert await session.scalar(select(func.count()).select_from(Unit)) == 2
+
+    await import_seed(seed_path)
+
+    async with import_db() as session:
+        lessons = (await session.scalars(select(Lesson))).all()
+        units = (await session.scalars(select(Unit).order_by(Unit.sort_order))).all()
+        assert len(lessons) == 18
+        assert [unit.id for unit in units] == ["v3-unit-0", "v3-unit-1", "v3-unit-2"]
+        assert sum(lesson.unit_id == "v3-unit-2" for lesson in lessons) == 6
+
+
+@pytest.mark.asyncio
+async def test_get_manifest_reimports_when_unit_2_is_missing(import_db, tmp_path):
+    from app.services.curriculum import get_manifest
+
+    seed_path = tmp_path / "beginner_v3.json"
+    seed_path.write_text(
+        json.dumps(generate_v3_document(), ensure_ascii=False),
+        encoding="utf-8",
+    )
+    await import_seed(seed_path)
+
+    async with import_db() as session:
+        for lesson in (
+            await session.scalars(select(Lesson).where(Lesson.unit_id == "v3-unit-2"))
+        ).all():
+            await session.delete(lesson)
+        await session.delete(await session.get(Unit, "v3-unit-2"))
+        version = await session.scalar(
+            select(CurriculumVersion).where(CurriculumVersion.version == "3.0.0")
+        )
+        version.metadata_json = {"seed_hash": "outdated-hash"}
+        await session.commit()
+
+    async with import_db() as session:
+        manifest = await get_manifest(session)
+        assert [unit.id for unit in manifest.units] == [
+            "v3-unit-0",
+            "v3-unit-1",
+            "v3-unit-2",
+        ]
+        assert sum(unit.lesson_count for unit in manifest.units) == 18
